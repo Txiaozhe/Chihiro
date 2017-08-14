@@ -41,10 +41,26 @@ const dimension = {
   footerHeight: 66,
 
   // 菜单高度
-  menuHeight: document.body.offsetHeight - 64 - 48,
+  menuWidth: 64,
+  menuHeight: document.body.offsetHeight - 48,
 
   // body 高度
-  bodyHeight: document.body.offsetHeight - 64
+  bodyHeight: document.body.offsetHeight,
+
+  // blog menu 宽度
+  blogMenuWidth: 418,
+
+  // blog frontend body
+  frontBodyWidth: document.body.offsetWidth / 2,
+  frontBodyHeight: document.body.offsetHeight - 66 - 36 - 48 - 20,
+
+  // blog card
+  blogCardWidth: 100,
+  blogCardHeight: document.body.offsetHeight,
+
+  // blog image
+  blogImageWidth: document.body.offsetHeight / 6,
+  blogImageHeight: document.body.offsetHeight / 6
 };
 
 export default dimension;

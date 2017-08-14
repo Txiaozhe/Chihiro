@@ -30,9 +30,9 @@
 'use strict';
 
 import React from 'react';
-import {Layout, Menu, Breadcrumb, Icon} from 'antd';
+import {Layout, Menu, Breadcrumb, Icon, Card} from 'antd';
 
-const {Content, Footer, Sider} = Layout;
+const {Content, Sider} = Layout;
 const SubMenu = Menu.SubMenu;
 
 import {menu} from './app.menu';
@@ -50,14 +50,7 @@ import route from "../config/route";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      collapsed: false,
-    };
   }
-
-  onCollapse = (collapsed) => {
-    this.setState({collapsed});
-  };
 
   handleMenuClick = (tab) => {
     this.props.dispatch(selectTab(tab.key));
@@ -68,40 +61,36 @@ class App extends React.Component {
     let gra = grade[selectedTab];
     return (
       <Layout>
-        <MyHeader />
         <Layout>
           <Sider
-            collapsible
-            collapsed={this.state.collapsed}
-            onCollapse={this.onCollapse}>
+            collapsed>
             <Menu
               theme="light"
               onClick={this.handleMenuClick}
               style={innerStyle.menu}
-              defaultOpenKeys={[gra.route1]}
-              defaultSelectedKeys={[gra.route2 && gra.route2]}
+              selectedKeys={[selectedTab]}
               mode="inline">
               {
                 menu.map((m) => {
                   return (
-                    <SubMenu
-                      key={m.route}
-                      title={<span><Icon type={m.icon} /><span>{m.title}</span></span>}>
-                      {
-                        m.grade.map((g) => {
-                          return (
-                            <Menu.Item key={g.route}>
-                              {<span><Icon type={g.icon} /><span>{g.title}</span></span>}
-                            </Menu.Item>
-                          )
-                        })
-                      }
-                    </SubMenu>
+                    <Menu.Item key={m.route}>
+                      {<span><Icon type={m.icon}/><span>{m.title}</span></span>}
+                    </Menu.Item>
                   )
                 })
               }
             </Menu>
           </Sider>
+
+          {
+            selectedTab === route.blog ? (
+              <Layout
+                style={innerStyle.card}>
+                <img height={dimension.blogCardHeight}
+                     src="http://cdn.duitang.com/uploads/item/201503/12/20150312181134_aLAWY.jpeg"/>
+              </Layout>
+            ) : null
+          }
 
           <Layout style={innerStyle.contentLayout}>
             <Content style={{margin: '0 16px'}}>
@@ -112,32 +101,36 @@ class App extends React.Component {
                 <Breadcrumb.Item>
                   <Icon
                     style={innerStyle.breadcrumd}
-                    type={gra.icon1} />
+                    type={gra.icon1}/>
                   {gra.title1}
                 </Breadcrumb.Item>
 
                 <Breadcrumb.Item>
                   <Icon
                     style={innerStyle.breadcrumd}
-                    type={gra.icon2 && gra.icon2} />
+                    type={gra.icon2 && gra.icon2}/>
                   {gra.title2 && gra.title2}
                 </Breadcrumb.Item>
               </Breadcrumb>
-
               {this.renderContent(selectedTab)}
             </Content>
-
-            <MyFooter />
           </Layout>
         </Layout>
       </Layout>
     );
   }
 
-  renderContent = (tab) => {
+  renderContent = (tab, t) => {
     switch (tab) {
+      case route.home: {
+        return;
+      }
       case route.myFocus : {
-        return <Blog />;
+        return;
+      }
+      case route.blog: {
+        const {selectedBlogTab} = this.props;
+        return <Blog tab={selectedBlogTab}/>;
       }
       case route.frontend : {
 
@@ -164,6 +157,11 @@ const innerStyle = {
     height: dimension.menuHeight
   },
 
+  card: {
+    width: dimension.blogCardWidth,
+    height: dimension.blogCardHeight
+  },
+
   contentLayout: {
     height: dimension.bodyHeight
   },
@@ -175,8 +173,9 @@ const innerStyle = {
 
 function select(store) {
   return {
-    selectedTab: store.navigator.selectedTab
+    selectedTab: store.navigator.selectedTab,
+    selectedBlogTab: store.navigator.selectedBlogTab
   }
 }
 
-export default connect(select) (App);
+export default connect(select)(App);

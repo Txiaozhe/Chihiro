@@ -30,20 +30,83 @@
 'use strict';
 
 import React from 'react';
-import {Layout} from 'antd';
+import {Menu, Icon, Layout} from 'antd';
+
+import {menu} from './blog.menu';
+import Frontend from './blog.frontend';
+import Backend from './blog.backend';
+import Cloud from './blog.cloud';
+import Works from './blog.works';
+import {dimension} from '../../resource';
+
+import {connect} from 'react-redux';
+import {selectBlogTab} from '../../actions';
+import {route} from "../../config";
 
 class Blog extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  handleBlogClick = (m) => {
+    this.props.dispatch(selectBlogTab(m.key));
+  };
+
   render() {
+    let {tab} = this.props;
     return (
-      <Layout>
-        <h1>博客</h1>
+      <Layout style={innerStyles.container}>
+        <Layout>
+          <Menu
+            onClick={this.handleBlogClick}
+            selectedKeys={[tab]}
+            style={innerStyles.menu}
+            mode="horizontal">
+            {
+              menu.map((m) => {
+                return (
+                  <Menu.Item key={m.route}>
+                    <Icon type={m.icon}/>{m.title}
+                  </Menu.Item>
+                )
+              })
+            }
+          </Menu>
+
+          <Layout>
+            {this.renderBody(tab)}
+          </Layout>
+        </Layout>
       </Layout>
     )
   }
+
+  renderBody = (tab) => {
+    switch (tab) {
+      case route.frontend: {
+        return <Frontend/>
+      }
+      case route.backend: {
+        return <Backend/>
+      }
+      case route.cloud: {
+        return <Cloud/>
+      }
+      case route.works: {
+        return <Works/>
+      }
+    }
+  }
 }
 
-export default Blog;
+const innerStyles = {
+  container: {
+    flexDirection: 'row'
+  },
+
+  menu: {
+    width: dimension.blogMenuWidth
+  }
+};
+
+export default connect()(Blog);

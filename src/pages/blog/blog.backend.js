@@ -24,18 +24,23 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/14        Tang Xiaoji
  */
 
 'use strict';
 
-import {actions} from '../config/index';
+import React from 'react';
 
-export function selectLang(lang) {
-  return {
-    type: actions.SelectLang,
-    payload: {
-      lang
-    }
-  };
+import {Layout} from 'antd';
+
+class Backend extends React.Component {
+  render() {
+    return (
+      <Layout>
+        {"back"}
+      </Layout>
+    )
+  }
 }
+
+export default Backend;

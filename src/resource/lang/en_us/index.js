@@ -46,6 +46,14 @@ const string = {
     works: 'works'
   },
 
+  // blog
+  blog: {
+    frontend: 'frontend',
+    backend: 'backend',
+    cloud: 'cloud',
+    works: 'works'
+  },
+
   zh_cn: 'Chinese',
   en_us: 'English'
 };

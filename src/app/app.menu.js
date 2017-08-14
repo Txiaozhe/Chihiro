@@ -36,40 +36,11 @@ export const menu = [
   {
     route: route.home,
     title: string.menu.home,
-    icon: icon.home,
-    grade: [
-      {
-        route: route.myFocus,
-        title: string.menu.myFocus,
-        icon: icon.myFocus
-      }
-    ]
+    icon: icon.home
   },
   {
     route: route.blog,
     title: string.menu.blog,
-    icon: icon.blog,
-    grade: [
-      {
-        route: route.frontend,
-        title: string.menu.frontend,
-        icon: icon.frontend
-      },
-      {
-        route: route.backend,
-        title: string.menu.backend,
-        icon: icon.backend
-      },
-      {
-        route: route.cloud,
-        title: string.menu.cloud,
-        icon: icon.cloud
-      },
-      {
-        route: route.works,
-        title: string.menu.works,
-        icon: icon.works
-      }
-    ]
+    icon: icon.blog
   }
 ];

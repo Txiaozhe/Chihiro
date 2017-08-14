@@ -45,10 +45,4 @@ class MyFooter extends React.Component {
   }
 }
 
-function select(store) {
-  return {
-    selectedLang: store.language.selectedLang
-  };
-}
-
-export default connect(select) (MyFooter);
+export default connect() (MyFooter);

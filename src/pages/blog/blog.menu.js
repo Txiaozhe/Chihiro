@@ -24,35 +24,33 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/14        Tang Xiaoji
  */
 
 'use strict';
 
-import {actions} from '../config/index';
-import {route} from '../config/index';
+import {route} from '../../config';
+import {icon, string} from '../../resource/index';
 
-const initialState = {
-  selectedTab: route.home,
-  selectedBlogTab: route.frontend
-};
-
-export function navigator(state = initialState, action) {
-  switch (action.type) {
-    case actions.Navigator : {
-      return {
-        ...state,
-        selectedTab: action.payload.tab
-      }
-    }
-    case actions.SelectBlogTab : {
-      return {
-        ...state,
-        selectedBlogTab: action.payload.tab
-      }
-    }
-    default: {
-      return state;
-    }
+export const menu = [
+  {
+    route: route.frontend,
+    title: string.menu.frontend,
+    icon: icon.frontend
+  },
+  {
+    route: route.backend,
+    title: string.menu.backend,
+    icon: icon.backend
+  },
+  {
+    route: route.cloud,
+    title: string.menu.cloud,
+    icon: icon.cloud
+  },
+  {
+    route: route.works,
+    title: string.menu.works,
+    icon: icon.works
   }
-}
+];

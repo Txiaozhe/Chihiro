@@ -24,28 +24,13 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/14        Tang Xiaoji
  */
 
 'use strict';
 
-import {actions} from '../config/index';
-import {lang} from '../config/index';
-
-const initialState = {
-  selectedLang: lang.zh_cn.value
+const image = {
+  flower: '../../images/flower.jpg'
 };
 
-export function language(state = initialState, action) {
-  switch (action.type) {
-    case actions.SelectLang : {
-      return {
-        ...state,
-        selectedLang: action.payload.lang
-      }
-    }
-    default: {
-      return state;
-    }
-  }
-}
+export default image;

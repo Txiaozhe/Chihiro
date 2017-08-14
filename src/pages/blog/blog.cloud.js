@@ -24,35 +24,23 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/14        Tang Xiaoji
  */
 
 'use strict';
 
-import {actions} from '../config/index';
-import {route} from '../config/index';
+import React from 'react';
 
-const initialState = {
-  selectedTab: route.home,
-  selectedBlogTab: route.frontend
-};
+import {Layout} from 'antd';
 
-export function navigator(state = initialState, action) {
-  switch (action.type) {
-    case actions.Navigator : {
-      return {
-        ...state,
-        selectedTab: action.payload.tab
-      }
-    }
-    case actions.SelectBlogTab : {
-      return {
-        ...state,
-        selectedBlogTab: action.payload.tab
-      }
-    }
-    default: {
-      return state;
-    }
+class Cloud extends React.Component {
+  render() {
+    return (
+      <Layout>
+        {"cloud"}
+      </Layout>
+    )
   }
 }
+
+export default Cloud;

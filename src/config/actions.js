@@ -31,5 +31,6 @@
 
 export const actions = {
   Navigator: 'Navigator',
-  SelectLang: 'SelectLang'
+  SelectLang: 'SelectLang',
+  SelectBlogTab: 'SelectBlogTab'
 };

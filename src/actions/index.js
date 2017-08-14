@@ -29,10 +29,9 @@
 
 'use strict';
 
-import {selectTab} from './navigator';
-import {selectLang} from './language';
+import {selectTab, selectBlogTab} from './navigator';
 
 module.exports = {
   selectTab,
-  selectLang
+  selectBlogTab
 };

@@ -33,10 +33,12 @@ import dimension from './dimension';
 import string from './string';
 import icon from './icon';
 import color from './color';
+import image from './image';
 
 module.exports = {
   dimension,
   string,
   icon,
-  color
+  color,
+  image
 };

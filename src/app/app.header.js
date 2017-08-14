@@ -35,16 +35,11 @@ const {Header} = Layout;
 import {color, string} from '../resource/index';
 
 import {connect} from 'react-redux';
-import {selectLang} from '../actions/index';
 
 class MyHeader extends React.Component {
   constructor(props) {
     super(props);
   }
-
-  handleChange = value => {
-    this.props.dispatch(selectLang(value));
-  };
 
   render() {
     return (
@@ -74,10 +69,4 @@ const innerStyle = {
   }
 };
 
-function select(store) {
-  return {
-    selectedLang: store.language.selectedLang
-  }
-}
-
-export default connect(select) (MyHeader);
+export default connect() (MyHeader);
