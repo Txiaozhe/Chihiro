@@ -37,7 +37,9 @@ const route = {
   frontend: 'frontend',
   backend: 'backend',
   cloud: 'cloud',
-  works: 'works'
+  works: 'works',
+
+  manage: 'manage'
 };
 
 export default route;

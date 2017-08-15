@@ -24,23 +24,13 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/14        Tang Xiaoji
  */
 
 'use strict';
 
-import dimension from './dimension';
-import string from './string';
-import icon from './icon';
-import color from './color';
-import image from './image';
-import style from './style';
-
-module.exports = {
-  dimension,
-  string,
-  icon,
-  color,
-  image,
-  style
+const style = {
+  row: {
+    flexDirection: 'row'
+  }
 };

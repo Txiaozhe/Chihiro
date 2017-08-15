@@ -45,22 +45,29 @@ const dimension = {
   menuHeight: document.body.offsetHeight - 48,
 
   // body 高度
+  bodyWidth: document.body.offsetHeight / 1.5,
   bodyHeight: document.body.offsetHeight,
 
   // blog menu 宽度
-  blogMenuWidth: 418,
+  blogMenuWidth: document.body.offsetHeight / 1.5,
 
   // blog frontend body
-  frontBodyWidth: document.body.offsetWidth / 2,
+  frontBodyWidth: document.body.offsetWidth / 1.7,
   frontBodyHeight: document.body.offsetHeight - 66 - 36 - 48 - 20,
 
-  // blog card
-  blogCardWidth: 100,
+  // blog card 右侧的图片
+  blogCardWidth: document.body.offsetWidth / 18,
   blogCardHeight: document.body.offsetHeight,
 
   // blog image
   blogImageWidth: document.body.offsetHeight / 6,
-  blogImageHeight: document.body.offsetHeight / 6
+  blogImageHeight: document.body.offsetHeight / 6,
+
+  // user image width
+  userImageWidth: 80,
+
+  // user image margin left 用户头像距左侧距离
+  userImageMarginRight: (document.body.offsetWidth - document.body.offsetWidth / 1.7 - 64) / 2 - 80
 };
 
 export default dimension;

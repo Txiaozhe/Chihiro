@@ -37,7 +37,7 @@ import Frontend from './blog.frontend';
 import Backend from './blog.backend';
 import Cloud from './blog.cloud';
 import Works from './blog.works';
-import {dimension} from '../../resource';
+import {dimension, color} from '../../resource';
 
 import {connect} from 'react-redux';
 import {selectBlogTab} from '../../actions';
@@ -56,26 +56,28 @@ class Blog extends React.Component {
     let {tab} = this.props;
     return (
       <Layout style={innerStyles.container}>
-        <Layout>
-          <Menu
-            onClick={this.handleBlogClick}
-            selectedKeys={[tab]}
-            style={innerStyles.menu}
-            mode="horizontal">
-            {
-              menu.map((m) => {
-                return (
-                  <Menu.Item key={m.route}>
-                    <Icon type={m.icon}/>{m.title}
-                  </Menu.Item>
-                )
-              })
-            }
-          </Menu>
+        <Menu
+          onClick={this.handleBlogClick}
+          selectedKeys={[tab]}
+          style={innerStyles.menu}
+          mode="horizontal">
+          {
+            menu.map((m) => {
+              return (
+                <Menu.Item key={m.route}>
+                  <Icon
+                    type={m.icon}
+                    style={innerStyles.menuIcon} />
+                  <span style={innerStyles.menuTitle}>{m.title}</span>
+                </Menu.Item>
+              )
+            })
+          }
+        </Menu>
 
-          <Layout>
-            {this.renderBody(tab)}
-          </Layout>
+        <Layout
+          style={innerStyles.bodyLayout}>
+          {this.renderBody(tab)}
         </Layout>
       </Layout>
     )
@@ -101,11 +103,24 @@ class Blog extends React.Component {
 
 const innerStyles = {
   container: {
-    flexDirection: 'row'
+    backgroundColor: color.white
   },
 
   menu: {
-    width: dimension.blogMenuWidth
+    width: dimension.blogMenuWidth,
+    backgroundColor: color.white
+  },
+
+  menuIcon: {
+    fontSize: 14
+  },
+
+  menuTitle: {
+    fontSize: 14
+  },
+
+  bodyLayout: {
+    backgroundColor: color.white
   }
 };
 

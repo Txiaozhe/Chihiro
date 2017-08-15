@@ -31,18 +31,26 @@
 
 import React from 'react';
 import {Layout} from 'antd';
-import {string} from '../resource/index';
+import {string, color} from '../resource/index';
 
 import {connect} from 'react-redux';
 
 class MyFooter extends React.Component {
   render() {
     return (
-      <Layout.Footer style={{textAlign: 'center'}}>
+      <Layout.Footer style={innerStyles.footer}>
         {string.footer_statement}<a href='https://github.com/Txiaozhe'>{string.author}</a>
       </Layout.Footer>
     );
   }
 }
+
+const innerStyles = {
+  footer: {
+    textAlign: 'center',
+    backgroundColor: color.white,
+    marginTop: 2
+  }
+};
 
 export default connect() (MyFooter);

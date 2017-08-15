@@ -43,7 +43,8 @@ const string = {
     frontend: 'front end',
     backend: 'back end',
     cloud: 'cloud',
-    works: 'works'
+    works: 'works',
+    manage: 'manage'
   },
 
   // blog

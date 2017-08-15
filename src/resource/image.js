@@ -30,7 +30,9 @@
 'use strict';
 
 const image = {
-  flower: '../../images/flower.jpg'
+  flower: '../../images/flower.jpg',
+  blog_side: '../../images/blog_side.jpg',
+  user: '../../images/user.png'
 };
 
 export default image;

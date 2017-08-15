@@ -31,16 +31,69 @@
 
 import React from 'react';
 
-import {Layout} from 'antd';
+import {Layout, Card} from 'antd';
+import MyFooter from '../../app/app.footer';
+
+import {dimension, color, style} from '../../resource';
+
+class WorksItem extends React.Component {
+  render() {
+    return (
+      <Card style={innerStyle.card} bodyStyle={{padding: 0}}>
+        <img alt="example" width="100%" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"/>
+
+        <Layout style={innerStyle.contentLayout}>
+          <a
+            style={innerStyle.link}
+            href="https://github.com/txiaozhe/iantd"><h3>iantd</h3></a>
+        </Layout>
+      </Card>
+    )
+  }
+}
 
 class Works extends React.Component {
   render() {
     return (
-      <Layout>
-        {"works"}
+      <Layout
+        style={innerStyle.container}>
+
+        <Layout
+          style={{flexDirection: 'row', backgroundColor: color.white}}>
+          <WorksItem />
+          <WorksItem />
+          <WorksItem />
+        </Layout>
+
+        <MyFooter/>
       </Layout>
     )
   }
 }
+
+const innerStyle = {
+  container: {
+    width: dimension.frontBodyWidth,
+    backgroundColor: color.white,
+    marginLeft: 8,
+    marginTop: 8
+  },
+
+  card: {
+    width: 240,
+    marginTop: 12,
+    marginLeft: 12,
+    backgroundColor: color.white
+  },
+
+  contentLayout: {
+    backgroundColor: color.white
+  },
+
+  link: {
+    marginLeft: 8,
+    marginBottom: 8
+  }
+};
 
 export default Works;

@@ -1,0 +1,129 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 SmartestEE Co,Ltd..
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+/*
+ * Revision History:
+ *     Initial: 2017/08/14        Tang Xiaoji
+ */
+
+'use strict';
+
+import React from 'react';
+import {Layout, Icon} from 'antd';
+
+import {dimension, color} from '../../resource';
+
+class BlogItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    let {id} = this.props;
+    let style = id === 0 ? innerStyle.itemContainer : {
+      ...innerStyle.itemContainer,
+      marginTop: 2
+    };
+
+    return (
+      <Layout style={style}>
+        <Layout style={innerStyle.headerLayout}>
+          <span style={innerStyle.headerAuthor}>Txiaozhe</span>
+          <span style={innerStyle.headerDate}>2017-08-14</span>
+        </Layout>
+        <a onClick={() => this.onBlogDetail(id)}>
+          <h3 style={innerStyle.title}>说一说 GitHub</h3>
+        </a>
+        <Layout style={innerStyle.tagLayout}>
+          <Icon
+            type="tags-o"
+            style={innerStyle.tagIcon}/>
+          <span style={innerStyle.tagTags}>GitHub、Blog</span>
+        </Layout>
+
+        <span style={innerStyle.content}>{'常常幻想自己是一个画家，然并不喜欢作画。所以作为非资深专业设计师，想来写一写sketch和zeplin的上手心得'}</span>
+      </Layout>
+    );
+  }
+
+  onBlogDetail = (id) => {
+    console.log(id);
+  }
+}
+
+const innerStyle = {
+  container: {
+    width: dimension.frontBodyWidth,
+    marginLeft: 8
+  },
+
+  itemContainer: {
+    height: dimension.blogImageHeight,
+    backgroundColor: color.white
+  },
+
+  img: {
+    width: dimension.blogImageWidth,
+    height: dimension.blogImageHeight
+  },
+
+  headerLayout: {
+    backgroundColor: color.white,
+    flexDirection: 'row',
+    marginTop: 8
+  },
+
+  headerAuthor: {},
+
+  headerDate: {
+    marginLeft: 8
+  },
+
+  title: {
+    marginTop: 8,
+  },
+
+  tagLayout: {
+    backgroundColor: color.white,
+    flexDirection: 'row',
+    marginTop: 8,
+    alignItems: 'center'
+  },
+
+  tagIcon: {
+    fontSize: 18,
+    color: '#08c'
+  },
+
+  tagTags: {
+    marginLeft: 8
+  },
+
+  content: {
+    marginTop: 8,
+    marginBottom: 8
+  }
+};
+
+export default BlogItem;

@@ -38,7 +38,9 @@ const icon = {
   frontend: 'paper-clip',
   backend: 'api',
   cloud: 'cloud-o',
-  works: 'flag'
+  works: 'flag',
+
+  edit: 'edit'
 };
 
 export default icon;

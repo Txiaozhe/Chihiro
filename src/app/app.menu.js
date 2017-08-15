@@ -30,7 +30,7 @@
 'use strict';
 
 import {route} from '../config/index';
-import {icon, string} from '../resource/index';
+import {icon, string} from '../resource';
 
 export const menu = [
   {
@@ -42,5 +42,10 @@ export const menu = [
     route: route.blog,
     title: string.menu.blog,
     icon: icon.blog
-  }
+  },
+  {
+    route: route.manage,
+    title: string.menu.manage,
+    icon: icon.edit
+  },
 ];

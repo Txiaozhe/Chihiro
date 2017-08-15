@@ -31,16 +31,39 @@
 
 import React from 'react';
 
-import {Layout} from 'antd';
+import {Layout, Icon} from 'antd';
+import MyFooter from '../../app/app.footer';
+import BlogItem from './blog.list.item';
+
+import {dimension} from '../../resource';
+
+const arr = [1, 2, 3, 4];
 
 class Cloud extends React.Component {
   render() {
     return (
-      <Layout>
-        {"cloud"}
+      <Layout
+        style={innerStyle.container}>
+        {
+          arr.map((ele, i) => {
+            return (
+              <BlogItem
+                key={i}
+                id={i} />
+            )
+          })
+        }
+        <MyFooter />
       </Layout>
     )
   }
 }
+
+const innerStyle = {
+  container: {
+    width: dimension.frontBodyWidth,
+    marginLeft: 8
+  }
+};
 
 export default Cloud;

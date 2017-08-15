@@ -36,10 +36,8 @@ const {Content, Sider} = Layout;
 const SubMenu = Menu.SubMenu;
 
 import {menu} from './app.menu';
-import {dimension} from '../resource/index';
+import {dimension, color, image} from '../resource';
 import {grade} from '../config/index';
-import MyHeader from './app.header';
-import MyFooter from './app.footer';
 
 import {Blog} from '../pages';
 
@@ -57,7 +55,7 @@ class App extends React.Component {
   };
 
   render() {
-    let {selectedTab} = this.props;
+    let {selectedTab, selectedBlogTab} = this.props;
     let gra = grade[selectedTab];
     return (
       <Layout>
@@ -67,14 +65,18 @@ class App extends React.Component {
             <Menu
               theme="light"
               onClick={this.handleMenuClick}
-              style={innerStyle.menu}
+              style={innerStyles.menu}
               selectedKeys={[selectedTab]}
               mode="inline">
               {
                 menu.map((m) => {
                   return (
                     <Menu.Item key={m.route}>
-                      {<span><Icon type={m.icon}/><span>{m.title}</span></span>}
+                      <Icon
+                        style={innerStyles.menuIcon}
+                        type={m.icon}/>
+                      <span
+                        style={innerStyles.menuTitle}>{m.title}</span>
                     </Menu.Item>
                   )
                 })
@@ -82,39 +84,28 @@ class App extends React.Component {
             </Menu>
           </Sider>
 
-          {
-            selectedTab === route.blog ? (
-              <Layout
-                style={innerStyle.card}>
-                <img height={dimension.blogCardHeight}
-                     src="http://cdn.duitang.com/uploads/item/201503/12/20150312181134_aLAWY.jpeg"/>
-              </Layout>
-            ) : null
-          }
-
-          <Layout style={innerStyle.contentLayout}>
+          <Layout style={innerStyles.contentLayout}>
             <Content style={{margin: '0 16px'}}>
-              <Breadcrumb
-                separator={'>'}
-                style={{margin: '12px 0'}}>
-
-                <Breadcrumb.Item>
-                  <Icon
-                    style={innerStyle.breadcrumd}
-                    type={gra.icon1}/>
-                  {gra.title1}
-                </Breadcrumb.Item>
-
-                <Breadcrumb.Item>
-                  <Icon
-                    style={innerStyle.breadcrumd}
-                    type={gra.icon2 && gra.icon2}/>
-                  {gra.title2 && gra.title2}
-                </Breadcrumb.Item>
-              </Breadcrumb>
               {this.renderContent(selectedTab)}
             </Content>
           </Layout>
+
+          {
+            selectedTab === route.blog && selectedBlogTab !== route.works ? (
+              <Layout
+                style={innerStyles.card}>
+                <img
+                  height={dimension.blogCardHeight}
+                  src={image.blog_side}/>
+                <img
+                  width={dimension.userImageWidth}
+                  height={dimension.userImageWidth}
+                  style={innerStyles.userImage}
+                  src={image.user}/>
+                <span style={innerStyles.userDesc}>wdnmwedmn,ew</span>
+              </Layout>
+            ) : null
+          }
         </Layout>
       </Layout>
     );
@@ -152,9 +143,17 @@ class App extends React.Component {
   }
 }
 
-const innerStyle = {
+const innerStyles = {
   menu: {
     height: dimension.menuHeight
+  },
+
+  menuIcon: {
+    fontSize: 16
+  },
+
+  menuTitle: {
+    fontSize: 16
   },
 
   card: {
@@ -163,11 +162,23 @@ const innerStyle = {
   },
 
   contentLayout: {
-    height: dimension.bodyHeight
+    height: dimension.bodyHeight,
+    width: dimension.bodyWidth,
+    backgroundColor: color.white
   },
 
-  breadcrumd: {
-    marginRight: 10
+  userImage: {
+    position: 'absolute',
+    top: dimension.bodyHeight / 3,
+    right: dimension.userImageMarginRight,
+    borderRadius: dimension.userImageWidth
+  },
+
+  userDesc: {
+    position: 'absolute',
+    top: dimension.bodyHeight / 3,
+    right: dimension.userImageMarginRight,
+    backgroundColor: '#f000'
   }
 };
 

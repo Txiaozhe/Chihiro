@@ -31,53 +31,46 @@
 
 import React from 'react';
 
-import {Layout, Icon} from 'antd';
+import {Layout, Icon, Spin} from 'antd';
 import MyFooter from '../../app/app.footer';
+import BlogItem from './blog.list.item';
 
-const {Content} = Layout;
-import {dimension, color, image} from '../../resource';
+import {dimension} from '../../resource';
+import color from "../../resource/color";
 
-class BlogItem extends React.Component {
-  render() {
-    return (
-      <Layout style={innerStyle.itemContainer}>
-        <img src={image.flower} style={innerStyle.img} />
-        <Layout style={innerStyle.layout}>
-          <Layout style={innerStyle.headerLayout}>
-            <span style={innerStyle.headerAuthor}>Txiaozhe</span>
-            <span style={innerStyle.headerDate}>2017-08-14</span>
-          </Layout>
-          <h3 style={innerStyle.title}>说一说GitHub</h3>
-          <Layout style={innerStyle.tagLayout}>
-            <Icon
-              type="tags-o"
-              style={innerStyle.tagIcon}/>
-            <span style={innerStyle.tagTags}>GitHub</span>
-            <span style={innerStyle.tagTags}>Blog</span>
-          </Layout>
-
-          <span style={innerStyle.content}>{'常常幻想自己是一个画家，然并不喜欢作画。所以作为非资深专业设计师，想来写一写sketch和zeplin的上手心得'}</span>
-        </Layout>
-      </Layout>
-    );
-  }
-}
-
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const arr = [1, 2];
 
 class Frontend extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        loading: false
+      })
+    }, 2000);
+  }
+
   render() {
+    let {loading} = this.state;
     return (
       <Layout
         style={innerStyle.container}>
-        {
-          arr.map(() => {
+        {loading ? <Spin style={innerStyle.spin} /> : (
+          arr.map((ele, i) => {
             return (
-              <BlogItem/>
+              <BlogItem
+                key={i}
+                id={i} />
             )
           })
-        }
-        <MyFooter/>
+        )}
+        <MyFooter />
       </Layout>
     )
   }
@@ -85,65 +78,13 @@ class Frontend extends React.Component {
 
 const innerStyle = {
   container: {
-    marginTop: 4,
-    marginLeft: 4,
     width: dimension.frontBodyWidth,
+    marginLeft: 8
   },
 
-  itemContainer: {
-    flexDirection: 'row',
-    marginTop: 10,
-    height: dimension.blogImageHeight
-  },
-
-  layout: {
-    backgroundColor: color.white
-  },
-
-  img: {
-    width: dimension.blogImageWidth,
-    height: dimension.blogImageHeight
-  },
-
-  headerLayout: {
+  spin: {
     backgroundColor: color.white,
-    flexDirection: 'row',
-    marginTop: 8,
-    marginLeft: 8
-  },
-
-  headerAuthor: {},
-
-  headerDate: {
-    marginLeft: 8
-  },
-
-  title: {
-    marginTop: 8,
-    marginLeft: 8
-  },
-
-  tagLayout: {
-    backgroundColor: color.white,
-    flexDirection: 'row',
-    marginTop: 8,
-    marginLeft: 8,
-    alignItems: 'center'
-  },
-
-  tagIcon: {
-    fontSize: 18,
-    color: '#08c'
-  },
-
-  tagTags: {
-    marginLeft: 8
-  },
-
-  content: {
-    marginTop: 8,
-    marginLeft: 8,
-    marginBottom: 8
+    paddingTop: 20
   }
 };
 
