@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 SmartestEE Co,Ltd.. Tang Xiaoji
+ * Copyright (c) 2017 SmartestEE Co,Ltd..
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,38 +24,18 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/16        Tang Xiaoji
  */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+'use strict';
 
-import {Provider} from 'react-redux';
-import store from './src/store';
-import App from './src/app';
-import {screenChange} from './src/actions';
+import {actions} from '../config/index';
 
-import {
-  Router,
-  Route,
-  hashHistory
-} from 'react-router';
-
-window.onresize = function(){
-  let dynWidth = document.documentElement.clientWidth;
-  let dynHeight = document.documentElement.clientHeight;
-  console.log(dynWidth + ', ' + dynHeight);
-
-  store.dispatch(screenChange(dynWidth, dynHeight));
-};
-
-const router = (
-  <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path="/welcome" component={App} />
-      <Route path="/" component={App} />
-    </Router>
-  </Provider>
-);
-
-ReactDOM.render(router, document.getElementById('root'));
+export function screenChange(w, h) {
+  return {
+    type: actions.ScreenChange,
+    payload: {
+      w, h
+    }
+  };
+}

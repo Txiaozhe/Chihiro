@@ -30,19 +30,20 @@
 'use strict';
 
 import React from 'react';
-import {Layout, Menu, Breadcrumb, Icon, Badge} from 'antd';
+import {Layout, Menu, Icon} from 'antd';
+import './index.less'
 
 const {Content, Sider} = Layout;
 
 import {menu} from './app.menu';
-import {dimension, color, image} from '../resource';
-import {grade} from '../config/index';
+import {color, image} from '../resource';
 
 import {Blog, Manage} from '../pages';
 
 import {connect} from 'react-redux';
-import {selectTab} from '../actions/index';
+import {selectTab} from '../actions';
 import route from "../config/route";
+import background from '../../images/blog_side.jpg';
 
 class App extends React.Component {
   constructor(props) {
@@ -54,70 +55,86 @@ class App extends React.Component {
   };
 
   render() {
-    let {selectedTab, selectedBlogTab} = this.props;
-    let gra = grade[selectedTab];
+    let {selectedTab, selectedBlogTab, width, height} = this.props;
     return (
-      <Layout>
-        <Layout>
-          <Sider
-            collapsed>
-            <Menu
-              theme="light"
-              onClick={this.handleMenuClick}
-              style={innerStyles.menu}
-              selectedKeys={[selectedTab]}
-              mode="inline">
-              {
-                menu.list.map((m) => {
-                  return (
-                    <Menu.Item key={m.route}>
-                      <Icon
-                        style={innerStyles.menuIcon}
-                        type={m.icon}/>
-                      <span
-                        style={innerStyles.menuTitle}>{m.title}</span>
-                    </Menu.Item>
-                  )
-                })
-              }
+      <Layout style={{backgroundColor: color.white}}>
+        <Sider
+          style={{
+            height: height
+          }}
+          collapsed>
+          <Menu
+            theme="light"
+            onClick={this.handleMenuClick}
+            style={{
+              height: height * 0.93
+            }}
+            selectedKeys={[selectedTab]}
+            mode="inline">
+            {
+              menu.list.map((m) => {
+                return (
+                  <Menu.Item key={m.route}>
+                    <Icon
+                      style={innerStyles.menuIcon}
+                      type={m.icon}/>
+                    <span
+                      style={innerStyles.menuTitle}>{m.title}</span>
+                  </Menu.Item>
+                )
+              })
+            }
+          </Menu>
+        </Sider>
 
-              <Layout style={{marginTop: dimension.githubIconMarginTop}}/>
-
-              <Menu.Item key={menu.github.route}>
-                <a href="https://github.com/Txiaozhe">
-                  <Icon
-                    style={innerStyles.menuIcon}
-                    type={menu.github.icon}/>
-                  <span
-                    style={innerStyles.menuTitle}>{menu.github.title}</span>
-                </a>
-              </Menu.Item>
-            </Menu>
-          </Sider>
-
-          <Layout style={innerStyles.contentLayout}>
-            <Content style={{margin: '0 16px'}}>
-              {this.renderContent(selectedTab)}
-            </Content>
-          </Layout>
-
-          {
-            selectedTab === route.blog && selectedBlogTab !== route.works ? (
-              <Layout
-                style={innerStyles.card}>
-                <img
-                  height={dimension.blogCardHeight}
-                  src={image.glass}/>
-                <img
-                  width={dimension.userImageWidth}
-                  height={dimension.userImageWidth}
-                  style={innerStyles.userImage}
-                  src={image.user}/>
-                <span style={innerStyles.userDesc}>wdnmwedmn,ew</span>
-              </Layout>
-            ) : null
-          }
+        <Layout style={{
+          backgroundColor: color.white,
+          marginLeft: width > 470 ? 12 : 8,
+          height: height
+        }}>
+          <Content>
+            {this.renderContent(selectedTab)}
+          </Content>
         </Layout>
+
+        {
+          selectedTab === route.blog && selectedBlogTab !== route.works && width > 470 ? (
+            <Layout
+              style={{
+                width: width * 0.25,
+                height: height,
+                backgroundImage: `url(${background})`
+              }}>
+              <img
+                width={80}
+                height={80}
+                style={{
+                  borderRadius: 80,
+                  marginLeft: width * 0.25 / 2,
+                  marginTop: height * 0.6
+                }}
+                src={image.user} />
+
+              <span style={{
+                width: 80,
+                textAlign: 'center',
+                marginLeft: width * 0.25 / 2,
+                marginTop: 10,
+                color: color.white,
+                fontSize: 20
+              }}>{'唐小吉'}</span>
+
+              <span style={{
+                width: 80,
+                textAlign: 'center',
+                marginLeft: width * 0.25 / 2,
+                marginTop: 10,
+                color: color.white,
+                fontSize: 16
+              }}>{'技术宅'}</span>
+            </Layout>
+          ) : null
+        }
       </Layout>
     );
   }
@@ -142,48 +159,21 @@ class App extends React.Component {
 }
 
 const innerStyles = {
-  menu: {
-    height: dimension.menuHeight
-  },
-
   menuIcon: {
     fontSize: 18
   },
 
   menuTitle: {
     fontSize: 16
-  },
-
-  card: {
-    width: dimension.blogCardWidth,
-    height: dimension.blogCardHeight
-  },
-
-  contentLayout: {
-    height: dimension.bodyHeight,
-    width: dimension.bodyWidth,
-    backgroundColor: color.white
-  },
-
-  userImage: {
-    position: 'absolute',
-    top: dimension.bodyHeight / 3,
-    right: dimension.userImageMarginRight,
-    borderRadius: dimension.userImageWidth
-  },
-
-  userDesc: {
-    position: 'absolute',
-    top: dimension.bodyHeight / 3,
-    right: dimension.userImageMarginRight,
-    backgroundColor: '#f000'
   }
 };
 
 function select(store) {
   return {
     selectedTab: store.navigator.selectedTab,
-    selectedBlogTab: store.navigator.selectedBlogTab
+    selectedBlogTab: store.navigator.selectedBlogTab,
+    width: store.screen.width,
+    height: store.screen.height
   }
 }
 

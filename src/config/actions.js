@@ -32,5 +32,6 @@
 export const actions = {
   Navigator: 'Navigator',
   SelectLang: 'SelectLang',
-  SelectBlogTab: 'SelectBlogTab'
+  SelectBlogTab: 'SelectBlogTab',
+  ScreenChange: 'ScreenChange'
 };

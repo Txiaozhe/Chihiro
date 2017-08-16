@@ -37,7 +37,7 @@ import Frontend from './blog.frontend';
 import Backend from './blog.backend';
 import Cloud from './blog.cloud';
 import Works from './blog.works';
-import {dimension, color} from '../../resource';
+import {color} from '../../resource';
 
 import {connect} from 'react-redux';
 import {selectBlogTab} from '../../actions';
@@ -53,14 +53,21 @@ class Blog extends React.Component {
   };
 
   render() {
-    let {tab} = this.props;
+    let {tab, width, height} = this.props;
     return (
-      <Layout style={innerStyles.container}>
+      <Layout style={{
+        width: width * 0.6,
+        backgroundColor: color.white,
+        flexDirection: width < 470 ? 'row' : 'column'
+      }}>
         <Menu
           onClick={this.handleBlogClick}
           selectedKeys={[tab]}
-          style={innerStyles.menu}
-          mode="horizontal">
+          style={{
+            width: width < 470 ? 120 : 470,
+            backgroundColor: color.white
+          }}
+          mode={width < 470 ? "vertical" : "horizontal"}>
           {
             menu.map((m) => {
               return (
@@ -102,21 +109,12 @@ class Blog extends React.Component {
 }
 
 const innerStyles = {
-  container: {
-    backgroundColor: color.white
-  },
-
-  menu: {
-    width: dimension.blogMenuWidth,
-    backgroundColor: color.white
-  },
-
   menuIcon: {
-    fontSize: 14
+    fontSize: 15
   },
 
   menuTitle: {
-    fontSize: 14
+    fontSize: 15
   },
 
   bodyLayout: {
@@ -124,4 +122,11 @@ const innerStyles = {
   }
 };
 
-export default connect()(Blog);
+function select(store) {
+  return {
+    width: store.screen.width,
+    height: store.screen.height
+  }
+}
+
+export default connect(select)(Blog);

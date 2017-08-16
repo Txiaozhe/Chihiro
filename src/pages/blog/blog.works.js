@@ -34,7 +34,9 @@ import React from 'react';
 import {Layout, Card, Rate} from 'antd';
 import MyFooter from '../../app/app.footer';
 
-import {dimension, color, style} from '../../resource';
+import {color} from '../../resource';
+
+import {connect} from 'react-redux';
 
 class WorksItem extends React.Component {
   render() {
@@ -59,9 +61,15 @@ class WorksItem extends React.Component {
 
 class Works extends React.Component {
   render() {
+    let {width, height} = this.props;
     return (
       <Layout
-        style={innerStyle.container}>
+        style={{
+          width: width,
+          backgroundColor: color.white,
+          marginLeft: 8,
+          marginTop: 8
+        }}>
 
         <Layout
           style={{flexDirection: 'row', backgroundColor: color.white}}>
@@ -77,13 +85,6 @@ class Works extends React.Component {
 }
 
 const innerStyle = {
-  container: {
-    width: dimension.frontBodyWidth,
-    backgroundColor: color.white,
-    marginLeft: 8,
-    marginTop: 8
-  },
-
   card: {
     width: 240,
     marginTop: 12,
@@ -98,11 +99,14 @@ const innerStyle = {
   link: {
     marginLeft: 8,
     marginBottom: 8
-  },
-
-  rate: {
-
   }
 };
 
-export default Works;
+function select(store) {
+  return {
+    width: store.screen.width,
+    height: store.screen.height
+  }
+}
+
+export default connect(select) (Works);

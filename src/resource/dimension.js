@@ -29,53 +29,11 @@
 
 'use strict';
 
+const screenVisibleWidth = document.body.offsetWidth;
+const screenVisibleHeight = document.body.offsetHeight;
+
 const dimension = {
-  // 屏幕可见范围宽高
-  screenVisibleWidth: document.body.offsetWidth,
-  screenVisibleHeight: document.body.offsetHeight,
 
-  // 头部高度
-  headerHeight: 64,
-
-  // 尾部高度
-  footerHeight: 66,
-
-  // 菜单高度
-  menuWidth: 64,
-  menuHeight: document.body.offsetHeight - 48,
-
-  // 菜单下部图标距顶部距离
-  githubIconMarginTop: document.body.offsetHeight * 0.73,
-
-  // body 高度
-  bodyWidth: document.body.offsetHeight / 1.5,
-  bodyHeight: document.body.offsetHeight,
-
-  // blog menu 宽度
-  blogMenuWidth: document.body.offsetHeight / 1.8,
-
-  // blog frontend body
-  frontBodyWidth: document.body.offsetWidth / 1.7,
-  frontBodyHeight: document.body.offsetHeight - 66 - 36 - 48 - 20,
-
-  // blog card 右侧的图片
-  blogCardWidth: document.body.offsetWidth / 18,
-  blogCardHeight: document.body.offsetHeight,
-
-  // blog image
-  blogImageWidth: document.body.offsetHeight / 6,
-  blogImageHeight: document.body.offsetHeight / 6,
-
-  // user image width
-  userImageWidth: 80,
-
-  // user image margin left 用户头像距左侧距离
-  userImageMarginRight: (document.body.offsetWidth - document.body.offsetWidth / 1.7 - 64) / 2 - 80,
-
-  // 登录界面
-  manageBodyWidth: document.body.offsetWidth - 100,
-  manageBodyHeight: document.body.offsetHeight - 200,
-  manageInputWidth: document.body.offsetWidth / 6
 };
 
 export default dimension;

@@ -30,8 +30,10 @@
 'use strict';
 
 import {selectTab, selectBlogTab} from './navigator';
+import {screenChange} from './screen';
 
 module.exports = {
   selectTab,
-  selectBlogTab
+  selectBlogTab,
+  screenChange
 };

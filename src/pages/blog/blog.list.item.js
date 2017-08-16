@@ -32,7 +32,9 @@
 import React from 'react';
 import {Layout, Icon} from 'antd';
 
-import {dimension, color} from '../../resource';
+import {color} from '../../resource';
+
+import {connect} from 'react-redux';
 
 class BlogItem extends React.Component {
   constructor(props) {
@@ -40,20 +42,23 @@ class BlogItem extends React.Component {
   }
 
   render() {
-    let {id} = this.props;
-    let style = id === 0 ? innerStyle.itemContainer : {
-      ...innerStyle.itemContainer,
-      marginTop: 2
-    };
+    let {id, width, height} = this.props;
 
     return (
-      <Layout style={style}>
+      <Layout style={{
+        height: height * 0.12 < 110 ? 110 : height * 0.12,
+        backgroundColor: color.white,
+        marginLeft: width < 470 ? 6 : 0,
+        marginBottom: 2
+      }}>
         <Layout style={innerStyle.headerLayout}>
           <span style={innerStyle.headerAuthor}>Txiaozhe</span>
           <span style={innerStyle.headerDate}>2017-08-14</span>
         </Layout>
-        <a onClick={() => this.onBlogDetail(id)}>
-          <h3 style={innerStyle.title}>说一说 GitHub</h3>
+        <a
+          style={innerStyle.title}
+          onClick={() => this.onBlogDetail(id)}>
+          <h3>说一说 GitHub</h3>
         </a>
         <Layout style={innerStyle.tagLayout}>
           <Icon
@@ -63,6 +68,8 @@ class BlogItem extends React.Component {
         </Layout>
 
         <span style={innerStyle.content}>{'常常幻想自己是一个画家，然并不喜欢作画。所以作为非资深专业设计师，想来写一写sketch和zeplin的上手心得'}</span>
+
+        <Layout style={{height: 1.5}}/>
       </Layout>
     );
   }
@@ -73,25 +80,10 @@ class BlogItem extends React.Component {
 }
 
 const innerStyle = {
-  container: {
-    width: dimension.frontBodyWidth,
-    marginLeft: 8
-  },
-
-  itemContainer: {
-    height: dimension.blogImageHeight,
-    backgroundColor: color.white
-  },
-
-  img: {
-    width: dimension.blogImageWidth,
-    height: dimension.blogImageHeight
-  },
-
   headerLayout: {
     backgroundColor: color.white,
     flexDirection: 'row',
-    marginTop: 8
+    marginTop: 12
   },
 
   headerAuthor: {},
@@ -101,14 +93,15 @@ const innerStyle = {
   },
 
   title: {
-    marginTop: 8,
+    marginTop: 4,
+    backgroundColor: color.white
   },
 
   tagLayout: {
     backgroundColor: color.white,
     flexDirection: 'row',
-    marginTop: 8,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 5
   },
 
   tagIcon: {
@@ -122,8 +115,16 @@ const innerStyle = {
 
   content: {
     marginTop: 8,
-    marginBottom: 8
+    marginBottom: 8,
+    backgroundColor: color.white
   }
 };
 
-export default BlogItem;
+function select(store) {
+  return {
+    width: store.screen.width,
+    height: store.screen.height
+  }
+}
+
+export default connect(select) (BlogItem);

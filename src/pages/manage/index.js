@@ -32,8 +32,10 @@
 import React from 'react';
 import {Layout, Input, Icon} from 'antd';
 
-import {dimension, style, color, image} from '../../resource';
+import {color, image} from '../../resource';
 import {msg} from '../../utils';
+
+import {connect} from 'react-redux';
 
 class Manage extends React.Component {
   constructor(props) {
@@ -48,18 +50,31 @@ class Manage extends React.Component {
   }
 
   render() {
+    let {width, height} = this.props;
+
     return (
       <Layout
-        style={innerStyles.container}>
+        style={{
+          width: width - 64,
+          height: height,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: color.white
+        }}>
 
         <img
-          width={dimension.userImageWidth}
-          height={dimension.userImageWidth}
-          style={innerStyles.userImage}
+          width={80}
+          height={80}
+          style={{
+            borderRadius: 80
+          }}
           src={image.user} />
 
         <Input
-          style={innerStyles.input}
+          style={{
+            marginTop: 40,
+            width: width * 0.15 < 200 ? 200 : width * 0.15
+          }}
           onPressEnter={this.onLogin}
           value={this.state.pass}
           type={'password'}
@@ -77,23 +92,11 @@ class Manage extends React.Component {
   }
 }
 
-const innerStyles = {
-  container: {
-    width: dimension.manageBodyWidth,
-    height: dimension.manageBodyHeight,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: color.white
-  },
-
-  userImage: {
-    borderRadius: dimension.userImageWidth
-  },
-
-  input: {
-    marginTop: 40,
-    width: dimension.manageInputWidth
+function select(store) {
+  return {
+    width: store.screen.width,
+    height: store.screen.height
   }
-};
+}
 
-export default Manage;
+export default connect(select) (Manage);

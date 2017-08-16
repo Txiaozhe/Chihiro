@@ -31,20 +31,42 @@
 
 import React from 'react';
 
-import {Layout, Icon} from 'antd';
+import {Layout, Spin} from 'antd';
 import MyFooter from '../../app/app.footer';
 import BlogItem from './blog.list.item';
 
-import {dimension} from '../../resource';
+import color from "../../resource/color";
 
-const arr = [1, 2, 3, 4, 5, 6];
+import {connect} from 'react-redux';
+
+const arr = [1, 2];
 
 class Backend extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        loading: false
+      })
+    }, 1000);
+  }
+
   render() {
+    let {loading} = this.state;
+    let {width, height} = this.props;
     return (
       <Layout
-        style={innerStyle.container}>
-        {
+        style={{
+          width: width * 0.6,
+          backgroundColor: color.white
+        }}>
+        {loading ? <Spin style={innerStyle.spin} /> : (
           arr.map((ele, i) => {
             return (
               <BlogItem
@@ -52,7 +74,7 @@ class Backend extends React.Component {
                 id={i} />
             )
           })
-        }
+        )}
         <MyFooter />
       </Layout>
     )
@@ -60,10 +82,18 @@ class Backend extends React.Component {
 }
 
 const innerStyle = {
-  container: {
-    width: dimension.frontBodyWidth,
-    marginLeft: 8
+  spin: {
+    backgroundColor: color.white,
+    paddingTop: 20,
+    paddingBottom: 20
   }
 };
 
-export default Backend;
+function select(store) {
+  return {
+    width: store.screen.width,
+    height: store.screen.height
+  }
+}
+
+export default connect(select) (Backend);

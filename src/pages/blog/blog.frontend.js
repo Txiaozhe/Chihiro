@@ -31,14 +31,15 @@
 
 import React from 'react';
 
-import {Layout, Icon, Spin} from 'antd';
+import {Layout, Spin} from 'antd';
 import MyFooter from '../../app/app.footer';
 import BlogItem from './blog.list.item';
 
-import {dimension} from '../../resource';
 import color from "../../resource/color";
 
-const arr = [1, 2];
+import {connect} from 'react-redux';
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2];
 
 class Frontend extends React.Component {
   constructor(props) {
@@ -53,14 +54,18 @@ class Frontend extends React.Component {
       this.setState({
         loading: false
       })
-    }, 2000);
+    }, 1000);
   }
 
   render() {
     let {loading} = this.state;
+    let {width, height} = this.props;
     return (
       <Layout
-        style={innerStyle.container}>
+        style={{
+          width: width * 0.6,
+          backgroundColor: color.white
+        }}>
         {loading ? <Spin style={innerStyle.spin} /> : (
           arr.map((ele, i) => {
             return (
@@ -77,11 +82,6 @@ class Frontend extends React.Component {
 }
 
 const innerStyle = {
-  container: {
-    width: dimension.frontBodyWidth,
-    marginLeft: 8
-  },
-
   spin: {
     backgroundColor: color.white,
     paddingTop: 20,
@@ -89,4 +89,11 @@ const innerStyle = {
   }
 };
 
-export default Frontend;
+function select(store) {
+  return {
+    width: store.screen.width,
+    height: store.screen.height
+  }
+}
+
+export default connect(select) (Frontend);

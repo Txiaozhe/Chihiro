@@ -32,7 +32,9 @@
 import {combineReducers} from "redux";
 
 import {navigator} from './navigator';
+import {screen} from './screen';
 
 export const reducers = combineReducers({
-  navigator
+  navigator,
+  screen
 });
