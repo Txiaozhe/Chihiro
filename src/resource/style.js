@@ -32,5 +32,10 @@
 const style = {
   row: {
     flexDirection: 'row'
+  },
+
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 };

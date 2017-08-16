@@ -24,24 +24,71 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/15        Tang Xiaoji
  */
 
 'use strict';
 
-const route = {
-  home: 'home',
-  myFocus: 'myFocus',
+import {notification} from 'antd';
 
-  blog: 'blog',
-  frontend: 'frontend',
-  backend: 'backend',
-  cloud: 'cloud',
-  works: 'works',
-
-  manage: 'manage',
-
-  github: 'github'
+const type = {
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
+  WARN: 'warn',
+  INFO: 'info',
+  DESTROY: 'destroy',
+  CLOSE: 'close'
 };
 
-export default route;
+function getConfig(title, desc, icon, key, btn, onClose) {
+  return {
+    message: title,
+    description: desc,
+    icon: icon && icon,
+    btn: btn && btn,
+    key: key && key,
+    onClose: onClose && onClose
+  }
+}
+
+function showNoti(t, title, msg) {
+  const config = getConfig(title, msg);
+  switch (t) {
+    case type.SUCCESS : {
+      notification.success(config);
+      break
+    }
+    case type.WARNING : {
+      notification.warning(config);
+      break
+    }
+    case type.ERROR : {
+      notification.error(config);
+      break
+    }
+    case type.WARN : {
+      notification.warn(config);
+      break
+    }
+    case type.INFO : {
+      notification.info(config);
+      break
+    }
+    case type.DESTROY : {
+      notification.destroy();
+      break
+    }
+    case type.CLOSE : {
+      notification.close(msg);
+      break
+    }
+  }
+}
+
+export const noti = {
+  ...type,
+
+  getConfig,
+  showNoti
+};

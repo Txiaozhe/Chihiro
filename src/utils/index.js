@@ -24,24 +24,15 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/15        Tang Xiaoji
  */
 
 'use strict';
 
-const route = {
-  home: 'home',
-  myFocus: 'myFocus',
+import {msg} from './msg';
+import {noti} from './noti';
 
-  blog: 'blog',
-  frontend: 'frontend',
-  backend: 'backend',
-  cloud: 'cloud',
-  works: 'works',
-
-  manage: 'manage',
-
-  github: 'github'
+module.exports = {
+  msg,
+  noti
 };
-
-export default route;

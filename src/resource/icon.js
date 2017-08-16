@@ -40,7 +40,9 @@ const icon = {
   cloud: 'cloud-o',
   works: 'flag',
 
-  edit: 'edit'
+  edit: 'smile-o',
+
+  github: 'github'
 };
 
 export default icon;

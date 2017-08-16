@@ -30,79 +30,70 @@
 'use strict';
 
 import React from 'react';
+import {Layout, Input, Icon} from 'antd';
 
-import {Layout, Card, Rate} from 'antd';
-import MyFooter from '../../app/app.footer';
+import {dimension, style, color, image} from '../../resource';
+import {msg} from '../../utils';
 
-import {dimension, color, style} from '../../resource';
-
-class WorksItem extends React.Component {
-  render() {
-    return (
-      <Card style={innerStyle.card} bodyStyle={{padding: 0}}>
-        <img alt="example" width="100%" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"/>
-
-        <Layout style={innerStyle.contentLayout}>
-          <a
-            style={innerStyle.link}
-            href="https://github.com/txiaozhe/iantd"><h3>iantd</h3></a>
-
-          <Rate
-            disabled
-            style={innerStyle.rate}
-            defaultValue={2} />
-        </Layout>
-      </Card>
-    )
+class Manage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pass: ''
+    }
   }
-}
 
-class Works extends React.Component {
+  componentDidMount() {
+    this.input.focus();
+  }
+
   render() {
     return (
       <Layout
-        style={innerStyle.container}>
+        style={innerStyles.container}>
 
-        <Layout
-          style={{flexDirection: 'row', backgroundColor: color.white}}>
-          <WorksItem />
-          <WorksItem />
-          <WorksItem />
-        </Layout>
+        <img
+          width={dimension.userImageWidth}
+          height={dimension.userImageWidth}
+          style={innerStyles.userImage}
+          src={image.user} />
 
-        <MyFooter/>
+        <Input
+          style={innerStyles.input}
+          onPressEnter={this.onLogin}
+          value={this.state.pass}
+          type={'password'}
+          ref={r => this.input = r}
+          size="large"
+          onChange={(text) => this.setState({pass: text.target.value})}
+          suffix={<a onClick={() => this.setState({pass: ''})}><Icon type="close" /></a>}
+          placeholder="please input admin password!" />
       </Layout>
     )
   }
+
+  onLogin = () => {
+    msg.showMsg(msg.ERROR, this.state.pass);
+  }
 }
 
-const innerStyle = {
+const innerStyles = {
   container: {
-    width: dimension.frontBodyWidth,
-    backgroundColor: color.white,
-    marginLeft: 8,
-    marginTop: 8
-  },
-
-  card: {
-    width: 240,
-    marginTop: 12,
-    marginLeft: 12,
+    width: dimension.manageBodyWidth,
+    height: dimension.manageBodyHeight,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: color.white
   },
 
-  contentLayout: {
-    backgroundColor: color.white
+  userImage: {
+    borderRadius: dimension.userImageWidth
   },
 
-  link: {
-    marginLeft: 8,
-    marginBottom: 8
-  },
-
-  rate: {
-
+  input: {
+    marginTop: 40,
+    width: dimension.manageInputWidth
   }
 };
 
-export default Works;
+export default Manage;

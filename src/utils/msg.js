@@ -24,24 +24,53 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/15        Tang Xiaoji
  */
 
 'use strict';
 
-const route = {
-  home: 'home',
-  myFocus: 'myFocus',
+import {message} from 'antd';
 
-  blog: 'blog',
-  frontend: 'frontend',
-  backend: 'backend',
-  cloud: 'cloud',
-  works: 'works',
-
-  manage: 'manage',
-
-  github: 'github'
+const type = {
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
+  LOADING: 'loading',
+  INFO: 'info',
+  WARN: 'warn'
 };
 
-export default route;
+function showMsg(t, m) {
+  switch(t) {
+    case type.SUCCESS : {
+      message.success(m);
+      break
+    }
+    case type.WARNING : {
+      message.warning(m);
+      break
+    }
+    case type.ERROR : {
+      message.error(m);
+      break
+    }
+    case type.LOADING : {
+      message.loading(m, 1000);
+      break
+    }
+    case type.INFO : {
+      message.info(m);
+      break;
+    }
+    case type.WARN : {
+      message.warn(m);
+      break;
+    }
+  }
+}
+
+export const msg = {
+  ...type,
+
+  showMsg
+};

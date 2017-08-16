@@ -84,7 +84,8 @@ const innerStyle = {
 
   spin: {
     backgroundColor: color.white,
-    paddingTop: 20
+    paddingTop: 20,
+    paddingBottom: 20
   }
 };
 

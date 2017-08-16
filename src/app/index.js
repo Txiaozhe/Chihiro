@@ -30,16 +30,15 @@
 'use strict';
 
 import React from 'react';
-import {Layout, Menu, Breadcrumb, Icon, Card} from 'antd';
+import {Layout, Menu, Breadcrumb, Icon, Badge} from 'antd';
 
 const {Content, Sider} = Layout;
-const SubMenu = Menu.SubMenu;
 
 import {menu} from './app.menu';
 import {dimension, color, image} from '../resource';
 import {grade} from '../config/index';
 
-import {Blog} from '../pages';
+import {Blog, Manage} from '../pages';
 
 import {connect} from 'react-redux';
 import {selectTab} from '../actions/index';
@@ -69,7 +68,7 @@ class App extends React.Component {
               selectedKeys={[selectedTab]}
               mode="inline">
               {
-                menu.map((m) => {
+                menu.list.map((m) => {
                   return (
                     <Menu.Item key={m.route}>
                       <Icon
@@ -81,6 +80,18 @@ class App extends React.Component {
                   )
                 })
               }
+
+              <Layout style={{marginTop: dimension.githubIconMarginTop}}/>
+
+              <Menu.Item key={menu.github.route}>
+                <a href="https://github.com/Txiaozhe">
+                  <Icon
+                    style={innerStyles.menuIcon}
+                    type={menu.github.icon}/>
+                  <span
+                    style={innerStyles.menuTitle}>{menu.github.title}</span>
+                </a>
+              </Menu.Item>
             </Menu>
           </Sider>
 
@@ -96,7 +107,7 @@ class App extends React.Component {
                 style={innerStyles.card}>
                 <img
                   height={dimension.blogCardHeight}
-                  src={image.blog_side}/>
+                  src={image.glass}/>
                 <img
                   width={dimension.userImageWidth}
                   height={dimension.userImageWidth}
@@ -123,21 +134,8 @@ class App extends React.Component {
         const {selectedBlogTab} = this.props;
         return <Blog tab={selectedBlogTab}/>;
       }
-      case route.frontend : {
-
-        return;
-      }
-      case route.backend : {
-
-        return;
-      }
-      case route.cloud : {
-
-        return;
-      }
-      case route.works : {
-
-        return;
+      case route.manage : {
+        return <Manage/>;
       }
     }
   }
@@ -149,7 +147,7 @@ const innerStyles = {
   },
 
   menuIcon: {
-    fontSize: 16
+    fontSize: 18
   },
 
   menuTitle: {

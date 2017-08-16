@@ -43,7 +43,8 @@ const string = {
     frontend: '前端',
     backend: '后台',
     cloud: '云',
-    works: '作品'
+    works: '作品',
+    github: 'GitHub'
   },
 
   zh_cn: '中文',

@@ -44,12 +44,15 @@ const dimension = {
   menuWidth: 64,
   menuHeight: document.body.offsetHeight - 48,
 
+  // 菜单下部图标距顶部距离
+  githubIconMarginTop: document.body.offsetHeight * 0.73,
+
   // body 高度
   bodyWidth: document.body.offsetHeight / 1.5,
   bodyHeight: document.body.offsetHeight,
 
   // blog menu 宽度
-  blogMenuWidth: document.body.offsetHeight / 1.5,
+  blogMenuWidth: document.body.offsetHeight / 1.8,
 
   // blog frontend body
   frontBodyWidth: document.body.offsetWidth / 1.7,
@@ -67,7 +70,12 @@ const dimension = {
   userImageWidth: 80,
 
   // user image margin left 用户头像距左侧距离
-  userImageMarginRight: (document.body.offsetWidth - document.body.offsetWidth / 1.7 - 64) / 2 - 80
+  userImageMarginRight: (document.body.offsetWidth - document.body.offsetWidth / 1.7 - 64) / 2 - 80,
+
+  // 登录界面
+  manageBodyWidth: document.body.offsetWidth - 100,
+  manageBodyHeight: document.body.offsetHeight - 200,
+  manageInputWidth: document.body.offsetWidth / 6
 };
 
 export default dimension;

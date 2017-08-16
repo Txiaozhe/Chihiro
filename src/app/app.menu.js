@@ -32,20 +32,27 @@
 import {route} from '../config/index';
 import {icon, string} from '../resource';
 
-export const menu = [
-  {
-    route: route.home,
-    title: string.menu.home,
-    icon: icon.home
-  },
-  {
-    route: route.blog,
-    title: string.menu.blog,
-    icon: icon.blog
-  },
-  {
-    route: route.manage,
-    title: string.menu.manage,
-    icon: icon.edit
-  },
-];
+export const menu = {
+  list: [
+    {
+      route: route.home,
+      title: string.menu.home,
+      icon: icon.home
+    },
+    {
+      route: route.blog,
+      title: string.menu.blog,
+      icon: icon.blog
+    },
+    {
+      route: route.manage,
+      title: string.menu.manage,
+      icon: icon.edit
+    }
+  ],
+  github: {
+    route: route.github,
+    title: string.menu.github,
+    icon: icon.github
+  }
+};

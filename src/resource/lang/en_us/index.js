@@ -44,7 +44,8 @@ const string = {
     backend: 'back end',
     cloud: 'cloud',
     works: 'works',
-    manage: 'manage'
+    manage: 'manage',
+    github: 'github'
   },
 
   // blog

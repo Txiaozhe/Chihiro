@@ -30,7 +30,9 @@
 'use strict';
 
 import Blog from './blog';
+import Manage from './manage';
 
 module.exports = {
-  Blog
+  Blog,
+  Manage
 };
