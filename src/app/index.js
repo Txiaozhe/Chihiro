@@ -31,7 +31,6 @@
 
 import React from 'react';
 import {Layout, Menu, Icon} from 'antd';
-import './index.less'
 
 const {Content, Sider} = Layout;
 

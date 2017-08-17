@@ -71,11 +71,10 @@ class Blog extends React.Component {
           {
             menu.map((m) => {
               return (
-                <Menu.Item key={m.route}>
-                  <Icon
-                    type={m.icon}
-                    style={innerStyles.menuIcon} />
-                  <span style={innerStyles.menuTitle}>{m.title}</span>
+                <Menu.Item
+                  key={m.route}>
+                  <span
+                    style={innerStyles.menuTitle}>{m.title}</span>
                 </Menu.Item>
               )
             })
@@ -114,7 +113,8 @@ const innerStyles = {
   },
 
   menuTitle: {
-    fontSize: 15
+    fontSize: 15,
+    color: '#f00'
   },
 
   bodyLayout: {

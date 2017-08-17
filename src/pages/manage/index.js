@@ -33,7 +33,7 @@ import React from 'react';
 import {Layout, Input, Icon} from 'antd';
 
 import {color, image} from '../../resource';
-import {msg} from '../../utils';
+import {msg, http} from '../../utils';
 
 import {connect} from 'react-redux';
 
@@ -72,7 +72,7 @@ class Manage extends React.Component {
 
         <Input
           style={{
-            marginTop: 40,
+            marginTop: 30,
             width: width * 0.15 < 200 ? 200 : width * 0.15
           }}
           onPressEnter={this.onLogin}
@@ -88,7 +88,15 @@ class Manage extends React.Component {
   }
 
   onLogin = () => {
-    msg.showMsg(msg.ERROR, this.state.pass);
+    msg.showMsg(msg.INFO, 'login');
+    http.post('http://localhost:7002/admin/login', {
+      "name": "admin",
+      "pass": "123456"
+    }, () => {
+
+    }, () => {
+
+    })
   }
 }
 
