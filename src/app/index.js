@@ -35,14 +35,14 @@ import {Layout, Menu, Icon} from 'antd';
 const {Content, Sider} = Layout;
 
 import {menu} from './app.menu';
-import {color, image} from '../resource';
+import {color, image, dimension} from '../resource';
 
 import {Blog, Manage} from '../pages';
 
 import {connect} from 'react-redux';
 import {selectTab} from '../actions';
 import route from "../config/route";
-import background from '../../images/blog_side.jpg';
+import background from '../../images/lonely.jpg';
 
 class App extends React.Component {
   constructor(props) {
@@ -66,19 +66,28 @@ class App extends React.Component {
             theme="light"
             onClick={this.handleMenuClick}
             style={{
-              height: height * 0.93
+              height: height,
+              backgroundColor: color.mainDark
             }}
             selectedKeys={[selectedTab]}
             mode="inline">
             {
               menu.list.map((m) => {
                 return (
-                  <Menu.Item key={m.route}>
+                  <Menu.Item
+                    style={{backgroundColor: selectedTab === m.route ? color.mainColor : color.mainDark}}
+                    key={m.route}>
                     <Icon
-                      style={innerStyles.menuIcon}
+                      style={{
+                        fontSize: 18,
+                        color: color.white
+                      }}
                       type={m.icon}/>
                     <span
-                      style={innerStyles.menuTitle}>{m.title}</span>
+                      style={{
+                        fontSize: 16,
+                        color: color.white
+                      }}>{m.title}</span>
                   </Menu.Item>
                 )
               })
@@ -88,7 +97,7 @@ class App extends React.Component {
 
         <Layout style={{
           backgroundColor: color.white,
-          marginLeft: width > 470 ? 12 : 8,
+          marginLeft: width > dimension.critical_menu_width ? 12 : 8,
           height: height
         }}>
           <Content>
@@ -97,7 +106,7 @@ class App extends React.Component {
         </Layout>
 
         {
-          selectedTab === route.blog && selectedBlogTab !== route.works && width > 470 ? (
+          selectedTab === route.blog && selectedBlogTab !== route.works && width > dimension.critical_menu_width ? (
             <Layout
               style={{
                 width: width * 0.25,
@@ -138,7 +147,7 @@ class App extends React.Component {
     );
   }
 
-  renderContent = (tab, t) => {
+  renderContent = (tab) => {
     switch (tab) {
       case route.home: {
         return;
@@ -163,7 +172,7 @@ const innerStyles = {
   },
 
   menuTitle: {
-    fontSize: 16
+
   }
 };
 

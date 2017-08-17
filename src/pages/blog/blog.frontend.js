@@ -66,7 +66,9 @@ class Frontend extends React.Component {
           width: width * 0.6,
           backgroundColor: color.white
         }}>
-        {loading ? <Spin style={innerStyle.spin} /> : (
+        {loading ? <Spin
+          color={color.mainColor}
+          style={innerStyle.spin} /> : (
           arr.map((ele, i) => {
             return (
               <BlogItem

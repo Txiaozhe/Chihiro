@@ -32,7 +32,9 @@
 const color = {
   white: '#ffffff',
   transparent: '#ffffff00',
-  mainColor: '#7ec2f3',
+  mainColor: '#3db8c1',
+  mainDark: '#333333',
+  mainGrey: '#cccccc',
   warn: '#f56a00'
 };
 

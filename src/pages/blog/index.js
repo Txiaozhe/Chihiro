@@ -37,7 +37,7 @@ import Frontend from './blog.frontend';
 import Backend from './blog.backend';
 import Cloud from './blog.cloud';
 import Works from './blog.works';
-import {color} from '../../resource';
+import {color, dimension} from '../../resource';
 
 import {connect} from 'react-redux';
 import {selectBlogTab} from '../../actions';
@@ -58,23 +58,27 @@ class Blog extends React.Component {
       <Layout style={{
         width: width * 0.6,
         backgroundColor: color.white,
-        flexDirection: width < 470 ? 'row' : 'column'
+        flexDirection: width < dimension.critical_menu_width ? 'row' : 'column'
       }}>
         <Menu
           onClick={this.handleBlogClick}
           selectedKeys={[tab]}
           style={{
-            width: width < 470 ? 120 : 470,
+            width: width < dimension.critical_menu_width ? 120 : dimension.critical_menu_width,
             backgroundColor: color.white
           }}
-          mode={width < 470 ? "vertical" : "horizontal"}>
+          mode={width < dimension.critical_menu_width ? "vertical" : "horizontal"}>
           {
             menu.map((m) => {
               return (
                 <Menu.Item
+                  style={{borderColor: tab === m.route ? color.mainDark : color.mainGrey}}
                   key={m.route}>
                   <span
-                    style={innerStyles.menuTitle}>{m.title}</span>
+                    style={{
+                      fontSize: 15,
+                      color: tab === m.route ? color.mainDark : color.mainGrey
+                    }}>{m.title}</span>
                 </Menu.Item>
               )
             })
@@ -113,8 +117,6 @@ const innerStyles = {
   },
 
   menuTitle: {
-    fontSize: 15,
-    color: '#f00'
   },
 
   bodyLayout: {

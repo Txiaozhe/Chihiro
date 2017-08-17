@@ -32,7 +32,7 @@
 import React from 'react';
 import {Layout, Input, Icon} from 'antd';
 
-import {color, image} from '../../resource';
+import {color, image, dimension} from '../../resource';
 import {msg, http} from '../../utils';
 
 import {connect} from 'react-redux';
@@ -55,7 +55,7 @@ class Manage extends React.Component {
     return (
       <Layout
         style={{
-          width: width - 64,
+          width: width - dimension.main_menu_width,
           height: height,
           justifyContent: 'center',
           alignItems: 'center',
@@ -73,7 +73,7 @@ class Manage extends React.Component {
         <Input
           style={{
             marginTop: 30,
-            width: width * 0.15 < 200 ? 200 : width * 0.15
+            width: width * 0.15 < dimension.critical_pass_input_width ? dimension.critical_pass_input_width : width * 0.15
           }}
           onPressEnter={this.onLogin}
           value={this.state.pass}

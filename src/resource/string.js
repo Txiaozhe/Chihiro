@@ -32,6 +32,6 @@
 import zh_cn from './lang/zh_cn';
 import en_us from './lang/en_us';
 
-let string = en_us;
+let string = zh_cn;
 
 export default string;

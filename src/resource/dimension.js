@@ -33,7 +33,15 @@ const screenVisibleWidth = document.body.offsetWidth;
 const screenVisibleHeight = document.body.offsetHeight;
 
 const dimension = {
+  screenWidth: screenVisibleWidth,
+  screenHeight: screenVisibleHeight,
 
+  // 临界尺寸，意味着尺寸达到这个值时需改变布局
+  critical_menu_width: 266,
+  critical_pass_input_width: 200,
+
+  // 左侧菜单栏宽度（固定）
+  main_menu_width: 64
 };
 
 export default dimension;

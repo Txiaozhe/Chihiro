@@ -44,7 +44,16 @@ const string = {
     backend: '后台',
     cloud: '云',
     works: '作品',
+    manage: '管理',
     github: 'GitHub'
+  },
+
+  // blog
+  blog: {
+    frontend: '前端',
+    backend: '后台',
+    cloud: '云',
+    works: '作品'
   },
 
   zh_cn: '中文',

@@ -48,7 +48,7 @@ class BlogItem extends React.Component {
       <Layout style={{
         height: height * 0.12 < 110 ? 110 : height * 0.12,
         backgroundColor: color.white,
-        marginLeft: width < 470 ? 6 : 0,
+        marginLeft: width < 266 ? 6 : 0,
         marginBottom: 2
       }}>
         <Layout style={innerStyle.headerLayout}>
@@ -106,7 +106,7 @@ const innerStyle = {
 
   tagIcon: {
     fontSize: 18,
-    color: '#08c'
+    color: color.mainColor
   },
 
   tagTags: {
