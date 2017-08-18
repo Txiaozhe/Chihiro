@@ -30,8 +30,7 @@
 'use strict';
 
 export const actions = {
-  Navigator: 'Navigator',
-  SelectLang: 'SelectLang',
+  SCENE: 'SCENE',
   SelectBlogTab: 'SelectBlogTab',
-  ScreenChange: 'ScreenChange'
+  SCREEN_CHANGE: 'SCREEN_CHANGE'
 };

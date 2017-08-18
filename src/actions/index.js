@@ -29,7 +29,7 @@
 
 'use strict';
 
-import {selectTab, selectBlogTab} from './navigator';
+import {selectTab, selectBlogTab} from './scene';
 import {screenChange} from './screen';
 
 module.exports = {

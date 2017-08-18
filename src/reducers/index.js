@@ -31,10 +31,10 @@
 
 import {combineReducers} from "redux";
 
-import {navigator} from './navigator';
+import {scene} from './scene';
 import {screen} from './screen';
 
 export const reducers = combineReducers({
-  navigator,
+  scene,
   screen
 });

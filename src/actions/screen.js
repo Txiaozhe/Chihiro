@@ -33,7 +33,7 @@ import {actions} from '../config/index';
 
 export function screenChange(w, h) {
   return {
-    type: actions.ScreenChange,
+    type: actions.SCREEN_CHANGE,
     payload: {
       w, h
     }

@@ -38,7 +38,7 @@ const initialState = {
 
 export function screen(state = initialState, action) {
   switch (action.type) {
-    case actions.ScreenChange : {
+    case actions.SCREEN_CHANGE : {
       return {
         ...state,
         width: action.payload.w,

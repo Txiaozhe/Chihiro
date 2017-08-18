@@ -30,21 +30,29 @@
 'use strict';
 
 import {actions} from '../config/index';
+import {route} from '../config/index';
 
-export function selectTab(tab) {
-  return {
-    type: actions.Navigator,
-    payload: {
-      tab
+const initialState = {
+  selectedTab: route.home,
+  selectedBlogTab: route.frontend
+};
+
+export function scene(state = initialState, action) {
+  switch (action.type) {
+    case actions.SCENE : {
+      return {
+        ...state,
+        selectedTab: action.payload.tab
+      }
     }
-  };
-}
-
-export function selectBlogTab(tab) {
-  return {
-    type: actions.SelectBlogTab,
-    payload: {
-      tab
+    case actions.SelectBlogTab : {
+      return {
+        ...state,
+        selectedBlogTab: action.payload.tab
+      }
+    }
+    default: {
+      return state;
     }
   }
 }

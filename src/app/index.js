@@ -178,8 +178,8 @@ const innerStyles = {
 
 function select(store) {
   return {
-    selectedTab: store.navigator.selectedTab,
-    selectedBlogTab: store.navigator.selectedBlogTab,
+    selectedTab: store.scene.selectedTab,
+    selectedBlogTab: store.scene.selectedBlogTab,
     width: store.screen.width,
     height: store.screen.height
   }
