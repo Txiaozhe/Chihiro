@@ -37,7 +37,7 @@ const {Content, Sider} = Layout;
 import {menu} from './app.menu';
 import {color, image, dimension} from '../resource';
 
-import {Blog, Manage} from '../pages';
+import {Home, Blog, Manage} from '../pages';
 
 import {connect} from 'react-redux';
 import {selectTab} from '../actions';
@@ -150,7 +150,7 @@ class App extends React.Component {
   renderContent = (tab) => {
     switch (tab) {
       case route.home: {
-        return;
+        return <Home />;
       }
       case route.myFocus : {
         return;
