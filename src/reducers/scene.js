@@ -45,7 +45,7 @@ export function scene(state = initialState, action) {
         selectedTab: action.payload.tab
       }
     }
-    case actions.SelectBlogTab : {
+    case actions.BLOG : {
       return {
         ...state,
         selectedBlogTab: action.payload.tab

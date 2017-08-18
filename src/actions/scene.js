@@ -42,7 +42,7 @@ export function selectTab(tab) {
 
 export function selectBlogTab(tab) {
   return {
-    type: actions.SelectBlogTab,
+    type: actions.BLOG,
     payload: {
       tab
     }

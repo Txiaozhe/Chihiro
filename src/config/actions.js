@@ -31,6 +31,6 @@
 
 export const actions = {
   SCENE: 'SCENE',
-  SelectBlogTab: 'SelectBlogTab',
+  BLOG: 'BLOG',
   SCREEN_CHANGE: 'SCREEN_CHANGE'
 };
