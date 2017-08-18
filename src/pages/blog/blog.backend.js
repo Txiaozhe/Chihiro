@@ -39,7 +39,7 @@ import color from "../../resource/color";
 
 import {connect} from 'react-redux';
 
-const arr = [1, 2];
+const arr = [1, 2, 3, 4];
 
 class Backend extends React.Component {
   constructor(props) {

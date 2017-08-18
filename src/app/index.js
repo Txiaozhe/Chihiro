@@ -38,6 +38,7 @@ import {menu} from './app.menu';
 import {color, image, dimension} from '../resource';
 
 import {Home, Blog, Manage} from '../pages';
+import {Link} from "react-router";
 
 import {connect} from 'react-redux';
 import {selectTab} from '../actions';
@@ -77,17 +78,20 @@ class App extends React.Component {
                   <Menu.Item
                     style={{backgroundColor: selectedTab === m.route ? color.mainColor : color.mainDark}}
                     key={m.route}>
-                    <Icon
-                      style={{
-                        fontSize: 18,
-                        color: color.white
-                      }}
-                      type={m.icon}/>
-                    <span
-                      style={{
-                        fontSize: 16,
-                        color: color.white
-                      }}>{m.title}</span>
+                    <Link
+                      href={`http://127.0.0.1:8000/#/${selectedTab}`}>
+                      <Icon
+                        style={{
+                          fontSize: 18,
+                          color: color.white
+                        }}
+                        type={m.icon}/>
+                      <span
+                        style={{
+                          fontSize: 16,
+                          color: color.white
+                        }}>{m.title}</span>
+                    </Link>
                   </Menu.Item>
                 )
               })
@@ -121,7 +125,7 @@ class App extends React.Component {
                   marginLeft: width * 0.25 / 2,
                   marginTop: height * 0.6
                 }}
-                src={image.user} />
+                src={image.user}/>
 
               <span style={{
                 width: 80,
@@ -150,14 +154,13 @@ class App extends React.Component {
   renderContent = (tab) => {
     switch (tab) {
       case route.home: {
-        return <Home />;
+        return <Home/>;
       }
       case route.myFocus : {
         return;
       }
       case route.blog: {
-        const {selectedBlogTab} = this.props;
-        return <Blog tab={selectedBlogTab}/>;
+        return <Blog />;
       }
       case route.manage : {
         return <Manage/>;
@@ -171,9 +174,7 @@ const innerStyles = {
     fontSize: 18
   },
 
-  menuTitle: {
-
-  }
+  menuTitle: {}
 };
 
 function select(store) {

@@ -31,7 +31,7 @@
 
 import React from 'react';
 import {Menu, Icon, Layout} from 'antd';
-
+import {Link} from 'react-router';
 import {menu} from './blog.menu';
 import Frontend from './blog.frontend';
 import Backend from './blog.backend';
@@ -43,17 +43,24 @@ import {connect} from 'react-redux';
 import {selectBlogTab} from '../../actions';
 import {route} from "../../config";
 
+module.exports = {
+  Frontend,
+  Backend,
+  Cloud,
+  Works
+};
+
 class Blog extends React.Component {
   constructor(props) {
     super(props);
   }
 
   handleBlogClick = (m) => {
-    this.props.dispatch(selectBlogTab(m.key));
+    this.props.dispatch(selectBlogTab(m));
   };
 
   render() {
-    let {tab, width, height} = this.props;
+    let {selectedBlogTab, width} = this.props;
     return (
       <Layout style={{
         width: width * 0.6,
@@ -61,8 +68,7 @@ class Blog extends React.Component {
         flexDirection: width < dimension.critical_menu_width ? 'row' : 'column'
       }}>
         <Menu
-          onClick={this.handleBlogClick}
-          selectedKeys={[tab]}
+          selectedKeys={[selectedBlogTab]}
           style={{
             width: width < dimension.critical_menu_width ? 120 : dimension.critical_menu_width,
             backgroundColor: color.white
@@ -72,13 +78,18 @@ class Blog extends React.Component {
             menu.map((m) => {
               return (
                 <Menu.Item
-                  style={{borderColor: tab === m.route ? color.mainDark : color.mainGrey}}
+                  style={{borderColor: selectedBlogTab === m.route ? color.mainDark : color.mainGrey}}
                   key={m.route}>
-                  <span
-                    style={{
-                      fontSize: 15,
-                      color: tab === m.route ? color.mainDark : color.mainGrey
-                    }}>{m.title}</span>
+                  <Link
+                    onClick={() => this.handleBlogClick(m.route)}
+                    href={`http://127.0.0.1:8000/#/blog/${selectedBlogTab}`}>
+                    <span
+                      style={{
+                        fontSize: 15,
+                        color: selectedBlogTab === m.route ? color.mainDark : color.mainGrey
+                      }}>{m.title}
+                    </span>
+                  </Link>
                 </Menu.Item>
               )
             })
@@ -87,7 +98,7 @@ class Blog extends React.Component {
 
         <Layout
           style={innerStyles.bodyLayout}>
-          {this.renderBody(tab)}
+          {this.renderBody(selectedBlogTab)}
         </Layout>
       </Layout>
     )
@@ -116,9 +127,6 @@ const innerStyles = {
     fontSize: 15
   },
 
-  menuTitle: {
-  },
-
   bodyLayout: {
     backgroundColor: color.white
   }
@@ -127,7 +135,8 @@ const innerStyles = {
 function select(store) {
   return {
     width: store.screen.width,
-    height: store.screen.height
+    height: store.screen.height,
+    selectedBlogTab: store.scene.selectedBlogTab
   }
 }
 

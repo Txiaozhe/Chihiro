@@ -33,6 +33,10 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import store from './src/store';
 import App from './src/app';
+
+import {Home, Blog, Manage} from './src/pages';
+import {Frontend, Backend, Cloud, Works} from './src/pages/blog';
+
 import {screenChange} from './src/actions';
 
 import {
@@ -52,8 +56,17 @@ window.onresize = function(){
 const router = (
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/welcome" component={App} />
-      <Route path="/" component={App} />
+      <Route path="/" component={App}>
+        <Route path="/home" component={Home} />
+        <Route path="/blog" component={Blog}>
+          <Route path="/blog/frontend" component={Frontend} />
+          <Route path="/blog/backend" component={Backend} />
+          <Route path="/blog/cloud" component={Cloud} />
+          <Route path="/blog/works" component={Works} />
+        </Route>
+
+        <Route path="/manage" component={Manage} />
+      </Route>
     </Router>
   </Provider>
 );
