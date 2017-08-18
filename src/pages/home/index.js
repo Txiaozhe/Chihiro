@@ -29,12 +29,32 @@
 
 'use strict';
 
-import Home from './home';
-import Blog from './blog';
-import Manage from './manage';
+import React from 'react';
+import {Layout} from 'antd';
 
-module.exports = {
-  Home,
-  Blog,
-  Manage
-};
+import {connect} from 'react-redux';
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    let {width, height} = this.props;
+
+    return (
+      <Layout>
+        {"Home"}
+      </Layout>
+    )
+  }
+}
+
+function select(store) {
+  return {
+    width: store.screen.width,
+    height: store.screen.height
+  }
+}
+
+export default connect(select) (Home);
