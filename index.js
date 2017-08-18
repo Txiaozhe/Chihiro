@@ -35,7 +35,7 @@ import store from './src/store';
 import App from './src/app';
 
 import {Home, Blog, Manage} from './src/pages';
-import {Frontend, Backend, Cloud, Works} from './src/pages/blog';
+import {Frontend, Backend, Cloud, Works, Detail} from './src/pages/blog';
 
 import {screenChange} from './src/actions';
 
@@ -64,7 +64,6 @@ const router = (
           <Route path="/blog/cloud" component={Cloud} />
           <Route path="/blog/works" component={Works} />
         </Route>
-
         <Route path="/manage" component={Manage} />
       </Route>
     </Router>

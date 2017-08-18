@@ -37,6 +37,7 @@ import Frontend from './blog.frontend';
 import Backend from './blog.backend';
 import Cloud from './blog.cloud';
 import Works from './blog.works';
+import Detail from './blog.detail';
 import {color, dimension} from '../../resource';
 
 import {connect} from 'react-redux';
@@ -47,7 +48,8 @@ module.exports = {
   Frontend,
   Backend,
   Cloud,
-  Works
+  Works,
+  Detail
 };
 
 class Blog extends React.Component {
