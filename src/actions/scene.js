@@ -31,15 +31,6 @@
 
 import {actions} from '../config/index';
 
-export function selectTab(tab) {
-  return {
-    type: actions.SCENE,
-    payload: {
-      tab
-    }
-  };
-}
-
 export function sceneChange(scene) {
   return {
     type: actions.SCENE_CHANGE,
@@ -47,13 +38,4 @@ export function sceneChange(scene) {
       scene
     }
   };
-}
-
-export function selectBlogTab(tab) {
-  return {
-    type: actions.BLOG,
-    payload: {
-      tab
-    }
-  }
 }

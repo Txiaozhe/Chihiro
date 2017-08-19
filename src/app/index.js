@@ -41,7 +41,7 @@ import {Home, Blog, Manage} from '../pages';
 import {Link} from "react-router";
 
 import {connect} from 'react-redux';
-import {selectTab} from '../actions';
+import {sceneChange} from '../actions';
 import route from "../config/route";
 import background from '../../images/lonely.jpg';
 
@@ -51,11 +51,11 @@ class App extends React.Component {
   }
 
   handleMenuClick = (tab) => {
-    this.props.dispatch(selectTab(tab.key));
+    this.props.dispatch(sceneChange({index0: tab.key, index1: ''}));
   };
 
   render() {
-    let {selectedTab, selectedBlogTab, width, height} = this.props;
+    let {scene, width, height} = this.props;
     return (
       <Layout style={{backgroundColor: color.white}}>
         <Sider
@@ -70,16 +70,16 @@ class App extends React.Component {
               height: height,
               backgroundColor: color.mainDark
             }}
-            selectedKeys={[selectedTab]}
+            selectedKeys={[scene.index0]}
             mode="inline">
             {
               menu.list.map((m) => {
                 return (
                   <Menu.Item
-                    style={{backgroundColor: selectedTab === m.route ? color.mainColor : color.mainDark}}
+                    style={{backgroundColor: scene.index0 === m.route ? color.mainColor : color.mainDark}}
                     key={m.route}>
                     <Link
-                      href={`http://127.0.0.1:8000/#/${selectedTab}`}>
+                      href={`http://127.0.0.1:8000/#/${scene.index0}`}>
                       <Icon
                         style={{
                           fontSize: 18,
@@ -110,10 +110,10 @@ class App extends React.Component {
         </Layout>
 
         {
-          selectedTab === route.blog && selectedBlogTab !== route.works && width > dimension.critical_menu_width ? (
+          scene.index0 === route.blog && scene.index1 !== route.works && width > dimension.critical_menu_width ? (
             <Layout
               style={{
-                width: width * 0.25,
+                width: width * 0.18,
                 height: height,
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -162,18 +162,9 @@ class App extends React.Component {
   }
 }
 
-const innerStyles = {
-  menuIcon: {
-    fontSize: 18
-  },
-
-  menuTitle: {}
-};
-
 function select(store) {
   return {
-    selectedTab: store.scene.selectedTab,
-    selectedBlogTab: store.scene.selectedBlogTab,
+    scene: store.scene.scene,
     width: store.screen.width,
     height: store.screen.height
   }

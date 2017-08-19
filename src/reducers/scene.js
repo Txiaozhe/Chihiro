@@ -33,32 +33,18 @@ import {actions} from '../config/index';
 import {route} from '../config/index';
 
 const initialState = {
-  selectedTab: route.home,
   scene: {
     index0: route.home,
-    index1: route.frontend
-  },
-  selectedBlogTab: route.frontend
+    index1: ''
+  }
 };
 
 export function scene(state = initialState, action) {
   switch (action.type) {
-    case actions.SCENE : {
-      return {
-        ...state,
-        selectedTab: action.payload.tab
-      }
-    }
     case actions.SCENE_CHANGE : {
       return {
         ...state,
         scene: action.payload.scene
-      }
-    }
-    case actions.BLOG : {
-      return {
-        ...state,
-        selectedBlogTab: action.payload.tab
       }
     }
     default: {

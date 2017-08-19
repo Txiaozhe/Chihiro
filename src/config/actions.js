@@ -30,8 +30,6 @@
 'use strict';
 
 export const actions = {
-  SCENE: 'SCENE',
-  BLOG: 'BLOG',
   SCENE_CHANGE: 'SCENE_CHANGE',
   SCREEN_CHANGE: 'SCREEN_CHANGE'
 };

@@ -41,7 +41,7 @@ import {color, dimension} from '../../resource';
 import {utils} from '../../utils';
 
 import {connect} from 'react-redux';
-import {selectBlogTab} from '../../actions';
+import {sceneChange} from '../../actions';
 import {route} from "../../config";
 
 class Blog extends React.Component {
@@ -54,11 +54,11 @@ class Blog extends React.Component {
   }
 
   handleBlogClick = (m) => {
-    this.props.dispatch(selectBlogTab(m));
+    this.props.dispatch(sceneChange({index0: route.blog, index1: m}));
   };
 
   render() {
-    let {selectedBlogTab, width, height} = this.props;
+    let {scene, width, height} = this.props;
     return (
       <Layout style={{
         width: width * 0.6,
@@ -66,7 +66,7 @@ class Blog extends React.Component {
         flexDirection: width < dimension.critical_menu_width ? 'row' : 'column'
       }}>
         <Menu
-          selectedKeys={[selectedBlogTab]}
+          selectedKeys={[scene.index1]}
           style={{
             width: width < dimension.critical_menu_width ? 120 : dimension.critical_menu_width,
             backgroundColor: color.white
@@ -76,15 +76,15 @@ class Blog extends React.Component {
             menu.map((m) => {
               return (
                 <Menu.Item
-                  style={{borderColor: selectedBlogTab === m.route ? color.mainDark : color.mainGrey}}
+                  style={{borderColor: scene.index1 === m.route ? color.mainDark : color.mainGrey}}
                   key={m.route}>
                   <Link
                     onClick={() => this.handleBlogClick(m.route)}
-                    href={`http://127.0.0.1:8000/#/blog/${selectedBlogTab}`}>
+                    href={`http://127.0.0.1:8000/#/blog/${scene.index1}`}>
                     <span
                       style={{
                         fontSize: 15,
-                        color: selectedBlogTab === m.route ? color.mainDark : color.mainGrey
+                        color: scene.index1 === m.route ? color.mainDark : color.mainGrey
                       }}>{m.title}
                     </span>
                   </Link>
@@ -131,9 +131,9 @@ const innerStyles = {
 
 function select(store) {
   return {
+    scene: store.scene.scene,
     width: store.screen.width,
-    height: store.screen.height,
-    selectedBlogTab: store.scene.selectedBlogTab
+    height: store.screen.height
   }
 }
 

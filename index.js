@@ -48,7 +48,6 @@ import {
   Router,
   Route,
   hashHistory,
-  IndexRoute,
   IndexRedirect
 } from 'react-router';
 
