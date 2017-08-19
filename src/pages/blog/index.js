@@ -37,20 +37,11 @@ import Frontend from './blog.frontend';
 import Backend from './blog.backend';
 import Cloud from './blog.cloud';
 import Works from './blog.works';
-import Detail from './blog.detail';
 import {color, dimension} from '../../resource';
 
 import {connect} from 'react-redux';
 import {selectBlogTab} from '../../actions';
 import {route} from "../../config";
-
-module.exports = {
-  Frontend,
-  Backend,
-  Cloud,
-  Works,
-  Detail
-};
 
 class Blog extends React.Component {
   constructor(props) {
@@ -62,7 +53,7 @@ class Blog extends React.Component {
   };
 
   render() {
-    let {selectedBlogTab, width} = this.props;
+    let {selectedBlogTab, width, height} = this.props;
     return (
       <Layout style={{
         width: width * 0.6,
@@ -97,10 +88,9 @@ class Blog extends React.Component {
             })
           }
         </Menu>
-
         <Layout
           style={innerStyles.bodyLayout}>
-          {this.renderBody(selectedBlogTab)}
+          {this.props.children}
         </Layout>
       </Layout>
     )

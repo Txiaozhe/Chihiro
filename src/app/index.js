@@ -101,11 +101,10 @@ class App extends React.Component {
 
         <Layout style={{
           backgroundColor: color.white,
-          marginLeft: width > dimension.critical_menu_width ? 12 : 8,
-          height: height
+          marginLeft: width > dimension.critical_menu_width ? 12 : 8
         }}>
           <Content>
-            {this.renderContent(selectedTab)}
+            {this.props.children}
           </Content>
         </Layout>
 
@@ -155,9 +154,6 @@ class App extends React.Component {
     switch (tab) {
       case route.home: {
         return <Home/>;
-      }
-      case route.myFocus : {
-        return;
       }
       case route.blog: {
         return <Blog />;

@@ -35,20 +35,26 @@ import store from './src/store';
 import App from './src/app';
 
 import {Home, Blog, Manage} from './src/pages';
-import {Frontend, Backend, Cloud, Works, Detail} from './src/pages/blog';
+
+import Frontend from './src/pages/blog/blog.frontend';
+import Backend from './src/pages/blog/blog.backend';
+import Cloud from './src/pages/blog/blog.cloud';
+import Works from './src/pages/blog/blog.works';
+import Detail from './src/pages/blog/blog.detail';
 
 import {screenChange} from './src/actions';
 
 import {
   Router,
   Route,
-  hashHistory
+  hashHistory,
+  IndexRoute,
+  IndexRedirect
 } from 'react-router';
 
-window.onresize = function(){
+window.onresize = function() {
   let dynWidth = document.documentElement.clientWidth;
   let dynHeight = document.documentElement.clientHeight;
-  console.log(dynWidth + ', ' + dynHeight);
 
   store.dispatch(screenChange(dynWidth, dynHeight));
 };
@@ -63,6 +69,7 @@ const router = (
           <Route path="/blog/backend" component={Backend} />
           <Route path="/blog/cloud" component={Cloud} />
           <Route path="/blog/works" component={Works} />
+          <Route path="/blog/:type/:year/:month/:day/:id" component={Detail} />
         </Route>
         <Route path="/manage" component={Manage} />
       </Route>
