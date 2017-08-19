@@ -39,9 +39,11 @@ function extractRoute() {
 
   let secIndex = route.indexOf('/', firstIndex + 1);
   if(secIndex === -1) {
-    return {
-      index0: first
-    }
+    store.dispatch(sceneChange({
+      index0: first,
+      index1: ''
+    }));
+    return;
   }
 
   first = route.substring(firstIndex + 1, secIndex);
@@ -49,17 +51,19 @@ function extractRoute() {
 
   let thirdIndex = route.indexOf('/', secIndex + 1);
   if(thirdIndex === -1) {
-    return {
+    store.dispatch(sceneChange({
       index0: first,
       index1: second
-    }
+    }));
+    return;
   }
 
   second = route.substring(secIndex + 1, thirdIndex);
-  return {
+
+  store.dispatch(sceneChange({
     index0: first,
     index1: second
-  }
+  }));
 }
 
 export const utils = {

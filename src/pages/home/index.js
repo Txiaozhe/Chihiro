@@ -43,7 +43,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    console.log(utils.extractRoute());
+    utils.extractRoute();
   }
 
   render() {

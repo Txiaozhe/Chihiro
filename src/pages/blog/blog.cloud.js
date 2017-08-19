@@ -57,7 +57,7 @@ class Cloud extends React.Component {
       })
     }, 1000);
 
-    console.log(utils.extractRoute());
+    utils.extractRoute();
   }
 
   render() {

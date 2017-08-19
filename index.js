@@ -63,8 +63,10 @@ const router = (
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={App}>
+        <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
         <Route path="/blog" component={Blog}>
+          <IndexRedirect to="/blog/frontend" />
           <Route path="/blog/frontend" component={Frontend} />
           <Route path="/blog/backend" component={Backend} />
           <Route path="/blog/cloud" component={Cloud} />

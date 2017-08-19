@@ -50,7 +50,7 @@ class Blog extends React.Component {
   }
 
   componentDidMount() {
-    console.log(utils.extractRoute());
+    utils.extractRoute();
   }
 
   handleBlogClick = (m) => {

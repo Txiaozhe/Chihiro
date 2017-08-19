@@ -101,7 +101,8 @@ class App extends React.Component {
 
         <Layout style={{
           backgroundColor: color.white,
-          marginLeft: width > dimension.critical_menu_width ? 12 : 8
+          marginLeft: width > dimension.critical_menu_width ? 12 : 8,
+          height: height
         }}>
           <Content>
             {this.props.children}
@@ -114,23 +115,21 @@ class App extends React.Component {
               style={{
                 width: width * 0.25,
                 height: height,
+                justifyContent: 'center',
+                alignItems: 'center',
                 backgroundImage: `url(${background})`
               }}>
               <img
                 width={80}
                 height={80}
                 style={{
-                  borderRadius: 80,
-                  marginLeft: width * 0.25 / 2,
-                  marginTop: height * 0.6
+                  borderRadius: 80
                 }}
                 src={image.user}/>
 
               <span style={{
                 width: 80,
                 textAlign: 'center',
-                marginLeft: width * 0.25 / 2,
-                marginTop: 10,
                 color: color.white,
                 fontSize: 20
               }}>{'唐小吉'}</span>
@@ -138,8 +137,6 @@ class App extends React.Component {
               <span style={{
                 width: 80,
                 textAlign: 'center',
-                marginLeft: width * 0.25 / 2,
-                marginTop: 10,
                 color: color.white,
                 fontSize: 16
               }}>{'技术宅'}</span>
