@@ -29,11 +29,13 @@
 
 'use strict';
 
-import {selectTab, selectBlogTab} from './scene';
+import {selectTab, selectBlogTab, sceneChange} from './scene';
 import {screenChange} from './screen';
 
 module.exports = {
   selectTab,
   selectBlogTab,
+  sceneChange,
+
   screenChange
 };

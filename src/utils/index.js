@@ -32,9 +32,11 @@
 import {msg} from './msg';
 import {noti} from './noti';
 import {http} from './http';
+import {utils} from './utils';
 
 module.exports = {
   msg,
   noti,
-  http
+  http,
+  utils
 };

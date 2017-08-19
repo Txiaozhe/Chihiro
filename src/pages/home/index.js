@@ -32,11 +32,18 @@
 import React from 'react';
 import {Layout} from 'antd';
 
+import {utils} from '../../utils';
+
 import {connect} from 'react-redux';
+import {} from '../../actions';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    console.log(utils.extractRoute());
   }
 
   render() {

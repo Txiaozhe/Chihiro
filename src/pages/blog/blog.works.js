@@ -33,12 +33,27 @@ import React from 'react';
 
 import {Layout, Card, Rate} from 'antd';
 import MyFooter from '../../app/app.footer';
+import {utils} from '../../utils';
 
 import {color} from '../../resource';
 
 import {connect} from 'react-redux';
 
 class WorksItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        loading: false
+      })
+    }, 1000);
+
+    console.log(utils.extractRoute());
+  }
+
   render() {
     return (
       <Card style={innerStyle.card} bodyStyle={{padding: 0}}>

@@ -34,6 +34,7 @@ import React from 'react';
 import {Layout, Spin} from 'antd';
 import MyFooter from '../../app/app.footer';
 import BlogItem from './blog.list.item';
+import {utils} from '../../utils';
 
 import color from "../../resource/color";
 
@@ -55,6 +56,8 @@ class Backend extends React.Component {
         loading: false
       })
     }, 1000);
+
+    console.log(utils.extractRoute());
   }
 
   render() {

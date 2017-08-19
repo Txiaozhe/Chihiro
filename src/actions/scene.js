@@ -40,6 +40,15 @@ export function selectTab(tab) {
   };
 }
 
+export function sceneChange(scene) {
+  return {
+    type: actions.SCENE_CHANGE,
+    payload: {
+      scene
+    }
+  };
+}
+
 export function selectBlogTab(tab) {
   return {
     type: actions.BLOG,

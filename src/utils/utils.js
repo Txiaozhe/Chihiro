@@ -24,45 +24,44 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/19        Tang Xiaoji
  */
 
 'use strict';
 
-import {actions} from '../config/index';
-import {route} from '../config/index';
+import store from '../store';
+import {sceneChange} from '../actions';
 
-const initialState = {
-  selectedTab: route.home,
-  scene: {
-    index0: route.home,
-    index1: route.frontend
-  },
-  selectedBlogTab: route.frontend
-};
+function extractRoute() {
+  let route = window.location.hash;
+  let firstIndex = route.indexOf('/');
+  let first = route.substring(firstIndex + 1);
 
-export function scene(state = initialState, action) {
-  switch (action.type) {
-    case actions.SCENE : {
-      return {
-        ...state,
-        selectedTab: action.payload.tab
-      }
-    }
-    case actions.SCENE_CHANGE : {
-      return {
-        ...state,
-        scene: action.payload.scene
-      }
-    }
-    case actions.BLOG : {
-      return {
-        ...state,
-        selectedBlogTab: action.payload.tab
-      }
-    }
-    default: {
-      return state;
+  let secIndex = route.indexOf('/', firstIndex + 1);
+  if(secIndex === -1) {
+    return {
+      index0: first
     }
   }
+
+  first = route.substring(firstIndex + 1, secIndex);
+  let second = route.substring(secIndex + 1);
+
+  let thirdIndex = route.indexOf('/', secIndex + 1);
+  if(thirdIndex === -1) {
+    return {
+      index0: first,
+      index1: second
+    }
+  }
+
+  second = route.substring(secIndex + 1, thirdIndex);
+  return {
+    index0: first,
+    index1: second
+  }
 }
+
+export const utils = {
+  extractRoute
+};

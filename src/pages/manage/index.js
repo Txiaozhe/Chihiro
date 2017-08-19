@@ -33,7 +33,7 @@ import React from 'react';
 import {Layout, Input, Icon} from 'antd';
 
 import {color, image, dimension} from '../../resource';
-import {msg, http} from '../../utils';
+import {msg, http, utils} from '../../utils';
 
 import {connect} from 'react-redux';
 
@@ -47,6 +47,7 @@ class Manage extends React.Component {
 
   componentDidMount() {
     this.input.focus();
+    utils.extractRoute();
   }
 
   render() {

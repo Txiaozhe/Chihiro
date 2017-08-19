@@ -38,6 +38,7 @@ import Backend from './blog.backend';
 import Cloud from './blog.cloud';
 import Works from './blog.works';
 import {color, dimension} from '../../resource';
+import {utils} from '../../utils';
 
 import {connect} from 'react-redux';
 import {selectBlogTab} from '../../actions';
@@ -46,6 +47,10 @@ import {route} from "../../config";
 class Blog extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    console.log(utils.extractRoute());
   }
 
   handleBlogClick = (m) => {
