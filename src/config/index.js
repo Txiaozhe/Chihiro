@@ -33,10 +33,12 @@ import route from './route';
 import grade from './grade';
 import {actions} from './actions';
 import lang from './lang';
+import {url} from './url';
 
 module.exports = {
   route,
   grade,
   actions,
-  lang
+  lang,
+  url
 };

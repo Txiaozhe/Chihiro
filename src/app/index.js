@@ -40,6 +40,7 @@ import {color, image, dimension} from '../resource';
 import {Home, Blog, Manage} from '../pages';
 import {Link} from "react-router";
 
+import {checkLoginStatus} from '../service';
 import {connect} from 'react-redux';
 import {sceneChange} from '../actions';
 import route from "../config/route";
@@ -48,6 +49,12 @@ import background from '../../images/lonely.jpg';
 class App extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    let {token} = this.props;
+    console.log('token: ', token);
+    checkLoginStatus(token);
   }
 
   handleMenuClick = (tab) => {
@@ -113,9 +120,9 @@ class App extends React.Component {
           scene.index0 === route.blog && scene.index1 !== route.works && width > dimension.critical_menu_width ? (
             <Layout
               style={{
-                width: width * 0.18,
+                width: width * 0.2,
                 height: height,
-                justifyContent: 'center',
+                paddingTop: height * 0.55,
                 alignItems: 'center',
                 backgroundImage: `url(${background})`
               }}>
@@ -166,7 +173,8 @@ function select(store) {
   return {
     scene: store.scene.scene,
     width: store.screen.width,
-    height: store.screen.height
+    height: store.screen.height,
+    token: store.admin.token
   }
 }
 

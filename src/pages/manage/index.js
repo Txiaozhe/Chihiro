@@ -30,81 +30,32 @@
 'use strict';
 
 import React from 'react';
-import {Layout, Input, Icon} from 'antd';
+import {Layout} from 'antd';
 
-import {color, image, dimension} from '../../resource';
-import {msg, http, utils} from '../../utils';
+import ManageLogin from './manage.login';
+import ManageEdit from './manage.edit';
 
 import {connect} from 'react-redux';
 
 class Manage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      pass: ''
-    }
-  }
-
-  componentDidMount() {
-    this.input.focus();
-    utils.extractRoute();
   }
 
   render() {
-    let {width, height} = this.props;
-
+    let {loginStatus} = this.props;
+    console.log(loginStatus);
     return (
-      <Layout
-        style={{
-          width: width - dimension.main_menu_width,
-          height: height,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: color.white
-        }}>
-
-        <img
-          width={80}
-          height={80}
-          style={{
-            borderRadius: 80
-          }}
-          src={image.user} />
-
-        <Input
-          style={{
-            marginTop: 30,
-            width: width * 0.15 < dimension.critical_pass_input_width ? dimension.critical_pass_input_width : width * 0.15
-          }}
-          onPressEnter={this.onLogin}
-          value={this.state.pass}
-          type={'password'}
-          ref={r => this.input = r}
-          size="large"
-          onChange={(text) => this.setState({pass: text.target.value})}
-          suffix={<a onClick={() => this.setState({pass: ''})}><Icon type="close" /></a>}
-          placeholder="please input admin password!" />
+      <Layout>
+        {loginStatus ? <ManageEdit /> : <ManageLogin />}
       </Layout>
     )
-  }
-
-  onLogin = () => {
-    msg.showMsg(msg.INFO, 'login');
-    http.post('http://localhost:7002/admin/login', {
-      "name": "admin",
-      "pass": "123456"
-    }, () => {
-
-    }, () => {
-
-    })
   }
 }
 
 function select(store) {
   return {
-    width: store.screen.width,
-    height: store.screen.height
+    loginStatus: store.admin.loginStatus
   }
 }
 

@@ -57,7 +57,8 @@ function requestByPost(url, params, onSucceed, onFailure) {
   fetch(url, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${params.token}`
     },
     mode: "cors",
     credentials: "include",

@@ -24,19 +24,48 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/20        Tang Xiaoji
  */
 
 'use strict';
 
-import {sceneChange} from './scene';
-import {screenChange} from './screen';
-import {resetLoginStatus, login} from './admin';
+'use strict';
 
-module.exports = {
-  sceneChange,
-  screenChange,
+import {http} from "../utils/http"
+import {actions, url} from '../config';
 
-  resetLoginStatus,
-  login
-};
+export function resetLoginStatus(status) {
+  return {
+    type: actions.RESET_LOGIN_STATUS,
+    payload: {
+      loginStatus: status
+    }
+  }
+}
+
+export function login(name, pass, onSuccess, onFailed) {
+  const u = url.host + url.version + url.login.url;
+  return (dispatch) => {
+    http.post(u, {
+      "name": name,
+      "pass": pass
+    }, (json) => {
+      dispatch({
+        type: actions.LOGIN,
+        payload: {
+          token: json.token
+        }
+      });
+      resetLoginStatus(true);
+      onSuccess();
+    }, (err) => {
+      dispatch({
+        type: actions.LOGIN,
+        payload: {
+          token: ""
+        }
+      });
+      onFailed(err);
+    })
+  };
+}

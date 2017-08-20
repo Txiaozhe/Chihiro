@@ -42,6 +42,9 @@ import Cloud from './src/pages/blog/blog.cloud';
 import Works from './src/pages/blog/blog.works';
 import Detail from './src/pages/blog/blog.detail';
 
+import ManageLogin from './src/pages/manage/manage.login';
+import ManageEdit from './src/pages/manage/manage.edit';
+
 import {screenChange} from './src/actions';
 
 import {
@@ -72,7 +75,11 @@ const router = (
           <Route path="/blog/works" component={Works} />
           <Route path="/blog/:type/:year/:month/:day/:id" component={Detail} />
         </Route>
-        <Route path="/manage" component={Manage} />
+        <Route path="/manage" component={Manage}>
+          <IndexRedirect to="/manage/login" />
+          <Route path="/manage/login" component={ManageLogin} />
+          <Route path="/manage/edit" component={ManageEdit} />
+        </Route>
       </Route>
     </Router>
   </Provider>

@@ -40,6 +40,8 @@ const route = {
   works: 'works',
 
   manage: 'manage',
+  login: 'login',
+  edit: 'edit',
 
   github: 'github'
 };

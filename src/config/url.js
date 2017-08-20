@@ -24,19 +24,22 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/20        Tang Xiaoji
  */
 
 'use strict';
 
-import {sceneChange} from './scene';
-import {screenChange} from './screen';
-import {resetLoginStatus, login} from './admin';
+const host_local = 'http://127.0.0.1:7002';
 
-module.exports = {
-  sceneChange,
-  screenChange,
+export const url = {
+  host: host_local,
+  version: '/api/v1',
 
-  resetLoginStatus,
-  login
+  //
+  checkLoginStatus: '/checkloginstatus',
+
+  // admin
+  login: {
+    url: '/admin/login'
+  }
 };

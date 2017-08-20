@@ -33,8 +33,10 @@ import {combineReducers} from "redux";
 
 import {scene} from './scene';
 import {screen} from './screen';
+import {admin} from './admin';
 
 export const reducers = combineReducers({
   scene,
-  screen
+  screen,
+  admin
 });

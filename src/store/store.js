@@ -47,7 +47,7 @@ export default function configureStore(initialState) {
     )
   );
 
-  persistStore(store);
+  // persistStore(store);
 
   return store;
 }

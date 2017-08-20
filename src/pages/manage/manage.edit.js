@@ -24,19 +24,32 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/20        Tang Xiaoji
  */
 
 'use strict';
 
-import {sceneChange} from './scene';
-import {screenChange} from './screen';
-import {resetLoginStatus, login} from './admin';
+import React from 'react';
+import {Layout} from 'antd';
 
-module.exports = {
-  sceneChange,
-  screenChange,
+import {utils} from '../../utils';
 
-  resetLoginStatus,
-  login
-};
+class ManageEdit extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    utils.extractRoute();
+  }
+
+  render() {
+    return (
+      <Layout>
+        {"编辑区域"}
+      </Layout>
+    );
+  }
+}
+
+export default ManageEdit;

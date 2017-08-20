@@ -41,7 +41,7 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
-    console.log(utils.extractRoute());
+    utils.extractRoute();
   }
 
   render() {

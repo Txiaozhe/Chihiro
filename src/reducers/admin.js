@@ -24,19 +24,33 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/20        Tang Xiaoji
  */
 
 'use strict';
 
-import {sceneChange} from './scene';
-import {screenChange} from './screen';
-import {resetLoginStatus, login} from './admin';
+import {actions} from '../config/index';
 
-module.exports = {
-  sceneChange,
-  screenChange,
-
-  resetLoginStatus,
-  login
+const initialState = {
+  token: ""
 };
+
+export function admin(state = initialState, action) {
+  switch (action.type) {
+    case actions.LOGIN : {
+      return {
+        ...state,
+        token: action.payload.token
+      }
+    }
+    case actions.RESET_LOGIN_STATUS : {
+      return {
+        ...state,
+        loginStatus: action.payload.loginStatus
+      }
+    }
+    default: {
+      return state;
+    }
+  }
+}

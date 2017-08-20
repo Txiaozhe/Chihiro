@@ -24,19 +24,24 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/20        Tang Xiaoji
  */
 
 'use strict';
 
-import {sceneChange} from './scene';
-import {screenChange} from './screen';
-import {resetLoginStatus, login} from './admin';
+import {url} from '../config';
+import {http} from '../utils';
 
-module.exports = {
-  sceneChange,
-  screenChange,
+import store from '../store';
+import {resetLoginStatus} from '../actions';
 
-  resetLoginStatus,
-  login
-};
+export function checkLoginStatus(token) {
+  let u = url.host + url.version + url.checkLoginStatus;
+  http.post(u, {
+    "token": token
+  }, () => {
+    store.dispatch(resetLoginStatus(true));
+  }, () => {
+    store.dispatch(resetLoginStatus(false))
+  })
+}
