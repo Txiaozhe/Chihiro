@@ -29,13 +29,14 @@
 
 'use strict';
 
-function requestByGet(url, onSucceed, onFailure) {
+function requestByGet(url, token, onSucceed, onFailure) {
   console.log("Get " + url + " started.");
 
   fetch(url, { // eslint-disable-line no-undef
     method: "GET",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     mode: "cors",
     credentials: "include"
@@ -53,12 +54,12 @@ function requestByGet(url, onSucceed, onFailure) {
     })
 }
 
-function requestByPost(url, params, onSucceed, onFailure) {
+function requestByPost(url, token, params, onSucceed, onFailure) {
   fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${params.token}`
+      "Authorization": `Bearer ${token}`
     },
     mode: "cors",
     credentials: "include",

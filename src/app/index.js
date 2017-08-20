@@ -46,6 +46,8 @@ import {sceneChange} from '../actions';
 import route from "../config/route";
 import background from '../../images/lonely.jpg';
 
+import store from '../store';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -54,6 +56,7 @@ class App extends React.Component {
   componentDidMount() {
     let {token} = this.props;
     console.log('token: ', token);
+    console.log(store.getState().admin.token);
     checkLoginStatus(token);
   }
 

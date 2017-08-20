@@ -31,14 +31,13 @@
 
 import React from 'react';
 import {Layout, Input, Icon} from 'antd';
-import {browserHistory} from 'react-router';
 
 import {color, image, dimension} from '../../resource';
 import {msg, utils} from '../../utils';
 import {route} from '../../config';
 
 import {connect} from 'react-redux';
-import {login, sceneChange} from '../../actions';
+import {login, sceneChange, resetLoginStatus} from '../../actions';
 
 class ManageLogin extends React.Component {
   constructor(props) {
@@ -106,9 +105,9 @@ class ManageLogin extends React.Component {
   onLogin = () => {
     let {name, pass} = this.state;
     this.props.dispatch(login(name, pass, () => {
-      browserHistory.push("/#/manage/edit");
       msg.showMsg(msg.INFO, 'login success');
-      this.props.dispatch(sceneChange({index0: route.manage, index1: route.edit}));
+      this.props.dispatch(resetLoginStatus(true))
+      // this.props.dispatch(sceneChange({index0: route.manage, index1: route.edit}));
     }, () => {
       msg.showMsg(msg.INFO, 'login failed');
     }))

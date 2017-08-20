@@ -46,7 +46,7 @@ export function resetLoginStatus(status) {
 export function login(name, pass, onSuccess, onFailed) {
   const u = url.host + url.version + url.login.url;
   return (dispatch) => {
-    http.post(u, {
+    http.post(u, null, {
       "name": name,
       "pass": pass
     }, (json) => {
@@ -56,7 +56,6 @@ export function login(name, pass, onSuccess, onFailed) {
           token: json.token
         }
       });
-      resetLoginStatus(true);
       onSuccess();
     }, (err) => {
       dispatch({

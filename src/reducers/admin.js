@@ -32,7 +32,8 @@
 import {actions} from '../config/index';
 
 const initialState = {
-  token: ""
+  token: "",
+  loginStatus: false
 };
 
 export function admin(state = initialState, action) {

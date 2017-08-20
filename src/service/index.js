@@ -37,11 +37,13 @@ import {resetLoginStatus} from '../actions';
 
 export function checkLoginStatus(token) {
   let u = url.host + url.version + url.checkLoginStatus;
-  http.post(u, {
-    "token": token
-  }, () => {
+  if(!token) {
+    store.dispatch(resetLoginStatus(false));
+    return;
+  }
+  http.get(u, token, () => {
     store.dispatch(resetLoginStatus(true));
   }, () => {
-    store.dispatch(resetLoginStatus(false))
+    store.dispatch(resetLoginStatus(false));
   })
 }
