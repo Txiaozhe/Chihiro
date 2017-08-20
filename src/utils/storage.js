@@ -24,41 +24,36 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/06        Tang Xiaoji
  */
 
 'use strict';
 
-// 中文
-const string = {
-  title: '我的个人主页',
-  author: 'Tang Xiaoji',
-  footer_statement: 'Chihiro ©2017 Created by ',
-
-  // menu
-  menu: {
-    home: '主页',
-    myFocus: '我的关注',
-    blog: '博客',
-    frontend: '前端',
-    backend: '后台',
-    cloud: '云',
-    works: '作品',
-    manage: '管理',
-    github: 'GitHub'
-  },
-
-  // blog
-  blog: {
-    none: '选择分类',
-    frontend: '前端',
-    backend: '后台',
-    cloud: '云',
-    works: '作品'
-  },
-
-  zh_cn: '中文',
-  en_us: 'English'
+const config = {
+  STORAGE_INTERVAL: 5 * 1000
 };
 
-export default string;
+function saveData(title, abstract, category, tags, content) {
+  sessionStorage.setItem('title', title);
+  sessionStorage.setItem('abstract', abstract);
+  sessionStorage.setItem('category', category);
+  sessionStorage.setItem('tags', tags);
+  sessionStorage.setItem('content', content);
+}
+
+function getData() {
+  return {
+    title: sessionStorage.getItem('title'),
+    abstract: sessionStorage.getItem('abstract'),
+    category: sessionStorage.getItem('category'),
+    tags: sessionStorage.getItem('tags'),
+    content: sessionStorage.getItem('content')
+  }
+}
+
+export const storage = {
+  ...config,
+
+  saveData,
+  getData
+};

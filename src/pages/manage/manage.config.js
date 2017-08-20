@@ -24,41 +24,32 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/08/20        Tang Xiaoji
  */
 
 'use strict';
 
-// 中文
-const string = {
-  title: '我的个人主页',
-  author: 'Tang Xiaoji',
-  footer_statement: 'Chihiro ©2017 Created by ',
+import {string} from '../../resource';
 
-  // menu
-  menu: {
-    home: '主页',
-    myFocus: '我的关注',
-    blog: '博客',
-    frontend: '前端',
-    backend: '后台',
-    cloud: '云',
-    works: '作品',
-    manage: '管理',
-    github: 'GitHub'
+const category = [
+  {
+    title: string.blog.none,
+    value: 'none'
   },
-
-  // blog
-  blog: {
-    none: '选择分类',
-    frontend: '前端',
-    backend: '后台',
-    cloud: '云',
-    works: '作品'
+  {
+    title: string.blog.frontend,
+    value: 'frontend'
   },
+  {
+    title: string.blog.backend,
+    value: 'backend'
+  },
+  {
+    title: string.blog.cloud,
+    value: 'cloud'
+  }
+];
 
-  zh_cn: '中文',
-  en_us: 'English'
+module.exports = {
+  category
 };
-
-export default string;

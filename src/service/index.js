@@ -38,7 +38,7 @@ import {resetLoginStatus} from '../actions';
 export function checkLoginStatus(token) {
   let u = url.host + url.version + url.checkLoginStatus;
   if(!token) {
-    store.dispatch(resetLoginStatus(false));
+    store.dispatch(resetLoginStatus(true)); // debug 模式下为 true
     return;
   }
   http.get(u, token, () => {

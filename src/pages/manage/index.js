@@ -33,8 +33,8 @@ import React from 'react';
 import {Layout} from 'antd';
 
 import ManageLogin from './manage.login';
+import MyList from './manage.mylist';
 import ManageEdit from './manage.edit';
-import {browserHistory} from 'react-router';
 
 import {connect} from 'react-redux';
 
@@ -45,13 +45,9 @@ class Manage extends React.Component {
 
   render() {
     let {loginStatus} = this.props;
-    if(loginStatus) {
-      browserHistory.push("/#/manage/edit");
-    }
-
     return (
       <Layout>
-        {loginStatus ? <ManageEdit /> : <ManageLogin />}
+        {loginStatus ? <MyList /> : <ManageLogin />}
       </Layout>
     )
   }
