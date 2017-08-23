@@ -42,6 +42,7 @@ const route = {
   manage: 'manage',
   login: 'login',
   edit: 'edit',
+  mylist: 'mylist',
 
   github: 'github'
 };

@@ -32,7 +32,7 @@
 const image = {
   flower: '../../images/flower.jpg',
   blog_side: '../../images/blog_side.jpg',
-  user: '../../images/user.png',
+  user: 'http://localhost:5000/user.png',
   glass: '../../images/glass.jpeg'
 };
 

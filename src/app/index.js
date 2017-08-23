@@ -89,7 +89,7 @@ class App extends React.Component {
                     style={{backgroundColor: scene.index0 === m.route ? color.mainColor : color.mainDark}}
                     key={m.route}>
                     <Link
-                      href={`http://127.0.0.1:8000/#/${scene.index0}`}>
+                      href={`/#/${scene.index0}`}>
                       <Icon
                         style={{
                           fontSize: 18,

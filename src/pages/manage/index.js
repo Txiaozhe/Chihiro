@@ -36,6 +36,11 @@ import ManageLogin from './manage.login';
 import MyList from './manage.mylist';
 import ManageEdit from './manage.edit';
 
+import {utils} from '../../utils';
+import {route} from '../../config';
+
+import {browserHistory} from 'react-router';
+
 import {connect} from 'react-redux';
 
 class Manage extends React.Component {
@@ -43,19 +48,47 @@ class Manage extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    utils.extractRoute();
+  }
+
   render() {
-    let {loginStatus} = this.props;
     return (
       <Layout>
-        {loginStatus ? <MyList /> : <ManageLogin />}
+        {this.props.children}
       </Layout>
     )
+  }
+
+  getContent = () => {
+    let {loginStatus} = this.props;
+
+    let {scene} = this.props;
+    console.log(scene);
+    switch (scene.index1) {
+      case route.login : {
+        if(!loginStatus) {
+          browserHistory.push("/#/manage/login");
+        }
+        browserHistory.push("/#/manage/mylist");
+        break;
+      }
+      case route.edit : {
+        browserHistory.push("/#/manage/edit");
+        break;
+      }
+      case route.mylist : {
+        browserHistory.push("/#/manage/mylist");
+        break;
+      }
+    }
   }
 }
 
 function select(store) {
   return {
-    loginStatus: store.admin.loginStatus
+    loginStatus: store.admin.loginStatus,
+    scene: store.scene.scene
   }
 }
 

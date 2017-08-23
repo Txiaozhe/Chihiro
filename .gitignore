@@ -2,3 +2,5 @@ dist
 node_modules
 .DS_Store
 .idea
+npm-debug.log
+root@106.15.227.154

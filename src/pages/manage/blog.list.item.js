@@ -56,7 +56,7 @@ class BlogItem extends React.Component {
           <span style={innerStyle.headerDate}>2017-08-14</span>
         </Layout>
         <a
-          href={`/#/blog/${scene.index1}/2017/08/18/178909876545`}
+          href={`/#/blog/frontend/2017/08/18/178909876545`}
           style={innerStyle.title}
           onClick={() => this.onBlogDetail(id)}>
           <h3>说一说 GitHub</h3>

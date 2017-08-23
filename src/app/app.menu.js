@@ -44,11 +44,11 @@ export const menu = {
       title: string.menu.blog,
       icon: icon.blog
     },
-    {
-      route: route.manage,
-      title: string.menu.manage,
-      icon: icon.edit
-    }
+    // {
+    //   route: route.manage,
+    //   title: string.menu.manage,
+    //   icon: icon.edit
+    // }
   ],
   github: {
     route: route.github,

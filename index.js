@@ -44,6 +44,7 @@ import Detail from './src/pages/blog/blog.detail';
 
 import ManageLogin from './src/pages/manage/manage.login';
 import ManageEdit from './src/pages/manage/manage.edit';
+import MyList from './src/pages/manage/manage.mylist';
 
 import {screenChange} from './src/actions';
 
@@ -79,6 +80,7 @@ const router = (
           <IndexRedirect to="/manage/login" />
           <Route path="/manage/login" component={ManageLogin} />
           <Route path="/manage/edit" component={ManageEdit} />
+          <Route path="/manage/mylist" component={MyList} />
         </Route>
       </Route>
     </Router>

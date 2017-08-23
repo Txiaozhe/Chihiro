@@ -30,7 +30,8 @@
 'use strict';
 
 import React from 'react';
-import {Layout, Input, Icon} from 'antd';
+import {Layout, Input, Icon, Button} from 'antd';
+import {browserHistory} from 'react-router';
 
 import {color, image, dimension} from '../../resource';
 import {msg, utils} from '../../utils';
@@ -91,13 +92,22 @@ class ManageLogin extends React.Component {
             marginTop: 10,
             width: width * 0.15 < dimension.critical_pass_input_width ? dimension.critical_pass_input_width : width * 0.15
           }}
-          onPressEnter={this.onLogin}
           value={this.state.pass}
           type={'password'}
           size="large"
           onChange={(text) => this.setState({pass: text.target.value})}
           suffix={<a onClick={() => this.setState({pass: ''})}><Icon type="close" /></a>}
           placeholder="请输入密码" />
+
+        <Button
+          type="primary"
+          style={{
+            width: width * 0.15 < dimension.critical_pass_input_width ? dimension.critical_pass_input_width : width * 0.15,
+            marginTop: 10
+          }}
+          onClick={this.onLogin}>
+          <a href={`/#/manage/mylist`}>{"登录"}</a>
+        </Button>
       </Layout>
     );
   }
@@ -111,6 +121,7 @@ class ManageLogin extends React.Component {
     }, () => {
       msg.showMsg(msg.INFO, 'login failed');
     }))
+    //browserHistory.push("/#/manage/mylist");
   }
 }
 

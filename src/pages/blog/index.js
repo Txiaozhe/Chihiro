@@ -80,7 +80,7 @@ class Blog extends React.Component {
                   key={m.route}>
                   <Link
                     onClick={() => this.handleBlogClick(m.route)}
-                    href={`http://127.0.0.1:8000/#/blog/${scene.index1}`}>
+                    href={`/#/blog/${scene.index1}`}>
                     <span
                       style={{
                         fontSize: 15,
