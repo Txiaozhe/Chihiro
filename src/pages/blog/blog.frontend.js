@@ -34,34 +34,38 @@ import React from 'react';
 import {Layout, Spin} from 'antd';
 import MyFooter from '../../app/app.footer';
 import BlogItem from './blog.list.item';
-import {utils} from '../../utils';
+import {utils, http} from '../../utils';
+import {url} from '../../config';
 
 import color from "../../resource/color";
 
 import {connect} from 'react-redux';
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2];
-
 class Frontend extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: [],
       loading: true
     }
   }
 
   componentDidMount() {
-    setTimeout(() => {
+    const u = url.host + url.version + url.getGithubBlogList.url;
+    http.get(u, null, (json) => {
       this.setState({
+        data: json,
         loading: false
-      })
-    }, 1000);
+      });
+    }, (e) => {
+      console.log(e);
+    });
 
     utils.extractRoute();
   }
 
   render() {
-    let {loading} = this.state;
+    let {loading, data} = this.state;
     let {width, height} = this.props;
     return (
       <Layout
@@ -72,11 +76,13 @@ class Frontend extends React.Component {
         {loading ? <Spin
           color={color.mainColor}
           style={innerStyle.spin} /> : (
-          arr.map((ele, i) => {
+          data.map((ele, i) => {
             return (
               <BlogItem
                 key={i}
-                id={i} />
+                number={ele.number}
+                id={ele.id}
+                item={ele} />
             )
           })
         )}

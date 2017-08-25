@@ -32,6 +32,7 @@
 import React from 'react';
 import {Layout, Icon} from 'antd';
 
+import {time} from '../../utils';
 import {color} from '../../resource';
 
 import {connect} from 'react-redux';
@@ -42,8 +43,8 @@ class BlogItem extends React.Component {
   }
 
   render() {
-    let {id, width, height, scene} = this.props;
-
+    let {id, width, height, scene, item} = this.props;
+    let dateObj = time.getDateObj(item.updated_at);
     return (
       <Layout style={{
         height: height * 0.12 < 110 ? 110 : height * 0.12,
@@ -53,19 +54,35 @@ class BlogItem extends React.Component {
       }}>
         <Layout style={innerStyle.headerLayout}>
           <span style={innerStyle.headerAuthor}>Txiaozhe</span>
-          <span style={innerStyle.headerDate}>2017-08-14</span>
+          <span style={innerStyle.headerDate}>{time.getDate(item.updated_at)}</span>
         </Layout>
         <a
-          href={`/#/blog/${scene.index1}/2017/08/18/178909876545`}
-          style={innerStyle.title}
-          onClick={() => this.onBlogDetail(id)}>
-          <h3>说一说 GitHub</h3>
+          href={`/#/blog/${scene.index1}/${dateObj.year}/${dateObj.mon}/${dateObj.day}/${item.number}`}
+          style={innerStyle.title}>
+          <h3>{item.title}</h3>
         </a>
         <Layout style={innerStyle.tagLayout}>
           <Icon
             type="tags-o"
             style={innerStyle.tagIcon}/>
-          <span style={innerStyle.tagTags}>GitHub、Blog</span>
+          {
+            item.labels.map((ele, i) => {
+              return (
+                <span
+                  key={i}
+                  style={{
+                    marginLeft: 8,
+                    paddingTop: 1,
+                    paddingBottom: 1,
+                    paddingLeft: 4,
+                    paddingRight: 4,
+                    borderRadius: 4,
+                    color: color.white,
+                    backgroundColor: `#${ele.color}`
+                  }}>{ele.name}</span>
+              );
+            })
+          }
         </Layout>
 
         <span style={innerStyle.content}>{'常常幻想自己是一个画家，然并不喜欢作画。所以作为非资深专业设计师，想来写一写sketch和zeplin的上手心得'}</span>
@@ -73,10 +90,6 @@ class BlogItem extends React.Component {
         <Layout style={{height: 1.5}}/>
       </Layout>
     );
-  }
-
-  onBlogDetail = (id) => {
-    console.log(id);
   }
 }
 
@@ -110,10 +123,6 @@ const innerStyle = {
     color: color.mainColor
   },
 
-  tagTags: {
-    marginLeft: 8
-  },
-
   content: {
     marginTop: 8,
     marginBottom: 8,
@@ -129,4 +138,4 @@ function select(store) {
   }
 }
 
-export default connect(select) (BlogItem);
+export default connect(select)(BlogItem);

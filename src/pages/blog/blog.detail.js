@@ -30,30 +30,123 @@
 'use strict';
 
 import React from 'react';
-import {Layout} from 'antd';
-import {utils} from '../../utils';
+import './index.less';
+import {Layout, Spin} from 'antd';
+import {url} from '../../config';
+import {utils, http, time} from '../../utils';
+import {color} from '../../resource';
+import ReactMarkdown from 'react-markdown';
 
 import {connect} from 'react-redux';
 
 class Detail extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      detail: {},
+      loading: true
+    }
   }
 
   componentDidMount() {
+    let {id} = this.props.params;
+    let u = url.host + url.version + url.getGithubBlogDetail.url;
+    http.post(u, null, {
+      "number": id
+    }, (json) => {
+      this.setState({
+        detail: json,
+        loading: false
+      });
+    }, (e) => {
+      console.log(e);
+    });
+
     utils.extractRoute();
   }
 
   render() {
     let {width, height} = this.props;
-
+    let {detail, loading} = this.state;
     return (
       <Layout>
-        {"Detail"}
+        {
+          loading ? (
+            <Spin
+              color={color.mainColor}
+              style={innerStyle.spin}/>
+          ) : (
+            <Layout
+              style={{
+                backgroundColor: color.white
+              }}>
+              <span style={{
+                fontSize: 30,
+                fontWeight: 'bold'
+              }}>{detail && detail.title}</span>
+
+              <Layout
+                style={{
+                  flexDirection: 'row',
+                  backgroundColor: '#0ff',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: width * 0.3,
+                  height: 30
+                }}>
+
+                <span style={{
+                  fontSize: 20
+                }}>{time.getDate(detail && detail.updated_at)}
+                </span>
+
+                <Layout
+                  style={{
+                    flexDirection: 'row',
+                    backgroundColor: '#ff0',
+                    marginTop: 8,
+                    height: 30
+                  }}>
+                  {
+                    detail && detail.labels.map((ele, i) => {
+                      return (
+                        <span
+                          key={i}
+                          style={{
+                            marginLeft: i === 0 ? 10 : 8,
+                            paddingTop: 1,
+                            paddingBottom: 1,
+                            paddingLeft: 4,
+                            paddingRight: 4,
+                            borderRadius: 4,
+                            height: 20,
+                            color: color.white,
+                            backgroundColor: `#${ele.color}`
+                          }}>{ele.name}</span>
+                      );
+                    })
+                  }
+                </Layout>
+              </Layout>
+
+              <ReactMarkdown
+                className="markdown"
+                source={detail && detail.body}/>
+            </Layout>
+          )
+        }
       </Layout>
     )
   }
 }
+
+const innerStyle = {
+  spin: {
+    backgroundColor: color.white,
+    paddingTop: 20,
+    paddingBottom: 20
+  }
+};
 
 function select(store) {
   return {
@@ -62,4 +155,4 @@ function select(store) {
   }
 }
 
-export default connect(select) (Detail);
+export default connect(select)(Detail);

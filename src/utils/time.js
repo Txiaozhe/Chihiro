@@ -24,23 +24,48 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/15        Tang Xiaoji
+ *     Initial: 2017/08/24        Tang Xiaoji
  */
 
 'use strict';
 
-import {msg} from './msg';
-import {noti} from './noti';
-import {http} from './http';
-import {utils} from './utils';
-import {storage} from './storage';
-import {time} from './time';
+function getDate(time) {
+  let date = new Date(time);
+  let year = date.getFullYear();
+  let day = date.getDate();
+  let mon = date.getMonth() + 1;
 
-module.exports = {
-  msg,
-  noti,
-  http,
-  utils,
-  storage,
-  time
+  if(mon < 10) {
+    mon = "0" + mon;
+  }
+  if(day < 10) {
+    day = "0" + day;
+  }
+
+  return year + "-" + mon + "-" + day;
+}
+
+function getDateObj(time) {
+  let date = new Date(time);
+  let year = date.getFullYear();
+  let day = date.getDate();
+  let mon = date.getMonth() + 1;
+
+  if(mon < 10) {
+    mon = "0" + mon;
+  }
+  if(day < 10) {
+    day = "0" + day;
+  }
+
+  return {
+    year,
+    mon,
+    day
+  };
+}
+
+export const time = {
+  getDate,
+  getDateObj
 };

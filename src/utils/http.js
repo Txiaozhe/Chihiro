@@ -29,10 +29,29 @@
 
 'use strict';
 
+const TIMEOUT = 2 * 1000;
+
+function promiseTimeout(ms, promise) {
+  return new Promise((resolve, reject) => {
+    const timeoutId = setTimeout(() => {
+      console.error('errorrrrr');
+      reject(new Error('request timeout!'))
+    }, ms);
+    promise.then((res) => {
+        clearTimeout(timeoutId);
+        resolve(res);
+      }, (err) => {
+        clearTimeout(timeoutId);
+        reject(err);
+      }
+    );
+  });
+}
+
 function requestByGet(url, token, onSucceed, onFailure) {
   console.log("Get " + url + " started.");
 
-  fetch(url, { // eslint-disable-line no-undef
+  promiseTimeout(TIMEOUT, fetch(url, { // eslint-disable-line no-undef
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -40,8 +59,7 @@ function requestByGet(url, token, onSucceed, onFailure) {
     },
     mode: "cors",
     credentials: "include"
-  })
-    .then((resp) => resp.json())
+  })).then((resp) => resp.json())
     .then((json) => {
       //console.log("Get Succeed for " + url + ", response:" + JSON.stringify(json));
       onSucceed(json);
@@ -55,7 +73,7 @@ function requestByGet(url, token, onSucceed, onFailure) {
 }
 
 function requestByPost(url, token, params, onSucceed, onFailure) {
-  fetch(url, {
+  promiseTimeout(TIMEOUT, fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -64,10 +82,9 @@ function requestByPost(url, token, params, onSucceed, onFailure) {
     mode: "cors",
     credentials: "include",
     body: JSON.stringify(params)
-  })
-    .then((resp) => resp.json())
+  })).then((resp) => resp.json())
     .then((json) => {
-      console.log("Post succeed for " + url + ", response:" + JSON.stringify(json));
+      console.log("Post succeed for " + url + ", params:" + JSON.stringify(params) + ", response:" + JSON.stringify(json));
       onSucceed(json);
     })
     .catch((err) => {
