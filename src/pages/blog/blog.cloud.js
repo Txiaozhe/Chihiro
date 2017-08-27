@@ -35,6 +35,7 @@ import {Layout, Spin} from 'antd';
 import MyFooter from '../../app/app.footer';
 import BlogItem from './blog.list.item';
 import {utils} from '../../utils';
+import {service} from '../../service';
 
 import color from "../../resource/color";
 
@@ -46,22 +47,26 @@ class Cloud extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
+      data: []
     }
   }
 
   componentDidMount() {
-    setTimeout(() => {
+    service.getBlogList(3, (json) => {
       this.setState({
+        data: json,
         loading: false
-      })
-    }, 1000);
+      });
+    }, () => {
+
+    });
 
     utils.extractRoute();
   }
 
   render() {
-    let {loading} = this.state;
+    let {loading, data} = this.state;
     let {width, height} = this.props;
     return (
       <Layout
@@ -70,11 +75,12 @@ class Cloud extends React.Component {
           backgroundColor: color.white
         }}>
         {loading ? <Spin style={innerStyle.spin} /> : (
-          arr.map((ele, i) => {
+          data && data.map((ele, i) => {
             return (
               <BlogItem
                 key={i}
-                id={i} />
+                id={i}
+                item={ele} />
             )
           })
         )}

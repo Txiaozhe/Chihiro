@@ -43,6 +43,11 @@ export const url = {
     url: '/admin/login'
   },
 
+  // blog list
+  getBlogList: {
+    url: '/blog/list'
+  },
+
   // blog list github
   getGithubBlogList: {
     url: '/blog/github/get'

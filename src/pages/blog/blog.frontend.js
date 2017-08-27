@@ -34,8 +34,8 @@ import React from 'react';
 import {Layout, Spin} from 'antd';
 import MyFooter from '../../app/app.footer';
 import BlogItem from './blog.list.item';
-import {utils, http} from '../../utils';
-import {url} from '../../config';
+import {utils} from '../../utils';
+import {service} from '../../service';
 
 import color from "../../resource/color";
 
@@ -51,14 +51,13 @@ class Frontend extends React.Component {
   }
 
   componentDidMount() {
-    const u = url.host + url.version + url.getGithubBlogList.url;
-    http.get(u, null, (json) => {
+    service.getBlogList(1, (json) => {
       this.setState({
         data: json,
         loading: false
       });
-    }, (e) => {
-      console.log(e);
+    }, () => {
+
     });
 
     utils.extractRoute();
@@ -76,11 +75,10 @@ class Frontend extends React.Component {
         {loading ? <Spin
           color={color.mainColor}
           style={innerStyle.spin} /> : (
-          data.map((ele, i) => {
+          data && data.map((ele, i) => {
             return (
               <BlogItem
                 key={i}
-                number={ele.number}
                 id={ele.id}
                 item={ele} />
             )

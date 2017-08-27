@@ -24,47 +24,22 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/06        Tang Xiaoji
+ *     Initial: 2017/08/27        Tang Xiaoji
  */
 
 'use strict';
 
-const config = {
-  STORAGE_INTERVAL: 5 * 1000
-};
+import {storage, http} from '../utils';
+import {url} from '../config';
 
-function saveData(title, abstract, category, tags, content) {
-  sessionStorage.setItem('title', title);
-  sessionStorage.setItem('abstract', abstract);
-  sessionStorage.setItem('category', category);
-  sessionStorage.setItem('tags', tags);
-  sessionStorage.setItem('content', content);
+export function getBlogList(category, onSuccess, onFailed) {
+  const u = url.host + url.version + url.getBlogList.url;
+  http.post(u, storage.getToken(), {
+    "category": category
+  }, (json) => {
+    onSuccess(json);
+  }, (e) => {
+    onFailed();
+    console.log(e);
+  });
 }
-
-function getData() {
-  return {
-    title: sessionStorage.getItem('title'),
-    abstract: sessionStorage.getItem('abstract'),
-    category: sessionStorage.getItem('category'),
-    tags: sessionStorage.getItem('tags'),
-    content: sessionStorage.getItem('content')
-  }
-}
-
-function saveToken(token) {
-  sessionStorage.setItem('token', token);
-}
-
-function getToken() {
-  return sessionStorage.getItem('token');
-}
-
-export const storage = {
-  ...config,
-
-  saveData,
-  getData,
-
-  saveToken,
-  getToken
-};

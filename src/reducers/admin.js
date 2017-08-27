@@ -30,6 +30,7 @@
 'use strict';
 
 import {actions} from '../config/index';
+import {storage} from '../utils';
 
 const initialState = {
   token: "",
@@ -39,9 +40,9 @@ const initialState = {
 export function admin(state = initialState, action) {
   switch (action.type) {
     case actions.LOGIN : {
+      storage.saveToken(action.payload.token);
       return {
-        ...state,
-        token: action.payload.token
+        ...state
       }
     }
     case actions.RESET_LOGIN_STATUS : {

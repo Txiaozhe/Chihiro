@@ -47,3 +47,9 @@ export function checkLoginStatus(token) {
     store.dispatch(resetLoginStatus(false));
   })
 }
+
+import {getBlogList} from './blog';
+
+export const service = {
+  getBlogList
+};

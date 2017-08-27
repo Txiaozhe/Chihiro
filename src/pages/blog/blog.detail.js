@@ -88,7 +88,7 @@ class Detail extends React.Component {
               <Layout
                 style={{
                   flexDirection: 'row',
-                  backgroundColor: '#0ff',
+                  backgroundColor: color.white,
                   alignItems: 'center',
                   justifyContent: 'center',
                   width: width * 0.3,
@@ -103,7 +103,7 @@ class Detail extends React.Component {
                 <Layout
                   style={{
                     flexDirection: 'row',
-                    backgroundColor: '#ff0',
+                    backgroundColor: color.white,
                     marginTop: 8,
                     height: 30
                   }}>
