@@ -24,30 +24,27 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/20        Tang Xiaoji
+ *     Initial: 2017/08/27        Tang Xiaoji
  */
 
 'use strict';
 
-import {actions} from '../config/index';
-import {storage} from '../utils';
+import {url} from '../config';
+import {http, storage} from '../utils';
 
-const initialState = {
-  token: "",
-  isLogin: false
-};
-
-export function admin(state = initialState, action) {
-  switch (action.type) {
-    case actions.LOGIN : {
-      return {...state, isLogin: action.payload.isLogin}
-    }
-    case actions.LOGOUT : {
-      return {...state, isLogin: false}
-    }
-
-    default: {
-      return state;
-    }
-  }
+export function login(name, pass, onSuccess, onFailed) {
+  const u = url.host + url.version + url.login.url;
+    http.post(u, null, {
+      "name": name,
+      "pass": pass
+    }, (json) => {
+      if(json.token) {
+        storage.saveToken(json.token);
+        onSuccess();
+      } else {
+        onFailed(json);
+      }
+    }, (err) => {
+      onFailed(err);
+    })
 }

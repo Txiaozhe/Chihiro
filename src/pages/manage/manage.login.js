@@ -38,7 +38,7 @@ import {msg, utils} from '../../utils';
 import {route} from '../../config';
 
 import {connect} from 'react-redux';
-import {login, sceneChange, resetLoginStatus} from '../../actions';
+import {sceneChange, login} from '../../actions';
 
 class ManageLogin extends React.Component {
   constructor(props) {
@@ -105,8 +105,7 @@ class ManageLogin extends React.Component {
             width: width * 0.15 < dimension.critical_pass_input_width ? dimension.critical_pass_input_width : width * 0.15,
             marginTop: 10
           }}
-          onClick={this.onLogin}>
-          <a href={`/#/manage/mylist`}>{"登录"}</a>
+          onClick={this.onLogin}>{"登录"}
         </Button>
       </Layout>
     );
@@ -114,14 +113,14 @@ class ManageLogin extends React.Component {
 
   onLogin = () => {
     let {name, pass} = this.state;
+
     this.props.dispatch(login(name, pass, () => {
       msg.showMsg(msg.INFO, 'login success');
-      this.props.dispatch(resetLoginStatus(true))
-      // this.props.dispatch(sceneChange({index0: route.manage, index1: route.edit}));
-    }, () => {
+      this.props.dispatch(sceneChange({index0: route.manage, index1: route.edit}));
+      browserHistory.push("/#/manage/edit");
+    }, (err) => {
       msg.showMsg(msg.INFO, 'login failed');
     }))
-    //browserHistory.push("/#/manage/mylist");
   }
 }
 

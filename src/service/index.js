@@ -29,27 +29,11 @@
 
 'use strict';
 
-import {url} from '../config';
-import {http} from '../utils';
-
-import store from '../store';
-import {resetLoginStatus} from '../actions';
-
-export function checkLoginStatus(token) {
-  let u = url.host + url.version + url.checkLoginStatus;
-  if(!token) {
-    store.dispatch(resetLoginStatus(true)); // debug 模式下为 true
-    return;
-  }
-  http.get(u, token, () => {
-    store.dispatch(resetLoginStatus(true));
-  }, () => {
-    store.dispatch(resetLoginStatus(false));
-  })
-}
-
 import {getBlogList} from './blog';
+import {login} from './admin';
 
 export const service = {
-  getBlogList
+  getBlogList,
+
+  login
 };

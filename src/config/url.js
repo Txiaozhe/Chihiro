@@ -35,9 +35,6 @@ export const url = {
   host: host_local,
   version: '/api/v1',
 
-  //
-  checkLoginStatus: '/checkloginstatus',
-
   // admin
   login: {
     url: '/admin/login'

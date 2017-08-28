@@ -59,6 +59,10 @@ function getToken() {
   return sessionStorage.getItem('token');
 }
 
+function removeToken() {
+  sessionStorage.setItem('token', '');
+}
+
 export const storage = {
   ...config,
 
@@ -66,5 +70,7 @@ export const storage = {
   getData,
 
   saveToken,
-  getToken
+  getToken,
+
+  removeToken
 };

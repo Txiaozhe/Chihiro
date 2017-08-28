@@ -31,17 +31,9 @@
 
 'use strict';
 
-import {http} from "../utils/http"
+import {http} from '../utils/http';
+import {storage} from '../utils/storage';
 import {actions, url} from '../config';
-
-export function resetLoginStatus(status) {
-  return {
-    type: actions.RESET_LOGIN_STATUS,
-    payload: {
-      loginStatus: status
-    }
-  }
-}
 
 export function login(name, pass, onSuccess, onFailed) {
   const u = url.host + url.version + url.login.url;
@@ -53,18 +45,29 @@ export function login(name, pass, onSuccess, onFailed) {
       dispatch({
         type: actions.LOGIN,
         payload: {
-          token: json.token
+          isLogin: !!json.token
         }
       });
-      onSuccess();
+      if(json.token) {
+        onSuccess();
+        storage.saveToken(json.token)
+      } else {
+        onFailed(json);
+      }
     }, (err) => {
       dispatch({
         type: actions.LOGIN,
         payload: {
-          token: ""
+          isLogin: false
         }
       });
       onFailed(err);
     })
-  };
+  }
+}
+
+export function logout() {
+  return {
+    type: actions.LOGOUT
+  }
 }

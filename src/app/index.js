@@ -40,7 +40,6 @@ import {color, image, dimension} from '../resource';
 import {Home, Blog, Manage} from '../pages';
 import {Link} from "react-router";
 
-import {checkLoginStatus} from '../service';
 import {connect} from 'react-redux';
 import {sceneChange} from '../actions';
 import route from "../config/route";
@@ -51,13 +50,6 @@ import store from '../store';
 class App extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    let {token} = this.props;
-    console.log('token: ', token);
-    console.log(store.getState().admin.token);
-    checkLoginStatus(token);
   }
 
   handleMenuClick = (tab) => {
@@ -176,8 +168,7 @@ function select(store) {
   return {
     scene: store.scene.scene,
     width: store.screen.width,
-    height: store.screen.height,
-    token: store.admin.token
+    height: store.screen.height
   }
 }
 

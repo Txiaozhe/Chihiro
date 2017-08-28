@@ -31,12 +31,12 @@
 
 import {sceneChange} from './scene';
 import {screenChange} from './screen';
-import {resetLoginStatus, login} from './admin';
+import {login, logout} from './admin';
 
 module.exports = {
   sceneChange,
   screenChange,
 
-  resetLoginStatus,
-  login
+  login,
+  logout
 };

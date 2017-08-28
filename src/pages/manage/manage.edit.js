@@ -33,12 +33,15 @@ import React from 'react';
 import './index.less';
 import {Layout, Input, Select, Button, Icon} from 'antd';
 import ReactMarkdown from 'react-markdown';
+import {browserHistory} from 'react-router';
 
-import {utils, storage} from '../../utils';
+import {route} from '../../config';
+import {utils, storage, msg} from '../../utils';
 import {color} from '../../resource';
 import {category} from './manage.config';
 
 import {connect} from 'react-redux';
+import {sceneChange} from '../../actions';
 
 class ManageEdit extends React.Component {
   constructor(props) {
@@ -65,7 +68,6 @@ class ManageEdit extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextState);
     storage.saveData(nextState.title, nextState.abstract, nextState.category, nextState.tags, nextState.content);
     return true;
   }
@@ -144,6 +146,16 @@ class ManageEdit extends React.Component {
             onClick={this.onSubmit}>
             <Icon type="check-circle" />{"提交"}
           </Button>
+
+          <Button
+            type="danger"
+            style={{
+              width: width * 0.65 * 0.2,
+              marginLeft: 10
+            }}
+            onClick={this.onLogout}>
+            <Icon type="logout" />{"登出"}
+          </Button>
         </Layout>
 
         <Layout style={{
@@ -199,6 +211,14 @@ class ManageEdit extends React.Component {
 
   onSubmit = () => {
 
+  };
+
+  onLogout = () => {
+    msg.showMsg(msg.INFO, 'logout success');
+    storage.saveToken('');
+    this.props.dispatch(sceneChange({index0: route.manage, index1: route.login}));
+    browserHistory.push("/#/manage/login");
+    location.reload();
   }
 }
 

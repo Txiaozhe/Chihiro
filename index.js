@@ -80,7 +80,6 @@ const router = (
           <IndexRedirect to="/manage/login" />
           <Route path="/manage/login" component={ManageLogin} />
           <Route path="/manage/edit" component={ManageEdit} />
-          <Route path="/manage/mylist" component={MyList} />
         </Route>
       </Route>
     </Router>

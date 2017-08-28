@@ -34,7 +34,7 @@ import React from 'react';
 import {Layout, Spin, Button, Icon, Affix} from 'antd';
 import MyFooter from '../../app/app.footer';
 import BlogItem from './blog.list.item';
-import {utils} from '../../utils';
+import {utils, storage} from '../../utils';
 
 import color from "../../resource/color";
 
@@ -108,7 +108,17 @@ class MyList extends React.Component {
               marginTop: 50
             }}
             onClick={this.onWriteBlog}>
-            <a href={`/#/manage/edit`}><Icon type="edit"/>{"写博客"}</a>
+            <Icon type="edit"/>{" 写博客 "}
+          </Button>
+
+          <Button
+            type="danger"
+            style={{
+              width: width * 0.1,
+              marginTop: 10
+            }}
+            onClick={this.onLogout}>
+            <Icon type="logout"/>{"  登出 "}
           </Button>
         </Layout>
       </Layout>
@@ -117,6 +127,11 @@ class MyList extends React.Component {
 
   onWriteBlog = () => {
     this.props.dispatch(sceneChange({index0: route.manage, index1: route.edit}));
+  };
+
+  onLogout = () => {
+    storage.logout();
+    this.props.dispatch(sceneChange({index0: route.manage, index1: route.login}));
   }
 }
 
