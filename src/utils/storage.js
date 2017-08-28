@@ -36,7 +36,7 @@ const config = {
 function saveData(title, abstract, category, tags, content) {
   sessionStorage.setItem('title', title);
   sessionStorage.setItem('abstract', abstract);
-  sessionStorage.setItem('category', category);
+  sessionStorage.setItem('cate', category);
   sessionStorage.setItem('tags', tags);
   sessionStorage.setItem('content', content);
 }
@@ -45,7 +45,7 @@ function getData() {
   return {
     title: sessionStorage.getItem('title'),
     abstract: sessionStorage.getItem('abstract'),
-    category: sessionStorage.getItem('category'),
+    cate: sessionStorage.getItem('cate'),
     tags: sessionStorage.getItem('tags'),
     content: sessionStorage.getItem('content')
   }

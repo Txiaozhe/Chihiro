@@ -39,6 +39,7 @@ import {route} from '../../config';
 import {utils, storage, msg} from '../../utils';
 import {color} from '../../resource';
 import {category} from './manage.config';
+import {service} from '../../service';
 
 import {connect} from 'react-redux';
 import {sceneChange} from '../../actions';
@@ -49,6 +50,7 @@ class ManageEdit extends React.Component {
     this.state = {
       title: "",
       abstract: "",
+      cate: category[0].value,
       tags: [],
       content: ""
     }
@@ -59,8 +61,8 @@ class ManageEdit extends React.Component {
     this.setState({
       title: data.title ? data.title : "",
       abstract: data.abstract ? data.abstract : "",
-      category: data.category ? data.category : "",
-      tags: data.tags ? data.tags : [],
+      cate: data.cate ? data.cate : category[0].value,
+      tags: data.tags ? data.tags.split(',') : [],
       content: data.content ? data.content : ""
     });
 
@@ -68,7 +70,7 @@ class ManageEdit extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    storage.saveData(nextState.title, nextState.abstract, nextState.category, nextState.tags, nextState.content);
+    storage.saveData(nextState.title, nextState.abstract, nextState.cate, nextState.tags, nextState.content);
     return true;
   }
 
@@ -114,7 +116,7 @@ class ManageEdit extends React.Component {
             style={{
               width: width * 0.6 * 0.1
             }}
-            defaultValue={data.category ? data.category : category[0].value}
+            defaultValue={data.cate ? data.cate : category[0].value}
             onChange={this.onCategorySelect}>
             {
               category.map((ele, i) => {
@@ -133,7 +135,7 @@ class ManageEdit extends React.Component {
               width: '100%',
               marginLeft: 10
             }}
-            defaultValue={data.tags ? data.tags : []}
+            defaultValue={data.tags ? data.tags.split(',') : []}
             placeholder="标签"
             onChange={this.onTagSelect}>
           </Select>
@@ -199,7 +201,7 @@ class ManageEdit extends React.Component {
 
   onCategorySelect = (item) => {
     this.setState({
-      category: item
+      cate: item
     });
   };
 
@@ -210,7 +212,19 @@ class ManageEdit extends React.Component {
   };
 
   onSubmit = () => {
-
+    let {title, abstract, cate, tags, content} = this.state;
+    service.create({
+      title,
+      category: parseInt(cate),
+      abstract,
+      tag: tags.join(','),
+      content
+    }, () => {
+      msg.showMsg(msg.SUCCESS, '提交成功！');
+      storage.saveData('', '', category[0].value, [], '');
+    }, () => {
+      msg.showMsg(msg.ERROR, '提交失败！');
+    });
   };
 
   onLogout = () => {

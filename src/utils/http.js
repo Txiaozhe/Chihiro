@@ -84,7 +84,7 @@ function requestByPost(url, token, params, onSucceed, onFailure) {
     body: JSON.stringify(params)
   })).then((resp) => resp.json())
     .then((json) => {
-      console.log("Post succeed for " + url + ", params:" + JSON.stringify(params) + ", response:" + JSON.stringify(json));
+      console.log("Post succeed for " + url); // + ", params:" + JSON.stringify(params) + ", response:" + JSON.stringify(json));
       onSucceed(json);
     })
     .catch((err) => {

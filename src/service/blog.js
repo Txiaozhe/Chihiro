@@ -43,3 +43,22 @@ export function getBlogList(category, onSuccess, onFailed) {
     console.log(e);
   });
 }
+
+export function create(blog, onSuccess, onFailed) {
+  const u = url.host + url.version + url.createBlog.url;
+  http.post(u, storage.getToken(), {
+    "title": blog.title,
+    "category": blog.category,
+    "abstract": blog.abstract,
+    "tag": blog.tag,
+    "content": blog.content
+  }, (json) => {
+    if(!json) {
+      onSuccess();
+    } else {
+      onFailed(json);
+    }
+  }, (err) => {
+    onFailed(err);
+  })
+}

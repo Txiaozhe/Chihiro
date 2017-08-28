@@ -44,6 +44,10 @@ export const url = {
   getBlogList: {
     url: '/blog/list'
   },
+  // blog create
+  createBlog: {
+    url: '/blog/create'
+  },
 
   // blog list github
   getGithubBlogList: {

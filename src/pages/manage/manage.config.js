@@ -34,19 +34,19 @@ import {string} from '../../resource';
 const category = [
   {
     title: string.blog.none,
-    value: 'none'
+    value: '0'
   },
   {
     title: string.blog.frontend,
-    value: 'frontend'
+    value: '1'
   },
   {
     title: string.blog.backend,
-    value: 'backend'
+    value: '2'
   },
   {
     title: string.blog.cloud,
-    value: 'cloud'
+    value: '3'
   }
 ];
 
