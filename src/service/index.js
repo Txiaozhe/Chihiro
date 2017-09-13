@@ -29,12 +29,13 @@
 
 'use strict';
 
-import {getBlogList, create} from './blog';
+import {getBlogList, create, getDetail} from './blog';
 import {login} from './admin';
 
 export const service = {
   getBlogList,
   create,
+  getDetail,
 
   login
 };

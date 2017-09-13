@@ -62,3 +62,18 @@ export function create(blog, onSuccess, onFailed) {
     onFailed(err);
   })
 }
+
+export function getDetail(id, onSuccess, onFailed) {
+  const u = url.host + url.version + url.getBlogDetail.url;
+  http.post(u, storage.getToken(), {
+    "id": parseInt(id)
+  }, (json) => {
+    if(json.ContentId) {
+      onSuccess(json.Content);
+    } else {
+      onFailed(json);
+    }
+  }, (err) => {
+    onFailed(err);
+  })
+}

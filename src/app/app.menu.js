@@ -50,6 +50,7 @@ export const menu = {
       icon: icon.edit
     }
   ],
+
   github: {
     route: route.github,
     title: string.menu.github,

@@ -31,8 +31,8 @@
 
 import React from 'react';
 import './index.less';
-import {Layout, Spin} from 'antd';
-import {url} from '../../config';
+import {Layout, Spin, Icon} from 'antd';
+import {service} from '../../service';
 import {utils, http, time} from '../../utils';
 import {color} from '../../resource';
 import ReactMarkdown from 'react-markdown';
@@ -43,30 +43,31 @@ class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      detail: {},
+      detail: "",
       loading: true
     }
   }
 
   componentDidMount() {
-    let {id} = this.props.params;
-    let u = url.host + url.version + url.getGithubBlogDetail.url;
-    http.post(u, null, {
-      "number": id
-    }, (json) => {
+    let {contentid} = this.props.location.state;
+    service.getDetail(contentid, (det) => {
       this.setState({
-        detail: json,
+        detail: det,
         loading: false
       });
-    }, (e) => {
-      console.log(e);
+    }, () => {
+      this.setState({
+        loading: false
+      });
     });
 
     utils.extractRoute();
   }
 
   render() {
+    let {year, month, day} = this.props.params;
     let {width, height} = this.props;
+    let {title, tag} = this.props.location.state;
     let {detail, loading} = this.state;
     return (
       <Layout>
@@ -83,7 +84,7 @@ class Detail extends React.Component {
               <span style={{
                 fontSize: 30,
                 fontWeight: 'bold'
-              }}>{detail && detail.title}</span>
+              }}>{title}</span>
 
               <Layout
                 style={{
@@ -96,42 +97,26 @@ class Detail extends React.Component {
                 }}>
 
                 <span style={{
-                  fontSize: 20
-                }}>{time.getDate(detail && detail.updated_at)}
+                  fontSize: 18
+                }}>{`${year}-${month}-${day}`}
                 </span>
 
-                <Layout
-                  style={{
-                    flexDirection: 'row',
-                    backgroundColor: color.white,
-                    marginTop: 8,
-                    height: 30
-                  }}>
+                <Layout style={innerStyle.tagLayout}>
+                  <Icon
+                    type="tags-o"
+                    style={innerStyle.tagIcon}/>
                   {
-                    detail && detail.labels.map((ele, i) => {
-                      return (
-                        <span
-                          key={i}
-                          style={{
-                            marginLeft: i === 0 ? 10 : 8,
-                            paddingTop: 1,
-                            paddingBottom: 1,
-                            paddingLeft: 4,
-                            paddingRight: 4,
-                            borderRadius: 4,
-                            height: 20,
-                            color: color.white,
-                            backgroundColor: `#${ele.color}`
-                          }}>{ele.name}</span>
-                      );
-                    })
+                    <span style={{
+                      marginLeft: 10,
+                      fontSize: 18
+                    }}>{tag.split(',').join(', ')}</span>
                   }
                 </Layout>
               </Layout>
 
               <ReactMarkdown
                 className="markdown"
-                source={detail && detail.body}/>
+                source={detail}/>
             </Layout>
           )
         }
@@ -145,6 +130,19 @@ const innerStyle = {
     backgroundColor: color.white,
     paddingTop: 20,
     paddingBottom: 20
+  },
+
+  tagLayout: {
+    backgroundColor: color.white,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 10,
+    marginTop: 5
+  },
+
+  tagIcon: {
+    fontSize: 18,
+    color: color.mainColor
   }
 };
 

@@ -31,6 +31,7 @@
 
 import React from 'react';
 import {Layout, Icon} from 'antd';
+import {Link} from 'react-router';
 
 import {time} from '../../utils';
 import {color} from '../../resource';
@@ -56,11 +57,18 @@ class BlogItem extends React.Component {
           <span style={innerStyle.headerAuthor}>{"Txiaozhe"}</span>
           <span style={innerStyle.headerDate}>{time.getDate(item.created)}</span>
         </Layout>
-        <a
-          href={`/#/blog/${scene.index1}/${dateObj.year}/${dateObj.mon}/${dateObj.day}/${item.id}`}
+        <Link
+          to={{
+            pathname: `/blog/${scene.index1}/${dateObj.year}/${dateObj.mon}/${dateObj.day}/${item.title}`,
+            state: {
+              contentid: item.contentid,
+              title: item.title,
+              tag: item.tag
+            }
+          }}
           style={innerStyle.title}>
           <h3>{item.title}</h3>
-        </a>
+        </Link>
         <Layout style={innerStyle.tagLayout}>
           <Icon
             type="tags-o"

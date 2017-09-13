@@ -24,42 +24,43 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/20        Tang Xiaoji
+ *     Initial: 2017/08/30        Tang Xiaoji
  */
 
 'use strict';
 
-const host_local = 'http://txiaozhe.top:7002';
+export default class HttpUtils {
+  static get(utl) {
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then(response => response.json())
+        .then(result => {
+          resolve(result);
+        })
 
-export const url = {
-  host: host_local,
-  version: '/api/v1',
-
-  // admin
-  login: {
-    url: '/admin/login'
-  },
-
-  // blog list
-  getBlogList: {
-    url: '/blog/list'
-  },
-  // blog create
-  createBlog: {
-    url: '/blog/create'
-  },
-  // blog detail
-  getBlogDetail: {
-    url: '/blog/detail'
-  },
-
-  // blog list github
-  getGithubBlogList: {
-    url: '/blog/github/get'
-  },
-
-  // blog detail github
-  getGithubBlogDetail: {
-    url: '/blog/github/detail'
+        .catch(error => {
+          reject(error);
+        })
+    })
   }
-};
+
+  static post(url, token, data) {
+    return new Promise((resolve, reject) => {
+      fetch(url, {
+        method: 'POST',
+        header: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(data)
+      })
+        .then(result => {
+          resolve(result);
+        })
+        .catch(error => {
+          reject(error);
+        })
+    })
+  }
+}
