@@ -35,9 +35,17 @@ import {Layout, Footer} from 'antd';
 import Border from "./border";
 import HeaderMenu from "./header.menu";
 
+import {Client} from '../utils'
+
 export default class App extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    let info = Client.info;
+    console.log(info);
+    console.log(Client.isMobile);
   }
 
   render() {

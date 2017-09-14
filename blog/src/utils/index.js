@@ -31,8 +31,10 @@
 
 import {Http} from './http';
 import {Time} from './time';
+import {Client} from './client';
 
 module.exports = {
   Http,
-  Time
-}
+  Time,
+  Client
+};
