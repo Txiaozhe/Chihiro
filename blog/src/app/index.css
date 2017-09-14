@@ -1,13 +1,21 @@
 
-html, body, #root {
-  height: 100%;
+/*纵向分割线*/
+.vertical-line {
+    height: 32px;
+    width: 2px;
+    background-color: #eeeeee;
+    margin: 10px;
 }
 
-.gutter-example .ant-row > div {
-  background: transparent;
-  border: 0;
+/*展示数字*/
+.number {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333333;
+    font-family: "Tsukushi B Round Gothic";
 }
-.gutter-box {
-  background: #00A0E9;
-  padding: 5px 0;
+
+.desc {
+    color: #999999;
+    font-size: 14px;
 }

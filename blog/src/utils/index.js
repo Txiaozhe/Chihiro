@@ -24,25 +24,15 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/13        Tang Xiaoji
+ *     Initial: 2017/09/14        Tang Xiaoji
  */
 
 'use strict';
 
-import React, {Component} from 'react';
-import {Icon} from 'antd';
+import {Http} from './http';
+import {Time} from './time';
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div
-        className="list">
-
-      </div>
-    );
-  }
+module.exports = {
+  Http,
+  Time
 }

@@ -13,12 +13,13 @@ import {
   Router,
   Route,
   hashHistory,
-  IndexRedirect
+  IndexRoute
 } from 'react-router';
 
 const router = (
     <Router history={hashHistory}>
       <Route path="/" component={App}>
+        <IndexRoute component={Home}/>
         <Route path="/home" component={Home} />
         <Route path="/frontend" component={Frontend} />
         <Route path="/backend" component={Backend} />

@@ -29,17 +29,72 @@
 
 'use strict';
 
-import React, {Component} from 'react';
 
-export default class Home extends Component {
+import React, {Component} from 'react';
+import {Timeline, Icon, Layout} from 'antd';
+import Item from './blog.list.item';
+import {Url} from '../config';
+import {Http, Time} from '../utils';
+
+export default class Backend extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      list: [],
+      loading: true
+    }
+  }
+
+  componentDidMount() {
+    const url = Url.url + Url.getBlogList.url;
+    Http.post(url, null, {
+      "category": 3
+    }, (list) => {
+      this.setState({
+        list,
+        loading: false
+      });
+    }, (err) => {
+      this.setState({
+        loading: false
+      });
+    });
   }
 
   render() {
+    let {list, loading} = this.state;
     return (
-      <div>
-        backend
+      <div
+        className="list">
+        {
+          loading ? (
+            <Layout
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: '#fff'
+              }}>
+              <Icon
+                type="loading"
+                className="spinner"/>
+            </Layout>
+          ) : (
+            <Timeline>
+              {
+                list.map((ele, i) => {
+                  return (
+                    <Item
+                      key={i}
+                      title={ele.title}
+                      created={Time.getDate(ele.created)}
+                      tags={ele.tag.split(',').join('，')}
+                      abstract={ele.abstract}/>
+                  )
+                })
+              }
+            </Timeline>
+          )
+        }
       </div>
     );
   }

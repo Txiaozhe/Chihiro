@@ -24,25 +24,48 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/13        Tang Xiaoji
+ *     Initial: 2017/08/24        Tang Xiaoji
  */
 
 'use strict';
 
-import React, {Component} from 'react';
-import {Icon} from 'antd';
+function getDate(time) {
+  let date = new Date(time);
+  let year = date.getFullYear();
+  let day = date.getDate();
+  let mon = date.getMonth() + 1;
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
+  if(mon < 10) {
+    mon = "0" + mon;
+  }
+  if(day < 10) {
+    day = "0" + day;
   }
 
-  render() {
-    return (
-      <div
-        className="list">
-
-      </div>
-    );
-  }
+  return year + "-" + mon + "-" + day;
 }
+
+function getDateObj(time) {
+  let date = new Date(time);
+  let year = date.getFullYear();
+  let day = date.getDate();
+  let mon = date.getMonth() + 1;
+
+  if(mon < 10) {
+    mon = "0" + mon;
+  }
+  if(day < 10) {
+    day = "0" + day;
+  }
+
+  return {
+    year,
+    mon,
+    day
+  };
+}
+
+export const Time = {
+  getDate,
+  getDateObj
+};

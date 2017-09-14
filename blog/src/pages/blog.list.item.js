@@ -39,28 +39,31 @@ class BlogItem extends React.Component {
   }
 
   render() {
+    let {title, abstract, created, tags} = this.props;
+
     return (
       <Timeline.Item
+        className="item-layout"
         dot={
           <Icon
             style={{color: '#000'}}
             type="clock-circle-o"/>
         }>
         <div>
-          <span>{'2017-08-05'}</span>
+          <span className="item-time">{created}</span>
         </div>
 
         <br />
 
         <div>
-          <span className="item-title">{'深入理解计算机'}</span>
-          <Icon className="item-tag-margin" type="tag"/><span className="item-tag">      {'GitHub、IT'}</span>
+          <a href="https://baidu.com">{title}</a>
+          <Icon className="item-tag-margin" type="tag"/><span className="item-tag">      {tags}</span>
         </div>
 
         <br />
 
         <div>
-          <span className="item-abstract">{'这是一本很好的书这是一本很好的书这是一本很好的书这是一本很好的书'}</span>
+          <span className="item-abstract">{abstract}</span>
         </div>
       </Timeline.Item>
     );

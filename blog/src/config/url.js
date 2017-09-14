@@ -24,25 +24,42 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/13        Tang Xiaoji
+ *     Initial: 2017/08/20        Tang Xiaoji
  */
 
 'use strict';
 
-import React, {Component} from 'react';
-import {Icon} from 'antd';
+const host_local = 'http://txiaozhe.top:7002';
+const version = '/api/v1';
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
+export const Url = {
+  url: host_local + version,
+
+  // admin
+  login: {
+    url: '/admin/login'
+  },
+
+  // blog list
+  getBlogList: {
+    url: '/blog/list'
+  },
+  // blog create
+  createBlog: {
+    url: '/blog/create'
+  },
+  // blog detail
+  getBlogDetail: {
+    url: '/blog/detail'
+  },
+
+  // blog list github
+  getGithubBlogList: {
+    url: '/blog/github/get'
+  },
+
+  // blog detail github
+  getGithubBlogDetail: {
+    url: '/blog/github/detail'
   }
-
-  render() {
-    return (
-      <div
-        className="list">
-
-      </div>
-    );
-  }
-}
+};
