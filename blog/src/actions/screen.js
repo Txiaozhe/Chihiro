@@ -24,15 +24,18 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/14        Tang Xiaoji
+ *     Initial: 2017/08/16        Tang Xiaoji
  */
 
 'use strict';
 
-import {Url} from './url';
-import {Actions} from './actions';
+import {Actions} from '../config/index';
 
-module.exports = {
-  Url,
-  Actions
-};
+export function screenChange(w, h) {
+  return {
+    type: Actions.SCREEN_CHANGE,
+    payload: {
+      w, h
+    }
+  };
+}

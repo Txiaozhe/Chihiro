@@ -24,15 +24,13 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/14        Tang Xiaoji
+ *     Initial: 2017/08/13        Tang Xiaoji
  */
 
 'use strict';
 
-import {Url} from './url';
-import {Actions} from './actions';
+import {screenChange} from './screen';
 
 module.exports = {
-  Url,
-  Actions
+  screenChange
 };

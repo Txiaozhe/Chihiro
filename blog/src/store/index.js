@@ -24,15 +24,11 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/14        Tang Xiaoji
+ *     Initial: 2017/08/13        Tang Xiaoji
  */
 
 'use strict';
 
-import {Url} from './url';
-import {Actions} from './actions';
-
-module.exports = {
-  Url,
-  Actions
-};
+import configureStore from "./store";
+const store = configureStore();
+export default store;

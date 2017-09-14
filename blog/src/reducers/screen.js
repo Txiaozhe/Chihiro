@@ -24,15 +24,29 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/14        Tang Xiaoji
+ *     Initial: 2017/08/16        Tang Xiaoji
  */
 
 'use strict';
 
-import {Url} from './url';
-import {Actions} from './actions';
+import {Actions} from '../config/index';
 
-module.exports = {
-  Url,
-  Actions
+const initialState = {
+  width: document.body.offsetWidth,
+  height: document.body.offsetHeight
 };
+
+export function screen(state = initialState, action) {
+  switch (action.type) {
+    case Actions.SCREEN_CHANGE : {
+      return {
+        ...state,
+        width: action.payload.w,
+        height: action.payload.h
+      }
+    }
+    default: {
+      return state;
+    }
+  }
+}

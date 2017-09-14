@@ -33,27 +33,14 @@ import React, {Component} from 'react';
 import "./index.css";
 import {Layout, Affix, Icon, Popover} from 'antd';
 
-let width = 200;
+import {connect} from 'react-redux';
 
-export default class Border extends Component {
+class Border extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      width: 200
-    }
-  }
-
-  componentDidMount() {
-
-    window.onresize = () => {
-      let dynWidth = document.documentElement.clientWidth;
-      let dynHeight = document.documentElement.clientHeight;
-    };
   }
 
   render() {
-    let {width} = this.state;
-
     return (
       <Layout
         style={{
@@ -68,7 +55,7 @@ export default class Border extends Component {
         <Affix offsetTop={50}>
           <Layout style={{
             height: 50,
-            width: width,
+            width: 200,
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: '#000'
@@ -163,3 +150,12 @@ export default class Border extends Component {
     )
   }
 }
+
+function select(store) {
+  return {
+    width: store.screen.width,
+    height: store.screen.height,
+  }
+}
+
+export default connect(select) (Border);

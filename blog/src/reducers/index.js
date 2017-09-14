@@ -24,15 +24,15 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/14        Tang Xiaoji
+ *     Initial: 2017/08/13        Tang Xiaoji
  */
 
 'use strict';
 
-import {Url} from './url';
-import {Actions} from './actions';
+import {combineReducers} from "redux";
 
-module.exports = {
-  Url,
-  Actions
-};
+import {screen} from './screen';
+
+export const reducers = combineReducers({
+  screen
+});

@@ -24,15 +24,11 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/14        Tang Xiaoji
+ *     Initial: 2017/08/04        Tang Xiaoji
  */
 
 'use strict';
 
-import {Url} from './url';
-import {Actions} from './actions';
-
-module.exports = {
-  Url,
-  Actions
+export const Actions = {
+  SCREEN_CHANGE: 'SCREEN_CHANGE'
 };
