@@ -1,0 +1,25 @@
+
+/*时间*/
+.item-time {
+    font-size: 12px;
+}
+
+/*标题*/
+.item-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/*标签*/
+.item-tag {
+    font-size: 14px;
+}
+
+.item-tag-margin {
+    margin-left: 20px;
+}
+
+/*摘要*/
+.item-abstract {
+    font-size: 14px;
+}
