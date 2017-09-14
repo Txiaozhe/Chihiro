@@ -33,13 +33,27 @@ import React, {Component} from 'react';
 import "./index.css";
 import {Layout, Affix, Icon, Popover} from 'antd';
 
+let width = 200;
+
 export default class Border extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      width: 200
+    }
+  }
+
+  componentDidMount() {
+
+    window.onresize = () => {
+      let dynWidth = document.documentElement.clientWidth;
+      let dynHeight = document.documentElement.clientHeight;
+    };
   }
 
   render() {
+    let {width} = this.state;
+
     return (
       <Layout
         style={{
@@ -54,27 +68,18 @@ export default class Border extends Component {
         <Affix offsetTop={50}>
           <Layout style={{
             height: 50,
-            width: 200,
+            width: width,
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: '#000'
           }}>
-            <Popover
-              content={
-                <div>
-                  <span>WeChat: 15733206382</span>
-                  <hr />
-                  <span>Phone: 15733206382</span>
-                </div>
-              }>
-              <span
-                style={{
-                  color: '#fff',
-                  fontSize: 20
-                }}>
-                {"Tang Xiaoji ' Blog"}
-              </span>
-            </Popover>
+            <span
+              style={{
+                color: '#fff',
+                fontSize: 20
+              }}>
+              {"Tang Xiaoji ' Blog"}
+            </span>
           </Layout>
 
           <br/>
