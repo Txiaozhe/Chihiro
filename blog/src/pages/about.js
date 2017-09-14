@@ -30,7 +30,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Icon} from 'antd';
+import {Layout} from 'antd';
 
 export default class Home extends Component {
   constructor(props) {
@@ -39,10 +39,33 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div
-        className="list">
+      <Layout
+        style={styles.container}>
 
-      </div>
+        <img
+          className="about-image"
+          src="../../image/leaf.jpg"/>
+
+        <span className="about-content">Hold fast to dreams, </span>
+        <span className="about-content">For if dreams die, </span>
+        <span className="about-content">Life is a broken-winged bird, </span>
+        <span className="about-content">That can never fly. </span>
+        <span className="about-content">Hold fast to dreams, </span>
+        <span className="about-content">For when dreams go, </span>
+        <span className="about-content">Life is a barren field, </span>
+        <span className="about-content">Frozen only with snow. </span>
+        <br/>
+        <span className="about-contact">WeChat: txj1269179099</span>
+        <span className="about-contact">E-mail: txiaozhe@gmail.com</span>
+        <br/>
+      </Layout>
     );
   }
 }
+
+const styles = {
+  container: {
+    alignItems: 'center',
+    backgroundColor: '#ffffff'
+  }
+};
