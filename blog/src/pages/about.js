@@ -39,26 +39,29 @@ export default class Home extends Component {
 
   render() {
     return (
-      <Layout
-        style={styles.container}>
+      <div
+        className="list">
+        <Layout
+          style={styles.container}>
 
-        <img
-          className="about-image"
-          src="../../image/leaf.jpg"/>
+          <img
+            className="about-image"
+            src="../../image/leaf.jpg"/>
 
-        <span className="about-content">Hold fast to dreams, </span>
-        <span className="about-content">For if dreams die, </span>
-        <span className="about-content">Life is a broken-winged bird, </span>
-        <span className="about-content">That can never fly. </span>
-        <span className="about-content">Hold fast to dreams, </span>
-        <span className="about-content">For when dreams go, </span>
-        <span className="about-content">Life is a barren field, </span>
-        <span className="about-content">Frozen only with snow. </span>
-        <br/>
-        <span className="about-contact">WeChat: txj1269179099</span>
-        <span className="about-contact">E-mail: txiaozhe@gmail.com</span>
-        <br/>
-      </Layout>
+          <span className="about-content">Hold fast to dreams, </span>
+          <span className="about-content">For if dreams die, </span>
+          <span className="about-content">Life is a broken-winged bird, </span>
+          <span className="about-content">That can never fly. </span>
+          <span className="about-content">Hold fast to dreams, </span>
+          <span className="about-content">For when dreams go, </span>
+          <span className="about-content">Life is a barren field, </span>
+          <span className="about-content">Frozen only with snow. </span>
+          <br/>
+          <span className="about-contact">WeChat: txj1269179099</span>
+          <span className="about-contact">E-mail: txiaozhe@gmail.com</span>
+          <br/>
+        </Layout>
+      </div>
     );
   }
 }

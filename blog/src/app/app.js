@@ -76,7 +76,7 @@ export default class App extends Component {
           </div>
           <br/>
           <div className="footer-power">
-            <span>Powered By <a className="footer-a">Txiaozhe</a>  |  Theme - Followed By NexT.Muse</span>
+            <span>Powered By <a className="footer-a">Txiaozhe</a>  |  <a className="icp" href="http://www.beian.gov.cn/portal/registerSystemInfo">冀ICP备17026123号-1</a></span>
           </div>
 
           <br/>
