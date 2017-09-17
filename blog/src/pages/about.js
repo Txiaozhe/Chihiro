@@ -57,8 +57,7 @@ export default class Home extends Component {
           <span className="about-content">Life is a barren field, </span>
           <span className="about-content">Frozen only with snow. </span>
           <br/>
-          <span className="about-contact">WeChat: txj1269179099</span>
-          <span className="about-contact">E-mail: txiaozhe@gmail.com</span>
+          <span className="about-contact">E-mail: t_xiaoji@qq.com</span>
           <br/>
         </Layout>
       </div>

@@ -89,7 +89,7 @@ class Border extends Component {
 
             <Popover
               content={'E-mail me'}>
-              <a href="mailto:txiaozhe@gmail.com"><Icon style={{margin: 10, fontSize: 16}} type="mail"/></a>
+              <a href="mailto:t_xiaoji@qq.com"><Icon style={{margin: 10, fontSize: 16}} type="mail"/></a>
             </Popover>
           </Layout>
 
