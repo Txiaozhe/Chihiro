@@ -114,7 +114,7 @@ class Border extends Component {
                 backgroundColor: '#ffffff'
               }}>
               <span className="number">{"200"}</span>
-              <span className="desc">{'Tags'}</span>
+              <span className="desc">{'Visits'}</span>
             </Layout>
             <div className="vertical-line"/>
             <Layout
