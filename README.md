@@ -5,6 +5,8 @@
 * JavaScript
 * React
 * Ant-Design
+* Docker
+* Nginx
 
 ## 平台
 * CentOS：centos_7_03_64_40G_alibase_20170710.vhd
