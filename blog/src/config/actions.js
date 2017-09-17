@@ -30,5 +30,7 @@
 'use strict';
 
 export const Actions = {
-  SCREEN_CHANGE: 'SCREEN_CHANGE'
+  SCREEN_CHANGE: 'SCREEN_CHANGE',
+
+  SELECT_BLOG_DETAIL: 'SELECT_BLOG_DETAIL'
 };

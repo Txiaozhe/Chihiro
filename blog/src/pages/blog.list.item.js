@@ -32,6 +32,11 @@
 import React from 'react';
 import {Layout, Icon, Timeline} from 'antd';
 import './item.css';
+import {Time} from '../utils/time';
+import {encode} from '../utils/base64';
+
+import {showBlogDetail} from '../actions';
+import {connect} from 'react-redux';
 
 class BlogItem extends React.Component {
   constructor(props) {
@@ -39,8 +44,9 @@ class BlogItem extends React.Component {
   }
 
   render() {
-    let {title, abstract, created, tags} = this.props;
-
+    let {category, title, abstract, created, tags, contentid} = this.props;
+    let eid = encode(contentid);
+    let {year, mon, day} = Time.getDateObj(created);
     return (
       <Timeline.Item
         className="item-layout"
@@ -50,13 +56,15 @@ class BlogItem extends React.Component {
             type="clock-circle-o"/>
         }>
         <div>
-          <span className="item-time">{created}</span>
+          <span className="item-time">{Time.getDate(created)}</span>
         </div>
 
         <br />
 
         <div>
-          <a href="https://baidu.com">{title}</a>
+          <a
+            onClick={this.onDetail}
+            href={`/#/${category}/${year}/${mon}/${day}/${title}?id=${eid}`}>{title}</a>
           <Icon className="item-tag-margin" type="tag"/><span className="item-tag">      {tags}</span>
         </div>
 
@@ -68,6 +76,12 @@ class BlogItem extends React.Component {
       </Timeline.Item>
     );
   }
+
+  onDetail = () => {
+    let {abstract, tags} = this.props;
+    console.log(abstract, tags);
+    this.props.dispatch(showBlogDetail(abstract, tags));
+  }
 }
 
-export default BlogItem;
+export default connect() (BlogItem);

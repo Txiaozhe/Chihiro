@@ -32,7 +32,10 @@
 import {combineReducers} from "redux";
 
 import {screen} from './screen';
+import {blog} from './blog';
 
 export const reducers = combineReducers({
-  screen
+  screen,
+
+  blog
 });

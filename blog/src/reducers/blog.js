@@ -24,30 +24,30 @@
 
 /*
  * Revision History:
- *     Initial: 2017/08/13        Tang Xiaoji
+ *     Initial: 2017/09/17        Tang Xiaoji
  */
 
 'use strict';
 
-import {compose, createStore, applyMiddleware} from "redux";
-import thunk from "redux-thunk";
-import {createLogger} from "redux-logger";
-import {persistStore, autoRehydrate} from "redux-persist";
+import {Actions} from '../config/index';
 
-import {reducers} from "../reducers";
-const logger = createLogger();
+const initialState = {
+  abstract: '',
+  tags: ''
+};
 
-export default function configureStore(initialState) {
-  let store = createStore(
-    reducers,
-    initialState,
-    compose(
-      applyMiddleware(thunk, logger),
-      autoRehydrate()
-    )
-  );
-
-  persistStore(store);
-
-  return store;
+export function blog(state = initialState, action) {
+  console.log(action);
+  switch (action.type) {
+    case Actions.SELECT_BLOG_DETAIL: {
+      return {
+        ...state,
+        abstract: action.payload.abstract,
+        tags: action.payload.tags
+      }
+    }
+    default: {
+      return state;
+    }
+  }
 }

@@ -5,8 +5,10 @@
   },
   "dependencies": {
     "antd": "^2.1.0",
+    "js-base64": "^2.3.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-markdown": "^2.5.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",

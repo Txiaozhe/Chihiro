@@ -34,7 +34,7 @@ import React, {Component} from 'react';
 import {Timeline, Icon, Layout} from 'antd';
 import Item from './blog.list.item';
 import {Url} from '../config';
-import {Http, Time} from '../utils';
+import {Http} from '../utils';
 
 export default class Frontend extends Component {
   constructor(props) {
@@ -86,7 +86,9 @@ export default class Frontend extends Component {
                     <Item
                       key={i}
                       title={ele.title}
-                      created={Time.getDate(ele.created)}
+                      category={'frontend'}
+                      created={ele.created}
+                      contentid={ele.contentid}
                       tags={ele.tag.split(',').join('，')}
                       abstract={ele.abstract}/>
                   )

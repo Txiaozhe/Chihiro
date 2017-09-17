@@ -8,6 +8,7 @@ import Home from './src/pages/home';
 import Frontend from './src/pages/frontend';
 import Backend from './src/pages/backend';
 import About from './src/pages/about';
+import Detail from './src/pages/blog.detail';
 
 import {Provider} from 'react-redux';
 import store from './src/store';
@@ -36,6 +37,7 @@ const router = (
         <Route path="/frontend" component={Frontend}/>
         <Route path="/backend" component={Backend}/>
         <Route path="/about" component={About}/>
+        <Route path="/:category/:year/:mon/:day/:title" component={Detail} />
       </Route>
     </Router>
   </Provider>

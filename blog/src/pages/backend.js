@@ -86,7 +86,9 @@ export default class Backend extends Component {
                     <Item
                       key={i}
                       title={ele.title}
-                      created={Time.getDate(ele.created)}
+                      category={'backend'}
+                      created={ele.created}
+                      contentid={ele.contentid}
                       tags={ele.tag.split(',').join('，')}
                       abstract={ele.abstract}/>
                   )

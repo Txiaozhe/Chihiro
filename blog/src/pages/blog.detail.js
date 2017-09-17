@@ -24,81 +24,86 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/13        Tang Xiaoji
+ *     Initial: 2017/09/17        Tang Xiaoji
  */
 
 'use strict';
 
 import React, {Component} from 'react';
-import {Timeline, Icon, Layout} from 'antd';
-import Item from './blog.list.item';
-import {Url} from '../config';
-import {Http} from '../utils';
+import {Icon} from 'antd';
+import ReactMarkdown from 'react-markdown';
+import {decode} from '../utils/base64';
+import {Http} from '../utils/http';
+import {Url} from '../config/url';
+import './detail.css';
 
-export default class Home extends Component {
+import {connect} from 'react-redux';
+
+class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [],
-      loading: true
+      content: ''
     }
   }
 
   componentDidMount() {
-    const url = Url.url + Url.getBlogList.url;
+    let {id} = this.props.location.query;
+    let did = decode(id);
+
+    const url = Url.url + Url.getBlogDetail.url;
     Http.post(url, null, {
-      "category": 1
-    }, (list) => {
+      "id": parseInt(did)
+    }, (data) => {
       this.setState({
-        list,
-        loading: false
+        content: data.Content
       });
     }, (err) => {
-      setTimeout(() => {
-        this.setState({
-          loading: false
-        });
-      });
+      console.log(err);
     });
   }
 
   render() {
-    let {list, loading} = this.state;
+    let {content} = this.state;
+    let {category, year, mon, day, title} = this.props.params;
+
+    let {abstract, tags} = this.props;
+    console.log(abstract, tags);
+
     return (
-      <div
-        className="list">
-        {
-          loading ? (
-            <Layout
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: '#fff'
-              }}>
-              <Icon
-                type="loading"
-                className="spinner"/>
-            </Layout>
-          ) : (
-            <Timeline>
-              {
-                list.map((ele, i) => {
-                  return (
-                    <Item
-                      key={i}
-                      title={ele.title}
-                      category={'home'}
-                      contentid={ele.contentid}
-                      created={ele.created}
-                      tags={ele.tag.split(',').join('，')}
-                      abstract={ele.abstract}/>
-                  )
-                })
-              }
-            </Timeline>
-          )
-        }
+      <div className="list">
+        <div>
+          <span className="title">{title}</span>
+        </div>
+
+        <div>
+          <span className="date">{`${year}-${mon}-${day}`}</span>
+
+          <span className="category">{category}</span>
+
+          <Icon type="tag" style={{marginLeft: 50, fontSize: 16}} />
+          <span className="tags">{tags}</span>
+        </div>
+
+        <br/>
+        <span className="abstract">{abstract}</span>
+        <hr className="line"/>
+
+        <br/>
+
+        <ReactMarkdown className="markdown" source={content} />
+
+        <br/>
       </div>
     );
   }
 }
+
+function select(store) {
+  return {
+    abstract: store.blog.abstract,
+    tags: store.blog.tags
+  }
+}
+
+export default connect(select) (Detail);

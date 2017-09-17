@@ -1,0 +1,34 @@
+.list {
+    width: 600px;
+}
+
+.markdown {
+    font-size: 14px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.category {
+    font-size: 16px;
+    margin-left: 50px;
+}
+
+.date {
+    font-size: 16px;
+}
+
+.tags {
+    font-size: 16px;
+    margin-left: 4px;
+}
+
+.abstract {
+    font-size: 14px;
+}
+
+.line {
+    margin-top: 6px;
+}

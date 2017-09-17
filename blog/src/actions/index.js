@@ -30,7 +30,10 @@
 'use strict';
 
 import {screenChange} from './screen';
+import {showBlogDetail} from './blog';
 
 module.exports = {
-  screenChange
+  screenChange,
+
+  showBlogDetail
 };
