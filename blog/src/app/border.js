@@ -45,14 +45,14 @@ class Border extends Component {
       <Layout
         style={{
           backgroundColor: '#fff',
-          justifyContent: 'center',
           alignItems: 'center',
+          marginTop: 200,
           height: 600,
           width: 80,
           marginLeft: 60
         }}>
 
-        <Affix offsetTop={50}>
+        <Affix offsetTop={100}>
           <Layout style={{
             height: 50,
             width: 200,
@@ -158,4 +158,4 @@ function select(store) {
   }
 }
 
-export default connect(select) (Border);
+export default connect(select)(Border);
