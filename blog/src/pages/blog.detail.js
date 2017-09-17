@@ -30,7 +30,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Icon} from 'antd';
+import {Icon, BackTop} from 'antd';
 import ReactMarkdown from 'react-markdown';
 import {decode} from '../utils/base64';
 import {Http} from '../utils/http';
@@ -72,6 +72,8 @@ class Detail extends Component {
 
     return (
       <div className="list">
+        <BackTop />
+
         <div>
           <span className="title">{title}</span>
         </div>

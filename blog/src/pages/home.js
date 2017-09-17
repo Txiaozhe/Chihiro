@@ -30,7 +30,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Timeline, Icon, Layout} from 'antd';
+import {Timeline, Icon, Layout, BackTop} from 'antd';
 import Item from './blog.list.item';
 import {Url} from '../config';
 import {Http} from '../utils';
@@ -81,6 +81,7 @@ export default class Home extends Component {
             </Layout>
           ) : (
             <Timeline>
+              <BackTop />
               {
                 list.map((ele, i) => {
                   return (
