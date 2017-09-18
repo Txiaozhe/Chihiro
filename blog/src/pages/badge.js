@@ -48,8 +48,7 @@ class Badge extends Component {
         style={{
           backgroundColor: '#f8f9fa',
           padding: 10,
-          borderRadius: 4,
-          marginTop: 20
+          borderRadius: 4
         }}>
 
         <Layout style={{flexDirection: 'row', backgroundColor: '#f8f9fa',}}>

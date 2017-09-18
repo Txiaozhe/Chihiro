@@ -40,6 +40,7 @@ import './markdown.css';
 
 import {connect} from 'react-redux';
 import Badge from "./badge";
+import {blogContent} from '../config/test'
 
 class Detail extends Component {
   constructor(props) {
@@ -78,9 +79,12 @@ class Detail extends Component {
 
         <div>
           <span className="title">{title}</span>
+
+          <a><Icon style={{fontSize: 24, marginLeft: 20}} type="star-o" /></a>
+          <span className="star">200</span>
         </div>
 
-        <div>
+        <div className="date-div">
           <span className="date">{`${year}-${mon}-${day}`}</span>
 
           <span className="category">{category}</span>
@@ -89,13 +93,14 @@ class Detail extends Component {
           <span className="tags">{tags}</span>
         </div>
 
-        <br/>
-        <span className="abstract">{abstract}</span>
+        <div className="abstract-div">
+          <span className="abstract-title">摘要：</span>
+          <span className="abstract">{abstract}</span>
+        </div>
+
         <hr className="line"/>
 
-        <br/>
-
-        <ReactMarkdown className="markdownWrapper" source={content} />
+        <ReactMarkdown className="markdownWrapper" source={blogContent} />
 
         <br/>
 

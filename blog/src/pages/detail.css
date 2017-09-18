@@ -7,9 +7,18 @@
     font-weight: bold;
 }
 
+.star {
+    margin-left: 4px;
+    font-size: 18px;
+}
+
 .category {
     font-size: 16px;
     margin-left: 50px;
+}
+
+.date-div {
+    margin-top: 6px;
 }
 
 .date {
@@ -19,6 +28,16 @@
 .tags {
     font-size: 16px;
     margin-left: 4px;
+}
+
+.abstract-div {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.abstract-title {
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .abstract {
