@@ -34,6 +34,7 @@ import "./index.css";
 import {Layout, Affix, Icon, Popover} from 'antd';
 
 import {connect} from 'react-redux';
+import Message from "./message";
 
 class Border extends Component {
   constructor(props) {
@@ -132,19 +133,37 @@ class Border extends Component {
           <Layout style={{
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#fff'
+            backgroundColor: '#fff',
+            flexDirection: 'row'
           }}>
             <Popover
               content={'Source Code'}>
               <a href="https://github.com/Txiaozhe/Chihiro">
                 <Icon
                   style={{
-                    fontSize: 20
+                    fontSize: 20,
+                    padding: 10
                   }}
                   type="desktop"/>
               </a>
             </Popover>
+
+            <Popover
+              content={'CockroachDB'}>
+              <a href="https://cockroach.txiaozhe.top">
+                <Icon
+                  style={{
+                    fontSize: 19,
+                    padding: 10,
+                    paddingBottom: 12
+                  }}
+                  type="database"/>
+              </a>
+            </Popover>
           </Layout>
+
+          <br/>
+          <Message />
         </Affix>
       </Layout>
     )
