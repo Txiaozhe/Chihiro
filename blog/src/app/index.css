@@ -26,6 +26,12 @@
 }
 
 .icp:hover {
-    font-size:12px;
+    font-size: 12px;
     color: #999999;
+}
+
+.footer-time {
+    font-size:14px;
+    color: #999999;
+    margin-top: 20px;
 }

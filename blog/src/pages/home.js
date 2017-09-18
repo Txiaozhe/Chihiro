@@ -30,7 +30,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Timeline, Icon, Layout, BackTop} from 'antd';
+import {Timeline, Icon, Layout, BackTop, Input, Avatar, Button} from 'antd';
 import Item from './blog.list.item';
 import {Url} from '../config';
 import {Http} from '../utils';
@@ -40,7 +40,8 @@ export default class Home extends Component {
     super(props);
     this.state = {
       list: [],
-      loading: true
+      loading: true,
+      writing: false
     }
   }
 
@@ -63,7 +64,7 @@ export default class Home extends Component {
   }
 
   render() {
-    let {list, loading} = this.state;
+    let {list, loading, writing} = this.state;
     return (
       <div
         className="list">
@@ -81,7 +82,7 @@ export default class Home extends Component {
             </Layout>
           ) : (
             <Timeline>
-              <BackTop />
+              <BackTop/>
               {
                 list.map((ele, i) => {
                   return (
@@ -98,6 +99,36 @@ export default class Home extends Component {
               }
             </Timeline>
           )
+        }
+
+        {
+          <Layout
+            style={{
+              backgroundColor: '#f8f9fa',
+              padding: 10,
+              borderRadius: 4
+            }}>
+
+            <Layout style={{flexDirection: 'row', backgroundColor: '#f8f9fa',}}>
+              <Avatar style={{ backgroundColor: '#87d068', marginRight: 10 }} icon="user" />
+              <Input.TextArea
+                style={{
+                  fontSize: 15
+                }}
+                onFocus={() => this.setState({writing: true})}
+                onBlur={() => this.setState({writing: false})}
+                placeholder="评价一下" autosize={{minRows: 2, maxRows: 6}}/>
+            </Layout>
+
+            {
+              writing ? (
+                <Layout style={{flexDirection: 'row', marginTop: 10, backgroundColor: '#f8f9fa'}}>
+                  <Layout style={{flex: 1, backgroundColor: '#f8f9fa'}}/>
+                  <Button style={{width: 60}}>提交</Button>
+                </Layout>
+              ) : null
+            }
+          </Layout>
         }
       </div>
     );
