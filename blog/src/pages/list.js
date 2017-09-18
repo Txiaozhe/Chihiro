@@ -24,54 +24,62 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/13        Tang Xiaoji
+ *     Initial: 2017/09/18        Tang Xiaoji
  */
 
 'use strict';
 
 import React, {Component} from 'react';
-import List from './list';
+import './list';
+import {Timeline, Icon, Layout, BackTop} from 'antd';
+import Item from './blog.list.item';
 
-import {Url} from '../config';
-import {Http} from '../utils';
-import {blog} from '../config/test';
-
-export default class Home extends Component {
+class List extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      list: [],
-      loading: true
-    }
-  }
-
-  componentDidMount() {
-    const url = Url.url + Url.getBlogList.url;
-    Http.post(url, null, {
-      "category": 1
-    }, (list) => {
-      this.setState({
-        list,
-        loading: false
-      });
-    }, (err) => {
-      setTimeout(() => {
-        this.setState({
-          loading: false
-        });
-      });
-    });
   }
 
   render() {
-    let {list, loading} = this.state;
+    let {loading, data} = this.props;
 
     return (
-      <div>
-        <List
-          loading={false}
-          data={blog} />
+      <div
+        className="list">
+        {
+          loading ? (
+            <Layout
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: '#fff'
+              }}>
+              <Icon
+                type="loading"
+                className="spinner"/>
+            </Layout>
+          ) : (
+            <Timeline>
+              <BackTop/>
+              {
+                data.map((ele, i) => {
+                  return (
+                    <Item
+                      key={i}
+                      title={ele.title}
+                      category={'home'}
+                      contentid={ele.contentid}
+                      created={ele.created}
+                      tags={ele.tag.split(',').join('，')}
+                      abstract={ele.abstract}/>
+                  )
+                })
+              }
+            </Timeline>
+          )
+        }
       </div>
     );
   }
 }
+
+export default List;

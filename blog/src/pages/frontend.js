@@ -31,10 +31,11 @@
 
 
 import React, {Component} from 'react';
-import {Timeline, Icon, Layout, BackTop} from 'antd';
-import Item from './blog.list.item';
+import List from './list';
+
 import {Url} from '../config';
 import {Http} from '../utils';
+import {blog} from '../config/test';
 
 export default class Frontend extends Component {
   constructor(props) {
@@ -64,41 +65,9 @@ export default class Frontend extends Component {
   render() {
     let {list, loading} = this.state;
     return (
-      <div
-        className="list">
-        {
-          loading ? (
-            <Layout
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: '#fff'
-              }}>
-              <Icon
-                type="loading"
-                className="spinner"/>
-            </Layout>
-          ) : (
-            <Timeline>
-              <BackTop />
-              {
-                list.map((ele, i) => {
-                  return (
-                    <Item
-                      key={i}
-                      title={ele.title}
-                      category={'frontend'}
-                      created={ele.created}
-                      contentid={ele.contentid}
-                      tags={ele.tag.split(',').join('，')}
-                      abstract={ele.abstract}/>
-                  )
-                })
-              }
-            </Timeline>
-          )
-        }
-      </div>
+      <List
+        loading={false}
+        data={blog} />
     );
   }
 }

@@ -39,6 +39,7 @@ import './detail.css';
 import './markdown.css';
 
 import {connect} from 'react-redux';
+import Badge from "./badge";
 
 class Detail extends Component {
   constructor(props) {
@@ -97,6 +98,8 @@ class Detail extends Component {
         <ReactMarkdown className="markdownWrapper" source={content} />
 
         <br/>
+
+        <Badge/>
       </div>
     );
   }

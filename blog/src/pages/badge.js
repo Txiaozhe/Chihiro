@@ -24,54 +24,56 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/13        Tang Xiaoji
+ *     Initial: 2017/09/18        Tang Xiaoji
  */
 
 'use strict';
 
 import React, {Component} from 'react';
-import List from './list';
+import {Layout, Input, Avatar, Button} from 'antd';
 
-import {Url} from '../config';
-import {Http} from '../utils';
-import {blog} from '../config/test';
-
-export default class Home extends Component {
+class Badge extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [],
-      loading: true
+      writing: false
     }
   }
 
-  componentDidMount() {
-    const url = Url.url + Url.getBlogList.url;
-    Http.post(url, null, {
-      "category": 1
-    }, (list) => {
-      this.setState({
-        list,
-        loading: false
-      });
-    }, (err) => {
-      setTimeout(() => {
-        this.setState({
-          loading: false
-        });
-      });
-    });
-  }
-
   render() {
-    let {list, loading} = this.state;
+    let {writing} = this.state;
 
     return (
-      <div>
-        <List
-          loading={false}
-          data={blog} />
-      </div>
+      <Layout
+        style={{
+          backgroundColor: '#f8f9fa',
+          padding: 10,
+          borderRadius: 4,
+          marginTop: 20
+        }}>
+
+        <Layout style={{flexDirection: 'row', backgroundColor: '#f8f9fa',}}>
+          <Avatar style={{ backgroundColor: '#87d068', marginRight: 10 }} icon="user" />
+          <Input.TextArea
+            style={{
+              fontSize: 15
+            }}
+            onFocus={() => this.setState({writing: true})}
+            onBlur={() => this.setState({writing: false})}
+            placeholder="评价一下" autosize={{minRows: 2, maxRows: 6}}/>
+        </Layout>
+
+        {
+          writing ? (
+            <Layout style={{flexDirection: 'row', marginTop: 10, backgroundColor: '#f8f9fa'}}>
+              <Layout style={{flex: 1, backgroundColor: '#f8f9fa'}}/>
+              <Button style={{width: 60}}>提交</Button>
+            </Layout>
+          ) : null
+        }
+      </Layout>
     );
   }
 }
+
+export default Badge;
