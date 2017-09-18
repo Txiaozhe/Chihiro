@@ -36,7 +36,8 @@ class Badge extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      writing: false
+      writing: false,
+      badge: ''
     }
   }
 
@@ -58,7 +59,8 @@ class Badge extends Component {
               fontSize: 15
             }}
             onFocus={() => this.setState({writing: true})}
-            onBlur={() => this.setState({writing: false})}
+            onBlur={this.onWriteBlur}
+            onChange={(text) => this.setState({badge: text.target.value})}
             placeholder="评价一下" autosize={{minRows: 2, maxRows: 6}}/>
         </Layout>
 
@@ -66,12 +68,23 @@ class Badge extends Component {
           writing ? (
             <Layout style={{flexDirection: 'row', marginTop: 10, backgroundColor: '#f8f9fa'}}>
               <Layout style={{flex: 1, backgroundColor: '#f8f9fa'}}/>
-              <Button style={{width: 60}}>提交</Button>
+              <Button style={{width: 60}} onClick={this.onSubmit}>提交</Button>
             </Layout>
           ) : null
         }
       </Layout>
     );
+  }
+
+  onWriteBlur = () => {
+    let {badge} = this.state;
+    if(!badge) {
+      this.setState({writing: false})
+    }
+  };
+
+  onSubmit = () => {
+    let {badge} = this.state;
   }
 }
 

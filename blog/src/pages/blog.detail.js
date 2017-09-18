@@ -80,7 +80,7 @@ class Detail extends Component {
         <div>
           <span className="title">{title}</span>
 
-          <a><Icon style={{fontSize: 24, marginLeft: 20}} type="star-o" /></a>
+          <a><Icon style={{fontSize: 24, marginLeft: 20, color: '#d68d81'}} type="star-o" /></a>
           <span className="star">200</span>
         </div>
 
