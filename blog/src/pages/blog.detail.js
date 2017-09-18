@@ -36,6 +36,7 @@ import {decode} from '../utils/base64';
 import {Http} from '../utils/http';
 import {Url} from '../config/url';
 import './detail.css';
+import './markdown.css';
 
 import {connect} from 'react-redux';
 
@@ -93,7 +94,7 @@ class Detail extends Component {
 
         <br/>
 
-        <ReactMarkdown className="markdown" source={content} />
+        <ReactMarkdown className="markdownWrapper" source={content} />
 
         <br/>
       </div>
