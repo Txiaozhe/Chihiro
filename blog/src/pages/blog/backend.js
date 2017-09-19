@@ -34,7 +34,7 @@ import React, {Component} from 'react';
 import {Timeline, Icon, Layout, BackTop} from 'antd';
 import List from './list';
 
-import {Url} from '../../config/index';
+import {Url, CategoryIndex} from '../../config/index';
 import {Http, Time} from '../../utils/index';
 import {blog} from '../../config/test';
 
@@ -50,7 +50,7 @@ export default class Backend extends Component {
   componentDidMount() {
     const url = Url.url + Url.getBlogList.url;
     Http.post(url, null, {
-      "category": 3
+      "category": CategoryIndex.backend
     }, (list) => {
       this.setState({
         list,
@@ -67,8 +67,8 @@ export default class Backend extends Component {
     let {list, loading} = this.state;
     return (
       <List
-        loading={false}
-        data={blog} />
+        loading={loading}
+        data={list} />
     );
   }
 }

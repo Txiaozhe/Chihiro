@@ -32,27 +32,23 @@
 import {Url} from './url';
 import {Actions} from './actions';
 
-const Category = {
-  all: {
-    type: 0,
-    title: 'all'
-  },
-  frontend: {
-    type: 1,
-    title: 'frontend'
-  },
-  backend: {
-    type: 2,
-    title: 'backend'
-  },
-  docker: {
-    type: 3,
-    title: 'docker'
-  }
+const CategoryIndex = {
+  general: 0,
+  frontend: 1,
+  backend: 2,
+  docker: 3
+};
+
+const CategoryTitle = {
+  0: 'general',
+  1: 'frontend',
+  2: 'backend',
+  3: 'docker'
 };
 
 module.exports = {
   Url,
   Actions,
-  Category
+  CategoryIndex,
+  CategoryTitle
 };

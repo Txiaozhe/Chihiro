@@ -32,7 +32,7 @@
 import React, {Component} from 'react';
 import List from '../blog/list';
 
-import {Url} from '../../config/index';
+import {Url, CategoryIndex} from '../../config/index';
 import {Http} from '../../utils/index';
 import {blog} from '../../config/test';
 
@@ -48,7 +48,7 @@ export default class Home extends Component {
   componentDidMount() {
     const url = Url.url + Url.getBlogList.url;
     Http.post(url, null, {
-      "category": 1
+      "category": CategoryIndex.general
     }, (list) => {
       this.setState({
         list,
@@ -69,8 +69,8 @@ export default class Home extends Component {
     return (
       <div>
         <List
-          loading={false}
-          data={blog} />
+          loading={loading}
+          data={list} />
       </div>
     );
   }

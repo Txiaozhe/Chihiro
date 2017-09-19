@@ -30,7 +30,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Layout, Avatar, Input} from 'antd';
+import {Layout, Avatar} from 'antd';
 import {Color} from '../../res';
 import {badgeList} from '../../config/test';
 

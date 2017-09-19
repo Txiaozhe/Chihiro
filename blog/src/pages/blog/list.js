@@ -67,7 +67,7 @@ class List extends Component {
                     <Item
                       key={i}
                       title={ele.title}
-                      category={'home'}
+                      category={ele.category}
                       contentid={ele.contentid}
                       created={ele.created}
                       tags={ele.tag.split(',').join('，')}

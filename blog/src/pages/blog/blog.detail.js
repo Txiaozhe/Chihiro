@@ -34,7 +34,7 @@ import {Icon, BackTop, Layout} from 'antd';
 import ReactMarkdown from 'react-markdown';
 import {base64} from '../../utils/base64';
 import {Http} from '../../utils/http';
-import {Url} from '../../config/url';
+import {Url, CategoryTitle} from '../../config';
 import {Color} from '../../res';
 import './detail.css';
 import './markdown.css';
@@ -100,7 +100,7 @@ class Detail extends Component {
         <div className="date-div">
           <span className="date">{`${year}-${mon}-${day}`}</span>
 
-          <span className="category">{category}</span>
+          <span className="category">{CategoryTitle[category]}</span>
 
           <Icon type="tag" style={{marginLeft: 50, fontSize: 16}}/>
           <span className="tags">{tags}</span>
