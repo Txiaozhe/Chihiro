@@ -30,7 +30,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Icon, BackTop} from 'antd';
+import {Icon, BackTop, Layout} from 'antd';
 import ReactMarkdown from 'react-markdown';
 import {base64} from '../../utils/base64';
 import {Http} from '../../utils/http';
@@ -76,21 +76,32 @@ class Detail extends Component {
 
     return (
       <div className="list">
-        <BackTop />
+        <BackTop/>
 
-        <div>
+        <Layout style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          backgroundColor: Color.white
+        }}>
           <span className="title">{title}</span>
 
-          <a><Icon style={{fontSize: 24, marginLeft: 20, color: Color.starRed}} type="star-o" /></a>
-          <span className="star">200</span>
-        </div>
+          <Layout style={{
+            alignItems: 'center',
+            flexDirection: 'row',
+            backgroundColor: Color.white
+          }}>
+            <a><Icon style={{fontSize: 24, marginLeft: 20, color: Color.starRed}} type="star-o"/></a>
+
+            <span className="star">200</span>
+          </Layout>
+        </Layout>
 
         <div className="date-div">
           <span className="date">{`${year}-${mon}-${day}`}</span>
 
           <span className="category">{category}</span>
 
-          <Icon type="tag" style={{marginLeft: 50, fontSize: 16}} />
+          <Icon type="tag" style={{marginLeft: 50, fontSize: 16}}/>
           <span className="tags">{tags}</span>
         </div>
 
@@ -101,7 +112,7 @@ class Detail extends Component {
 
         <hr className="line"/>
 
-        <ReactMarkdown className="markdownWrapper" source={blogContent} />
+        <ReactMarkdown className="markdownWrapper" source={blogContent}/>
 
         <br/>
 
@@ -118,4 +129,4 @@ function select(store) {
   }
 }
 
-export default connect(select) (Detail);
+export default connect(select)(Detail);
