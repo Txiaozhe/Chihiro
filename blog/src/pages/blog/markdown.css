@@ -91,7 +91,7 @@
 }
 .markdownWrapper blockquote,
 .markdownWrapper q {
-    border-left: 2px solid #009688;
+    border-left: 2px solid #999999;
     padding: 0 10px;
     color: #777;
     quotes: none;
