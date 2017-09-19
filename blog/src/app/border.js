@@ -34,7 +34,6 @@ import "./index.css";
 import {Layout, Affix, Icon, Popover} from 'antd';
 
 import {connect} from 'react-redux';
-import Message from "./message";
 
 class Border extends Component {
   constructor(props) {
@@ -150,7 +149,7 @@ class Border extends Component {
 
             <Popover
               content={'CockroachDB'}>
-              <a href="https://cockroach.txiaozhe.top">
+              <a href="http://cockroach.txiaozhe.top">
                 <Icon
                   style={{
                     fontSize: 19,
@@ -161,9 +160,6 @@ class Border extends Component {
               </a>
             </Popover>
           </Layout>
-
-          <br/>
-          <Message />
         </Affix>
       </Layout>
     )

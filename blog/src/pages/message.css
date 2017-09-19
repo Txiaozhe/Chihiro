@@ -1,0 +1,18 @@
+.message-list {
+    overflow-y: scroll;
+    height: 240px;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.message-content {
+    color: #333333;
+    margin-left: 4px;
+}
+
+.message-time {
+    color: #444444;
+    font-size: 12px;
+    margin-left: 4px;
+}
