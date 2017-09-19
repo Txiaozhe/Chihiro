@@ -30,10 +30,10 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Icon, BackTop, Layout} from 'antd';
+import {Icon, BackTop, Layout, message} from 'antd';
 import ReactMarkdown from 'react-markdown';
 import {base64} from '../../utils/base64';
-import {Http} from '../../utils/http';
+import {Http} from '../../utils';
 import {Url, CategoryTitle} from '../../config';
 import {Color} from '../../res';
 import './detail.css';
@@ -47,7 +47,8 @@ class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: ''
+      content: '',
+      star: 0
     }
   }
 
@@ -65,13 +66,28 @@ class Detail extends Component {
     }, (err) => {
       console.log(err);
     });
+
+    let {key} = this.props.location.query;
+    let blogid = base64.decode(key);
+    const getStarUrl = Url.url + Url.getStar.url;
+    Http.post(getStarUrl, null, {
+      "id": blogid
+    }, (data) => {
+      if(data.star) {
+        this.setState({
+          star: data.star
+        });
+      }
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   render() {
     let {category, year, mon, day, title} = this.props.params;
     let {s, key} = this.props.location.query;
     let {abstract, tags} = this.props;
-    let {content} = this.state;
+    let {content, star} = this.state;
     let blogid = base64.decode(key);
 
     return (
@@ -90,9 +106,9 @@ class Detail extends Component {
             flexDirection: 'row',
             backgroundColor: Color.white
           }}>
-            <a><Icon style={{fontSize: 24, marginLeft: 20, color: Color.starRed}} type="star-o"/></a>
+            <a onClick={this.onStar}><Icon style={{fontSize: 24, marginLeft: 20, color: Color.starRed}} type="star-o"/></a>
 
-            <span className="star">{s}</span>
+            <span className="star">{star}</span>
           </Layout>
         </Layout>
 
@@ -124,6 +140,25 @@ class Detail extends Component {
         <BadgeList blogid={blogid} />
       </div>
     );
+  }
+
+  onStar = () => {
+    let {key} = this.props.location.query;
+    let blogid = base64.decode(key);
+    console.log(blogid);
+    const url = Url.url + Url.setStar.url;
+    Http.post(url, null, {
+      id: blogid
+    }, (data) => {
+      console.log(data);
+      if(data.star) {
+        this.setState({
+          star: data.star
+        });
+      }
+    }, (err) => {
+      console.log(err);
+    });
   }
 }
 

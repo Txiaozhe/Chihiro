@@ -42,7 +42,6 @@ class List extends Component {
 
   render() {
     let {loading, data} = this.props;
-
     return (
       <div
         className="list">

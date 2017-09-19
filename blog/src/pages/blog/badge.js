@@ -114,7 +114,7 @@ class Badge extends Component {
 
     const url = Url.url + Url.createBadge.url;
     Http.post(url, null, {
-      "blogid": parseInt(blogid),
+      "blogid": blogid,
       "name": name ? name : 'Anonymous',
       "avatar": Color.icons[avatar],
       "content": content

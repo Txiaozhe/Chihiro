@@ -69,5 +69,13 @@ export const Url = {
   },
   getBadgeById: {
     url: '/badge/get'
+  },
+
+  setStar: {
+    url: '/blog/star'
+  },
+
+  getStar: {
+    url: '/blog/star/get'
   }
 };

@@ -46,6 +46,7 @@ class BlogItem extends React.Component {
 
   render() {
     let {category, title, abstract, created, tags, contentid, star, id} = this.props;
+    console.log(id);
     let key_id = base64.encode(id);
     let eid = base64.encode(contentid);
     let {year, mon, day} = Time.getDateObj(created);
