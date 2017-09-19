@@ -66,6 +66,7 @@ class List extends Component {
                   return (
                     <Item
                       key={i}
+                      id={ele.id}
                       title={ele.title}
                       category={ele.category}
                       contentid={ele.contentid}

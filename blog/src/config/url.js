@@ -61,5 +61,13 @@ export const Url = {
   // blog detail github
   getGithubBlogDetail: {
     url: '/blog/github/detail'
+  },
+
+  // badge
+  createBadge: {
+    url: '/badge/create'
+  },
+  getBadgeById: {
+    url: '/badge/get'
   }
 };

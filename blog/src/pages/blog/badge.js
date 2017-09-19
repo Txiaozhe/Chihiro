@@ -30,18 +30,20 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Layout, Input, Avatar, Button, Radio} from 'antd';
+import {Layout, Input, Button, Radio, message} from 'antd';
 const RadioGroup = Radio.Group;
 import {Color, String} from '../../res';
-import BadgeList from "./badge.list";
+import {Http} from '../../utils';
+import {Url} from '../../config';
 
 class Badge extends Component {
   constructor(props) {
     super(props);
     this.state = {
       writing: false,
-      badge: '',
-      isAnonymous: 'yes'
+      isAnonymous: 'yes',
+      content: '',
+      name: ''
     }
   }
 
@@ -63,7 +65,7 @@ class Badge extends Component {
             }}
             onFocus={() => this.setState({writing: true})}
             onBlur={this.onWriteBlur}
-            onChange={(text) => this.setState({badge: text.target.value})}
+            onChange={(text) => this.setState({content: text.target.value})}
             placeholder={String.badge_placeholder} autosize={{minRows: 2, maxRows: 6}}/>
         </Layout>
 
@@ -88,6 +90,7 @@ class Badge extends Component {
                 style={{
                   width: 100
                 }}
+                onChange={(text) => this.setState({name: text.target.value})}
                 placeholder="Your Name" /> : null}
               <Button style={{width: 80, marginLeft: 10}} onClick={this.onSubmit}>{String.badge_submit}</Button>
             </Layout>
@@ -98,14 +101,36 @@ class Badge extends Component {
   }
 
   onWriteBlur = () => {
-    let {badge} = this.state;
-    if(!badge) {
+    let {content} = this.state;
+    if(!content) {
       this.setState({writing: false})
     }
   };
 
   onSubmit = () => {
-    let {badge} = this.state;
+    let {blogid} = this.props;
+    let {content, name} = this.state;
+    let avatar = Math.floor(Math.random() * 10);
+
+    const url = Url.url + Url.createBadge.url;
+    Http.post(url, null, {
+      "blogid": parseInt(blogid),
+      "name": name ? name : 'Anonymous',
+      "avatar": Color.icons[avatar],
+      "content": content
+    }, (data) => {
+      if(!data) {
+        message.info('发布成功！');
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      } else {
+        message.error('发布失败，请检查网络设置！');
+      }
+    }, (err) => {
+      message.error('发布失败，请检查网络设置！');
+      console.log(err);
+    });
   };
 
   onChangeAnonymous = (e) => {

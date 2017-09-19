@@ -32,18 +32,18 @@
 import React, {Component} from 'react';
 import {Layout, Avatar} from 'antd';
 import {Color} from '../../res';
-import {badgeList} from '../../config/test';
+import {Http, Time} from '../../utils';
+import {Url} from '../../config';
 
 class Item extends Component {
   render() {
-    let {name, content, created, f} = this.props;
-    let iconColor = Math.floor(Math.random()*10);
+    let {name, content, created, f, avatar} = this.props;
 
     return (
       <div>
         <Layout style={{justifyContent: 'center', backgroundColor: Color.white, padding: 10}}>
           <Layout style={{backgroundColor: Color.white, flexDirection: 'row', alignItems: 'center'}}>
-            <Avatar style={{backgroundColor: Color.icons[iconColor], marginRight: 10}}>
+            <Avatar style={{backgroundColor: avatar, marginRight: 10}}>
               <span style={{fontSize: 16}}>{name.substring(0, 1).toUpperCase()}</span>
             </Avatar>
             <Layout style={{
@@ -52,7 +52,7 @@ class Item extends Component {
               <span style={{color: Color.favouriteBlack, fontSize: 16}}>{name}</span>
               <Layout style={{backgroundColor: Color.white, flexDirection: 'row'}}>
                 <span style={{color: Color.grey}}>{f + 1} F · </span>
-                <span style={{color: Color.grey, marginLeft: 4}}>{created}</span>
+                <span style={{color: Color.grey, marginLeft: 4}}>{Time.getDate(created)}</span>
               </Layout>
             </Layout>
           </Layout>
@@ -71,9 +71,30 @@ class Item extends Component {
 class BadgeList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      badgeList: []
+    }
+  }
+
+  componentDidMount() {
+    const {blogid} = this.props;
+    const url = Url.url + Url.getBadgeById.url;
+    Http.post(url, null, {
+      "blogid": parseInt(blogid)
+    }, (list) => {
+      if(list && list.length !== 0) {
+        this.setState({
+          badgeList: list
+        });
+      }
+    }, (err) => {
+
+    });
   }
 
   render() {
+    let {badgeList} = this.state;
+
     return (
       <div>
         {
@@ -83,6 +104,7 @@ class BadgeList extends Component {
                 key={i}
                 f={i}
                 name={ele.name}
+                avatar={ele.avatar}
                 content={ele.content}
                 created={ele.created}/>
             )

@@ -69,9 +69,10 @@ class Detail extends Component {
 
   render() {
     let {category, year, mon, day, title} = this.props.params;
-    let {s} = this.props.location.query;
+    let {s, key} = this.props.location.query;
     let {abstract, tags} = this.props;
     let {content} = this.state;
+    let blogid = base64.decode(key);
 
     return (
       <div className="list">
@@ -117,10 +118,10 @@ class Detail extends Component {
 
         <br/>
 
-        <Badge/>
+        <Badge blogid={blogid} />
 
         <br/>
-        <BadgeList/>
+        <BadgeList blogid={blogid} />
       </div>
     );
   }
