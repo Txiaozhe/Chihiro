@@ -30,7 +30,8 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Layout, Input, Avatar, Button} from 'antd';
+import {Layout, Input, Avatar, Button, Radio} from 'antd';
+const RadioGroup = Radio.Group;
 import {Color, String} from '../../res';
 
 class Badge extends Component {
@@ -38,12 +39,13 @@ class Badge extends Component {
     super(props);
     this.state = {
       writing: false,
-      badge: ''
+      badge: '',
+      isAnonymous: 'yes'
     }
   }
 
   render() {
-    let {writing} = this.state;
+    let {writing, isAnonymous} = this.state;
 
     return (
       <Layout
@@ -67,9 +69,25 @@ class Badge extends Component {
 
         {
           writing ? (
-            <Layout style={{flexDirection: 'row', marginTop: 10, backgroundColor: Color.favouriteGrey}}>
+            <Layout style={{flexDirection: 'row', marginTop: 10, backgroundColor: Color.favouriteGrey, alignItems: 'center'}}>
               <Layout style={{flex: 1, backgroundColor: Color.favouriteGrey}}/>
-              <Button style={{width: 80}} onClick={this.onSubmit}>{String.badge_submit}</Button>
+              <RadioGroup
+                onChange={this.onChangeAnonymous}
+                value={this.state.isAnonymous}>
+                <span style={{
+                  marginRight: 8
+                }}>be anonymous ?   </span>
+                <Radio value={'yes'}>Yes</Radio>
+                <Radio value={'no'} style={{
+                  marginLeft: 2
+                }}>No</Radio>
+              </RadioGroup>
+              {isAnonymous === 'no' ? <Input
+                style={{
+                  width: 100
+                }}
+                placeholder="Your Name" /> : null}
+              <Button style={{width: 80, marginLeft: 10}} onClick={this.onSubmit}>{String.badge_submit}</Button>
             </Layout>
           ) : null
         }
@@ -86,6 +104,12 @@ class Badge extends Component {
 
   onSubmit = () => {
     let {badge} = this.state;
+  };
+
+  onChangeAnonymous = (e) => {
+    this.setState({
+      isAnonymous: e.target.value,
+    });
   }
 }
 
