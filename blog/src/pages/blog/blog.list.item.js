@@ -34,6 +34,7 @@ import {Icon, Timeline} from 'antd';
 import './item.css';
 import {Time} from '../../utils';
 import {base64} from '../../utils';
+import {Color} from '../../res';
 
 import {showBlogDetail} from '../../actions';
 import {connect} from 'react-redux';
@@ -52,7 +53,7 @@ class BlogItem extends React.Component {
         className="item-layout"
         dot={
           <Icon
-            style={{color: '#000'}}
+            style={{color: Color.black}}
             type="clock-circle-o"/>
         }>
         <div>

@@ -33,6 +33,8 @@ import React, {Component} from 'react';
 import "./index.css";
 import {Icon, Col, Row, Menu} from 'antd';
 
+import {Color} from '../res';
+
 const menu = [
   {
     key: 'home',
@@ -89,11 +91,11 @@ export default class HeaderMenu extends Component {
               menu.map((ele) => {
                 return (
                   <Menu.Item
-                    style={{borderColor: this.state.selectMenuKey === ele.key ? '#000' : '#fff'}}
+                    style={{borderColor: this.state.selectMenuKey === ele.key ? Color.black : Color.white}}
                     key={ele.key}>
                     <a href={`/#/${ele.key}`}>
-                      <Icon style={{color: '#333333'}} type={ele.icon}/>
-                      <span style={{color: '#333333'}}>{ele.title}</span>
+                      <Icon style={{color: Color.favouriteBlack}} type={ele.icon}/>
+                      <span style={{color: Color.favouriteBlack}}>{ele.title}</span>
                     </a>
                   </Menu.Item>
                 );

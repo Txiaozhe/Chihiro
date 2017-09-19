@@ -31,6 +31,7 @@
 
 import React, {Component} from 'react';
 import {Layout} from 'antd';
+import {Color} from '../../res';
 
 export default class Home extends Component {
   constructor(props) {
@@ -68,6 +69,6 @@ export default class Home extends Component {
 const styles = {
   container: {
     alignItems: 'center',
-    backgroundColor: '#ffffff'
+    backgroundColor: Color.white
   }
 };

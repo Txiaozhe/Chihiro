@@ -31,6 +31,7 @@
 
 import React, {Component} from 'react';
 import {Layout, Input, Avatar, Button} from 'antd';
+import {Color, String} from '../../res';
 
 class Badge extends Component {
   constructor(props) {
@@ -47,13 +48,13 @@ class Badge extends Component {
     return (
       <Layout
         style={{
-          backgroundColor: '#f8f9fa',
+          backgroundColor: Color.favouriteGrey,
           padding: 10,
           borderRadius: 4
         }}>
 
-        <Layout style={{flexDirection: 'row', backgroundColor: '#f8f9fa',}}>
-          <Avatar style={{ backgroundColor: '#87d068', marginRight: 10 }} icon="user" />
+        <Layout style={{flexDirection: 'row', backgroundColor: Color.favouriteGrey,}}>
+          <Avatar style={{ backgroundColor: Color.iconGreen, marginRight: 10 }} icon="user" />
           <Input.TextArea
             style={{
               fontSize: 15
@@ -61,14 +62,14 @@ class Badge extends Component {
             onFocus={() => this.setState({writing: true})}
             onBlur={this.onWriteBlur}
             onChange={(text) => this.setState({badge: text.target.value})}
-            placeholder="评价一下" autosize={{minRows: 2, maxRows: 6}}/>
+            placeholder={String.badge_placeholder} autosize={{minRows: 2, maxRows: 6}}/>
         </Layout>
 
         {
           writing ? (
-            <Layout style={{flexDirection: 'row', marginTop: 10, backgroundColor: '#f8f9fa'}}>
-              <Layout style={{flex: 1, backgroundColor: '#f8f9fa'}}/>
-              <Button style={{width: 60}} onClick={this.onSubmit}>提交</Button>
+            <Layout style={{flexDirection: 'row', marginTop: 10, backgroundColor: Color.favouriteGrey}}>
+              <Layout style={{flex: 1, backgroundColor: Color.favouriteGrey}}/>
+              <Button style={{width: 80}} onClick={this.onSubmit}>{String.badge_submit}</Button>
             </Layout>
           ) : null
         }

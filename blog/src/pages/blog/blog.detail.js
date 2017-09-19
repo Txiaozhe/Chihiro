@@ -35,6 +35,7 @@ import ReactMarkdown from 'react-markdown';
 import {base64} from '../../utils/base64';
 import {Http} from '../../utils/http';
 import {Url} from '../../config/url';
+import {Color} from '../../res';
 import './detail.css';
 import './markdown.css';
 
@@ -80,7 +81,7 @@ class Detail extends Component {
         <div>
           <span className="title">{title}</span>
 
-          <a><Icon style={{fontSize: 24, marginLeft: 20, color: '#d68d81'}} type="star-o" /></a>
+          <a><Icon style={{fontSize: 24, marginLeft: 20, color: Color.starRed}} type="star-o" /></a>
           <span className="star">200</span>
         </div>
 

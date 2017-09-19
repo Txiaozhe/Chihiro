@@ -36,6 +36,7 @@ import Border from "./border";
 import HeaderMenu from "./header.menu";
 
 import {Client} from '../utils'
+import {Color, String} from '../res';
 
 export default class App extends Component {
   constructor(props) {
@@ -51,7 +52,7 @@ export default class App extends Component {
   render() {
     return (
       <Layout style={{
-        backgroundColor: '#fff',
+        backgroundColor: Color.white,
         flexDirection: 'row'
       }}>
 
@@ -60,23 +61,23 @@ export default class App extends Component {
         <Layout
           style={{
             alignItems: 'center',
-            backgroundColor: '#fff'
+            backgroundColor: Color.white
           }}>
 
           <br/>
 
           <HeaderMenu />
 
-          <br/>
+          <br />
 
           {this.props.children}
 
           <div className="footer-time">
-            <span> © 2017 ♥ Tang Xiaoji </span>
+            <span>{String.copyright}</span>
           </div>
           <br/>
           <div className="footer-power">
-            <span>Powered By <a className="footer-a">Txiaozhe</a>  |  <a className="icp" href="http://www.beian.gov.cn/portal/registerSystemInfo">冀ICP备17026123号-1</a></span>
+            <span>Powered By <a className="footer-a">Txiaozhe</a>  |  <a className="icp" href="http://www.beian.gov.cn/portal/registerSystemInfo">{String.icp}</a></span>
           </div>
 
           <br/>
@@ -84,8 +85,8 @@ export default class App extends Component {
 
         <Layout
           style={{
-            backgroundColor: '#fff'
-          }}/>
+            backgroundColor: Color.white
+          }} />
       </Layout>
     );
   }

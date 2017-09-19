@@ -31,6 +31,7 @@
 
 import React, {Component} from 'react';
 import {Layout, Input, Avatar, Button} from 'antd';
+import {Color} from '../../res';
 
 class Message extends Component {
   constructor(props) {
@@ -47,12 +48,12 @@ class Message extends Component {
     return (
       <Layout
         style={{
-          backgroundColor: '#f8f9fa',
+          backgroundColor: Color.favouriteGrey,
           padding: 8,
           borderRadius: 4
         }}>
 
-        <Layout style={{flexDirection: 'row', backgroundColor: '#f8f9fa',}}>
+        <Layout style={{flexDirection: 'row', backgroundColor: Color.favouriteGrey}}>
           <Input.TextArea
             style={{
               fontSize: 12
@@ -65,8 +66,8 @@ class Message extends Component {
 
         {
           writing ? (
-            <Layout style={{flexDirection: 'row', marginTop: 6, backgroundColor: '#f8f9fa'}}>
-              <Layout style={{flex: 1, backgroundColor: '#f8f9fa'}}/>
+            <Layout style={{flexDirection: 'row', marginTop: 6, backgroundColor: Color.favouriteGrey}}>
+              <Layout style={{flex: 1, backgroundColor: Color.favouriteGrey}}/>
               <Button style={{width: 60, height: 24}} onClick={this.onSubmit}>提交</Button>
             </Layout>
           ) : null

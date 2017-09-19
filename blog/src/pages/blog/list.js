@@ -33,6 +33,7 @@ import React, {Component} from 'react';
 import './list';
 import {Timeline, Icon, Layout, BackTop} from 'antd';
 import Item from './blog.list.item';
+import {Color} from '../../res';
 
 class List extends Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class List extends Component {
               style={{
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#fff'
+                backgroundColor: Color.white
               }}>
               <Icon
                 type="loading"

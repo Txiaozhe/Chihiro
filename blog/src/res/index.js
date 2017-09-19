@@ -29,41 +29,12 @@
 
 'use strict';
 
-import React, {Component} from 'react';
-import {Layout} from 'antd';
-import {msgList} from '../../config/test';
-import {Color} from "../../res/color";
-import './message.css';
+import {String} from './lang/en_us/string';
+import {Color} from './color';
+import {Icons} from './icon';
 
-class MessageList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div
-        className="message-list">
-        {
-          msgList.map((ele, i) => {
-            return (
-              <Layout
-                style={{
-                  height: 50,
-                  backgroundColor: Color.white,
-                  marginTop: 5,
-                  justifyContent: 'center'
-                }}
-                key={i}>
-                <span className="message-content">{ele.content}</span>
-                <span className="message-time">{ele.created}</span>
-              </Layout>
-            );
-          })
-        }
-      </div>
-    );
-  }
-}
-
-export default MessageList;
+module.exports = {
+  String,
+  Color,
+  Icons
+};

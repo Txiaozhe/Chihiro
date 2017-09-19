@@ -32,6 +32,7 @@
 import React, {Component} from 'react';
 import "./index.css";
 import {Layout, Affix, Icon, Popover} from 'antd';
+import {Color, String, Icons} from '../res';
 
 import {connect} from 'react-redux';
 
@@ -44,7 +45,7 @@ class Border extends Component {
     return (
       <Layout
         style={{
-          backgroundColor: '#fff',
+          backgroundColor: Color.white,
           alignItems: 'center',
           marginTop: 200,
           height: 600,
@@ -58,14 +59,14 @@ class Border extends Component {
             width: 200,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#000'
+            backgroundColor: Color.black
           }}>
             <span
               style={{
-                color: '#fff',
+                color: Color.white,
                 fontSize: 20
               }}>
-              {"Tang Xiaoji ' Blog"}
+              {String.title}
             </span>
           </Layout>
 
@@ -75,21 +76,21 @@ class Border extends Component {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#ffffff'
+            backgroundColor: Color.white
           }}>
             <Popover
               content={'GitHub'}>
-              <a href="https://github.com/Txiaozhe"><Icon style={{margin: 10, fontSize: 16}} type="github"/></a>
+              <a href="https://github.com/Txiaozhe"><Icon style={{margin: 10, fontSize: 16}} type={Icons.github}/></a>
             </Popover>
 
             <Popover
               content={'Call me'}>
-              <a href="/#/about"><Icon style={{margin: 10, fontSize: 16}} type="mobile"/></a>
+              <a href="/#/about"><Icon style={{margin: 10, fontSize: 16}} type={Icons.mobile}/></a>
             </Popover>
 
             <Popover
               content={'E-mail me'}>
-              <a href="mailto:t_xiaoji@qq.com"><Icon style={{margin: 10, fontSize: 16}} type="mail"/></a>
+              <a href="mailto:t_xiaoji@qq.com"><Icon style={{margin: 10, fontSize: 16}} type={Icons.mail}/></a>
             </Popover>
           </Layout>
 
@@ -97,33 +98,33 @@ class Border extends Component {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#ffffff'
+            backgroundColor: Color.white
           }}>
             <Layout
               style={{
                 alignItems: 'center',
-                backgroundColor: '#ffffff'
+                backgroundColor: Color.white
               }}>
               <span className="number">{"200"}</span>
-              <span className="desc">{'Blogs'}</span>
+              <span className="desc">{String.count_blog}</span>
             </Layout>
             <div className="vertical-line"/>
             <Layout
               style={{
                 alignItems: 'center',
-                backgroundColor: '#ffffff'
+                backgroundColor: Color.white
               }}>
               <span className="number">{"200"}</span>
-              <span className="desc">{'Visits'}</span>
+              <span className="desc">{String.count_visit}</span>
             </Layout>
             <div className="vertical-line"/>
             <Layout
               style={{
                 alignItems: 'center',
-                backgroundColor: '#ffffff'
+                backgroundColor: Color.white
               }}>
               <span className="number">{"200"}</span>
-              <span className="desc">{'Stars'}</span>
+              <span className="desc">{String.count_star}</span>
             </Layout>
           </Layout>
 
@@ -132,7 +133,7 @@ class Border extends Component {
           <Layout style={{
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#fff',
+            backgroundColor: Color.white,
             flexDirection: 'row'
           }}>
             <Popover
@@ -143,7 +144,7 @@ class Border extends Component {
                     fontSize: 20,
                     padding: 10
                   }}
-                  type="desktop"/>
+                  type={Icons.desktop}/>
               </a>
             </Popover>
 
@@ -156,7 +157,7 @@ class Border extends Component {
                     padding: 10,
                     paddingBottom: 12
                   }}
-                  type="database"/>
+                  type={Icons.database}/>
               </a>
             </Popover>
           </Layout>
