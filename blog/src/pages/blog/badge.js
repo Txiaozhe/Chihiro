@@ -33,6 +33,7 @@ import React, {Component} from 'react';
 import {Layout, Input, Avatar, Button, Radio} from 'antd';
 const RadioGroup = Radio.Group;
 import {Color, String} from '../../res';
+import BadgeList from "./badge.list";
 
 class Badge extends Component {
   constructor(props) {
@@ -56,7 +57,6 @@ class Badge extends Component {
         }}>
 
         <Layout style={{flexDirection: 'row', backgroundColor: Color.favouriteGrey,}}>
-          <Avatar style={{ backgroundColor: Color.iconGreen, marginRight: 10 }} icon="user" />
           <Input.TextArea
             style={{
               fontSize: 15
@@ -75,8 +75,10 @@ class Badge extends Component {
                 onChange={this.onChangeAnonymous}
                 value={this.state.isAnonymous}>
                 <span style={{
-                  marginRight: 8
-                }}>be anonymous ?   </span>
+                  marginRight: 8,
+                  color: Color.favouriteBlack,
+                  fontSize: 14
+                }}> Be anonymous ?   </span>
                 <Radio value={'yes'}>Yes</Radio>
                 <Radio value={'no'} style={{
                   marginLeft: 2

@@ -71,7 +71,7 @@ class List extends Component {
                       contentid={ele.contentid}
                       created={ele.created}
                       tags={ele.tag.split(',').join('，')}
-                      abstract={ele.abstract}/>
+                      abstract={ele.abstract} />
                   )
                 })
               }

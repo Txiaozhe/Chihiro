@@ -42,6 +42,7 @@ import './markdown.css';
 import {connect} from 'react-redux';
 import Badge from "./badge";
 import {blogContent} from '../../config/test';
+import BadgeList from "./badge.list";
 
 class Detail extends Component {
   constructor(props) {
@@ -117,6 +118,9 @@ class Detail extends Component {
         <br/>
 
         <Badge/>
+
+        <br/>
+        <BadgeList/>
       </div>
     );
   }
