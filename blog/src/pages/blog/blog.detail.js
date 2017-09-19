@@ -111,7 +111,9 @@ class Detail extends Component {
           <span className="abstract">{abstract}</span>
         </div>
 
-        <hr className="line"/>
+        <hr className="line" color={Color.favouriteGrey}/>
+
+        <br/>
 
         <ReactMarkdown className="markdownWrapper" source={blogContent}/>
 
