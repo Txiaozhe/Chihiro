@@ -30,7 +30,7 @@
 'use strict';
 
 const host_local = 'http://txiaozhe.top:7002';
-const version = '/api/v1';
+const version = '/api';
 
 export const Url = {
   url: host_local + version,

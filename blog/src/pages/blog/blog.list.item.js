@@ -45,7 +45,7 @@ class BlogItem extends React.Component {
   }
 
   render() {
-    let {category, title, abstract, created, tags, contentid} = this.props;
+    let {category, title, abstract, created, tags, contentid, star} = this.props;
     let eid = base64.encode(contentid);
     let {year, mon, day} = Time.getDateObj(created);
     return (
@@ -65,7 +65,7 @@ class BlogItem extends React.Component {
         <div>
           <a
             onClick={this.onDetail}
-            href={`/#/${category}/${year}/${mon}/${day}/${title}?id=${eid}`}>{title}</a>
+            href={`/#/${category}/${year}/${mon}/${day}/${title}?id=${eid}&s=${star}`}>{title}</a>
           <Icon className="item-tag-margin" type="tag"/><span className="item-tag">      {tags}</span>
         </div>
 

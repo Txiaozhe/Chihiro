@@ -70,6 +70,7 @@ class List extends Component {
                       category={ele.category}
                       contentid={ele.contentid}
                       created={ele.created}
+                      star={ele.star}
                       tags={ele.tag.split(',').join('，')}
                       abstract={ele.abstract} />
                   )

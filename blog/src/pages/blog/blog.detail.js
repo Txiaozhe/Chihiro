@@ -69,11 +69,9 @@ class Detail extends Component {
   }
 
   render() {
-    let {content} = this.state;
     let {category, year, mon, day, title} = this.props.params;
-
+    let {s} = this.props.location.query;
     let {abstract, tags} = this.props;
-    console.log(abstract, tags);
 
     return (
       <div className="list">
@@ -93,7 +91,7 @@ class Detail extends Component {
           }}>
             <a><Icon style={{fontSize: 24, marginLeft: 20, color: Color.starRed}} type="star-o"/></a>
 
-            <span className="star">200</span>
+            <span className="star">{s}</span>
           </Layout>
         </Layout>
 
