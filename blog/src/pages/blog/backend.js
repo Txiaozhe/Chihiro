@@ -34,9 +34,9 @@ import React, {Component} from 'react';
 import {Timeline, Icon, Layout, BackTop} from 'antd';
 import List from './list';
 
-import {Url} from '../config';
-import {Http, Time} from '../utils';
-import {blog} from '../config/test';
+import {Url} from '../../config/index';
+import {Http, Time} from '../../utils/index';
+import {blog} from '../../config/test';
 
 export default class Backend extends Component {
   constructor(props) {

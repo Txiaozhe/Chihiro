@@ -24,50 +24,45 @@
 
 /*
  * Revision History:
- *     Initial: 2017/09/13        Tang Xiaoji
+ *     Initial: 2017/09/19        Tang Xiaoji
  */
 
 'use strict';
 
-
 import React, {Component} from 'react';
-import List from './list';
+import {Layout} from 'antd';
+import {msgList} from '../../config/test';
+import './message.css';
 
-import {Url} from '../config';
-import {Http} from '../utils';
-import {blog} from '../config/test';
-
-export default class Frontend extends Component {
+class MessageList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      list: [],
-      loading: true
-    }
-  }
-
-  componentDidMount() {
-    const url = Url.url + Url.getBlogList.url;
-    Http.post(url, null, {
-      "category": 2
-    }, (list) => {
-      this.setState({
-        list,
-        loading: false
-      });
-    }, (err) => {
-      this.setState({
-        loading: false
-      });
-    });
   }
 
   render() {
-    let {list, loading} = this.state;
     return (
-      <List
-        loading={false}
-        data={blog} />
+      <div
+        className="message-list">
+        {
+          msgList.map((ele, i) => {
+            return (
+              <Layout
+                style={{
+                  height: 50,
+                  backgroundColor: '#ffffff',
+                  marginTop: 5,
+                  justifyContent: 'center'
+                }}
+                key={i}>
+                <span className="message-content">{ele.content}</span>
+                <span className="message-time">{ele.created}</span>
+              </Layout>
+            );
+          })
+        }
+      </div>
     );
   }
 }
+
+export default MessageList;

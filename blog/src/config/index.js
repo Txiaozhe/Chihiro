@@ -32,7 +32,27 @@
 import {Url} from './url';
 import {Actions} from './actions';
 
+const Category = {
+  all: {
+    type: 0,
+    title: 'all'
+  },
+  frontend: {
+    type: 1,
+    title: 'frontend'
+  },
+  backend: {
+    type: 2,
+    title: 'backend'
+  },
+  docker: {
+    type: 3,
+    title: 'docker'
+  }
+};
+
 module.exports = {
   Url,
-  Actions
+  Actions,
+  Category
 };

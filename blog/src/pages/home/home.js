@@ -30,11 +30,11 @@
 'use strict';
 
 import React, {Component} from 'react';
-import List from './list';
+import List from '../blog/list';
 
-import {Url} from '../config';
-import {Http} from '../utils';
-import {blog} from '../config/test';
+import {Url} from '../../config/index';
+import {Http} from '../../utils/index';
+import {blog} from '../../config/test';
 
 export default class Home extends Component {
   constructor(props) {

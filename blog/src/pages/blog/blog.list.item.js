@@ -30,12 +30,12 @@
 'use strict';
 
 import React from 'react';
-import {Layout, Icon, Timeline} from 'antd';
+import {Icon, Timeline} from 'antd';
 import './item.css';
-import {Time} from '../utils/time';
-import {encode} from '../utils/base64';
+import {Time} from '../../utils';
+import {base64} from '../../utils';
 
-import {showBlogDetail} from '../actions';
+import {showBlogDetail} from '../../actions';
 import {connect} from 'react-redux';
 
 class BlogItem extends React.Component {
@@ -45,7 +45,7 @@ class BlogItem extends React.Component {
 
   render() {
     let {category, title, abstract, created, tags, contentid} = this.props;
-    let eid = encode(contentid);
+    let eid = base64.encode(contentid);
     let {year, mon, day} = Time.getDateObj(created);
     return (
       <Timeline.Item

@@ -4,11 +4,11 @@ import './index.css';
 
 import App from './src/app/app';
 
-import Home from './src/pages/home';
-import Frontend from './src/pages/frontend';
-import Backend from './src/pages/backend';
-import About from './src/pages/about';
-import Detail from './src/pages/blog.detail';
+import Home from './src/pages/home/home';
+import Frontend from './src/pages/blog/frontend';
+import Backend from './src/pages/blog/backend';
+import About from './src/pages/about/about';
+import Detail from './src/pages/blog/blog.detail';
 
 import {Provider} from 'react-redux';
 import store from './src/store';

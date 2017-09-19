@@ -32,9 +32,11 @@
 import {Http} from './http';
 import {Time} from './time';
 import {Client} from './client';
+import {base64} from './base64';
 
 module.exports = {
   Http,
   Time,
-  Client
+  Client,
+  base64
 };

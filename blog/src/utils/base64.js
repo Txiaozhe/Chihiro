@@ -39,7 +39,7 @@ function decode(data) {
   return Base64.decode(data);
 }
 
-module.exports = {
+export const base64 = {
   encode,
   decode,
 };

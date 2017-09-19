@@ -32,15 +32,15 @@
 import React, {Component} from 'react';
 import {Icon, BackTop} from 'antd';
 import ReactMarkdown from 'react-markdown';
-import {decode} from '../utils/base64';
-import {Http} from '../utils/http';
-import {Url} from '../config/url';
+import {base64} from '../../utils/base64';
+import {Http} from '../../utils/http';
+import {Url} from '../../config/url';
 import './detail.css';
 import './markdown.css';
 
 import {connect} from 'react-redux';
 import Badge from "./badge";
-import {blogContent} from '../config/test'
+import {blogContent} from '../../config/test';
 
 class Detail extends Component {
   constructor(props) {
@@ -52,7 +52,7 @@ class Detail extends Component {
 
   componentDidMount() {
     let {id} = this.props.location.query;
-    let did = decode(id);
+    let did = base64.decode(id);
 
     const url = Url.url + Url.getBlogDetail.url;
     Http.post(url, null, {
