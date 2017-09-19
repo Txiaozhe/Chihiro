@@ -41,7 +41,6 @@ import './markdown.css';
 
 import {connect} from 'react-redux';
 import Badge from "./badge";
-import {blogContent} from '../../config/test';
 import BadgeList from "./badge.list";
 
 class Detail extends Component {
@@ -72,6 +71,7 @@ class Detail extends Component {
     let {category, year, mon, day, title} = this.props.params;
     let {s} = this.props.location.query;
     let {abstract, tags} = this.props;
+    let {content} = this.state;
 
     return (
       <div className="list">
@@ -113,7 +113,7 @@ class Detail extends Component {
 
         <br/>
 
-        <ReactMarkdown className="markdownWrapper" source={blogContent}/>
+        <ReactMarkdown className="markdownWrapper" source={content}/>
 
         <br/>
 
