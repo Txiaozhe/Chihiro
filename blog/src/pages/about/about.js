@@ -32,6 +32,7 @@
 import React, {Component} from 'react';
 import {Layout} from 'antd';
 import {Color} from '../../res';
+import './about.css';
 
 export default class Home extends Component {
   constructor(props) {

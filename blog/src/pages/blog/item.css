@@ -68,21 +68,3 @@ a:hover {
     color: #333333;
     font-size: 20px;
 }
-
-/*about*/
-/*image*/
-.about-image {
-    width: 300px;
-    height: 180px;
-}
-
-.about-content {
-    color: #999999;
-    font-size: 20px;
-    margin-top: 4px;
-}
-
-.about-contact {
-    color: #555555;
-    font-size: 16px;
-}
