@@ -30,13 +30,15 @@
 'use strict';
 
 import React from 'react';
-import {Layout, Spin, Icon} from 'antd';
+import {Layout, Spin, Icon, Button} from 'antd';
 import {service} from '../../service';
-import {utils, http, time} from '../../utils';
+import {utils, http, time, storage} from '../../utils';
+import {route} from '../../config';
 import {color} from '../../resource';
 import ReactMarkdown from 'react-markdown';
 
 import {connect} from 'react-redux';
+import {selectTab, selectBlog} from '../../actions';
 
 class Detail extends React.Component {
   constructor(props) {
@@ -48,13 +50,13 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
-    let {contentid} = this.props.selectedBlog;
-    service.getDetail(contentid, (det) => {
+    let item = storage.getData();
+    service.getDetail(item.contentid, (det) => {
       this.setState({
         detail: det,
         loading: false
       });
-    }, () => {
+    }, (err) => {
       this.setState({
         loading: false
       });
@@ -62,7 +64,9 @@ class Detail extends React.Component {
   }
 
   render() {
-    let {title, tag, star, id, created, category, abstract} = this.props.selectedBlog;
+    let {title, abstract, category, tag, star, created} = storage.getData();
+    console.log(title, abstract, category, tag, star, created);
+
     let {width, height} = this.props;
     let {detail, loading} = this.state;
     return (
@@ -77,10 +81,16 @@ class Detail extends React.Component {
               style={{
                 backgroundColor: color.white
               }}>
-              <span style={{
-                fontSize: 30,
-                fontWeight: 'bold'
-              }}>{title}</span>
+              <Layout style={{backgroundColor: '#ffffff', flexDirection: 'row', alignItems: 'center'}}>
+                <span style={{
+                  fontSize: 30,
+                  fontWeight: 'bold'
+                }}>{title}</span>
+
+                <Button
+                  onClick={this.onModify}
+                  style={{marginLeft: 20}}><Icon type="edit" />编辑</Button>
+              </Layout>
 
               <Layout
                 style={{
@@ -111,12 +121,18 @@ class Detail extends React.Component {
 
               <ReactMarkdown
                 className="markdownWrapper"
-                source={detail} />
+                source={detail}/>
             </Layout>
           )
         }
       </Layout>
     )
+  }
+
+  onModify = () => {
+    let {detail} = this.state;
+    this.props.dispatch(selectTab(route.modify));
+    storage.setContent(detail);
   }
 }
 
@@ -143,7 +159,6 @@ const innerStyle = {
 
 function select(store) {
   return {
-    selectedBlog: store.navigator.selectedBlog,
     width: store.screen.width,
     height: store.screen.height
   }

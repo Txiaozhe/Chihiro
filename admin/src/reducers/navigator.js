@@ -33,7 +33,10 @@ import {actions} from '../config/index';
 
 const initialState = {
   selectedTab: "home",
-  selectedBlog: {}
+  selectedBlog: {
+    blog: {},
+    content: ''
+  }
 };
 
 export function navigator(state = initialState, action) {
@@ -42,7 +45,10 @@ export function navigator(state = initialState, action) {
       return {...state, selectedTab: action.payload.tab}
     }
     case actions.SELECT_BLOG : {
-      return {...state, selectedBlog: action.payload.blog}
+      return {state, selectedBlog: {
+        blog: action.payload.blog,
+        content: action.payload.content
+      }}
     }
 
     default: {

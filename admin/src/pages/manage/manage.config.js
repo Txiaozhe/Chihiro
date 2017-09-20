@@ -31,7 +31,7 @@
 
 import {string} from '../../resource';
 
-const category = [
+const Category = [
   {
     title: string.blog.general,
     value: '0'
@@ -51,5 +51,5 @@ const category = [
 ];
 
 module.exports = {
-  category
+  Category
 };

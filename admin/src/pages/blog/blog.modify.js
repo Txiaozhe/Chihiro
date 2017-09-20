@@ -36,7 +36,7 @@ import './markdown.css';
 
 import {storage, msg} from '../../utils';
 import {color} from '../../resource';
-import {Category} from './manage.config';
+import {Category} from '../manage/manage.config';
 import {service} from '../../service';
 
 import {connect} from 'react-redux';
@@ -55,6 +55,8 @@ class ManageEdit extends React.Component {
 
   render() {
     let {width, height} = this.props;
+    let {title, abstract, tag, content, contentid, created, star, category} = storage.getData();
+
     return (
       <Layout
         style={{backgroundColor: color.white}}>
@@ -64,6 +66,7 @@ class ManageEdit extends React.Component {
             height: 32,
             marginTop: 10
           }}
+          defaultValue={title}
           placeholder={'标题 20 字以内'}
           onChange={(input) => this.setState({title: input.target.value})}
           size="large" />
@@ -74,6 +77,7 @@ class ManageEdit extends React.Component {
             height: 32,
             marginTop: 10
           }}
+          defaultValue={abstract}
           placeholder={'摘要 60 字以内'}
           onChange={(input) => this.setState({abstract: input.target.value})}
           size="large" />
@@ -92,7 +96,7 @@ class ManageEdit extends React.Component {
             style={{
               width: width * 0.6 * 0.1
             }}
-            defaultValue={this.state.cate}
+            defaultValue={category ? Category[category].value : Category[0].value}
             onChange={this.onCategorySelect}>
             {
               Category.map((ele, i) => {
@@ -111,6 +115,7 @@ class ManageEdit extends React.Component {
               width: '100%',
               marginLeft: 10
             }}
+            defaultValue={tag}
             placeholder="标签"
             onChange={this.onTagSelect}>
           </Select>
@@ -150,7 +155,8 @@ class ManageEdit extends React.Component {
               height: height - 32 * 3 - 50,
               fontSize: 16
             }}
-            onChange={this.onInputMdContent}/>
+            defaultValue={content}
+            onChange={(area) => this.setState({content: area.target.value})}/>
 
           <div
             style={{
@@ -160,18 +166,12 @@ class ManageEdit extends React.Component {
             }}>
             <ReactMarkdown
               className="markdownWrapper"
-              source={this.state.content}/>
+              source={content} />
           </div>
         </Layout>
       </Layout>
     );
   }
-
-  onInputMdContent = (area) => {
-    this.setState({
-      content: area.target.value
-    });
-  };
 
   onCategorySelect = (item) => {
     this.setState({
@@ -194,9 +194,8 @@ class ManageEdit extends React.Component {
       tag: tags.join(','),
       content
     }, () => {
-      msg.showMsg(msg.SUCCESS, '提交成功！');
-      storage.saveData('', '', Category[0].value, [], '');
-      location.reload();
+      msg.showMsg(msg.SUCCESS, '修改成功！');
+      storage.saveData('', '', category[0].value, [], '');
     }, () => {
       msg.showMsg(msg.ERROR, '提交失败！');
     });
@@ -211,6 +210,7 @@ class ManageEdit extends React.Component {
 
 function select(store) {
   return {
+    selectedBlog: store.navigator.selectedBlog,
     width: store.screen.width,
     height: store.screen.height
   }

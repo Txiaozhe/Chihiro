@@ -40,11 +40,12 @@ export function selectTab(tab) {
   }
 }
 
-export function selectBlog(blog) {
+export function selectBlog(blog, content) {
   return {
     type: actions.SELECT_BLOG,
     payload: {
-      blog
+      blog,
+      content
     }
   }
 }

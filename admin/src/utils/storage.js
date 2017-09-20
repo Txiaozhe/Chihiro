@@ -33,11 +33,18 @@ const config = {
   STORAGE_INTERVAL: 5 * 1000
 };
 
-function saveData(title, abstract, category, tags, content) {
+function saveData(title, abstract, category, tag, contentid, star, created, content) {
   sessionStorage.setItem('title', title);
   sessionStorage.setItem('abstract', abstract);
-  sessionStorage.setItem('cate', category);
-  sessionStorage.setItem('tags', tags);
+  sessionStorage.setItem('category', category);
+  sessionStorage.setItem('tag', tag);
+  sessionStorage.setItem('contentid', contentid);
+  sessionStorage.setItem('star', star);
+  sessionStorage.setItem('created', created);
+  sessionStorage.setItem('content', content);
+}
+
+function setContent(content) {
   sessionStorage.setItem('content', content);
 }
 
@@ -45,8 +52,11 @@ function getData() {
   return {
     title: sessionStorage.getItem('title'),
     abstract: sessionStorage.getItem('abstract'),
-    cate: sessionStorage.getItem('cate'),
-    tags: sessionStorage.getItem('tags'),
+    category: sessionStorage.getItem('category'),
+    tag: sessionStorage.getItem('tag'),
+    contentid: sessionStorage.getItem('contentid'),
+    star: sessionStorage.getItem('star'),
+    created: sessionStorage.getItem('created'),
     content: sessionStorage.getItem('content')
   }
 }
@@ -68,6 +78,7 @@ export const storage = {
 
   saveData,
   getData,
+  setContent,
 
   saveToken,
   getToken,

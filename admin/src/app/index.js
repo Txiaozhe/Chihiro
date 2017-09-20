@@ -40,6 +40,7 @@ import {storage} from '../utils';
 import {Home, AllBlog, Edit} from '../pages';
 import Login from '../pages/manage/manage.login';
 import Detail from '../pages/blog/blog.detail';
+import Modify from '../pages/blog/blog.modify';
 
 import {connect} from 'react-redux';
 import {selectTab} from '../actions';
@@ -126,7 +127,6 @@ class App extends React.Component {
       }
       return <Login/>
     }
-
     switch (tab) {
       case route.home: {
         return <Home/>;
@@ -138,7 +138,10 @@ class App extends React.Component {
         return <Edit/>;
       }
       case route.detail : {
-        return <Detail />
+        return <Detail />;
+      }
+      case route.modify : {
+        return <Modify />;
       }
     }
   }

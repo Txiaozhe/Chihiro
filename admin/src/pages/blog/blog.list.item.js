@@ -32,7 +32,7 @@
 import React from 'react';
 import {Layout, Icon} from 'antd';
 
-import {time} from '../../utils';
+import {time, storage} from '../../utils';
 import {route} from '../../config';
 import {color} from '../../resource';
 
@@ -81,8 +81,9 @@ class BlogItem extends React.Component {
 
   onSelectBlogDetail = () => {
     let {item} = this.props;
+    console.log(item);
+    storage.saveData(item.title, item.abstract, item.category, item.tag, item.contentid, item.star, item.created, '');
     this.props.dispatch(selectTab(route.detail));
-    this.props.dispatch(selectBlog(item));
   }
 }
 
