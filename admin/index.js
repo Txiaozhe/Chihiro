@@ -31,17 +31,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {Provider} from 'react-redux';
-import store from './manage/store';
-import App from './manage/app';
+import store from './src/store';
+import App from './src/app';
 
-import {Home} from './manage/pages';
-import AllBlog from './manage/pages/blog/blog.all';
-import Detail from './manage/pages/blog/blog.detail';
+import {Home} from './src/pages';
+import AllBlog from './src/pages/blog/blog.all';
+import Detail from './src/pages/blog/blog.detail';
 
-import ManageLogin from './manage/pages/manage/manage.login';
-import ManageEdit from './manage/pages/manage/manage.edit';
+import ManageLogin from './src/pages/manage/manage.login';
+import ManageEdit from './src/pages/manage/manage.edit';
 
-import {screenChange} from './manage/actions';
+import {screenChange} from './src/actions';
 
 import {
   Router,
