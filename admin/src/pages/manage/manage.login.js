@@ -72,7 +72,7 @@ class ManageLogin extends React.Component {
           style={{
             borderRadius: 80
           }}
-          src={image.user} />
+          src={'./user.png'} />
 
         <Input
           style={{
