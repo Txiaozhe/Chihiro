@@ -55,7 +55,7 @@ class ManageEdit extends React.Component {
 
   render() {
     let {width, height} = this.props;
-    let {title, abstract, tag, content, contentid, created, star, category} = storage.getData();
+    let {id, title, abstract, tag, content, contentid, created, star, category} = storage.getData();
 
     return (
       <Layout

@@ -33,7 +33,8 @@ const config = {
   STORAGE_INTERVAL: 5 * 1000
 };
 
-function saveData(title, abstract, category, tag, contentid, star, created, content) {
+function saveData(id, title, abstract, category, tag, contentid, star, created, content) {
+  sessionStorage.setItem('id', id);
   sessionStorage.setItem('title', title);
   sessionStorage.setItem('abstract', abstract);
   sessionStorage.setItem('category', category);
@@ -50,6 +51,7 @@ function setContent(content) {
 
 function getData() {
   return {
+    id: sessionStorage.getItem('id'),
     title: sessionStorage.getItem('title'),
     abstract: sessionStorage.getItem('abstract'),
     category: sessionStorage.getItem('category'),

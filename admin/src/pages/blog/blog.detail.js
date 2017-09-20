@@ -65,7 +65,6 @@ class Detail extends React.Component {
 
   render() {
     let {title, abstract, category, tag, star, created} = storage.getData();
-    console.log(title, abstract, category, tag, star, created);
 
     let {width, height} = this.props;
     let {detail, loading} = this.state;
