@@ -33,6 +33,7 @@ import React from 'react';
 import {Layout, Icon} from 'antd';
 
 import {time} from '../../utils';
+import {route} from '../../config';
 import {color} from '../../resource';
 
 import {connect} from 'react-redux';
@@ -80,7 +81,7 @@ class BlogItem extends React.Component {
 
   onSelectBlogDetail = () => {
     let {item} = this.props;
-    this.props.dispatch(selectTab('detail'));
+    this.props.dispatch(selectTab(route.detail));
     this.props.dispatch(selectBlog(item));
   }
 }

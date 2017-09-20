@@ -121,6 +121,9 @@ class App extends React.Component {
 
   renderContent = (tab) => {
     if (!storage.getToken()) {
+      if(tab === route.home) {
+        return <Home/>;
+      }
       return <Login/>
     }
 
