@@ -31,31 +31,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {Provider} from 'react-redux';
-import store from './src/store';
-import App from './src/app';
+import store from './manage.mylist.js/store';
+import App from './manage.mylist.js/app';
 
-import {Home, Blog, Manage} from './src/pages';
+import {Home} from './manage.mylist.js/pages';
+import AllBlog from './manage.mylist.js/pages/blog/blog.all';
+import Detail from './manage.mylist.js/pages/blog/blog.detail';
 
-import Frontend from './src/pages/blog/blog.frontend';
-import Backend from './src/pages/blog/blog.backend';
-import Cloud from './src/pages/blog/blog.cloud';
-import Works from './src/pages/blog/blog.works';
-import Detail from './src/pages/blog/blog.detail';
+import ManageLogin from './manage.mylist.js/pages/manage/manage.login';
+import ManageEdit from './manage.mylist.js/pages/manage/manage.edit';
 
-import ManageLogin from './src/pages/manage/manage.login';
-import ManageEdit from './src/pages/manage/manage.edit';
-import MyList from './src/pages/manage/manage.mylist';
-
-import {screenChange} from './src/actions';
+import {screenChange} from './manage.mylist.js/actions';
 
 import {
   Router,
   Route,
   hashHistory,
-  IndexRedirect
+  IndexRoute
 } from 'react-router';
 
-window.onresize = function() {
+window.onresize = function () {
   let dynWidth = document.documentElement.clientWidth;
   let dynHeight = document.documentElement.clientHeight;
 
@@ -66,21 +61,11 @@ const router = (
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={App}>
-        <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
-        <Route path="/blog" component={Blog}>
-          <IndexRedirect to="/blog/frontend" />
-          <Route path="/blog/frontend" component={Frontend} />
-          <Route path="/blog/backend" component={Backend} />
-          <Route path="/blog/cloud" component={Cloud} />
-          <Route path="/blog/works" component={Works} />
-          <Route path="/blog/:type/:year/:month/:day/:id" component={Detail} />
-        </Route>
-        <Route path="/manage" component={Manage}>
-          <IndexRedirect to="/manage/login" />
-          <Route path="/manage/login" component={ManageLogin} />
-          <Route path="/manage/edit" component={ManageEdit} />
-        </Route>
+        <Route path="/blog" component={AllBlog} />
+        <Route path="/blog/:year/:month/:day/:title" component={Detail} />
+        <Route path="/login" component={ManageLogin} />
+        <Route path="/edit" component={ManageEdit} />
       </Route>
     </Router>
   </Provider>
