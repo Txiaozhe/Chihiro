@@ -29,7 +29,7 @@
 
 'use strict';
 
-const host_local = 'http://api.txiaozhe.top';
+const host_local = 'https://api.txiaozhe.top';
 const version = '/api';
 
 export const Url = {
