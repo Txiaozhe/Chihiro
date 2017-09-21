@@ -45,6 +45,23 @@ function getDate(time) {
   return year + "-" + mon + "-" + day;
 }
 
+function getTime(time) {
+  let date = new Date(time);
+  let year = date.getFullYear();
+  let day = date.getDate();
+  let mon = date.getMonth() + 1;
+
+  let h = date.getHours();
+  let m = date.getMinutes();
+  let s = date.getSeconds();
+
+  return `${year}-${f(mon)}-${f(day)} ${f(h)}:${f(m)}:${f(s)}`;
+}
+
+function f(n) {
+  return String(100 + n).substring(1)
+}
+
 function getDateObj(time) {
   let date = new Date(time);
   let year = date.getFullYear();
@@ -67,5 +84,6 @@ function getDateObj(time) {
 
 export const Time = {
   getDate,
+  getTime,
   getDateObj
 };

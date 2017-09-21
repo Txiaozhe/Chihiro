@@ -58,7 +58,7 @@ class BlogItem extends React.Component {
             type="clock-circle-o"/>
         }>
         <div>
-          <span className="item-time">{Time.getDate(created)}</span>
+          <span className="item-time">{Time.getTime(created)}</span>
         </div>
 
         <br />

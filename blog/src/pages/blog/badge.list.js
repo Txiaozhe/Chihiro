@@ -52,7 +52,7 @@ class Item extends Component {
               <span style={{color: Color.favouriteBlack, fontSize: 16}}>{name}</span>
               <Layout style={{backgroundColor: Color.white, flexDirection: 'row'}}>
                 <span style={{color: Color.grey}}>{f + 1} F · </span>
-                <span style={{color: Color.grey, marginLeft: 4}}>{Time.getDate(created)}</span>
+                <span style={{color: Color.grey, marginLeft: 4}}>{Time.getTime(created)}</span>
               </Layout>
             </Layout>
           </Layout>
