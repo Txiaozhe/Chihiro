@@ -129,7 +129,7 @@ class Badge extends Component {
       }
     }, (err) => {
       message.error('发布失败，请检查网络设置！');
-      console.log(err);
+      // console.log(err);
     });
   };
 

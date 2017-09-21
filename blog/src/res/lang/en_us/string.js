@@ -30,7 +30,7 @@
 'use strict';
 
 export const String = {
-  title: "Tang Xiaoji ' Blog",
+  title: "Tang Xiaoji's Blog",
   count_blog: 'Blog',
   count_visit: 'Visits',
   count_star: 'stars',

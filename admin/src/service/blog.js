@@ -40,7 +40,7 @@ export function getBlogList(category, onSuccess, onFailed) {
     onSuccess(json);
   }, (e) => {
     onFailed();
-    console.log(e);
+    // console.log(e);
   });
 }
 
@@ -50,7 +50,7 @@ export function getAllBlogList(onSuccess, onFailed) {
     onSuccess(json);
   }, (e) => {
     onFailed();
-    console.log(e);
+    // console.log(e);
   });
 }
 

@@ -34,19 +34,19 @@ import {string} from '../../resource';
 const Category = [
   {
     title: string.blog.general,
-    value: '0'
-  },
-  {
-    title: string.blog.frontend,
     value: '1'
   },
   {
-    title: string.blog.backend,
+    title: string.blog.frontend,
     value: '2'
   },
   {
-    title: string.blog.docker,
+    title: string.blog.backend,
     value: '3'
+  },
+  {
+    title: string.blog.docker,
+    value: '4'
   }
 ];
 

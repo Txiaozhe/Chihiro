@@ -51,7 +51,6 @@ export default class Frontend extends Component {
     Http.post(url, null, {
       "category": CategoryIndex.frontend
     }, (list) => {
-      console.log(list);
       this.setState({
         list,
         loading: false

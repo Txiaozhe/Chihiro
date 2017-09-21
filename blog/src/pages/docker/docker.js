@@ -30,64 +30,48 @@
 'use strict';
 
 import React, {Component} from 'react';
-import './index.css';
-import {Layout, Footer} from 'antd';
-import Border from "./border";
-import HeaderMenu from "./header.menu";
+import List from '../blog/list';
 
-import {Client} from '../utils'
-import {Color, String} from '../res';
+import {Url, CategoryIndex} from '../../config/index';
+import {Http} from '../../utils/index';
+import {blog} from '../../config/test';
 
-export default class App extends Component {
+export default class Docker extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      list: [],
+      loading: true
+    }
   }
 
   componentDidMount() {
-    let info = Client.info;
-    // console.log(info);
-    // console.log(Client.isMobile);
+    const url = Url.url + Url.getBlogList.url;
+    Http.post(url, null, {
+      "category": CategoryIndex.docker
+    }, (list) => {
+      this.setState({
+        list,
+        loading: false
+      });
+    }, (err) => {
+      setTimeout(() => {
+        this.setState({
+          loading: false
+        });
+      });
+    });
   }
 
   render() {
+    let {list, loading} = this.state;
+
     return (
-      <Layout style={{
-        backgroundColor: Color.white,
-        flexDirection: 'row'
-      }}>
-
-        <Border/>
-
-        <Layout
-          style={{
-            alignItems: 'center',
-            backgroundColor: Color.white
-          }}>
-
-          <br/>
-
-          <HeaderMenu />
-
-          <br />
-
-          {this.props.children}
-
-          <div className="footer-time">
-            <span>{String.copyright}</span>
-          </div>
-          <br/>
-          <div className="footer-power">
-            <span>Powered By <a className="footer-a">Txiaozhe</a>  |  <a className="icp" href="http://www.beian.gov.cn/portal/registerSystemInfo">{String.icp}</a></span>
-          </div>
-
-          <br/>
-        </Layout>
-
-        <Layout
-          style={{
-            backgroundColor: Color.white
-          }} />
-      </Layout>
+      <div>
+        <List
+          loading={loading}
+          data={list} />
+      </div>
     );
   }
 }

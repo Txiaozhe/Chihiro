@@ -82,7 +82,6 @@ class BadgeList extends Component {
     Http.post(url, null, {
       "blogid": blogid
     }, (list) => {
-      console.log(list);
       if(list && list.length !== 0) {
         this.setState({
           badgeList: list

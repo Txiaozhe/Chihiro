@@ -34,7 +34,6 @@ const TIMEOUT = 2 * 1000;
 function promiseTimeout(ms, promise) {
   return new Promise((resolve, reject) => {
     const timeoutId = setTimeout(() => {
-      console.error('errorrrrr');
       reject(new Error('request timeout!'))
     }, ms);
     promise.then((res) => {
@@ -49,7 +48,7 @@ function promiseTimeout(ms, promise) {
 }
 
 function requestByGet(url, token, onSucceed, onFailure) {
-  console.log("Get " + url + " started.");
+  // console.log("Get " + url + " started.");
 
   promiseTimeout(TIMEOUT, fetch(url, { // eslint-disable-line no-undef
     method: "GET",
@@ -84,11 +83,11 @@ function requestByPost(url, token, params, onSucceed, onFailure) {
     body: JSON.stringify(params)
   })).then((resp) => resp.json())
     .then((json) => {
-      console.log("Post succeed for " + url); // + ", params:" + JSON.stringify(params) + ", response:" + JSON.stringify(json));
+      // console.log("Post succeed for " + url); // + ", params:" + JSON.stringify(params) + ", response:" + JSON.stringify(json));
       onSucceed(json);
     })
     .catch((err) => {
-      console.error("[HTTP Exception] Post failed for " + url + ", error:" + err);
+      // console.error("[HTTP Exception] Post failed for " + url + ", error:" + err);
 
       if (onFailure) {
         onFailure(err);

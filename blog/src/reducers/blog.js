@@ -37,7 +37,6 @@ const initialState = {
 };
 
 export function blog(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case Actions.SELECT_BLOG_DETAIL: {
       return {

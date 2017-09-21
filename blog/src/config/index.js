@@ -33,17 +33,17 @@ import {Url} from './url';
 import {Actions} from './actions';
 
 const CategoryIndex = {
-  general: 0,
-  frontend: 1,
-  backend: 2,
-  docker: 3
+  general: 1,
+  frontend: 2,
+  backend: 3,
+  docker: 4
 };
 
 const CategoryTitle = {
-  0: 'general',
-  1: 'frontend',
-  2: 'backend',
-  3: 'docker'
+  1: 'general',
+  2: 'frontend',
+  3: 'backend',
+  4: 'docker'
 };
 
 module.exports = {

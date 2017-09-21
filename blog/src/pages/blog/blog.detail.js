@@ -64,7 +64,7 @@ class Detail extends Component {
         content: data.Content
       });
     }, (err) => {
-      console.log(err);
+      // console.log(err);
     });
 
     let {key} = this.props.location.query;
@@ -79,7 +79,7 @@ class Detail extends Component {
         });
       }
     }, (err) => {
-      console.log(err);
+      // console.log(err);
     });
   }
 
@@ -145,19 +145,17 @@ class Detail extends Component {
   onStar = () => {
     let {key} = this.props.location.query;
     let blogid = base64.decode(key);
-    console.log(blogid);
     const url = Url.url + Url.setStar.url;
     Http.post(url, null, {
       id: blogid
     }, (data) => {
-      console.log(data);
       if(data.star) {
         this.setState({
           star: data.star
         });
       }
     }, (err) => {
-      console.log(err);
+      // console.log(err);
     });
   }
 }

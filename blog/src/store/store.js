@@ -42,7 +42,7 @@ export default function configureStore(initialState) {
     reducers,
     initialState,
     compose(
-      applyMiddleware(thunk, logger),
+      applyMiddleware(thunk), // , logger),
       autoRehydrate()
     )
   );

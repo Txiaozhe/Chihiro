@@ -52,6 +52,11 @@ const menu = [
     title: 'Backend'
   },
   {
+    key: 'docker',
+    icon: 'compass',
+    title: 'Docker'
+  },
+  {
     key: 'about',
     icon: 'smile-o',
     title: 'About'
