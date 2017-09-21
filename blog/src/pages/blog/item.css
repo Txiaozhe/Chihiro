@@ -2,6 +2,11 @@
     width: 600px;
 }
 
+.list-item-star {
+    margin-left: 4px;
+    font-size: 16px;
+}
+
 /*时间*/
 .item-time {
     font-size: 14px;

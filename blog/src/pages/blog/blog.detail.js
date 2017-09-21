@@ -85,7 +85,7 @@ class Detail extends Component {
 
   render() {
     let {category, year, mon, day, title} = this.props.params;
-    let {s, key} = this.props.location.query;
+    let {key} = this.props.location.query;
     let {abstract, tags} = this.props;
     let {content, star} = this.state;
     let blogid = base64.decode(key);
@@ -106,7 +106,7 @@ class Detail extends Component {
             flexDirection: 'row',
             backgroundColor: Color.white
           }}>
-            <a onClick={this.onStar}><Icon style={{fontSize: 24, marginLeft: 20, color: Color.starRed}} type="star-o"/></a>
+            <a onClick={this.onStar}><Icon style={{fontSize: 22, marginLeft: 20, color: Color.starRed}} type="star-o"/></a>
 
             <span className="star">{star}</span>
           </Layout>

@@ -66,7 +66,11 @@ class BlogItem extends React.Component {
         <div>
           <a
             onClick={this.onDetail}
-            href={`/#/${category}/${year}/${mon}/${day}/${title}?key=${key_id}&id=${eid}&s=${star}`}>{title}</a>
+            href={`/#/${category}/${year}/${mon}/${day}/${title}?key=${key_id}&id=${eid}`}>{title}</a>
+
+          <Icon style={{fontSize: 20, marginLeft: 6, color: Color.starRed}} type="star-o"/>
+          <span className="list-item-star">{star}</span>
+
           <Icon className="item-tag-margin" type="tag"/><span className="item-tag">      {tags}</span>
         </div>
 
