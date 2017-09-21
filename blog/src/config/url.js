@@ -40,6 +40,10 @@ export const Url = {
     url: '/admin/login'
   },
 
+  getCount: {
+    url: '/init/count'
+  },
+
   // blog list
   getBlogList: {
     url: '/blog/list'

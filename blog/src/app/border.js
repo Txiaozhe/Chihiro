@@ -33,15 +33,39 @@ import React, {Component} from 'react';
 import "./index.css";
 import {Layout, Affix, Icon, Popover} from 'antd';
 import {Color, String, Icons} from '../res';
+import {Url} from '../config';
+import {Http} from '../utils';
 
 import {connect} from 'react-redux';
 
 class Border extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      blog: 0,
+      visits: 0,
+      stars: 0
+    }
+  }
+
+  componentDidMount() {
+    const url = Url.url + Url.getCount.url;
+    Http.get(url, null, (count) => {
+      if(count.blog) {
+        this.setState({
+          blog: count.blog,
+          visits: count.visits,
+          stars: count.stars
+        });
+      }
+    }, (err) => {
+
+    });
   }
 
   render() {
+    let {blog, visits, stars} = this.state;
+
     return (
       <Layout
         style={{
@@ -105,7 +129,7 @@ class Border extends Component {
                 alignItems: 'center',
                 backgroundColor: Color.white
               }}>
-              <span className="number">{"200"}</span>
+              <span className="number">{blog}</span>
               <span className="desc">{String.count_blog}</span>
             </Layout>
             <div className="vertical-line"/>
@@ -114,7 +138,7 @@ class Border extends Component {
                 alignItems: 'center',
                 backgroundColor: Color.white
               }}>
-              <span className="number">{"200"}</span>
+              <span className="number">{visits}</span>
               <span className="desc">{String.count_visit}</span>
             </Layout>
             <div className="vertical-line"/>
@@ -123,7 +147,7 @@ class Border extends Component {
                 alignItems: 'center',
                 backgroundColor: Color.white
               }}>
-              <span className="number">{"200"}</span>
+              <span className="number">{stars}</span>
               <span className="desc">{String.count_star}</span>
             </Layout>
           </Layout>
