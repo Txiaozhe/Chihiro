@@ -77,7 +77,7 @@ export default class App extends Component {
           </div>
           <br/>
           <div className="footer-power">
-            <span>Powered By <a className="footer-a">Txiaozhe</a>  |  <a className="icp" href="http://www.beian.gov.cn/portal/registerSystemInfo">{String.icp}</a></span>
+            <span>Powered By <a className="footer-a">Txiaozhe</a>  |  <a className="icp" href="http://www.miitbeian.gov.cn/">{String.icp}</a></span>
           </div>
 
           <br/>

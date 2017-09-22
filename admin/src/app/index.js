@@ -41,6 +41,7 @@ import {Home, AllBlog, Edit} from '../pages';
 import Login from '../pages/manage/manage.login';
 import Detail from '../pages/blog/blog.detail';
 import Modify from '../pages/blog/blog.modify';
+import Footer from './app.footer';
 
 import {connect} from 'react-redux';
 import {selectTab} from '../actions';
@@ -115,6 +116,8 @@ class App extends React.Component {
           <Content>
             {this.renderContent(selectedTab)}
           </Content>
+
+          <Footer />
         </Layout>
       </Layout>
     );

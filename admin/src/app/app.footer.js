@@ -40,6 +40,8 @@ class MyFooter extends React.Component {
     return (
       <Layout.Footer style={innerStyles.footer}>
         {string.footer_statement}<a href='https://github.com/Txiaozhe'>{string.author}</a>
+        <br/>
+        <a href="http://www.miitbeian.gov.cn">冀ICP备17026123号 </a>
       </Layout.Footer>
     );
   }
