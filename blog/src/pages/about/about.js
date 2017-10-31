@@ -59,8 +59,8 @@ export default class Home extends Component {
           <span className="about-content">Life is a barren field, </span>
           <span className="about-content">Frozen only with snow. </span>
           <br/>
-          <span className="about-contact">$mobile: 15~73~32~06~38~2</span>
-          <span className="about-contact">$e#mail: txiaozhe@@@@gmail.com</span>
+          <span className="about-contact">$mob-ile: 151~58*16~153&&5</span>
+          <span className="about-contact">$e#-mail: txiaozhe@@@@gmail.com</span>
           <br/>
           <span>温馨提示：以上是为避免爬虫获取数据而混淆的</span>
           <span>有意者请自行恢复 @_@</span>

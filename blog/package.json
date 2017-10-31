@@ -16,7 +16,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "atool-build": "^0.9.0",
+    "atool-build": "^0.9.3",
     "atool-test-mocha": "^0.1.4",
     "babel-eslint": "^7.0.0",
     "babel-plugin-import": "^1.0.1",
