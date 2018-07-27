@@ -42,13 +42,18 @@ const menu = [
     title: 'Home'
   },
   {
-    key: 'frontend',
+    key: 'backend',
     icon: 'api',
+    title: 'Backend'
+  },
+  {
+    key: 'frontend',
+    icon: 'rocket',
     title: 'Frontend'
   },
   {
     key: 'translate',
-    icon: 'rocket',
+    icon: 'book',
     title: 'Translate'
   },
   {

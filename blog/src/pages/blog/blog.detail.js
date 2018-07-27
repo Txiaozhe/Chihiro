@@ -89,9 +89,9 @@ class Detail extends Component {
             flexDirection: 'row',
             backgroundColor: Color.white
           }}>
-            <a onClick={this.onStar}><Icon style={{fontSize: 20, marginLeft: 20, color: Color.starRed}} type="star-o"/></a>
+            {/*<a onClick={this.onStar}><Icon style={{fontSize: 20, marginLeft: 20, color: Color.starRed}} type="star-o"/></a>*/}
 
-            <span className="star">{star}</span>
+            {/*<span className="star">{star}</span>*/}
           </Layout>
         </Layout>
 

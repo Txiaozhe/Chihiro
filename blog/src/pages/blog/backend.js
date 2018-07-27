@@ -48,19 +48,16 @@ export default class Backend extends Component {
   }
 
   componentDidMount() {
-    const url = Url.url + Url.getBlogList.url;
-    Http.post(url, null, {
-      "category": CategoryIndex.backend
-    }, (list) => {
+    fetch('./src/blog/backend/list.json').then(res => {
+      return res.json();
+    }).then(list => {
       this.setState({
         list,
         loading: false
       });
-    }, (err) => {
-      this.setState({
-        loading: false
-      });
-    });
+    }).catch(e => {
+
+    })
   }
 
   render() {

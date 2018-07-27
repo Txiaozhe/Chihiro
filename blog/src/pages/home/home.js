@@ -46,23 +46,16 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    const url = Url.url + Url.getBlogList.url;
-    Http.get(url, null, res => {
-      if(res.code === 0) {
-        this.setState({
-          list: res.data,
-          loading: false
-        });
-      } else {
-        this.setState({
-          loading: false
-        });
-      }
-    }, (err) => {
+    fetch('./src/blog/home/list.json').then(res => {
+      return res.json();
+    }).then(list => {
       this.setState({
+        list,
         loading: false
       });
-    });
+    }).catch(e => {
+
+    })
   }
 
   render() {
