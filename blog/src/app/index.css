@@ -35,3 +35,22 @@
     color: #999999;
     margin-top: 20px;
 }
+
+.github
+{ 
+    color:#55277e;
+}
+
+.mail
+{ 
+    color: #f67e21;;
+}
+
+.npm:hover
+{ 
+    color:#cb3837;
+}
+
+.npm-image {
+    width: 28px;
+}

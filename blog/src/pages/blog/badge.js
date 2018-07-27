@@ -113,24 +113,24 @@ class Badge extends Component {
     let avatar = Math.floor(Math.random() * 10);
 
     const url = Url.url + Url.createBadge.url;
-    Http.post(url, null, {
-      "blogid": blogid,
-      "name": name ? name : 'Anonymous',
-      "avatar": Color.icons[avatar],
-      "content": content
-    }, (data) => {
-      if(!data) {
-        message.info('发布成功！');
-        setTimeout(() => {
-          location.reload();
-        }, 1000);
-      } else {
-        message.error('发布失败，请检查网络设置！');
-      }
-    }, (err) => {
-      message.error('发布失败，请检查网络设置！');
-      // console.log(err);
-    });
+    // Http.post(url, null, {
+    //   "blogid": blogid,
+    //   "name": name ? name : 'Anonymous',
+    //   "avatar": Color.icons[avatar],
+    //   "content": content
+    // }, (data) => {
+    //   if(!data) {
+    //     message.info('发布成功！');
+    //     setTimeout(() => {
+    //       location.reload();
+    //     }, 1000);
+    //   } else {
+    //     message.error('发布失败，请检查网络设置！');
+    //   }
+    // }, (err) => {
+    //   message.error('发布失败，请检查网络设置！');
+    //   // console.log(err);
+    // });
   };
 
   onChangeAnonymous = (e) => {

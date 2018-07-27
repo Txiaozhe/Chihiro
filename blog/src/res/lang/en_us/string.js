@@ -39,5 +39,5 @@ export const String = {
   badge_submit: 'Submit',
 
   copyright: ' © 2017 ♥ Tang Xiaoji ',
-  icp: '冀ICP备17026123号-1'
+  icp: '浙ICP备17056983号-1'
 };

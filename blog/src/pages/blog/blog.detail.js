@@ -53,34 +53,17 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    let {id} = this.props.location.query;
-    let did = base64.decode(id);
-
-    const url = Url.url + Url.getBlogDetail.url;
-    Http.post(url, null, {
-      "id": parseInt(did)
-    }, (data) => {
+    let {cid, path} = this.props.location.query;
+    cid = base64.decode(cid);
+    fetch(`./src/blog/${path}/${cid}.md`).then(res => {
+      return res.text();
+    }).then(data => {
       this.setState({
-        content: data.Content
+        content: data
       });
-    }, (err) => {
-      // console.log(err);
-    });
+    }).catch(e => {
 
-    let {key} = this.props.location.query;
-    let blogid = base64.decode(key);
-    const getStarUrl = Url.url + Url.getStar.url;
-    Http.post(getStarUrl, null, {
-      "id": blogid
-    }, (data) => {
-      if(data.star) {
-        this.setState({
-          star: data.star
-        });
-      }
-    }, (err) => {
-      // console.log(err);
-    });
+    })
   }
 
   render() {
@@ -106,7 +89,7 @@ class Detail extends Component {
             flexDirection: 'row',
             backgroundColor: Color.white
           }}>
-            <a onClick={this.onStar}><Icon style={{fontSize: 22, marginLeft: 20, color: Color.starRed}} type="star-o"/></a>
+            <a onClick={this.onStar}><Icon style={{fontSize: 20, marginLeft: 20, color: Color.starRed}} type="star-o"/></a>
 
             <span className="star">{star}</span>
           </Layout>

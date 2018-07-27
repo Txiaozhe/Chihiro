@@ -34,7 +34,7 @@ export const Color = {
   white: '#ffffff',
   favouriteBlack: '#333333',
   favouriteGrey: '#f8f9fa',
-  starRed: '#d68d81',
+  starRed: '#e82522',
   iconGreen: '#87d068',
   grey: '#999999',
 

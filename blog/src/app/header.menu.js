@@ -43,18 +43,13 @@ const menu = [
   },
   {
     key: 'frontend',
-    icon: 'rocket',
+    icon: 'api',
     title: 'Frontend'
   },
   {
-    key: 'backend',
-    icon: 'api',
-    title: 'Backend'
-  },
-  {
-    key: 'docker',
-    icon: 'compass',
-    title: 'Docker'
+    key: 'translate',
+    icon: 'rocket',
+    title: 'Translate'
   },
   {
     key: 'about',

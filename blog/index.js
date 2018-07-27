@@ -7,7 +7,7 @@ import App from './src/app/app';
 import Home from './src/pages/home/home';
 import Frontend from './src/pages/blog/frontend';
 import Backend from './src/pages/blog/backend';
-import Docker from './src/pages/docker/docker';
+import Translate from './src/pages/translate/translate';
 import About from './src/pages/about/about';
 import Detail from './src/pages/blog/blog.detail';
 
@@ -22,7 +22,7 @@ import {
   IndexRoute
 } from 'react-router';
 
-window.onresize = function() {
+window.onresize = function () {
   let dynWidth = document.documentElement.clientWidth;
   let dynHeight = document.documentElement.clientHeight;
 
@@ -37,9 +37,9 @@ const router = (
         <Route path="/home" component={Home}/>
         <Route path="/frontend" component={Frontend}/>
         <Route path="/backend" component={Backend}/>
-        <Route path="/docker" component={Docker} />
+        <Route path="/translate" component={Translate}/>
         <Route path="/about" component={About}/>
-        <Route path="/:category/:year/:mon/:day/:title" component={Detail} />
+        <Route path="/:category/:year/:mon/:day/:title" component={Detail}/>
       </Route>
     </Router>
   </Provider>

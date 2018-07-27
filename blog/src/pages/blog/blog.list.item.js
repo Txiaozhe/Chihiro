@@ -45,9 +45,8 @@ class BlogItem extends React.Component {
   }
 
   render() {
-    let {category, title, abstract, created, tags, contentid, star, id} = this.props;
-    let key_id = base64.encode(id);
-    let eid = base64.encode(contentid);
+    let {category, title, abstract, created, tags, contentid, star, path, id} = this.props;
+    let cid = base64.encode(contentid);
     let {year, mon, day} = Time.getDateObj(created);
     return (
       <Timeline.Item
@@ -66,9 +65,9 @@ class BlogItem extends React.Component {
         <div>
           <a
             onClick={this.onDetail}
-            href={`/#/${category}/${year}/${mon}/${day}/${title}?key=${key_id}&id=${eid}`}>{title}</a>
+            href={`/#/${category}/${year}/${mon}/${day}/${title}?path=${path}&cid=${cid}`}>{title}</a>
 
-          <Icon style={{fontSize: 20, marginLeft: 6, color: Color.starRed}} type="star-o"/>
+          <Icon style={{fontSize: 16, marginLeft: 6, color: Color.starRed}} type="star-o"/>
           <span className="list-item-star">{star}</span>
 
           <Icon className="item-tag-margin" type="tag"/><span className="item-tag">      {tags}</span>

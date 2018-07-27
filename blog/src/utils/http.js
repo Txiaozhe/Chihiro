@@ -57,7 +57,7 @@ function requestByGet(url, token, onSucceed, onFailure) {
       "Authorization": `Bearer ${token}`
     },
     mode: "cors",
-    credentials: "include"
+    // credentials: "include"
   })).then((resp) => resp.json())
     .then((json) => {
       //console.log("Get Succeed for " + url + ", response:" + JSON.stringify(json));
@@ -79,7 +79,7 @@ function requestByPost(url, token, params, onSucceed, onFailure) {
       "Authorization": `Bearer ${token}`
     },
     mode: "cors",
-    credentials: "include",
+    // credentials: "include",
     body: JSON.stringify(params)
   })).then((resp) => resp.json())
     .then((json) => {

@@ -31,6 +31,7 @@
 
 export const Icons = {
   github: 'github',
+  npm: 'npm',
   mobile: 'mobile',
   mail: 'mail',
   desktop: 'desktop',

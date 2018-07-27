@@ -50,17 +50,17 @@ class Border extends Component {
 
   componentDidMount() {
     const url = Url.url + Url.getCount.url;
-    Http.get(url, null, (count) => {
-      if(count.blog) {
-        this.setState({
-          blog: count.blog,
-          visits: count.visits,
-          stars: count.stars
-        });
-      }
-    }, (err) => {
-
-    });
+    // Http.get(url, null, (count) => {
+    //   if(count.blog) {
+    //     this.setState({
+    //       blog: count.blog,
+    //       visits: count.visits,
+    //       stars: count.stars
+    //     });
+    //   }
+    // }, (err) => {
+    //
+    // });
   }
 
   render() {
@@ -104,17 +104,17 @@ class Border extends Component {
           }}>
             <Popover
               content={'GitHub'}>
-              <a href="https://github.com/Txiaozhe"><Icon style={{margin: 10, fontSize: 16}} type={Icons.github}/></a>
+              <a href="https://github.com/Txiaozhe"><Icon className="github" style={{margin: 10, fontSize: 16}} type={Icons.github}/></a>
             </Popover>
 
             <Popover
-              content={'Call me'}>
-              <a href="/#/about"><Icon style={{margin: 10, fontSize: 16}} type={Icons.mobile}/></a>
+              content={'NPM'}>
+              <img src="/npm.png" className="npm-image"/>
             </Popover>
 
             <Popover
-              content={'E-mail me'}>
-              <a href="/#/about"><Icon style={{margin: 10, fontSize: 16}} type={Icons.mail}/></a>
+              content={'E-mail'}>
+              <a href="/#/about"><Icon className="mail" style={{margin: 10, fontSize: 16}} type={Icons.mail}/></a>
             </Popover>
           </Layout>
 

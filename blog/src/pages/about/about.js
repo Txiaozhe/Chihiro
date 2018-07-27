@@ -48,7 +48,7 @@ export default class Home extends Component {
 
           <img
             className="about-image"
-            src="./leaf.jpg"/>
+            src="/leaf.jpg"/>
 
           <span className="about-content">Hold fast to dreams, </span>
           <span className="about-content">For if dreams die, </span>

@@ -30,7 +30,8 @@
 'use strict';
 
 const host_local = 'https://sslapi.txiaozhe.top';
-const host = 'http://txiaozhe.top:7002';
+const host = 'http://127.0.0.1:3000';
+const host_https = 'https://127.0.0.1:3001';
 const version = '/api';
 
 export const Url = {

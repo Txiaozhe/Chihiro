@@ -32,11 +32,7 @@
 import React, {Component} from 'react';
 import List from '../blog/list';
 
-import {Url, CategoryIndex} from '../../config/index';
-import {Http} from '../../utils/index';
-import {blog} from '../../config/test';
-
-export default class Home extends Component {
+export default class Translate extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,28 +42,20 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    const url = Url.url + Url.getBlogList.url;
-    Http.get(url, null, res => {
-      if(res.code === 0) {
-        this.setState({
-          list: res.data,
-          loading: false
-        });
-      } else {
-        this.setState({
-          loading: false
-        });
-      }
-    }, (err) => {
+    fetch('./src/blog/translate/list.json').then(res => {
+      return res.json();
+    }).then(list => {
       this.setState({
+        list,
         loading: false
       });
-    });
+    }).catch(e => {
+
+    })
   }
 
   render() {
     let {list, loading} = this.state;
-
     return (
       <div>
         <List

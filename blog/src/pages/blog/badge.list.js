@@ -79,17 +79,17 @@ class BadgeList extends Component {
   componentDidMount() {
     const {blogid} = this.props;
     const url = Url.url + Url.getBadgeById.url;
-    Http.post(url, null, {
-      "blogid": blogid
-    }, (list) => {
-      if(list && list.length !== 0) {
-        this.setState({
-          badgeList: list
-        });
-      }
-    }, (err) => {
-
-    });
+    // Http.post(url, null, {
+    //   "blogid": blogid
+    // }, (list) => {
+    //   if(list && list.length !== 0) {
+    //     this.setState({
+    //       badgeList: list
+    //     });
+    //   }
+    // }, (err) => {
+    //
+    // });
   }
 
   render() {
