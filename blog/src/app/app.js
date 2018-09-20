@@ -29,14 +29,14 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './index.css';
-import {Layout, Footer} from 'antd';
+import { Layout, Footer } from 'antd';
 import Border from "./border";
 import HeaderMenu from "./header.menu";
 
-import {Client} from '../utils'
-import {Color, String} from '../res';
+import { Client } from '../utils'
+import { Color, String } from '../res';
 
 export default class App extends Component {
   constructor(props) {
@@ -56,7 +56,7 @@ export default class App extends Component {
         flexDirection: 'row'
       }}>
 
-        <Border/>
+        <Border />
 
         <Layout
           style={{
@@ -64,7 +64,7 @@ export default class App extends Component {
             backgroundColor: Color.white
           }}>
 
-          <br/>
+          <br />
 
           <HeaderMenu />
 
@@ -75,12 +75,12 @@ export default class App extends Component {
           <div className="footer-time">
             <span>{String.copyright}</span>
           </div>
-          <br/>
+          <br />
           <div className="footer-power">
             <span>Powered By <a className="footer-a">Txiaozhe</a>  |  <a className="icp" href="http://www.miitbeian.gov.cn/">{String.icp}</a></span>
           </div>
 
-          <br/>
+          <br />
         </Layout>
 
         <Layout

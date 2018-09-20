@@ -29,14 +29,14 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import "./index.css";
-import {Layout, Affix, Icon, Popover} from 'antd';
-import {Color, String, Icons} from '../res';
-import {Url} from '../config';
-import {Http} from '../utils';
+import { Layout, Affix, Icon, Popover } from 'antd';
+import { Color, String, Icons } from '../res';
+import { Url } from '../config';
+import { Http } from '../utils';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 class Border extends Component {
   constructor(props) {
@@ -63,8 +63,8 @@ class Border extends Component {
     // });
   }
 
-  render() {
-    let {blog, visits, stars} = this.state;
+  render () {
+    let { blog, visits, stars } = this.state
 
     return (
       <Layout
@@ -94,7 +94,7 @@ class Border extends Component {
             </span>
           </Layout>
 
-          <br/>
+          <br />
 
           <Layout style={{
             flexDirection: 'row',
@@ -104,17 +104,17 @@ class Border extends Component {
           }}>
             <Popover
               content={'GitHub'}>
-              <a href="https://github.com/Txiaozhe"><Icon className="github" style={{margin: 10, fontSize: 16}} type={Icons.github}/></a>
+              <a href="https://github.com/Txiaozhe"><Icon className="github" style={{ margin: 10, fontSize: 16 }} type={Icons.github} /></a>
             </Popover>
 
             <Popover
               content={'NPM'}>
-              <img src="/npm.png" className="npm-image"/>
+              <img src="/npm.png" className="npm-image" />
             </Popover>
 
             <Popover
               content={'E-mail'}>
-              <a href="/#/about"><Icon className="mail" style={{margin: 10, fontSize: 16}} type={Icons.mail}/></a>
+              <a href="/#/about"><Icon className="mail" style={{ margin: 10, fontSize: 16 }} type={Icons.mail} /></a>
             </Popover>
           </Layout>
 
@@ -132,7 +132,7 @@ class Border extends Component {
               <span className="number">{blog}</span>
               <span className="desc">{String.count_blog}</span>
             </Layout>
-            <div className="vertical-line"/>
+            <div className="vertical-line" />
             <Layout
               style={{
                 alignItems: 'center',
@@ -141,7 +141,7 @@ class Border extends Component {
               <span className="number">{visits}</span>
               <span className="desc">{String.count_visit}</span>
             </Layout>
-            <div className="vertical-line"/>
+            <div className="vertical-line" />
             <Layout
               style={{
                 alignItems: 'center',
@@ -152,7 +152,7 @@ class Border extends Component {
             </Layout>
           </Layout>
 
-          <br/>
+          <br />
 
           <Layout style={{
             justifyContent: 'center',
@@ -168,7 +168,7 @@ class Border extends Component {
                     fontSize: 20,
                     padding: 10
                   }}
-                  type={Icons.desktop}/>
+                  type={Icons.desktop} />
               </a>
             </Popover>
 
@@ -181,7 +181,7 @@ class Border extends Component {
                     padding: 10,
                     paddingBottom: 12
                   }}
-                  type={Icons.database}/>
+                  type={Icons.database} />
               </a>
             </Popover>
           </Layout>
@@ -194,8 +194,8 @@ class Border extends Component {
 function select(store) {
   return {
     width: store.screen.width,
-    height: store.screen.height,
+    height: store.screen.height
   }
 }
 
-export default connect(select)(Border);
+export default connect(select)(Border)
