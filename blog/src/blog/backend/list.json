@@ -1,6 +1,17 @@
 [
   {
     "id": 2,
+    "title": "Ruft 一致性算法简介",
+    "category": "backend",
+    "contentid": "ruft-algorithm",
+    "created": "2017-09-22 12:13:29",
+    "star": 1,
+    "tags": "Ruft, Consensus, Algorithm",
+    "abstract": "Ruft: 一种用来管理日志复制的一致性算法，本文基于Ruft 一致性算法论文解读",
+    "path": "backend"
+  },
+  {
+    "id": 2,
     "title": "Docker Compose 教程",
     "category": "backend",
     "contentid": "docker-compose",
