@@ -85,7 +85,7 @@ export default {
 .el-timeline-item__timestamp {
   color: #909399;
   line-height: 1;
-  font-size: 14px;
+  font-size: 15px;
 }
 /* 摘要 */
 .el-card {
