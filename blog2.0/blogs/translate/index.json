@@ -2,7 +2,7 @@
   {
     "title": "添加一个新的SQL语句",
     "category": "translate",
-    "key": "3",
+    "key": "add-a-new-sql",
     "created": "2019-04-24 22:07:16",
     "star": 1,
     "tags": "CockroachDB,SQL",

@@ -12,7 +12,10 @@ import {
   Tabs,
   TabPane,
   Button,
-  Icon
+  Icon,
+  Avatar,
+  Divider,
+  Backtop
 } from 'element-ui'
 
 import 'element-ui/lib/theme-chalk/index.css'
@@ -32,6 +35,9 @@ Vue.use(Tabs)
 Vue.use(TabPane)
 Vue.use(Button)
 Vue.use(Icon)
+Vue.use(Avatar)
+Vue.use(Divider)
+Vue.use(Backtop)
 
 new Vue({
   el: '#app',

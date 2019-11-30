@@ -1,5 +1,5 @@
 <template>
-  <div class="block">
+  <div class="div-blog-list">
     <blog-content v-if="isShowContent" v-bind:content-info="contentInfo"></blog-content>
     <el-timeline v-else>
       <el-timeline-item
@@ -25,12 +25,14 @@
 
 <script>
 import BlogContent from './blog-content'
+import BlogAuthor from './blog-author'
 
 export default {
   name: 'blog-list',
   props: ['selectedTopic', 'isShowContent'],
   components: {
-    BlogContent
+    BlogContent,
+    BlogAuthor
   },
   data() {
     return {
@@ -60,10 +62,11 @@ export default {
   border-right-color: #ffffff;
   color: #333;
   text-align:left;
-  width: 70%;
 }
-.el-card {
-  height: 140px;
+.el-card__body {
+  height: 140;
+  padding: 20px;
+  width: 600px;
 }
 /* 标题 */
 .el-button--text {
