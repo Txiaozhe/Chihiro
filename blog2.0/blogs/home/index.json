@@ -50,7 +50,7 @@
     "created": "2018-08-22 08:54:04",
     "star": 1,
     "read": 1,
-    "tags": "Mac,Bash",
+    "tags": "Mac, Bash",
     "abstract": "更改Bash版本引发的Mac事故",
     "path": "home"
   },
@@ -61,7 +61,7 @@
     "created": "2017-07-27 20:32:05",
     "star": 1,
     "read": 1,
-    "tags": "Github,diary",
+    "tags": "Github, diary",
     "abstract": "记一次GitHub的惊险历程",
     "path": "home"
   }

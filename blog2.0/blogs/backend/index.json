@@ -6,7 +6,7 @@
     "created": "2017-08-10 13:24:10",
     "star": 1,
     "read": 1,
-    "tags": "Docker,Compose",
+    "tags": "Docker, Compose",
     "abstract": "Docker Compose使用简介",
     "path": "backend"
   },
@@ -28,7 +28,7 @@
     "created": "2017-07-24 15:33:20",
     "star": 1,
     "read": 1,
-    "tags": "OAuth,JWT",
+    "tags": "OAuth, JWT",
     "abstract": "常用鉴权方式和JWT简介",
     "path": "backend"
   }

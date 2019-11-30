@@ -12,7 +12,7 @@
             @click="entryBlog(selectedTopic.name, blog)" type="text">{{blog.title}}</el-button>
           <div>
             <i class="el-icon-price-tag"></i>
-            <span>{{blog.tags.split(',').join(', ')}}</span>
+            <span>{{blog.tags}}</span>
             <i class="el-icon-view"></i>
             <span>{{blog.star}}</span>
           </div>
@@ -68,13 +68,15 @@ export default {
 }
 /* 标题 */
 .el-button--text {
-  font-size: 14pt;
+  font-size: 13pt;
+  font-weight: bold;
   color: #606266;
   background-color: #ffffff;
   text-align: left;
 }
 .el-button--text:hover {
-  font-size: 14pt;
+  font-size: 13pt;
+  font-weight: bold;
   color: #606266;
   background-color: #ffffff;
   text-align: left;
@@ -112,6 +114,7 @@ export default {
   color: #909399;
 }
 .el-footer {
-  padding-bottom: 90px;
+  margin-top: 50px;
+  margin-bottom: 90px;
 }
 </style>>
