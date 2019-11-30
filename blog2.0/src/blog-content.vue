@@ -4,6 +4,7 @@
     <span><i class="el-icon-price-tag"></i> {{contentInfo.blog.tags.split(',').join(', ')}}</span>
     <span><i class="el-icon-view"></i> {{contentInfo.blog.read}}</span>
     <vue-markdown width="500px" :source="source"></vue-markdown>
+    <p><i class="el-icon-time"></i> {{contentInfo.blog.created}}</p>
   </div>
 </template>
 

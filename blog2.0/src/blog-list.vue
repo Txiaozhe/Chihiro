@@ -20,6 +20,10 @@
         </el-card>
       </el-timeline-item>
     </el-timeline>
+    <el-footer>
+      <span class="footer">Powered By <a href="https://github.com/Txiaozhe">Txiaozhe</a></span>
+      <span class="footer"> © 2017 ♥ Tang Xiaoji </span>
+    </el-footer>
   </div>
 </template>
 
@@ -43,12 +47,6 @@ export default {
     entryBlog (topic_name, blog) {
       this.isShowContent = true
       this.contentInfo = { topic_name, blog }
-      // this.$notify({
-      //   title: 'It works!',
-      //   type: 'success',
-      //   message: `选择了${blog_key}`,
-      //   duration: 5000
-      // })
     }
   }
 }
@@ -105,5 +103,15 @@ export default {
   margin-left: 20px;
   text-align: end;
   font-size: 16px;
+}
+.footer {
+  height: 22px;
+  font-size: 10pt;
+  display: block;
+  text-align: center;
+  color: #909399;
+}
+.el-footer {
+  padding-bottom: 90px;
 }
 </style>>
