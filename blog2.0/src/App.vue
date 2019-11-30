@@ -1,14 +1,13 @@
 <template>
   <div id="app">
-              
-
-    <div>
     <el-container>
       <blog-topic></blog-topic>
     </el-container>
-    <el-footer>Footer</el-footer>
-  </div>
-  <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
+    <el-footer>
+      <span class="footer">Powered By <a href="https://github.com/Txiaozhe">Txiaozhe</a></span>
+      <span class="footer"> © 2017 ♥ Tang Xiaoji </span>
+    </el-footer>
+    <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
   </div>
 </template>
 
@@ -32,6 +31,16 @@ export default {
   font-family: Helvetica, sans-serif;
   margin-left: 13%;
   color: #333;
+}
+.footer {
+  height: 22px;
+  font-size: 10pt;
+  display: block;
+  text-align: center;
+  color: #606266;
+}
+.el-footer {
+  padding-bottom: 90px;
 }
 .el-header, .el-footer {
   background-color: #ffffff;

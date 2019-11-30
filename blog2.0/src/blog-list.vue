@@ -9,7 +9,7 @@
         :key="index">
         <el-card>
           <el-button
-            @click="entryBlog(selectedTopic.name, blog.key)" type="text">{{blog.title}}</el-button>
+            @click="entryBlog(selectedTopic.name, blog)" type="text">{{blog.title}}</el-button>
           <div>
             <i class="el-icon-price-tag"></i>
             <span>{{blog.tags.split(',').join(', ')}}</span>
@@ -40,9 +40,9 @@ export default {
     }
   },
   methods: {
-    entryBlog (topic_name, blog_key) {
+    entryBlog (topic_name, blog) {
       this.isShowContent = true
-      this.contentInfo = { topic_name, blog_key }
+      this.contentInfo = { topic_name, blog }
       // this.$notify({
       //   title: 'It works!',
       //   type: 'success',

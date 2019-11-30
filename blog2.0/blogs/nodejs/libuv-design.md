@@ -64,6 +64,6 @@ I/O (或事件) 循环是libuv 的核心部分。其构建了所有的 I/O 操�
 * DNS 函数（getaddrinfo 和 getnameinfo）
 * 用户通过 uv_queue_work() 运行的特定代码
 
-> **警告**：有关更多详细信息，查看 [”线程池工作调度“](http://docs.libuv.org/en/v1.x/threadpool.html#threadpool)部分，但是请记住，线程池的大小是非常有限的。
+> **警告**：有关更多详细信息，查看 [“线程池工作调度”](http://docs.libuv.org/en/v1.x/threadpool.html#threadpool) 部分，但是请记住，线程池的大小是非常有限的。
 
 
