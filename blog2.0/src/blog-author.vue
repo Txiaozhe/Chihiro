@@ -3,7 +3,8 @@
     <el-container class="author-container" direction="vertical">
       <el-avatar
         shape="square"
-        src="#/leaf.png">
+        fit="contain"
+        src="../leaf.jpg">
       </el-avatar>
       <span class="my-name">Tang xiaoji</span>
       <el-divider></el-divider>
@@ -30,6 +31,7 @@
 .el-avatar>img {
   width: 100px;
   height: 100px;
+  background-color: #ffffff;
 }
 .el-avatar {
   width: 100px;

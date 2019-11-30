@@ -17,7 +17,9 @@ import {
   Divider,
   Backtop,
   Input,
-  Rate
+  Rate,
+  Popover,
+  Image
 } from 'element-ui'
 
 import 'element-ui/lib/theme-chalk/index.css'
@@ -42,6 +44,8 @@ Vue.use(Divider)
 Vue.use(Backtop)
 Vue.use(Input)
 Vue.use(Rate)
+Vue.use(Popover)
+Vue.use(Image)
 
 new Vue({
   el: '#app',

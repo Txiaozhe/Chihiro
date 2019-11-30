@@ -23,6 +23,7 @@
     <el-footer>
       <span class="footer">Powered By <a href="https://github.com/Txiaozhe">Txiaozhe</a></span>
       <span class="footer"> © 2017 ♥ Tang Xiaoji </span>
+      <blog-reward></blog-reward>
     </el-footer>
   </div>
 </template>
@@ -30,13 +31,15 @@
 <script>
 import BlogContent from './blog-content'
 import BlogAuthor from './blog-author'
+import BlogReward from './blog-reward'
 
 export default {
   name: 'blog-list',
   props: ['selectedTopic', 'isShowContent'],
   components: {
     BlogContent,
-    BlogAuthor
+    BlogAuthor,
+    BlogReward
   },
   data() {
     return {
@@ -94,6 +97,7 @@ export default {
 .el-card {
   background-color: #FFF;
   color: #909399;
+  font-size: 9pt;
   transition: .3s;
 }
 /* tag左边的图标 */

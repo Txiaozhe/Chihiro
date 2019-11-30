@@ -2,7 +2,6 @@
   <div class="block">
     <el-container direction="horizontal">
       <blog-list v-bind:selected-topic="selectedTopic" v-bind:is-show-content="isShowContent"></blog-list>
-      
       <el-container direction="vertical">
         <blog-author></blog-author>
         <el-tabs :tab-position="tabPosition" @tab-click="selectTopic">
