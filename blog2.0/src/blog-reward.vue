@@ -1,6 +1,6 @@
 <template>
   <el-popover
-    placement="left"
+    placement="bottom"
     trigger="hover">
     <el-button class="reward-button" slot="reference">打赏</el-button>
     <el-image
