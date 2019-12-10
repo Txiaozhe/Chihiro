@@ -1,0 +1,22 @@
+[
+  {
+    "name": "home",
+    "icon": "el-icon-s-home"
+  },
+  {
+    "name": "nodejs",
+    "icon": "el-icon-s-promotion"
+  },
+  {
+    "name": "backend",
+    "icon": "el-icon-s-opportunity"
+  },
+  {
+    "name": "translate",
+    "icon": "el-icon-star-on"
+  },
+  {
+    "name": "me",
+    "icon": "el-icon-user-solid"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "title": "添加一个新的SQL语句",
+    "category": "translate",
+    "key": "add-a-new-sql",
+    "created": "2019-04-24 22:07:16",
+    "star": 1,
+    "read": 1,
+    "tags": "CockroachDB, SQL",
+    "abstract": "在CockroachDB中添加一个新的SQL语法类型，来实现用户自定义的功能",
+    "path": "translate"
+  },
+  {
+    "title": "在Kubernetes 集群中运行CockroachDB",
+    "category": "translate",
+    "key": "run-cockroachdb-in-kubernetes",
+    "created": "2018-06-10 10:59:32",
+    "star": 1,
+    "read": 1,
+    "tags": "CockroachDB, Kubernetes",
+    "abstract": "在Kubernetes 集群中运行CockroachDB",
+    "path": "translate"
+  },
+  {
+    "title": "CockroachDB 是如何让在线Schema Change成为可能的",
+    "category": "translate",
+    "key": "schema-change",
+    "created": "2018-05-24 09:15:32",
+    "star": 1,
+    "read": 1,
+    "tags": "CockroachDB, Schema Change",
+    "abstract": "CockroachDB Schema Change 原理简介",
+    "path": "translate"
+  }
+]
