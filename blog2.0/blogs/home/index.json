@@ -1,5 +1,16 @@
 [
   {
+    "title": "JavaScript in IoT",
+    "category": "home",
+    "key": "javascript-in-iot",
+    "created": "2019-12-12 23:02:01",
+    "star": 1,
+    "read": 1,
+    "tags": "JavaScript, IoT, JerryScript, IoT.js, ShadowNode",
+    "abstract": "壹向技术分享：在低端设备上运行 JavaScript",
+    "path": "home"
+  },
+  {
     "title": "写在2019的结尾",
     "category": "home",
     "key": "end-2019",
