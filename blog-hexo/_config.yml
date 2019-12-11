@@ -45,11 +45,10 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace: ''
-  wrap: true
   hljs: true
+  line_number: true
+  auto_detect: true
+  tab_replace:
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -107,6 +106,18 @@ jsonContent:
 valine:
   API_ID: 'q4HqCuoOlImXOnKpKNvO6aIn-gzGzoHsz'
   API_KEY: 'gABCd76E06dHRJ8m8hu4G2Sg'
+
+#rss
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ''
+  order_by: -date
+  icon: icon.png
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/

@@ -4,7 +4,6 @@ menu:
   archives: /archives
   categories: /categories
   tags: /tags
-  friends: /friends
   about: /about
 
 #logo
@@ -27,23 +26,23 @@ rss: /atom.xml
 
 #follow 按顺序展示
 follow:
-  github: 'https://github.com/shixiaohu2206'
-  facebook: 'https://www.facebook.com/shi.xiaohu.5'
-  instagram: 'https://www.instagram.com/shi_xiaohu/'
-  # twitter: 'https://github.com/shixiaohu2206'
-  # weixin: 'https://github.com/shixiaohu2206'
-  # alipay: 'https://github.com/shixiaohu2206'
-  # zhihu: 'https://github.com/shixiaohu2206'
-  # QQ: 'https://github.com/shixiaohu2206'
-  # weibo: 'https://github.com/shixiaohu2206'
-  # qqkongjian: 'https://github.com/shixiaohu2206'
-  # google: 'https://github.com/shixiaohu2206'
+  github: 'https://github.com/Txiaozhe'
+  # facebook: 'https://www.facebook.com/shi.xiaohu.5'
+  # instagram: 'https://www.instagram.com/shi_xiaohu/'
+  # twitter: 'https://github.com/Txiaozhe'
+  # weixin: 'https://github.com/Txiaozhe'
+  # alipay: 'https://github.com/Txiaozhe'
+  zhihu: 'https://www.zhihu.com/people/txiaozhe/activities'
+  # QQ: 'https://github.com/Txiaozhe'
+  # weibo: 'https://github.com/Txiaozhe'
+  # qqkongjian: 'https://github.com/Txiaozhe'
+  # google: 'https://github.com/Txiaozhe'
 
 #search post url
 search_url: /search.xml
 
-#ICP 皖ICP备16021483号
-site_icp: ''
+#ICP
+site_icp: '浙ICP备17056983号-1'
 
 #分享
 share:
@@ -51,10 +50,11 @@ share:
   - weixin
   - qqkongjian
   - QQ
-  - douban
-  - facebook
-  - twitter
-  - google
+  # - douban
+  # - facebook
+  # - twitter
+  # - google
+  - zhihu
 
 #cdn script
 cdn_script:
