@@ -12,6 +12,8 @@ logo: /images/logo.png
 #categories-max
 categories_max: 5
 
+date_format: YYYY/MM/DD HH:mm:ss
+
 #tags-max
 tags_max: 10
 

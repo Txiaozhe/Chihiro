@@ -3,10 +3,10 @@ title: ShadowNode 源码解析之 module
 date: 2018-12-20 20:03:15
 abstract: ShadowNode 源码解析以及我个人的一些理解
 categories:
-- Node.js
+- JavaScript
 tags:
 - ShadowNode
-- Node.js
+- Nodejs
 ---
 > ShadowNode 是一款可以运行于嵌入式设备的js运行时，基于Samsung的[iotjs](https://github.com/Samsung/iotjs)项目开发，和node相比，其具有更小的内存占用和更快的启动速度，不过作为contributor之一，给我很直观的感受就是ShadowNode具有极快的编译速度，开发起来也更加顺畅。我从2018年10月开始利用业余时间参与ShadowNode的开发和维护，为其提交了数个补丁和特性，因此也逐渐对其有了一定的了解，在此我将对ShadowNode从源码的角度对其进行解析以及我个人对ShadowNode的一些疑惑和思考。因为大部分实现与node一致，而且团队也一直希望将ShadowNode做到与node兼容，因此此解析也适用于理解node源码。在此也希望ShadowNode能越来越普及，并为node社区开拓一片新的领域。
 

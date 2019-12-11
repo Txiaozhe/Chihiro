@@ -131,7 +131,7 @@ baidu_tongji:
 
 本主题支持 highlight.js 官方的 css，[highlight.js 官网](https://highlightjs.org/static/demo/)看中哪个颜色搭配，复制 css 样式替换`themes\huhu\source\style\highlight.styl`
 
-新增 hljs 参数，并设为 trye，不然无法使用 highlight.js 官方的 css
+新增 hljs 参数，并设为 true，不然无法使用 highlight.js 官方的 css
 
 ```yml
 highlight:

@@ -43,7 +43,7 @@
         </div>
         <div class="date">
           <span class="iconfont icon-time-circle"></span>
-          <span><%- date(post.date, "YY/MM/DD") %></span>
+          <span><%- date(post.date, theme.date_format) %></span>
         </div>
         <% if (post.excerpt) { %>
         <div class="excerpt post-wrap"><%- post.excerpt %></div>
