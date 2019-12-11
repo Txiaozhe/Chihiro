@@ -7,9 +7,8 @@ noDate: 'true'
 - 喜欢瞎折腾
 - 但对技术不偏执
 - 可能是假的程序猿吧！
-- Email: txiaozhe@gmail.com
+- Email: txiaozhe@gmail.com / 1420183229@qq.com
 - Wechat: 1%515^81%61*535
-- [github issue](https://github.com/Txiaozhe/txiaozhe.github.io/issues) 留 issues
 
 ### 给自己打个广告，不过分吧~ 
 > 欢迎浏览 & star & fork & issue & pull request

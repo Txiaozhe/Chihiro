@@ -11,9 +11,8 @@ tags:
 # top: 1
 ---
 
-## 简介
 这是 JerryScript 官网的一段简介：
-![](/blogs/nodejs/jerryscript-introduce.png)
+![](/images/jerryscript-introduce.png)
 
 > **简单翻译一下：**
 >
