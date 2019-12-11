@@ -4,7 +4,7 @@ date: 2019-10-20 16:48:10
 # photos: ./1.jpeg
 abstract: 简单看看 JerryScript 设计
 categories:
-- JavaScript
+- Tech
 tags:
 - JavaScript
 - JerryScript

@@ -4,7 +4,7 @@ date: 2019-12-13 13:23:03
 # photos: ./1.jpeg
 abstract: 壹向技术分享：在低端设备上运行 JavaScript
 categories:
-- JavaScript
+- Tech
 tags:
 - JavaScript
 - JerryScript
