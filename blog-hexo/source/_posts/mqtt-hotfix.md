@@ -1,6 +1,6 @@
 ---
 title: 记 Rokid 两周以及一次 ShadowNode MQTT 的 bug
-date: 2019-06-20 11:16:23
+date: '2019-06-20 11:16:23'
 # photos: ./1.jpeg
 abstract: 记录在 Rokid 两周的感受以及碰到的 bug
 categories:

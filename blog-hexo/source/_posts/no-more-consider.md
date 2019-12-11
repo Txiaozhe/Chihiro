@@ -1,6 +1,6 @@
 ---
 title: 多思无益
-date: 2019-06-23 02:05:11
+date: '2019-06-23 02:05:11'
 # photos: ./1.jpeg
 abstract: 半夜思绪杂乱，挣扎起来写了这一篇
 categories:

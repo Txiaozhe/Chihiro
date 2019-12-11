@@ -1,6 +1,6 @@
 ---
 title: 常用鉴权方式和JWT简介
-date: 2017-07-24 15:33:20
+date: '2017-07-24 15:33:20'
 # photos: ./1.jpeg
 abstract: 给2019起个好头
 categories:

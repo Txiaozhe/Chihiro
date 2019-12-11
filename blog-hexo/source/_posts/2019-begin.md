@@ -1,6 +1,6 @@
 ---
 title: 给2019起个好头
-date: 2019-01-28 17:54:05
+date: '2019-01-28 17:54:05'
 # photos: ./1.jpeg
 abstract: 给2019起个好头
 categories:

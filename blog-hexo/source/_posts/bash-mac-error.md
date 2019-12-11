@@ -1,6 +1,6 @@
 ---
 title: 更改Bash版本引发的Mac事故
-date: 2018-08-22 08:54:04
+date: '2018-08-22 08:54:04'
 # photos: ./1.jpeg
 abstract: 为了运行某项目，更改了 Bash 版本导致的 Mac 无法开机
 categories:

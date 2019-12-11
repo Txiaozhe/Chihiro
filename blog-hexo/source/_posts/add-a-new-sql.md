@@ -1,6 +1,6 @@
 ---
 title: 添加一个新的SQL语句
-date: 2019-04-24 22:07:16
+date: '2019-04-24 22:07:16'
 # photos: ./1.jpeg
 abstract: 在CockroachDB中添加一个新的SQL语法类型，来实现用户自定义的功能
 layout: post

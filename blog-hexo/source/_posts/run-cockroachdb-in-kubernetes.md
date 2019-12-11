@@ -1,6 +1,6 @@
 ---
 title: 在 Kubernetes 集群中运行 CockroachDB
-date: 2018-06-10 10:59:32
+date: '2018-06-10 10:59:32'
 # photos: ./1.jpeg
 abstract: 在Kubernetes 集群中运行CockroachDB
 layout: post

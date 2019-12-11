@@ -1,6 +1,6 @@
 ---
 title: JerryScript 学习笔记
-date: 2019-10-20 16:48:10
+date: '2019-10-20 16:48:10'
 # photos: ./1.jpeg
 abstract: 简单看看 JerryScript 设计
 categories:

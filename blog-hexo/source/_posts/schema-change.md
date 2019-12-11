@@ -1,6 +1,6 @@
 ---
 title: CockroachDB 是如何让在线Schema Change成为可能的
-date: 2018-05-24 09:15:32
+date: '2018-05-24 09:15:32'
 # photos: ./1.jpeg
 abstract: CockroachDB Schema Change 原理简介
 layout: post

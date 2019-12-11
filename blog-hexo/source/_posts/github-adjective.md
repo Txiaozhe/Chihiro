@@ -1,6 +1,6 @@
 ---
 title: 记一次 GitHub 的惊险历程
-date: 2017-07-27 20:32:05
+date: '2017-07-27 20:32:05'
 # photos: ./1.jpeg
 abstract: GitHub 被官方误删除，还好最后数据都找回了，而且得到了官方的赔偿~
 categories:
