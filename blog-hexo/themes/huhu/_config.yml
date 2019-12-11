@@ -44,7 +44,7 @@ follow:
 search_url: /search.xml
 
 #ICP
-site_icp: '浙ICP备17056983号-1'
+# site_icp: '浙ICP备17056983号-1'
 
 #分享
 share:
