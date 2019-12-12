@@ -1,15 +1,17 @@
 ---
 title: JavaScript in IoT
 date: '2019-12-13 13:23:03'
-# photos: ./1.jpeg
+photos: /images/javascript-in-iot.jpg
 abstract: 壹向技术分享：在低端设备上运行 JavaScript
 categories:
 - Tech
 tags:
 - JavaScript
 - JerryScript
-top: 1
+# top: 1
 ---
+<!-- > 壹向技术分享：在低端设备上运行 JavaScript -->
+<!-- more -->
 
 今天分享的内容是 “JavaScript in IoT”，在低端设备上运行 JavaScript，这与我上一段工作经历有关，之前我在一家做语音交互和 IoT 的公司，负责 IoT 设备端服务的基础架构，简单来说就是运行在 IoT 设备上的一个服务，与 IoT 云端交互用的。当时我用的 IoT 设备主要是几款智能音箱，上面有搭载有嵌入式开发板，系统资源的话内存基本都在100MB 左右，这相对我们日常开发用的电脑或服务器来说可以算是捉襟见肘的，我负责的内容就是用 js 语言在这个板子上面做一个与云端交互的模块，那这种低端设备上如果运行日常用的 Node.js 肯定是跑不动的，所以我们为了实现在 IoT 设备运行 js 并用 js 写程序，特地开发了一套针对 IoT 场景的 js 运行时，叫 ShadowNode。
 对我来说最开始的时候我只是这个项目里面的一个贡献者，后面跟团队接触多了，也就逐渐地被吸引以至于最后直接加入团队，后面就用这个工具进行 IoT 的研发，慢慢地也对整个体系有了更多的了解。
