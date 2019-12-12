@@ -6,6 +6,7 @@ abstract: 在Kubernetes 集群中运行CockroachDB
 layout: post
 categories:
 - Tech
+- Translate
 tags:
 - CockroachDB
 - Kubernetes

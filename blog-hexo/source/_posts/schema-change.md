@@ -6,6 +6,7 @@ abstract: CockroachDB Schema Change 原理简介
 layout: post
 categories:
 - Tech
+- Translate
 tags:
 - CockroachDB
 - Schema

@@ -5,6 +5,7 @@ date: '2019-11-18 22:12:09'
 abstract: 简单看看 JerryScript 设计
 categories:
 - Tech
+- Translate
 tags:
 - JavaScript
 - JerryScript
@@ -23,7 +24,7 @@ tags:
 >
 > 该引擎支持在设备上解释、执行 JavaScript 以及对外围设备的访问。
 
-说白了 JerryScript 和我们日常用的 Chrome 和 Node.js 中的 V8 是一回事，是一个引擎，只不过 JerryScript 能运行在更加低端的设备上，如嵌入式设备。我们知道，JavaScript 作为一个脚本语言有其先天的缺陷，如解释执行的效率低下以及臃肿的堆内存的占用，哪怕 V8 的设计与实现已经做了大量的优化与改进，但距离能运行在 RAM 以 MB 为单位的设备上还差得很远。这不禁使人产生疑问，同样是对统一标准的实现，JerryScript 凭什么做到运行在 RAM 低于 64KB，ROM 低于 200KB 的设备上这种骚操作。本文参考了 [JerryScript 的官方文档](https://jerryscript.net/internals/)并对 JerryScript 设计原理进行简单的阐述。
+说白了 JerryScript 和我们日常用的 Chrome 和 Node.js 中的 V8 是一回事，是一个引擎，只不过  JerryScript 能运行在更加低端的设备上，如嵌入式设备。我们知道，JavaScript 作为一个脚本语言有其先天的缺陷，如解释执行的效率低下以及臃肿的堆内存的占用，哪怕 V8 的设计与实现已经做了大量的优化与改进，但距离能运行在 RAM 以 KB 为单位的设备上还差得很远。这不禁使人产生疑问，同样是对统一标准的实现，JerryScript 凭什么做到运行在 RAM 低于 64KB，ROM 低于 200KB 的设备上这种骚操作。本文是对 [JerryScript 的官方文档](https://jerryscript.net/internals/) 的翻译。
 
 ![](https://jerryscript.net/img/engines_high_level_design.png)
 

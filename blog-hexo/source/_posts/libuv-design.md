@@ -5,6 +5,7 @@ date: '2019-10-18 23:41:22'
 abstract: 为了理解 libuv，特地仔细看了看libuv主页的架构概述，并且翻译了一下
 categories:
 - Tech
+- Translate
 tags:
 - Libuv
 # top: 1
