@@ -7,15 +7,17 @@
 * Ant-Design
 * Docker
 * Nginx
+* Vue
+* Element
+* Hexo
 
 ## 平台
 * CentOS：centos_7_03_64_40G_alibase_20170710.vhd
 * web
+* Hexo
 
 ## 开发进度
-- [ ] GitHub 统计界面
-- [ ] 服务监控系统界面
 - [x] 博客系统界面
 - [x] 管理系统界面
-- [ ] 通知功能和界面
-
+- [x] 评论功能
+- [x] 浏览统计功能
