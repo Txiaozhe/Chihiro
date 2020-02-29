@@ -8,7 +8,6 @@ categories:
 tags:
 - JavaScript
 - JerryScript
-- IoT
 # top: 1
 ---
 <!-- > 壹向技术分享：在低端设备上运行 JavaScript -->
