@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      记 Rokid 两周以及一次 ShadowNode MQTT 的 bug - Jim Tang&#39;s blog
+    </title>
+    <link rel="" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.1.0"><link rel="alternate" href="/atom.xml" title="Jim Tang's blog" type="application/atom+xml">
+</head>
+  <body>
+    <!--  -->
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <!-- <span class="icon-toc menu-reset">Toc</span> -->
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.png" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/')"></a>
+        <div class="author">Jim Tang</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.png')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Jim Tang</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.png')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Txiaozhe" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://www.zhihu.com/people/txiaozhe/activities" target="_block">
+              <span class="iconfont icon-zhihu"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">记 Rokid 两周以及一次 ShadowNode MQTT 的 bug</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/06/20</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2019/06/20/mqtt-hotfix/" data-flag-title="记 Rokid 两周以及一次 ShadowNode MQTT 的 bug">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/Job">Job</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/Life">Life</a>
+                  
+                
+                  
+                    <a href="/tags/Job">Job</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p>2019年6月某天，入职Rokid第2周，逐渐适应了新的办公环境和新的做事方式，开始接触IOT和端开发的概念，技术上慢慢地从服务端过渡到端开发，刚开始还是有些不适应，先讲一下个人感受吧！</p>
+<p>以前做过大规模的分布式系统，也做过小型的Web API，总结下来，做服务端开发要考虑更多的是Web接口、请求负载、网络性能以及如何更好地和客户端交互，大多数情况下不需要考虑太多机器的性能问题，因为一般情况下机器性能都是过剩和冗余的，对于企业来说，能花钱加机器解决的问题也一定不是问题，而且现在云服务盛行，大量的工具、平台都被打包成云服务出售，只要花上一点小钱钱就能获得很好的基础设施支撑，开发起来不要太爽，像把服务器性能榨干这种事情基本是被抛在脑后的。但端开发就是另外一种情景了，和服务端性能压力来自外部请求不同，端上的性能问题来自设备自身，当下呈现在端开发工程师面前的主要是嵌入式开发板、智能家居设备和可穿戴式设备等，CPU和内存资源少得可怜，同时也不可能像服务端那样通过增加设备来横向扩展，这就需要开发者去耐心地打磨底层的代码，想为所欲为地写代码秀操作？不存在的，碰到性能瓶颈？C语言伺候。</p>
+<p>开始的这两周，主要以熟悉业务为主，开始还是有点吃力的，难点在于思维方式的转化，幸运的是大佬们都很耐心和细心，指导起来也不遗余力。熟悉业务以线上的各种bug为切入点，这两天就碰到一个关于MQTT协议的问题，经过两天的修复和审核，总算是将补丁打入主分支。</p>
+<p>MQTT(消息队列遥测传输协议)，是一种基于发布/订阅模式的轻量级应用层通信协议，基于TCP协议构建，因为其低开销、低带宽占用的特点，使其在物联网(IOT)方面有着较广泛的应用。Rokid产品线基于YodaOS + ShadowNode 构建 IOT 应用，并使用 ShadowNode 内置的 MQTT 作为设备与移动端之间的通信协议。在某一时间点，用户爆出大量设备不在线的问题，初步分析是 MQTT 的问题，拿了一段 MQTT 订阅和发布的测试代码在本地运行，发现用 node 命令运行是没问题的，用 ShadowNode 运行就会出现断开连接的问题，确实是ShadowNode 本身的问题，再细致分析，发现客户端在 SUBSCRIBE 的时候会导致断开连接，于是深入MQTT源码，打印出 SUBSCRIBE 时发送的报文，再将其在 node 环境中运行打印正常的报文进行对比：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">82 2d 00 00 00 28 2f 64 65 76 69 63 65 2f 43 4d 43 43 2d 33 30 36 37 31 2d... # 错误报文<br>82 2d 8d 05 00 28 2f 64 65 76 69 63 65 2f 43 4d 43 43 2d 33 30 36 37 31 2d... # 正确报文<br></code></pre></td></tr></table></figure>
+
+<p>对比正确的和错误的报文，发现第三和第四个字节是不一样的，看来是报文组装出问题了，为了验证这个猜想，我将正确的报文内容转成二进制通过ShadowNode发送，果然正确订阅，看来确实是协议的问题。鉴于本人也是第一次接触MQTT协议，没办法，只能去看MQTT协议文档了，本次修复查阅的是 <a href="https://zhuanlan.zhihu.com/p/69312588/[http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718025](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718025)" target="_blank" rel="noopener">3.1.1</a> 版本的文档。</p>
+<p>简单阐述一下MQTT协议，为了节省性能开支，其报文设计得相当紧凑环保。MQTT的报文分为固定报头、可变报头和有效载荷三部分，固定报头是必须存在的，用于描述报文类型、等级等信息，可变报头不一定存在，这取决于报文的类型，有效载荷存放的是通信内容。如上所示，前两个字节是固定报头，第一个字节（82）前四位表示类型，这里8表示SUBSCRIBE消息，后四位表示指定控制报文类型的标志位，目前只用到0010，也就是2。第二个字节表示消息的剩余长度，也就是可变报头+负载的长度总和。第三第四个字节为可变报头部分，包含一个用于确认消息传递状态的报文标识符（PacketId），该标识符由报文类型决定存在与否，当发布PUBLISH消息且QoS &gt; 0时是必须存在的，且发送 SUBCRIBE 消息时也是必须存在的，问题就出在这里，在 ShadowNode 的 MQTT 协议实现中会传入一个从0开始递增的PacketId，首次 SUBCRIBE 时该 PacketId 为0，这就导致底层处理时认为该位为空而不写入该段报文，也就是为什么上面看到的错误报文的第三和第四字节为00 00，正常情况下应该写入一个两字节的非零数字作为PacketId。至于开始时为什么不出错，也许是应用该MQTT实现的一端开始时并没有真正将这个PacketId 用来校验消息状态，而后期迭代的时候开发人员良心发现突然又校验了，从而导致报文错误。Bug 原因已找出，是时候修复一下了，由于 ShadowNode 中 MQTT 的实现还没有很完善，后期还需要做更多的适配，而业务线又出现 Bug 需要紧急修复，因此目前只做了应急措施，将上述 PacketId 的递增初始值设置为1，进而解决了该问题，真是一个数字导致的血案~ 为了适应协议文档中对QoS的处理，本次补丁还对 QoS 进行了初步的校验，<a href="https://github.com/yodaos-project/ShadowNode/pull/533" target="_blank" rel="noopener">补丁地址</a>，这是情急之下做的紧急修复，如有问题欢迎在 <a href="https://github.com/yodaos-project/ShadowNode/issues/new/choose" target="_blank" rel="noopener">ISSUE</a> 中提出 :)</p>
+<p>两周下来，切实感受到 Rokid 确实是一片丛林，挣扎并有趣~ 可期！</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/06/23/no-more-consider/">多思无益</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/04/24/add-a-new-sql/">添加一个新的SQL语句</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://txiaozhe.github.io">Jim Tang</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://txiaozhe.github.io/2019/06/20/mqtt-hotfix/">https://txiaozhe.github.io/2019/06/20/mqtt-hotfix/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于 <a href="https://txiaozhe.github.io">Jim Tang</a> 的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2017
+            <a href="https://txiaozhe.github.io">Jim Tang</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"zhihu\"],\"valine\":{\"API_ID\":\"q4HqCuoOlImXOnKpKNvO6aIn-gzGzoHsz\",\"API_KEY\":\"gABCd76E06dHRJ8m8hu4G2Sg\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

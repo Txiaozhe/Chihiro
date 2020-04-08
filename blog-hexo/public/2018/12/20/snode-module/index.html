@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      ShadowNode 源码解析之 module - Jim Tang&#39;s blog
+    </title>
+    <link rel="" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.1.0"><link rel="alternate" href="/atom.xml" title="Jim Tang's blog" type="application/atom+xml">
+</head>
+  <body>
+    <!--  -->
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <!-- <span class="icon-toc menu-reset">Toc</span> -->
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.png" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/')"></a>
+        <div class="author">Jim Tang</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.png')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Jim Tang</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.png')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Txiaozhe" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://www.zhihu.com/people/txiaozhe/activities" target="_block">
+              <span class="iconfont icon-zhihu"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">ShadowNode 源码解析之 module</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2018/12/20</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2018/12/20/snode-module/" data-flag-title="ShadowNode 源码解析之 module">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/Tech">Tech</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/ShadowNode">ShadowNode</a>
+                  
+                
+                  
+                    <a href="/tags/Nodejs">Nodejs</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <blockquote>
+<p>ShadowNode 是一款可以运行于嵌入式设备的js运行时，基于Samsung的<a href="https://github.com/Samsung/iotjs" target="_blank" rel="noopener">iotjs</a>项目开发，和node相比，其具有更小的内存占用和更快的启动速度，不过作为contributor之一，给我很直观的感受就是ShadowNode具有极快的编译速度，开发起来也更加顺畅。我从2018年10月开始利用业余时间参与ShadowNode的开发和维护，为其提交了数个补丁和特性，因此也逐渐对其有了一定的了解，在此我将对ShadowNode从源码的角度对其进行解析以及我个人对ShadowNode的一些疑惑和思考。因为大部分实现与node一致，而且团队也一直希望将ShadowNode做到与node兼容，因此此解析也适用于理解node源码。在此也希望ShadowNode能越来越普及，并为node社区开拓一片新的领域。</p>
+</blockquote>
+<p>本文主要讲述ShadowNode中<code>module</code>模块的实现。<code>module</code>是node中最重要的模块之一，在ShadowNode中也是如此。和node一样，ShadowNode也支持<code>CommonJS</code>的模块形式，实现方式略有不同，但使用方式与node基本一致。</p>
+<p><code>module</code>模块在node和ShadowNode中的重要性不言而喻，从启动时便要用于加载脚本。废话不多说，接下来先解析一波源码，我们从入口文件<code>ShadowNode/src/js/iotjs.js</code>（为什么还要叫iotjs呢？其实我一直想向团队建议改个名字，比如snode啥的@yorkie:) ）开始，这里面包含了一个IIFE的函数，<code>ShadowNode/src/js/iotjs.js</code> line: 23</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Module</span>(<span class="hljs-params">id</span>) </span>&#123;<br>    <span class="hljs-keyword">this</span>.id = id;<br>    <span class="hljs-keyword">this</span>.exports = &#123;&#125;;<br>&#125;<br><br>Module.cache = &#123;&#125;;<br>Module.require = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">id</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (id === <span class="hljs-string">'native'</span>) &#123;<br>      <span class="hljs-keyword">return</span> Module;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (Module.cache[id]) &#123;<br>      <span class="hljs-keyword">return</span> Module.cache[id].exports;<br>    &#125;<br><br>    <span class="hljs-keyword">var</span> <span class="hljs-built_in">module</span> = <span class="hljs-keyword">new</span> Module(id);<br><br>    Module.cache[id] = <span class="hljs-built_in">module</span>;<br>    <span class="hljs-built_in">module</span>.compile();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">module</span>.exports;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>可以看到这里定义了一个<code>Module</code>类，但这还不是我们日常使用的那个<code>module</code>模块，这里进行了<code>if (id === &#39;native&#39;)</code>的判断，后面会用到，然后从缓存中获取模块，我们可以看到不管是node还是ShadowNode，缓存的概念都是一以贯之的，这极大地提升了模块加载的性能，最后将模块返回。而后移到<code>ShadowNode/src/js/iotjs.js</code> line: 51</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> <span class="hljs-built_in">module</span> = Module.require(<span class="hljs-string">'module'</span>);<br></code></pre></td></tr></table></figure>
+
+<p>这里调用了上述<code>Module</code>类的<code>require</code>静态方法来加载真正的<code>module</code>模块所在地：<code>ShadowNode/src/js/module.js</code>，并运行<code>compile</code>成员方法，里面会调用<code>process.compileModule()</code>方法，这是用c代码实现的内置<code>process</code>模块，在此我不详细讲述<code>process</code>的内容，之后会用专门的篇幅进行解析。<code>compileModule()</code> 用于将模块载入内存，成为运行时的一部分，也就可以用于运行与调用了。简单来说，这入口文件主要执行了诸如：<code>ShadowNode/src/js/iotjs.js</code> line: 384</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">global.console = Module.require(<span class="hljs-string">'console'</span>);<br>global.Buffer = Module.require(<span class="hljs-string">'buffer'</span>);<br>global.Promise = Module.require(<span class="hljs-string">'promise'</span>);<br></code></pre></td></tr></table></figure>
+
+<p>以及：<code>ShadowNode/src/js/iotjs.js</code> line: 496</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">process.exit = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">code</span>) </span>&#123;<br>    ...<br></code></pre></td></tr></table></figure>
+
+<p>等我们熟悉的全局模块、方法以及常量的定义与加载操作，为系统启动做足准备工作，但这不是我们现在所关心的，因此移步至</p>
+<p><code>ShadowNode/src/js/iotjs.js</code> line: 603</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> m = Module.require(<span class="hljs-string">'module'</span>);<br>m.runMain();<br></code></pre></td></tr></table></figure>
+
+<p>这里再次加载了一个上述真正的<code>module</code>模块实现文件并执行了其静态的<code>runMain</code>方法，因此我们移步至<code>ShadowNode/src/js/module.js</code>：line: 335</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">iotjs_module_t.runMain = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (process.debuggerWaitSource) &#123;<br>    <span class="hljs-keyword">var</span> fn = process.debuggerSourceCompile();<br>    fn.call();<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">var</span> filename = mainModule.filename = process.argv[<span class="hljs-number">1</span>];<br>    mainModule.exports = iotjs_module_t.load(filename, <span class="hljs-literal">null</span>);<br>  &#125;<br>  <span class="hljs-keyword">while</span> (process._onNextTick());<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>我们现在着重关注以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> filename = mainModule.filename = process.argv[<span class="hljs-number">1</span>];<br>mainModule.exports = iotjs_module_t.load(filename, <span class="hljs-literal">null</span>);<br></code></pre></td></tr></table></figure>
+
+<p>这里将<code>process.argv[1]</code>所指代的变量作为文件名，也就是当执行<code>$ iotjs xxx.js</code>时需要加载的文件，也就是说这里会加载用户指定的文件进行解析并运行，紧接着调用<code>iotjs_module_t.load(filename, null);</code>来执行加载操作，看一下<code>load</code>方法的实现：</p>
+<p><code>ShadowNode/src/js/module.js</code>：line: 220</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs javascript">iotjs_module_t.load = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">id, parent</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (process.builtin_modules[id]) &#123;<br>    iotjs_module_t.curr = id;<br>    <span class="hljs-keyword">return</span> Native.require(id);<br>  &#125;<br>  <span class="hljs-keyword">var</span> <span class="hljs-built_in">module</span> = <span class="hljs-keyword">new</span> iotjs_module_t(id, parent);<br>  <span class="hljs-keyword">var</span> modPath = iotjs_module_t.resolveModPath(<span class="hljs-built_in">module</span>.id, <span class="hljs-built_in">module</span>.parent);<br><br>  <span class="hljs-keyword">var</span> cachedModule = iotjs_module_t.cache[modPath];<br>  <span class="hljs-keyword">if</span> (cachedModule) &#123;<br>    iotjs_module_t.curr = modPath;<br>    <span class="hljs-keyword">return</span> cachedModule.exports;<br>  &#125;<br><br>  <span class="hljs-keyword">if</span> (!modPath) &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Module not found: '</span> + id);<br>  &#125;<br><br>  <span class="hljs-keyword">var</span> stat = process._loadstat();<br>  <span class="hljs-keyword">var</span> startedAt;<br>  <span class="hljs-keyword">if</span> (stat) &#123;<br>    startedAt = <span class="hljs-built_in">Date</span>.now();<br>  &#125;<br><br>  <span class="hljs-built_in">module</span>.filename = modPath;<br>  <span class="hljs-built_in">module</span>.dirs = [modPath.substring(<span class="hljs-number">0</span>, modPath.lastIndexOf(<span class="hljs-string">'/'</span>) + <span class="hljs-number">1</span>)];<br>  iotjs_module_t.cache[modPath] = <span class="hljs-built_in">module</span>;<br>  iotjs_module_t.curr = modPath;<br><br>  <span class="hljs-keyword">var</span> ext = modPath.substr(modPath.lastIndexOf(<span class="hljs-string">'.'</span>) + <span class="hljs-number">1</span>);<br>  <span class="hljs-keyword">if</span> (ext === <span class="hljs-string">'jsc'</span>) &#123;<br>    <span class="hljs-built_in">module</span>.compile(<span class="hljs-literal">true</span>);<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ext === <span class="hljs-string">'json'</span>) &#123;<br>    <span class="hljs-keyword">var</span> source = process.readSource(modPath);<br>    <span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">JSON</span>.parse(source);<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ext === <span class="hljs-string">'node'</span>) &#123;<br>    <span class="hljs-keyword">var</span> native = process.openNativeModule(<span class="hljs-built_in">module</span>.filename);<br>    <span class="hljs-built_in">module</span>.exports = native;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">/** Treat any other file as js file */</span><br>    <span class="hljs-built_in">module</span>.compile();<br>  &#125;<br><br>  <span class="hljs-keyword">if</span> (stat) &#123;<br>    <span class="hljs-keyword">var</span> relPath = modPath.replace(cwd, <span class="hljs-string">''</span>);<br>    <span class="hljs-keyword">var</span> consume = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Date</span>.now() - startedAt);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`load "<span class="hljs-subst">$&#123;relPath&#125;</span>" <span class="hljs-subst">$&#123;consume&#125;</span>ms`</span>);<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">module</span>.exports;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>这个方法也是全局<code>require</code>方法所执行的模块加载操作，其中的加载流程和node相同，首先查询是否是内置模块，如果是，则直接返回内置模块，如果不是，则解析模块名，并对缓存进行查询，这里使用绝对路径作为缓存存储的键以避免重复缓存，如果缓存中存在，则直接返回，否则解析模块文件并加载，这里会识别<code>jsc</code>、<code>json</code>、<code>node</code>的文件以使用对应方式进行解析，否则，其他文件都将作为<code>js</code>文件进行解析。最终将<code>module.exports</code>返回。至此，模块就被加载了。</p>
+<p>那么问题来了，全局的<code>require</code>函数是怎么就能直接使用了呢？这也是我刚开始看源代码时心中所带的问题。到现在好像也没有看到有相关的操作，那接下就可以分析一下上述代码的<code>compile</code>方法了！以下是<code>compile</code>成员方法的实现：<code>ShadowNode/src/js/module.js</code>：line: 272</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_makeRequireFunction</span>(<span class="hljs-params">mod</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> Module = mod.constructor;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">require</span>(<span class="hljs-params">id</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> mod.require(id);<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_resolve</span>(<span class="hljs-params">request</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (!request || <span class="hljs-keyword">typeof</span> request !== <span class="hljs-string">'string'</span>) &#123;<br>      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">'module must be a non-null string'</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (process.builtin_modules[request]) &#123;<br>      <span class="hljs-keyword">return</span> request;<br>    &#125;<br><br>    <span class="hljs-keyword">var</span> path = Module.resolveModPath(request, mod);<br>    <span class="hljs-keyword">if</span> (!path) &#123;<br>      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Module not found: '</span> + request);<br>    &#125;<br>    <span class="hljs-keyword">return</span> path;<br>  &#125;<br>  <span class="hljs-built_in">require</span>.resolve = _resolve;<br>  <span class="hljs-built_in">require</span>.main = mainModule;<br>  <span class="hljs-built_in">require</span>.cache = Module.cache;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>;<br>&#125;<br><br><br>iotjs_module_t.prototype.compile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">snapshot</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> __filename = <span class="hljs-keyword">this</span>.filename;<br>  <span class="hljs-keyword">var</span> __dirname = path.dirname(__filename);<br>  <span class="hljs-keyword">var</span> fn;<br>  <span class="hljs-keyword">if</span> (!snapshot) &#123;<br>    fn = process.compile(__filename);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    fn = process.compileSnapshot(__filename);<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> fn !== <span class="hljs-string">'function'</span>)<br>      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">'Invalid snapshot file.'</span>);<br>  &#125;<br><br>  <span class="hljs-keyword">var</span> _require = _makeRequireFunction(<span class="hljs-keyword">this</span>);<br><br>  fn.apply(<span class="hljs-keyword">this</span>.exports, [<br>    <span class="hljs-keyword">this</span>.exports,             <span class="hljs-comment">// exports</span><br>    _require,                 <span class="hljs-comment">// require</span><br>    <span class="hljs-keyword">this</span>,                     <span class="hljs-comment">// module</span><br>    <span class="hljs-literal">undefined</span>,                <span class="hljs-comment">// native</span><br>    __filename,               <span class="hljs-comment">// __filename</span><br>    __dirname                 <span class="hljs-comment">// __dirname</span><br>  ]);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>这里并没有很复杂的实现，通过<code>process.compile(__filename)</code>和<code>process.compileSnapshot(__filename)</code>创建运行的事例，并组装好<code>require</code>等参数，通过<code>fn.apply(...)</code>将<code>exports</code>、<code>require</code>、<code>module</code>、<code>__filename</code>等我们熟悉的全局函数和对象传入，至此，我们最熟悉的那些模块函数也就可以用了。不过到此为止，好像还缺了点什么，对，还没说ShadowNode模块是怎么寻址的呢！这里我们从<code>iotjs_module_t.resolveModPath(...)</code>方法开始，这个方法在<code>iotjs_module_t.load(...)</code>和<code>require.resolve(...)</code>方法中用于模块寻址：</p>
+<p><code>ShadowNode/src/js/module.js</code>：line: 166</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs javascript">iotjs_module_t.resolveModPath = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">id, parent</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (parent != <span class="hljs-literal">null</span> &amp;&amp; id === parent.id) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>  &#125;<br><br>  <span class="hljs-keyword">var</span> filepath = <span class="hljs-literal">false</span>;<br>  <span class="hljs-keyword">if</span> (id[<span class="hljs-number">0</span>] === <span class="hljs-string">'/'</span>) &#123;<br>    filepath = iotjs_module_t._resolveFilepath(id, <span class="hljs-literal">false</span>);<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (parent === <span class="hljs-literal">null</span>) &#123;<br>    filepath = iotjs_module_t._resolveFilepath(id, cwd);<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (id[<span class="hljs-number">0</span>] === <span class="hljs-string">'.'</span>) &#123;<br>    <span class="hljs-keyword">var</span> root = path.dirname(parent.filename);<br>    filepath = iotjs_module_t._resolveFilepath(id, root);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">var</span> dirs = iotjs_module_t.resolveDirectories(id, parent);<br>    filepath = iotjs_module_t.resolveFilepath(id, dirs);<br>  &#125;<br><br>  <span class="hljs-keyword">if</span> (filepath &amp;&amp;<br>    (filepath.indexOf(<span class="hljs-string">'./'</span>) &gt; <span class="hljs-number">0</span> || filepath.indexOf(<span class="hljs-string">'../'</span>) &gt; <span class="hljs-number">0</span>)) &#123;<br>    <span class="hljs-keyword">return</span> iotjs_module_t.normalizePath(filepath);<br>  &#125;<br>  <span class="hljs-keyword">return</span> filepath;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><code>parent</code>是指调用目标模块的模块，也属于<code>module</code>的实例，而后根据模块路径的形式和传入的<code>parent</code>值指定模块寻址的起点，比如当<code>parent === null</code>时传入<code>cwd</code>作为寻址起点，也就是脚本运行的当前目录。接下来是<code>iotjs_module_t._resolveFilepath(...)</code>：<code>ShadowNode/src/js/module.js</code>：line: 129</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs javascript">iotjs_module_t._resolveFilepath = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">id, root, ext_index</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> modulePath = root ? path.join(root, id) : id;<br>  <span class="hljs-keyword">var</span> filepath;<br>  <span class="hljs-keyword">var</span> exts = [<span class="hljs-string">'.js'</span>, <span class="hljs-string">'.json'</span>, <span class="hljs-string">'.node'</span>];<br>  <span class="hljs-keyword">if</span> (ext_index === <span class="hljs-literal">undefined</span>) &#123;<br>    ext_index = <span class="hljs-number">0</span>;<br>  &#125;<br><br>  <span class="hljs-comment">// id[.ext]</span><br>  <span class="hljs-keyword">if</span> (filepath = tryPath(modulePath, exts[ext_index])) &#123;<br>    <span class="hljs-keyword">return</span> filepath;<br>  &#125;<br><br>  <span class="hljs-comment">// id/index[.ext]</span><br>  <span class="hljs-keyword">if</span> (filepath = tryPath(modulePath + <span class="hljs-string">'/index'</span>, exts[ext_index])) &#123;<br>    <span class="hljs-keyword">return</span> filepath;<br>  &#125;<br><br>  <span class="hljs-comment">// 3. package path id/</span><br>  <span class="hljs-keyword">var</span> jsonpath = modulePath + <span class="hljs-string">'/package.json'</span>;<br>  filepath = iotjs_module_t.tryPath(jsonpath);<br>  <span class="hljs-keyword">if</span> (filepath) &#123;<br>    <span class="hljs-keyword">var</span> pkgSrc = process.readSource(jsonpath);<br>    <span class="hljs-keyword">var</span> pkgMainFile = <span class="hljs-built_in">JSON</span>.parse(pkgSrc).main;<br><br>    <span class="hljs-comment">// pkgmain[.ext]</span><br>    <span class="hljs-keyword">if</span> (filepath = tryPath(modulePath + <span class="hljs-string">'/'</span> + pkgMainFile, exts[ext_index])) &#123;<br>      <span class="hljs-keyword">return</span> filepath;<br>    &#125;<br>  &#125;<br>  ext_index++;<br>  <span class="hljs-keyword">if</span> (ext_index &lt; exts.length) &#123;<br>    <span class="hljs-keyword">return</span> iotjs_module_t._resolveFilepath(id, root, ext_index);<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>此函数将目标模块的路径进行组合并尝试读取模块文件，在这里会识别<code>js</code>、<code>json</code>、<code>node</code> 三种格式的文件以及<code>index.*</code>默认文件，若读取失败，则尝试读取<code>package.json</code>中依赖的模块，最终返回完整的模块路径。后续对模块地址进行整理即返回，模块的寻址也就结束了。</p>
+<p>以上内容描述了ShadowNode中<code>module</code>模块的实现过程，包括全局对象的构建、模块寻址、缓存优化等，但其中有一些细节比如<code>process.compile(...)</code>如何对模块文件进行编译以及<code>snapshot</code>构建等问题没有深入论述，后续随着我参与项目构建的深入我还会继续详解。</p>
+<p>作为一个开源爱好者，也是一名noder，我对ShadowNode的关注由来已久，但真正参与构建也就近两个月的事情，一直以来我对这个项目保留了一些疑问和不解，对此我也特地和ShadowNode作者@yorkie有过一次详谈，一方面从性能角度来看，js并不优良的性能以及它的运行环境对系统资源的巨大消耗决定了其绝对不是构建嵌入式设备应用的绝佳选择，开源社区对类似运行时的diss也基本集中在这方面；另一方面从生态的角度来看，虽然js的生态非常完备，尤其是在node和npm崛起之后，但嵌入式设备应用开发本身也并不是一个巨大的需求，因此对于构建这样一个类node且运行于嵌入式设备的运行时是否具有现实意义，我一直是存疑的。对此，yorkie也给了解答，构建ShadowNode的动机很简单，其实就是看中js本身所具有的巨大生态支撑，而其他并没有太多考虑（事实上也不值得考虑太多），yorkie还用了Android的例子，选择Java作为其开发语言并不是看中Java的性能，而是其强大的生态。确实，这没毛病，而且最终Android也反过去助长了Java生态的增长。尽管这一点也并没有绝对说服我，但ShadowNode的最终目标在于社区建设和生态构建，且对未来发展有更多的憧憬与期待而非该技术本身这一点，也还是令我信服的。</p>
+<p>以上是我对ShadowNode实现的简单阐述及我个人粗浅的看法与理解，有错误或遗漏的部分欢迎指正 : )</p>
+<p>2018-12-20</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/01/28/2019-begin/">给2019起个好头</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2018/12/18/xixi/">在西溪湿地做景区管理员</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://txiaozhe.github.io">Jim Tang</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://txiaozhe.github.io/2018/12/20/snode-module/">https://txiaozhe.github.io/2018/12/20/snode-module/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于 <a href="https://txiaozhe.github.io">Jim Tang</a> 的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2017
+            <a href="https://txiaozhe.github.io">Jim Tang</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"zhihu\"],\"valine\":{\"API_ID\":\"q4HqCuoOlImXOnKpKNvO6aIn-gzGzoHsz\",\"API_KEY\":\"gABCd76E06dHRJ8m8hu4G2Sg\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

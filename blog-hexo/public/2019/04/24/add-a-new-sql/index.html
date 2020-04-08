@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      添加一个新的SQL语句 - Jim Tang&#39;s blog
+    </title>
+    <link rel="" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.1.0"><link rel="alternate" href="/atom.xml" title="Jim Tang's blog" type="application/atom+xml">
+</head>
+  <body>
+    <!-- 
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加一个新的SQL语句"><span class="toc-text">添加一个新的SQL语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加新的关键字"><span class="toc-text">添加新的关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加语法解析规则"><span class="toc-text">添加语法解析规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加新的语法节点类型"><span class="toc-text">添加新的语法节点类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加测试用例"><span class="toc-text">添加测试用例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给SQL语句添加别名"><span class="toc-text">给SQL语句添加别名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+     -->
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <!-- <span class="icon-toc menu-reset">Toc</span> -->
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.png" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/')"></a>
+        <div class="author">Jim Tang</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.png')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Jim Tang</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.png')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Txiaozhe" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://www.zhihu.com/people/txiaozhe/activities" target="_block">
+              <span class="iconfont icon-zhihu"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">添加一个新的SQL语句</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/04/24</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2019/04/24/add-a-new-sql/" data-flag-title="添加一个新的SQL语句">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/Tech">Tech</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/CockroachDB">CockroachDB</a>
+                  
+                
+                  
+                    <a href="/tags/SQL">SQL</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h1 id="前言">前言<a class="post-anchor" href="#前言"></a></h1><p>CockroachDB是著名的开源NewSQL数据库，对外提供了标准的SQL接口。上一篇文章《CockroachDB的Parser模块实现》介绍了CockroachDB中Parser模块，主要通过词法解析器将SQL语句解析成Token，然后通过语法解析器生成抽象语法树。本文将介绍如何在CockroachDB中添加一个新的SQL语法类型，来实现用户自定义的功能，并添加相应的测试，从而加深对相应模块的代码及原理的理解。</p>
+<h1 id="添加一个新的SQL语句">添加一个新的SQL语句<a class="post-anchor" href="#添加一个新的SQL语句"></a></h1><p>添加一个新的SQL语句，首先需要在SQL parser中添加必要的语法规则。CockroachDB的parser是通过 <em>goyacc</em> （go语言构建的一个yacc编译器）解析语法规则文件（<em>pkg/sql/parser/sql.y<em>）生成的。parser生成一颗抽象语法树（</em>AST*），其树节点的定义在代码目录 *pkg/sql/sem/tree</em> 下。</p>
+<p>在parser中添加一个新的SQL语句有三个关键部分：</p>
+<ul>
+<li><p>添加新的关键字；</p>
+</li>
+<li><p>添加语法解析规则；</p>
+</li>
+<li><p>添加新的语法节点类型</p>
+</li>
+</ul>
+<p>我们将尝试在CockroachDB v2.1中添加一个新的SQL语句：<em>FROBNICATE</em> ，这个SQL语句支持三种语法，功能如下：</p>
+<ul>
+<li><p><strong>FROBNICATE CLUSTER</strong> ：在服务端打印 “<em>It’s FrobnicateModeCluster</em>”</p>
+</li>
+<li><p><strong>FROBNICATE SESSION</strong>：在服务端打印 “<em>It’s FrobnicateModeSession</em>”</p>
+</li>
+<li><p><strong>FROBNICATE ALL</strong>：在服务端打印 “<em>It’s FrobnicateModeALL</em>”</p>
+</li>
+</ul>
+<h2 id="添加新的关键字">添加新的关键字<a class="post-anchor" href="#添加新的关键字"></a></h2><p>第一步需要先定义关键字。在<strong>pkg/sql/parser/sql.y</strong> 文件中搜索”%token”，可以看到声明了许多token，例如我们语法中需要用到的<em>SESSION<em>、</em>CLUSTER<em>、</em>ALL*都已经存在了，因此我们只需要添加关键字 *FROBNICATE</em> 即可，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">%token &lt;str&gt; FROBNICATE<br></code></pre></td></tr></table></figure>
+
+<p>如果关键字可以出现在标识符选项中，则必须保留该关键字（在需要使用它的地方，例如在列名中，必须使用双引号引起来），因此我们还需要将该关键字添加到”unreserved keywords”列表中，避免与标识符混淆。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">unreserved_keyword:<br>....<br>| FROBNICATE<br>...<br></code></pre></td></tr></table></figure>
+
+<p>至此词法分析器已经能识别我们所有的关键字了，接下来需要告诉语法解析器如何处理新的语句。</p>
+<h2 id="添加语法解析规则">添加语法解析规则<a class="post-anchor" href="#添加语法解析规则"></a></h2><p>添加语法解析规则涉及到下列三个部分：</p>
+<ul>
+<li><p>类型列表</p>
+</li>
+<li><p>语法case列表</p>
+</li>
+<li><p>子句解析规则</p>
+</li>
+</ul>
+<p>在 <em>sql.y</em> 文件中搜索”tree.Statement”，可以看到定义好的类型列表，在这里添加一个新的语法类型，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">%type &lt;tree.Statement&gt; frobnicate_stmt<br></code></pre></td></tr></table></figure>
+
+<p>然后搜索 “<em>stmt:</em> “，为新的语句类型添加一个case：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">stmt:<br>...<br>| frobnicate_stmt &#x2F;&#x2F; EXTEND WITH HELP: FROBNICATE<br>...<br></code></pre></td></tr></table></figure>
+
+<p>最后，我们需要在stmt中为新的语句添加语法规则及相应的帮助信息，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F;&#x2F; %Help: FROBNICATE - show the simple message<br>&#x2F;&#x2F; %Category: Misc<br>&#x2F;&#x2F; %Text: FROBNICATE &#123; CLUSTER | SESSION | ALL &#125;<br>frobnicate_stmt:<br>FROBNICATE CLUSTER &#123; return unimplemented(sqllex, &quot;frobnicate cluster&quot;) &#125;<br>| FROBNICATE SESSION &#123; return unimplemented(sqllex, &quot;frobnicate session&quot;) &#125;<br>| FROBNICATE ALL &#123; return unimplemented(sqllex, &quot;frobnicate all&quot;) &#125;<br></code></pre></td></tr></table></figure>
+
+<p>至此，parser已经能够识别新的语法类型并提示相应信息了。此处我们暂时使用unimplemented来代替该语法具体的操作，后续我们会继续完善该部分内容。</p>
+<p>我们来尝试使用新的语法，首先需要产生 <em>sql.go</em> 文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">~/go/src/github.com/cockroachdb/cockroach$ make generate<br>...<br>Type checking sql.y<br>Compiling sql.go<br>...<br></code></pre></td></tr></table></figure>
+
+<p>然后重新编译：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">~/go/src/github.com/cockroachdb/cockroach$ make build<br>...<br>github.com/cockroachdb/cockroach<br></code></pre></td></tr></table></figure>
+
+<p>使用新编译的二进制文件，起一个CockroachDB单节点实例：</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> rm -fr cockroach-data/ &amp;&amp; ./cockroach start --insecure</span><br>...<br>status:     initialized new cluster<br>...<br></code></pre></td></tr></table></figure>
+
+<p>另起一个终端，运行刚才添加的新语句：</p>
+<p><a href="https://raw.githubusercontent.com/Txiaozhe/images/master/blog/build-sql-statement/1.jpeg" target="_blank" rel="noopener" data-caption="1" data-fancybox="images"><img src="https://raw.githubusercontent.com/Txiaozhe/images/master/blog/build-sql-statement/1.jpeg" alt="1"></a></p>
+<p>这里虽然出现了<em>umimplemented</em> 报错，提示该语句还未完成，不过这时已经可以解析该语法了。如果执行一个不存在的语句，提示的错误则是 <em>syntax error</em>：</p>
+<p><a href="https://raw.githubusercontent.com/Txiaozhe/images/master/blog/build-sql-statement/2.jpeg" target="_blank" rel="noopener" data-caption="2" data-fancybox="images"><img src="https://raw.githubusercontent.com/Txiaozhe/images/master/blog/build-sql-statement/2.jpeg" alt="2"></a></p>
+<h2 id="添加新的语法节点类型">添加新的语法节点类型<a class="post-anchor" href="#添加新的语法节点类型"></a></h2><p>现在我们已经可以解析相关语法，接下来还需要为该语句添加适当的语义。我们需要一个AST（抽象语法树）节点来将语句的结构信息从parser传递到runtime。</p>
+<p>上文中我们在sql.y中添加过<code>%type &lt;tree.Statement&gt;</code>，因此我们还需要实现<code>tree.Statement</code>接口，该接口的定义在<code>pkg/sql/sem/tree/stmt.go</code>中，它有4个方法需要实现：</p>
+<ul>
+<li><p>fmt.Stringer</p>
+</li>
+<li><p>NodeFormatter</p>
+</li>
+<li><p>StatementType()</p>
+</li>
+<li><p>StatementTag()</p>
+</li>
+</ul>
+<p>首先创建一个新文件<code>pkg/sql/sem/tree/frobnicate.go</code>，在该文件中实现相关AST节点：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> parser<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">"bytes"</span><br><br><span class="hljs-keyword">type</span> Frobnicate <span class="hljs-keyword">struct</span> &#123;<br>  Mode FrobnicateMode<br>&#125;<br><br><span class="hljs-keyword">var</span> _ Statement = &amp;Frobnicate&#123;&#125;<br><span class="hljs-keyword">type</span> FrobnicateMode <span class="hljs-keyword">int</span><br><span class="hljs-keyword">const</span> (<br>  FrobnicateModeAll FrobnicateMode = <span class="hljs-literal">iota</span><br>  FrobnicateModeCluster<br>  FrobnicateModeSession<br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(node *Frobnicate)</span> <span class="hljs-title">StatementType</span><span class="hljs-params">()</span> <span class="hljs-title">StatementType</span></span> &#123; <span class="hljs-keyword">return</span> Ack &#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(node *Frobnicate)</span> <span class="hljs-title">StatementTag</span><span class="hljs-params">()</span> <span class="hljs-title">string</span></span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-string">"FROBNICATE"</span> &#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(node *Frobnicate)</span> <span class="hljs-title">Format</span><span class="hljs-params">(buf *bytes.Buffer, f FmtFlags)</span></span> &#123;<br>  buf.WriteString(<span class="hljs-string">"FROBNICATE "</span>)<br>  <span class="hljs-keyword">switch</span> node.Mode &#123;<br>    <span class="hljs-keyword">case</span> FrobnicateModeAll:<br>    buf.WriteString(<span class="hljs-string">"ALL"</span>)<br>    <span class="hljs-keyword">case</span> FrobnicateModeCluster:<br>    buf.WriteString(<span class="hljs-string">"CLUSTER"</span>)<br>    <span class="hljs-keyword">case</span> FrobnicateModeSession:<br>    buf.WriteString(<span class="hljs-string">"SESSION"</span>)<br>    <span class="hljs-keyword">default</span>:<br>    <span class="hljs-built_in">panic</span>(fmt.Errorf(<span class="hljs-string">"Unknown FROBNICATE mode %v!"</span>, node.Mode))<br>  &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(node *Frobnicate)</span> <span class="hljs-title">String</span><span class="hljs-params">()</span> <span class="hljs-title">string</span></span> &#123;<br>  <span class="hljs-keyword">return</span> AsString(node)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>接下来我们需要更新parser，让它在遇到该语句时返回相应的<code>Frobnicate</code>节点。</p>
+<p>上文在 <em>sql.y</em> 文件中添加frobnicate_stmt规则时，使用了unimplemented来暂时代替具体实现，现在我们来实现这部分内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F;&#x2F; %Help: FROBNICATE - twiddle the various settings<br>&#x2F;&#x2F; %Category: Misc<br>&#x2F;&#x2F; %Text: FROBNICATE &#123; CLUSTER | SESSION | ALL &#125;<br>frobnicate_stmt:<br>FROBNICATE CLUSTER &#123; $$.val &#x3D; &amp;tree.Frobnicate&#123;Mode: tree.FrobnicateModeCluster&#125; &#125;<br>| FROBNICATE SESSION &#123; $$.val &#x3D; &amp;tree.Frobnicate&#123;Mode: tree.FrobnicateModeSession&#125; &#125;<br>| FROBNICATE ALL &#123; $$.val &#x3D; &amp;tree.Frobnicate&#123;Mode: tree.FrobnicateModeAll&#125; &#125;<br></code></pre></td></tr></table></figure>
+
+<p>重新编译，然后通过客户端运行该语句：</p>
+<p><a href="https://raw.githubusercontent.com/Txiaozhe/images/master/blog/build-sql-statement/3.jpeg" target="_blank" rel="noopener" data-caption="3" data-fancybox="images"><img src="https://raw.githubusercontent.com/Txiaozhe/images/master/blog/build-sql-statement/3.jpeg" alt="3"></a></p>
+<p>这里返回了一个错误，不过这是一个来自SQL planner的错误，当SQL planner识别到新的语法节点但是不知道该如何处理时就会报这个错误。</p>
+<p>我们需要告诉planner如何处理这个语法，相应的代码在 <em>pkg/sql/plan.go</em> 中，我们在newPlan函数中为其添加一个case：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">switch</span> n := stmt.(<span class="hljs-keyword">type</span>) &#123;<br><span class="hljs-keyword">case</span> *tree.Frobnicate:<br>  <span class="hljs-keyword">return</span> p.Frobnicate(ctx, n)<br></code></pre></td></tr></table></figure>
+
+<p>然后我们在 <em>pkg/sql/frobnicate.go</em> 中实现对应的方法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> sql<br><span class="hljs-keyword">import</span> (<br>  <span class="hljs-string">"context"</span><br>  <span class="hljs-string">"fmt"</span><br>  <span class="hljs-string">"github.com/cockroachdb/cockroach/pkg/sql/sem/tree"</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *planner)</span> <span class="hljs-title">Frobnicate</span><span class="hljs-params">(ctx context.Context, stmt *tree.Frobnicate)</span> <span class="hljs-params">(planNode, error)</span></span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">"We're not quite frobnicating yet..."</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>再次编译并运行：</p>
+<p><a href="https://raw.githubusercontent.com/Txiaozhe/images/master/blog/build-sql-statement/4.jpeg" target="_blank" rel="noopener" data-caption="4" data-fancybox="images"><img src="https://raw.githubusercontent.com/Txiaozhe/images/master/blog/build-sql-statement/4.jpeg" alt="4"></a></p>
+<p>这里已经根据相应函数内的代码返回了一个错误，接下来我们修改该函数，实现打印出对应信息的功能：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *planner)</span> <span class="hljs-title">Frobnicate</span><span class="hljs-params">(ctx context.Context, stmt *tree.Frobnicate)</span> <span class="hljs-params">(planNode, error)</span></span> &#123;<br>  <span class="hljs-keyword">switch</span> stmt.Mode &#123;<br>    <span class="hljs-keyword">case</span> tree.FrobnicateModeCluster:<br>    fmt.Println(<span class="hljs-string">"It's FrobnicateModeCluster"</span>)<br>    <span class="hljs-keyword">case</span> tree.FrobnicateModeSession:<br>    fmt.Println(<span class="hljs-string">"It's FrobnicateModeSession"</span>)<br>    <span class="hljs-keyword">case</span> tree.FrobnicateModeAll:<br>    fmt.Println(<span class="hljs-string">"It's FrobnicateModeAll"</span>)<br>    <span class="hljs-keyword">default</span>:<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">"Unhandled FROBNICATE mode %v!"</span>, stmt.Mode)<br>  &#125;<br>  <span class="hljs-keyword">return</span> &amp;zeroNode&#123;&#125;, <span class="hljs-literal">nil</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注意：这里直接返回zeroNode，它是一个不包含任何行和列的planNode，所以客户端将看不到任何数据返回。如果你需要返回一些内容给客户端，可以查看 <em>pkg/sql</em> 包下是否有合适的planNode，或者使用自定义的planNode。</p>
+<p>重新编译并运行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">./cockroach sql --insecure -e "frobnicate cluster"<br>./cockroach sql --insecure -e "frobnicate session"<br>./cockroach sql --insecure -e "frobnicate all"<br></code></pre></td></tr></table></figure>
+
+<p>这时在服务端屏幕可以观察到已经打印出对应的内容：</p>
+<p><a href="https://raw.githubusercontent.com/Txiaozhe/images/master/blog/build-sql-statement/5.jpeg" target="_blank" rel="noopener" data-caption="5" data-fancybox="images"><img src="https://raw.githubusercontent.com/Txiaozhe/images/master/blog/build-sql-statement/5.jpeg" alt="5"></a></p>
+<p>至此我们已经实现了一个简单的 <em>frobnicate</em> 语法，别忘了最后还有一个重要步骤，添加相应的测试用例。</p>
+<h2 id="添加测试用例">添加测试用例<a class="post-anchor" href="#添加测试用例"></a></h2><p>此处需要为该语法解析添加测试用例，相关测试代码位于 <em>pkg/sql/parser/parse_test.go</em> ，我们只需要在对应的地方加入需要测试的语法即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#123;&#96;FROBNICATE CLUSTER&#96;&#125;,<br>&#123;&#96;FROBNICATE SESSION&#96;&#125;,<br>&#123;&#96;FROBNICATE ALL&#96;&#125;,<br></code></pre></td></tr></table></figure>
+
+<p>然后运行测试:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> make <span class="hljs-built_in">test</span></span><br></code></pre></td></tr></table></figure>
+
+<p>如果在上述过程中可以顺利添加语句并成功编译构建，则此处应当可以成功跑通相应的测试用例。</p>
+<p>关于SQL语句的功能测试代码在 <em>pkg/sql/logictest/</em> 下相应文件中，只需要在对应的地方添加新的SQL语句和期望的返回结果即可。由于此处我们仅实现了服务端打印的测试功能，便不具体在此处进行测试，感兴趣的同学可以自行查看对应的测试文件。</p>
+<h2 id="给SQL语句添加别名">给SQL语句添加别名<a class="post-anchor" href="#给SQL语句添加别名"></a></h2><p>如果我们需要经常运行Frobnicate语句，希望它可以更简洁的话，我们也可以给它添加一个别名<code>FROB</code>，实现过程很简单，只需要在<code>sql.y</code>中添加几行规则即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plain">unreserved_keyword:<br>...<br>+ | FROB<br>| FROBNICATE<br>...<br>frobnicate_stmt:<br>FROBNICATE CLUSTER &#123; $$.val &#x3D; &amp;tree.Frobnicate&#123;Mode: tree.FrobnicateModeCluster&#125; &#125;<br>| FROBNICATE SESSION &#123; $$.val &#x3D; &amp;tree.Frobnicate&#123;Mode: tree.FrobnicateModeSession&#125; &#125;<br>| FROBNICATE ALL &#123; $$.val &#x3D; &amp;tree.Frobnicate&#123;Mode: tree.FrobnicateModeAll&#125; &#125;<br>+ | FROB CLUSTER &#123; $$.val &#x3D; &amp;tree.Frobnicate&#123;Mode: tree.FrobnicateModeCluster&#125; &#125;<br>+ | FROB SESSION &#123; $$.val &#x3D; &amp;tree.Frobnicate&#123;Mode: tree.FrobnicateModeSession&#125; &#125;<br>+ | FROB ALL &#123; $$.val &#x3D; &amp;tree.Frobnicate&#123;Mode: tree.FrobnicateModeAll&#125; &#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="总结">总结<a class="post-anchor" href="#总结"></a></h1><p>本文通过一个添加SQL语句的案例，介绍了SQL语句在CockroachDB代码中的实际解析和处理流程。本文所使用的案例参考了<a href="https://github.com/cockroachdb/cockroach/blob/master/docs/codelabs/01-sql-statement.md" target="_blank" rel="noopener">https://github.com/cockroachdb/cockroach/blob/master/docs/codelabs/01-sql-statement.md</a> 中的案例，为了便于读者理解，在实现具体功能时直接在服务端打印内容并返回zeroNode。关于planner和生成执行计划相关的原理及实现，会在后续的SQL引擎系列文章中进行详细介绍。</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/06/20/mqtt-hotfix/">记 Rokid 两周以及一次 ShadowNode MQTT 的 bug</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/01/28/2019-begin/">给2019起个好头</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://txiaozhe.github.io">Jim Tang</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://txiaozhe.github.io/2019/04/24/add-a-new-sql/">https://txiaozhe.github.io/2019/04/24/add-a-new-sql/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于 <a href="https://txiaozhe.github.io">Jim Tang</a> 的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2017
+            <a href="https://txiaozhe.github.io">Jim Tang</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"zhihu\"],\"valine\":{\"API_ID\":\"q4HqCuoOlImXOnKpKNvO6aIn-gzGzoHsz\",\"API_KEY\":\"gABCd76E06dHRJ8m8hu4G2Sg\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

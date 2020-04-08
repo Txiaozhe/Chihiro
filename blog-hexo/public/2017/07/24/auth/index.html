@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      常用鉴权方式和JWT简介 - Jim Tang&#39;s blog
+    </title>
+    <link rel="" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.1.0"><link rel="alternate" href="/atom.xml" title="Jim Tang's blog" type="application/atom+xml">
+</head>
+  <body>
+    <!-- 
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用的认证"><span class="toc-text">常用的认证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-Basic-Auth"><span class="toc-text">HTTP Basic Auth</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OAuth（开放授权）"><span class="toc-text">OAuth（开放授权）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cookie-Auth-amp-Token-Auth"><span class="toc-text">Cookie Auth &amp; Token Auth</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Token-Auth的优点"><span class="toc-text">Token Auth的优点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于jwt的Token认证机制实现"><span class="toc-text">基于jwt的Token认证机制实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#JWT-的组成"><span class="toc-text">JWT 的组成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用Token-Oauth-需要注意的地方"><span class="toc-text">使用Token Oauth 需要注意的地方</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过JWT登出"><span class="toc-text">通过JWT登出</span></a></li></ol></li></ol>
+    </div>
+     -->
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <!-- <span class="icon-toc menu-reset">Toc</span> -->
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.png" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/')"></a>
+        <div class="author">Jim Tang</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.png')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Jim Tang</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.png')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Txiaozhe" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://www.zhihu.com/people/txiaozhe/activities" target="_block">
+              <span class="iconfont icon-zhihu"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">常用鉴权方式和JWT简介</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2017/07/24</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2017/07/24/auth/" data-flag-title="常用鉴权方式和JWT简介">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/Tech">Tech</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/OAuth">OAuth</a>
+                  
+                
+                  
+                    <a href="/tags/JWT">JWT</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="常用的认证">常用的认证<a class="post-anchor" href="#常用的认证"></a></h3><h4 id="HTTP-Basic-Auth">HTTP Basic Auth<a class="post-anchor" href="#HTTP-Basic-Auth"></a></h4><ul>
+<li>每次请求时都提供用户名和密码，是最简单的认证方式</li>
+<li>有把用户名密码暴露给第三方的风险，因此生产环境下越来越少地被使用</li>
+</ul>
+<h4 id="OAuth（开放授权）">OAuth（开放授权）<a class="post-anchor" href="#OAuth（开放授权）"></a></h4><ul>
+<li>允许第三方应用访问该用户在某一web服务器上存储的私密的资源，无需将用户名密码提供给第三方</li>
+<li>用户提供一个令牌而非用户名密码来访问特定服务提供者的数据</li>
+</ul>
+<p><a href="http://images2015.cnblogs.com/blog/34831/201606/34831-20160622150107172-139099471.png" target="_blank" rel="noopener" data-caption data-fancybox="images"><img src="http://images2015.cnblogs.com/blog/34831/201606/34831-20160622150107172-139099471.png" alt></a></p>
+<ul>
+<li>适用于个人消费类的互联网产品，如社交App（微信），但不适合拥有自有认证权限管理的企业应用</li>
+</ul>
+<h4 id="Cookie-Auth-amp-Token-Auth">Cookie Auth &amp; Token Auth<a class="post-anchor" href="#Cookie-Auth-amp-Token-Auth"></a></h4><p><a href="http://images2015.cnblogs.com/blog/34831/201606/34831-20160622150124531-1416052185.png" target="_blank" rel="noopener" data-caption data-fancybox="images"><img src="http://images2015.cnblogs.com/blog/34831/201606/34831-20160622150124531-1416052185.png" alt></a></p>
+<h5 id="Token-Auth的优点">Token Auth的优点<a class="post-anchor" href="#Token-Auth的优点"></a></h5><ul>
+<li><strong>支持跨域访问：</strong>Cookie不支持跨域访问，当用户认证信息通过HTTP头传输时Token允许跨域访问</li>
+<li><strong>无状态：</strong>Token自身包含了所有登录用户的信息，只需要在客户端存储相关信息而不需要在服务端存储</li>
+<li><strong>更适用于CDN（内容分发网络）：</strong>可以通过内容分发网络请求服务端的所有资料</li>
+<li><strong>去耦：</strong>不需要绑定到特定的身份验证方案，可在任何地方生成Token</li>
+<li><strong>更适用于移动平台：</strong>原生平台不支持cookie，因此适合采用Token</li>
+<li><strong>无需考虑CSRF（跨站请求伪造）：</strong>因不依赖cookie，因此无需考虑该安全问题</li>
+<li><strong>性能：</strong>一次网络往返时间（通过数据库查询session信息）比做一次Token验证和解析要费时的多</li>
+<li><strong>标准化库：</strong>可采用JWT标准的库，生态支持良好</li>
+</ul>
+<h4 id="基于jwt的Token认证机制实现">基于jwt的Token认证机制实现<a class="post-anchor" href="#基于jwt的Token认证机制实现"></a></h4><h5 id="JWT-的组成">JWT 的组成<a class="post-anchor" href="#JWT-的组成"></a></h5><p>Token是一个字符串，由三部分组成：头部、载荷、签名</p>
+<ul>
+<li><strong>载荷(Payload)：</strong></li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">"iss"</span>: <span class="hljs-string">"Online JWT Builder"</span>, <br>  <span class="hljs-attr">"iat"</span>: <span class="hljs-number">1416797419</span>,<br>  <span class="hljs-attr">"exp"</span>: <span class="hljs-number">1448333419</span>,<br>  <span class="hljs-attr">"aud"</span>: <span class="hljs-string">"www.example.com"</span>,<br>  <span class="hljs-attr">"sub"</span>: <span class="hljs-string">"jrocket@example.com"</span>,<br>  <span class="hljs-attr">"GivenName"</span>: <span class="hljs-string">"Johnny"</span>,<br>  <span class="hljs-attr">"Surname"</span>: <span class="hljs-string">"Rocket"</span>,<br>  <span class="hljs-attr">"Email"</span>: <span class="hljs-string">"jrocket@example.com"</span>,<br>  <span class="hljs-attr">"Role"</span>: [ <span class="hljs-string">"Manager"</span>, <span class="hljs-string">"Project Administrator"</span> ]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ul>
+<li><strong>iss：</strong>JWT签发者，可选</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>sub：</strong>JWT面向的用户，可选</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>aud：</strong>接收该JWT的一方，可选</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>exp（expires）：</strong>过期时间，时间戳，可选</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>iat（issued at）：</strong>签发时间，可选</li>
+</ul>
+</li>
+</ul>
+<p>将上面的json进行base64编码得到一下字符串，称为Payload：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">eyJpc3MiOiJKb2huIFd1IEpXVCIsImlhdCI6MTQ0MTU5MzUwMiwiZXhwIjoxNDQxNTk0NzIyLCJhdWQiOiJ3d3cuZXhhbXBsZS5jb20iLCJzdWIiOiJqcm9ja2V0QGV4YW1wbGUuY29tIiwiZnJvbV91c2VyIjoiQiIsInRhcmdldF91c2VyIjoiQSJ9<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Base64是一种基于64个可打印字符来表示二进制数据的表示方法。由于2的6次方等于64，所以每6个比特为一个单元，对应某个可打印字符。三个字节有24个比特，对应于4个Base64单元，即3个字节需要用4个可打印字符来表示</p>
+</blockquote>
+<ul>
+<li><strong>头部(Header)：</strong>描述该jwt最基本的信息</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>	<span class="hljs-attr">"typ"</span>: <span class="hljs-string">"JWT"</span>,<br>	<span class="hljs-attr">"alg"</span>: <span class="hljs-string">"HS256"</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ul>
+<li><strong>alg：</strong>签名算法（必选，其他都是可选）</li>
+<li><strong>typ:</strong>  类型 （如果是 JWT 那么就带有一个值 <code>JWT</code>）</li>
+<li>*<em>kid: *</em>  密钥 ID</li>
+<li><strong>cty:</strong>  内容类型</li>
+<li><strong>jku:</strong>  JWK 指定 URL</li>
+<li><strong>jwk:</strong>  JSON 网络值</li>
+<li><strong>x5u:</strong> X.509 URL</li>
+<li>*<em>x5c: *</em> X.509 证书链</li>
+<li><strong>x5t:</strong>  X.509 证书 SHA-1 指纹</li>
+<li><strong>x5t#S256:</strong>  X.509 证书 SHA-256 指纹</li>
+<li><strong>crit:</strong> 临界值</li>
+</ul>
+</li>
+</ul>
+<p>将该头部也进行base64转换，得到如下字符串：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>签名（Signature）：</strong></li>
+</ul>
+<p>将上面的两个编码后的字符串都用句号.连接在一起（Header在前），就形成了:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2huIFd1IEpXVCIsImlhdCI6MTQ0MTU5MzUwMiwiZXhwIjoxNDQxNTk0NzIyLCJhdWQiOiJ3d3cuZXhhbXBsZS5jb20iLCJzdWIiOiJqcm9ja2V0QGV4YW1wbGUuY29tIiwiZnJvbV91c2VyIjoiQiIsInRhcmdldF91c2VyIjoiQSJ9<br></code></pre></td></tr></table></figure>
+
+<p>最后，将上面拼接完的字符串用HS256算法进行加密。在加密的时候，我们还需要提供一个密钥（secret）。比如用mystar作为密钥，加密后的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">rSWamyAYwuHCo7IFAgd1oRpSP7nzL7BF5t7ItqpKViM<br></code></pre></td></tr></table></figure>
+
+<p>最终的Token：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2huIFd1IEpXVCIsImlhdCI6MTQ0MTU5MzUwMiwiZXhwIjoxNDQxNTk0NzIyLCJhdWQiOiJ3d3cuZXhhbXBsZS5jb20iLCJzdWIiOiJqcm9ja2V0QGV4YW1wbGUuY29tIiwiZnJvbV91c2VyIjoiQiIsInRhcmdldF91c2VyIjoiQSJ9.rSWamyAYwuHCo7IFAgd1oRpSP7nzL7BF5t7ItqpKViM<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Token认证过程：</strong></li>
+</ul>
+<p><a href="http://images2015.cnblogs.com/blog/34831/201606/34831-20160622152259735-1969767936.jpg" target="_blank" rel="noopener" data-caption data-fancybox="images"><img src="http://images2015.cnblogs.com/blog/34831/201606/34831-20160622152259735-1969767936.jpg" alt></a></p>
+<ul>
+<li><ul>
+<li>第一次登录，用户从浏览器输入用户名/密码，提交后到服务器的登录处理的Login Action层</li>
+</ul>
+</li>
+<li><ul>
+<li>Login Action调用认证服务进行用户名密码认证，如果认证通过，Login Action层调用用户信息服务获取用户信息（包括完整的用户信息及对应权限信息）</li>
+</ul>
+</li>
+<li><ul>
+<li>返回用户信息后，Login Action从配置文件中获取Token签名生成的秘钥信息，进行Token的生成；</li>
+</ul>
+</li>
+<li><ul>
+<li>生成Token的过程中可以调用第三方的JWT Lib生成签名后的JWT数据</li>
+</ul>
+</li>
+<li><ul>
+<li>完成JWT数据签名后，将其设置到COOKIE对象中，并重定向到首页，完成登录过程</li>
+</ul>
+</li>
+</ul>
+<p><strong>请求认证</strong></p>
+<p>基于Token的认证机制会在每一次请求中都带上完成签名的Token信息，这个Token信息可能在COOKIE<br>中，也可能在HTTP的Authorization头中</p>
+<p><a href="http://images2015.cnblogs.com/blog/34831/201606/34831-20160622152344250-1238130627.jpg" target="_blank" rel="noopener" data-caption data-fancybox="images"><img src="http://images2015.cnblogs.com/blog/34831/201606/34831-20160622152344250-1238130627.jpg" alt></a></p>
+<ul>
+<li>客户端（APP客户端或浏览器）通过GET或POST请求访问资源</li>
+<li>认证服务作为一个Middleware HOOK 对请求进行拦截，首先在cookie中查找Token信息，如果没有找到，则在HTTP Authorization Head中查找</li>
+<li>如果找到Token信息，则根据配置文件中的签名加密秘钥调用JWT Lib对Token信息进行<code>解密</code>和<code>解码</code></li>
+<li>完成解码并验证签名通过后，对Token中的exp、nbf、aud等信息进行验证</li>
+<li>全部通过后，根据获取的用户的角色权限信息，进行对请求的资源的权限逻辑判断</li>
+<li>如果权限逻辑判断通过则通过Response返回给客户端</li>
+</ul>
+<h5 id="使用Token-Oauth-需要注意的地方">使用Token Oauth 需要注意的地方<a class="post-anchor" href="#使用Token-Oauth-需要注意的地方"></a></h5><ul>
+<li>一个Token就是一些信息的集合，因此可以在Token中包含足够多的信息，以便在后续请求中减少查询数据库的几率，其中的机密信息应加密后再存入</li>
+<li>服务端需要对cookie和HTTP Authrorization Header进行Token信息的检查，因此可以用一套token认证代码来面对浏览器类客户端和非浏览器类客户端</li>
+<li>因为token是被签名的，所以我们可以认为一个可以解码认证通过的token是由我们系统发放的，其中带的信息是合法有效的</li>
+</ul>
+<h4 id="通过JWT登出">通过JWT登出<a class="post-anchor" href="#通过JWT登出"></a></h4><p>因为没有 session 数据存储在服务端所以不能再通过破坏 session 来注销用户。因此登出成为了客户端的职责 - 一旦客户丢失了令牌不能再被授权，就可以被认为是登出了</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2017/07/27/github-adjective/">记一次 GitHub 的惊险历程</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2014/05/17/five-things-for-college/">大学中的五件事</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://txiaozhe.github.io">Jim Tang</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://txiaozhe.github.io/2017/07/24/auth/">https://txiaozhe.github.io/2017/07/24/auth/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于 <a href="https://txiaozhe.github.io">Jim Tang</a> 的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2017
+            <a href="https://txiaozhe.github.io">Jim Tang</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"zhihu\"],\"valine\":{\"API_ID\":\"q4HqCuoOlImXOnKpKNvO6aIn-gzGzoHsz\",\"API_KEY\":\"gABCd76E06dHRJ8m8hu4G2Sg\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

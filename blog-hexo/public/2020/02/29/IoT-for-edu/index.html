@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      复盘2：IoT + 教育培训业务架构设计 - Jim Tang&#39;s blog
+    </title>
+    <link rel="" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.1.0"><link rel="alternate" href="/atom.xml" title="Jim Tang's blog" type="application/atom+xml">
+</head>
+  <body>
+    <!-- 
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#公司及业务背景"><span class="toc-text">公司及业务背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整体方案概览"><span class="toc-text">整体方案概览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图"><span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设计方案简介"><span class="toc-text">设计方案简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#业务流程举例"><span class="toc-text">业务流程举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题与思考"><span class="toc-text">问题与思考</span></a></li></ol>
+    </div>
+     -->
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <!-- <span class="icon-toc menu-reset">Toc</span> -->
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.png" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/')"></a>
+        <div class="author">Jim Tang</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.png')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Jim Tang</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.png')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Txiaozhe" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://www.zhihu.com/people/txiaozhe/activities" target="_block">
+              <span class="iconfont icon-zhihu"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">复盘2：IoT + 教育培训业务架构设计</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/02/29</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2020/02/29/IoT-for-edu/" data-flag-title="复盘2：IoT + 教育培训业务架构设计">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/Tech">Tech</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/IoT">IoT</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p>2019 年 9月底，由于公司业务原因从 Rokid 离职，十月份则到处跑找工作，因此也接触到一些公司和创始人，期间碰到一家做 IoT + 编程教育的初创公司，对于他们的业务目标目前他们没有足够的相关经验来搭建，并且他们也比较认可我所描述的一套 IoT 业务流程，聊过之后发现有合作的可能，因此尝试为他们设计整体业务的架构方案。</p>
+<p>本文是我针对他们的业务场景给出的架构设计方案描述以及我个人的一些对 IoT、社区生态方面的思考。</p>
+<h2 id="公司及业务背景">公司及业务背景<a class="post-anchor" href="#公司及业务背景"></a></h2><p>对方是一家初创公司，创始人来自中国移动杭州研发中心，据他描述目前团队成员3人左右，创业方向为面向小学阶段的 IoT + 教育培训，简单来说就是在传统的编程教育基础上加入 IoT 元素。</p>
+<p>关于业务模式和架构主要分为两种：一种是纯粹面向IoT设备编程，考虑采用 Python（因为据说目前中小学比较普及 Python 这种语言），具体 IoT 设备会包括高端的比如天猫精灵、米家等各种设备，以及也会包括一些更低端的小设备比如 Arduino 及相关小型组件、树莓派等，让学生通过简单编程实现对设备的控制（简单思考下来觉得这跟传统的少儿编程模式比还是有一些优势的，毕竟少儿编程教育主要为激发学生兴趣和思维，这种带有实实在在设备的模式对于小孩子来说可能会更有吸引力），这个过程需要平台对设备的封装管理和虚拟化；</p>
+<p>另一种模式则涉及到一种图形化编程工具平台：Scratch，这种模式其实也算是对第一种模式的更深层次抽象，或者说将采用 Python 语言编程的模式改为图形化编程操作，其他基本不变，这可能是更容易让幼儿阶段的孩子接受的培训方式，这也涉及到他们一直提的概念：软件积木，目前他们手上有一些教育资源和培训机构合作关系，且初步的少儿编程教育业务已经在开展，下一步就是真正实现 IoT + 编程培训。关于 Scratch 的对接方式他们目前已经有一些技术基础，两种模式下业务架构上对 IoT 设备的管理和虚拟化也基本一致，因此这个方案主要是为业务中用到的各种设备建立管理和控制平台。</p>
+<h2 id="整体方案概览">整体方案概览<a class="post-anchor" href="#整体方案概览"></a></h2><h3 id="架构图">架构图<a class="post-anchor" href="#架构图"></a></h3><p><a href="/images/iot-for-edu-001.png" data-caption="iot-for-edu-001" data-fancybox="images"><img src="/images/iot-for-edu-001.png" alt="iot-for-edu-001"></a></p>
+<h3 id="设计方案简介">设计方案简介<a class="post-anchor" href="#设计方案简介"></a></h3><p>一、总体服务分为三层：用户层、服务层、设备层</p>
+<p>1、用户层：提供统一的对外服务，包括管理员界面、用户（学生）编程控制界面及教学工具、数据工具等</p>
+<p>2、服务层（分为三部分）：</p>
+<p>​      2.1、自有 IoT 服务：将所有设备进行虚拟化控制与管理，并承担与三方 IoT 云服务对接的功能。</p>
+<p>​      2.2、三方 IoT 服务：三方厂商的 IoT 云服务，如米家云服务，这部分无需研发，需要做的主要工作为协议对接。</p>
+<p>​      2.3、API：将自有 IoT 服务与三方 IoT 服务的对外功能与数据通道进行统一封装并对外提供一致的服务，实现业务与应用之间的解耦。</p>
+<p>3、设备层（整合业务中需要用到的所有设备，并将所有设备按来源与管理方式分为三类）：</p>
+<p>​      3.1、自定义设备：需要自主编程控制并直接通过自有 IoT 服务管理的设备，如 Arduino、树莓派及其相关子设备等。</p>
+<p>​      3.2、三方设备：来自于第三方厂商，需要间接通过第三方 IoT 服务进行管理与控制，如米家设备等。        </p>
+<p>​      3.3、虚拟设备：由于在服务层已经将所有设备进行虚拟化，因此在某些业务场景下可以创建虚拟设备而无需提供真实的物理设备，这种设备除了没有物理机身外其他管理和控制的流程都与上述自定义设备一致。</p>
+<p>二、本方案中主要业务流程为设备管理、设备查询、设备控制、数据通道，网络协议采用MQTT。</p>
+<p>1、设备管理</p>
+<p>业务中需要用到的各种设备都需要系统管理员通过管理界面进行管理，包括设备的添加与删除，IoT服务端会维护一个可供管理和控制的设备列表。对于一些三方设备如米家设备通信时会涉及驱动，这里的驱动将常驻于云端并与三方厂商云端进行云云对接，由于这里的场景下设备的添加删除操作不频繁，因此暂不考虑驱动按需安装和卸载的场景。驱动的主要功能是作为本地系统与三方云厂商进行协议对接的代理，其中会涉及鉴权流程，需根据不同平台进行对接。</p>
+<p>设备管理案例（添加设备）流程图：</p>
+<p><a href="/images/iot-for-edu-002.png" data-caption="iot-for-edu-002" data-fancybox="images"><img src="/images/iot-for-edu-002.png" alt="iot-for-edu-002"></a></p>
+<p>2、设备查询</p>
+<p>设备查询主要用于在管理员界面显示当前系统支持管理控制的所有设备以及为用户（学生）提供可视化的操作界面。</p>
+<p>3、设备控制</p>
+<p>设备控制流程与普通IoT设备的控制流程基本一致，但指令的输入方式不一样，主要为用户（学生）在预先设定好的操作界面上通过点击、拖动的方式来进行设备的控制，控制指令由用户界面上传至云端，云端会根据协议内容选择对应的设备下发指令由设备执行，控制结果由设备上报至云端，再由云端反馈给用户端。</p>
+<p>4、数据通道</p>
+<p>此功能用于聚合所有用户（学生）在教学和使用过程中产生的操作和控制数据，为后期教学和运营提供数据依据。</p>
+<h3 id="业务流程举例">业务流程举例<a class="post-anchor" href="#业务流程举例"></a></h3><p>例如一块 Arduino 的板子 A 上连接了一个发光二极管 R 和一个蜂鸣器 F，R 和 F 皆可通过 A 控制。云端服务已事先定义好与 A 之间的通信协议。当 A 上的程序启动时，A 会与云端建立连接，此时系统管理员可通过管理界面请求将A添加到云端设备列表中，A 会反馈给云端其携带的各种子设备，云端确认后将 A 及 A 的子设备 R 和 F 添加至可控制的设备列表中，此时用户（学生）的界面中也能显示这些虚拟化的设备。当用户（学生）点击页面上的虚拟设备操控按钮时，页面将相应的操作指令上传至云端，由云端下发至设备上执行操作，操作完后设备向云端反馈操作结果，最终操作结果反馈至用户界面，并同时保留相应操作数据。</p>
+<p><a href="/images/iot-for-edu-003.png" data-caption="iot-for-edu-003" data-fancybox="images"><img src="/images/iot-for-edu-003.png" alt="iot-for-edu-003"></a></p>
+<h2 id="问题与思考">问题与思考<a class="post-anchor" href="#问题与思考"></a></h2><p>1、经过三次的交谈，从技术层面上考虑，除去 IoT 设计开发经验的缺乏，我认为他们目前也还是面临一些问题的，比如面向设备端（前期主要为 Arduino 和树莓派）编程的时候其实没有太多的选择，因此也曾向团队推荐使用 Rokid 自研的 YodaOS + ShadowNode 或 ShadowNode 来作为设备端的解决方案，在我整体的介绍之后，对方也认可这样能降低整体的开发难度和成本，提高研发效率，但总体来说采用的意愿却并不是很强。其中一个原因是对性能的担忧，还有一些未知的因素，我觉得这也是作为开源平台方需要思考的问题。</p>
+<p>2、关于社会编程教育的思考，上述这一套 IoT + 编程教育模式细节不再多说，目前市面上面向少儿的编程教育目标与成人编程不同，前者主要是激发孩子兴趣和锻炼思维，对于受众来说没有特别清晰明确的教育目标，当然也会受普世的教育价值观导向比如高考的影响。成人编程教育则有更强烈的目标指引即就业。所以我觉得也许编程教育也会是 YodaOS 及其周边生态的一次机会，如果能将 YodaOS 生态引入课堂，从技术源头切实降低嵌入式开发的学习、实践和工程化门槛，再将这个优势导入市场，这势必也会成为 YodaOS 推广的基础。</p>
+<p>3、这次我给的方案里面，设备端部分的开发因为业务流程不多所以难度较低，且他们自己也有一些积累，但 IoT 服务端的开发他们是没有任何经验的，在沟通方案的过程中对方也要求我在给方案的同时也要做好技术选型，最好是能找到满足大部分功能的开源项目并基于此进行二次开发，以此提高产品成型速度降低成本（但其实我觉得这个是困难的）。因此我也在 GitHub 上搜索过，也可能是我搜索的方式不对，目前没有找到很合适的开源项目。传统 Web 服务端开发经过长期的发展已经能为开发、测试等流程提供了大量的平台、框架、工具、规范和标准，但这在 IoT 领域还是比较缺乏。</p>
+<p>4、关于谈判能力。从结果看这次合作其实并不成功，因此这里也只是简单叙述了整体设计思路和架构方案。不成功的原因我认为一部分在于对方其实也没有太大的决心来做这件事，并且团队还没完全组建，对于业务也缺乏深入思考和规划，且在沟通的过程中也没有表现出太多的诚意与决心。另一方面还归咎于我自身的谈判技巧与沟通方式，也许也是我自身急于求成且当时也确实面临找工作的压力，因此最终没有深入规划整件事情并与对方持续合作。但总体来说获益匪浅。</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/03/07/my-entrepreneurship/">关于一段现在已经不太提起的经历，以及我眼中的创业</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/12/29/live-data-fetch02/">复盘1：直播大数据采集（二期）</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://txiaozhe.github.io">Jim Tang</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://txiaozhe.github.io/2020/02/29/IoT-for-edu/">https://txiaozhe.github.io/2020/02/29/IoT-for-edu/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于 <a href="https://txiaozhe.github.io">Jim Tang</a> 的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2017
+            <a href="https://txiaozhe.github.io">Jim Tang</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"zhihu\"],\"valine\":{\"API_ID\":\"q4HqCuoOlImXOnKpKNvO6aIn-gzGzoHsz\",\"API_KEY\":\"gABCd76E06dHRJ8m8hu4G2Sg\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

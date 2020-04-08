@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jim Tang&#39;s blog</title>
+  <icon>https://txiaozhe.github.io/icon.png</icon>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://txiaozhe.github.io/"/>
+  <updated>2020-03-07T12:08:16.696Z</updated>
+  <id>https://txiaozhe.github.io/</id>
+  
+  <author>
+    <name>Jim Tang</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于一段现在已经不太提起的经历，以及我眼中的创业</title>
+    <link href="https://txiaozhe.github.io/2020/03/07/my-entrepreneurship/"/>
+    <id>https://txiaozhe.github.io/2020/03/07/my-entrepreneurship/</id>
+    <published>2020-03-07T12:07:02.000Z</published>
+    <updated>2020-03-07T12:08:16.696Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;从 2019 年年底我开始整理一些过去的经历，参与过的项目，做过的工作及细节。可能一方面源于我本身也是一个容易怀念的人，另一方面也希望站在当下回望过去，在这个略显迷茫的时期为未来找一些新的思考方向。之前复盘的内容大多涉及技术，其中不乏各种程序员专有名词、技术术语和解决方案。
+      
+    
+    </summary>
+    
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/categories/Job/"/>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/tags/Life/"/>
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/tags/Job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>复盘2：IoT + 教育培训业务架构设计</title>
+    <link href="https://txiaozhe.github.io/2020/02/29/IoT-for-edu/"/>
+    <id>https://txiaozhe.github.io/2020/02/29/IoT-for-edu/</id>
+    <published>2020-02-29T06:38:11.000Z</published>
+    <updated>2020-02-29T07:29:39.407Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;2019 年 9月底，由于公司业务原因从 Rokid 离职，十月份则到处跑找工作，因此也接触到一些公司和创始人，期间碰到一家做 IoT + 编程教育的初创公司，对于他们的业务目标目前他们没有足够的相关经验来搭建，并且他们也比较认可我所描述的一套 IoT 业务流程，聊过之后发
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+    
+      <category term="IoT" scheme="https://txiaozhe.github.io/tags/IoT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>复盘1：直播大数据采集（二期）</title>
+    <link href="https://txiaozhe.github.io/2019/12/29/live-data-fetch02/"/>
+    <id>https://txiaozhe.github.io/2019/12/29/live-data-fetch02/</id>
+    <published>2019-12-29T06:37:11.000Z</published>
+    <updated>2019-12-29T06:37:42.740Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;上一篇文章《直播大数据采集（一期）》（以下简称《一期》）复盘了之前做过的一个采集直播大数据的项目，其中介绍了项目相关的业务和技术实现始末，也描述了当时碰到的问题以及采用的解决方案，但由于涉及到太多细节导致篇幅过长，且当时项目迭代也是分为两期来做的，所以将整个项目分为两篇文章
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/tags/Job/"/>
+    
+      <category term="Live" scheme="https://txiaozhe.github.io/tags/Live/"/>
+    
+      <category term="BigData" scheme="https://txiaozhe.github.io/tags/BigData/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>复盘1：直播大数据采集（一期）</title>
+    <link href="https://txiaozhe.github.io/2019/12/15/live-data-fetch01/"/>
+    <id>https://txiaozhe.github.io/2019/12/15/live-data-fetch01/</id>
+    <published>2019-12-15T10:25:12.000Z</published>
+    <updated>2019-12-27T01:26:00.849Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是2017年10月到2018年10月在全民直播期间的一个项目，因为在直播公司的缘故，所以会涉及很多直播相关的业务。当时有几家做的比较好的直播平台，比如斗鱼、虎牙、熊猫、战旗、全民等，直播内容都以游戏、才艺表演为主，直播受众广，每天产生的数据流量巨大，公司为此启动一个新项目
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/tags/Job/"/>
+    
+      <category term="Live" scheme="https://txiaozhe.github.io/tags/Live/"/>
+    
+      <category term="BigData" scheme="https://txiaozhe.github.io/tags/BigData/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript in IoT</title>
+    <link href="https://txiaozhe.github.io/2019/12/13/javascript-in-iot/"/>
+    <id>https://txiaozhe.github.io/2019/12/13/javascript-in-iot/</id>
+    <published>2019-12-13T05:23:03.000Z</published>
+    <updated>2020-02-29T06:38:14.173Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- &gt; 壹向技术分享：在低端设备上运行 JavaScript --&gt;
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+    
+      <category term="IoT" scheme="https://txiaozhe.github.io/tags/IoT/"/>
+    
+      <category term="JavaScript" scheme="https://txiaozhe.github.io/tags/JavaScript/"/>
+    
+      <category term="JerryScript" scheme="https://txiaozhe.github.io/tags/JerryScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写在 2019 的结尾</title>
+    <link href="https://txiaozhe.github.io/2019/12/05/end-2019/"/>
+    <id>https://txiaozhe.github.io/2019/12/05/end-2019/</id>
+    <published>2019-12-05T12:57:32.000Z</published>
+    <updated>2019-12-27T01:26:00.846Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;2019 眼看着就要过去了，匆匆忙忙一年又一年，回望即将过去的2019，失落地发现好像这一年充满了遗憾，但总的来说过去的一年还是有所收获的！&lt;/p&gt;
+&lt;p&gt;两年前的十月，我离开了待了四年多的大学以及让人爱不起来也恨不起来的那个城市，带着一些不舍与无奈、也有信心和期待，还有2
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/categories/Life/"/>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/tags/Life/"/>
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/tags/Job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JerryScript 学习笔记</title>
+    <link href="https://txiaozhe.github.io/2019/11/18/learning-jerryscript-design/"/>
+    <id>https://txiaozhe.github.io/2019/11/18/learning-jerryscript-design/</id>
+    <published>2019-11-18T14:12:09.000Z</published>
+    <updated>2019-12-27T01:26:00.848Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是 JerryScript 官网的一段简介：&lt;br&gt;&lt;a href=&quot;/images/jerryscript-introduce.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/jerryscript-
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+      <category term="Translate" scheme="https://txiaozhe.github.io/categories/Tech/Translate/"/>
+    
+    
+      <category term="JavaScript" scheme="https://txiaozhe.github.io/tags/JavaScript/"/>
+    
+      <category term="JerryScript" scheme="https://txiaozhe.github.io/tags/JerryScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>libuv 架构设计概述</title>
+    <link href="https://txiaozhe.github.io/2019/10/18/libuv-design/"/>
+    <id>https://txiaozhe.github.io/2019/10/18/libuv-design/</id>
+    <published>2019-10-18T15:41:22.000Z</published>
+    <updated>2019-12-27T01:26:00.849Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;libuv 是一个原本为 Node.js 而编写，围绕着事件驱动的异步 I/O 模型而设计的跨平台库。&lt;/p&gt;
+&lt;p&gt;这个库为多个不同的I/O 循环机制提供了简单的抽象，如：‘handles’ 和 ‘streams’ 为 sockets 和其他实体提供高度抽象；除此之外也提
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+      <category term="Translate" scheme="https://txiaozhe.github.io/categories/Tech/Translate/"/>
+    
+    
+      <category term="Libuv" scheme="https://txiaozhe.github.io/tags/Libuv/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多思无益</title>
+    <link href="https://txiaozhe.github.io/2019/06/23/no-more-consider/"/>
+    <id>https://txiaozhe.github.io/2019/06/23/no-more-consider/</id>
+    <published>2019-06-22T18:05:11.000Z</published>
+    <updated>2019-12-27T01:26:00.851Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今天约了一个朋友来家里吃饭，我烧了两斤的小龙虾，烹饪技术已经越来越娴熟。中间聊起行业和工作来，自诩有两年的从业经验，也能吹一点牛逼。他问我，python用处大吗？值得学习吗？我问他：你又不是做技术的，你学这个做什么用呢？他回答，据说用在数据处理上很方便很有用？！我心里当然是
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/categories/Life/"/>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/tags/Life/"/>
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/tags/Job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记 Rokid 两周以及一次 ShadowNode MQTT 的 bug</title>
+    <link href="https://txiaozhe.github.io/2019/06/20/mqtt-hotfix/"/>
+    <id>https://txiaozhe.github.io/2019/06/20/mqtt-hotfix/</id>
+    <published>2019-06-20T03:16:23.000Z</published>
+    <updated>2019-12-27T01:26:00.850Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;2019年6月某天，入职Rokid第2周，逐渐适应了新的办公环境和新的做事方式，开始接触IOT和端开发的概念，技术上慢慢地从服务端过渡到端开发，刚开始还是有些不适应，先讲一下个人感受吧！&lt;/p&gt;
+&lt;p&gt;以前做过大规模的分布式系统，也做过小型的Web API，总结下来，做服务
+      
+    
+    </summary>
+    
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/categories/Job/"/>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/tags/Life/"/>
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/tags/Job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>添加一个新的SQL语句</title>
+    <link href="https://txiaozhe.github.io/2019/04/24/add-a-new-sql/"/>
+    <id>https://txiaozhe.github.io/2019/04/24/add-a-new-sql/</id>
+    <published>2019-04-24T14:07:16.000Z</published>
+    <updated>2019-12-27T01:26:00.845Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前言&quot;&gt;前言&lt;a class=&quot;post-anchor&quot; href=&quot;#前言&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;CockroachDB是著名的开源NewSQL数据库，对外提供了标准的SQL接口。上一篇文章《CockroachDB的Parser模块实现》介绍了Cockroa
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+    
+      <category term="CockroachDB" scheme="https://txiaozhe.github.io/tags/CockroachDB/"/>
+    
+      <category term="SQL" scheme="https://txiaozhe.github.io/tags/SQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>给2019起个好头</title>
+    <link href="https://txiaozhe.github.io/2019/01/28/2019-begin/"/>
+    <id>https://txiaozhe.github.io/2019/01/28/2019-begin/</id>
+    <published>2019-01-28T09:54:05.000Z</published>
+    <updated>2019-12-27T01:26:00.844Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;或许是受到某大佬的感染，也有可能是因为最近工作方面的变故比较多，想写点东西，想想几年前我也曾是个喜欢写写文章，小诗，偶尔还学着刻印章的文艺二逼青年~&lt;/p&gt;
+&lt;p&gt;我是不玩知乎的，但偶尔有好的文章也会打开来看。这是我在知乎的第一篇文章，希望也能开一个好头。简单介绍我自己吧！
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/categories/Life/"/>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/tags/Life/"/>
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/tags/Job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ShadowNode 源码解析之 module</title>
+    <link href="https://txiaozhe.github.io/2018/12/20/snode-module/"/>
+    <id>https://txiaozhe.github.io/2018/12/20/snode-module/</id>
+    <published>2018-12-20T12:03:15.000Z</published>
+    <updated>2019-12-27T01:26:00.853Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;ShadowNode 是一款可以运行于嵌入式设备的js运行时，基于Samsung的&lt;a href=&quot;https://github.com/Samsung/iotjs&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;iotjs&lt;/a&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+    
+      <category term="ShadowNode" scheme="https://txiaozhe.github.io/tags/ShadowNode/"/>
+    
+      <category term="Nodejs" scheme="https://txiaozhe.github.io/tags/Nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在西溪湿地做景区管理员</title>
+    <link href="https://txiaozhe.github.io/2018/12/18/xixi/"/>
+    <id>https://txiaozhe.github.io/2018/12/18/xixi/</id>
+    <published>2018-12-18T08:49:27.000Z</published>
+    <updated>2019-12-27T01:26:00.854Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;西溪湿地风光&quot;&gt;西溪湿地风光&lt;a class=&quot;post-anchor&quot; href=&quot;#西溪湿地风光&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://raw.githubusercontent.com/Txiaozhe/images/master/xi
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/categories/Life/"/>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/tags/Life/"/>
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/tags/Job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>更改Bash版本引发的Mac事故</title>
+    <link href="https://txiaozhe.github.io/2018/08/22/bash-mac-error/"/>
+    <id>https://txiaozhe.github.io/2018/08/22/bash-mac-error/</id>
+    <published>2018-08-22T00:54:04.000Z</published>
+    <updated>2019-12-27T01:26:00.846Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;之前参与了CockroachDB的文档翻译，总觉得不够，希望能参与到项目的开发中。于是查看各种文档，开发指南。幸好CockroachDB 官方有完整的&lt;a href=&quot;https://github.com/cockroachdb/cockroach/blob/master/
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+    
+      <category term="Job" scheme="https://txiaozhe.github.io/tags/Job/"/>
+    
+      <category term="Mac" scheme="https://txiaozhe.github.io/tags/Mac/"/>
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/tags/Tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 Kubernetes 集群中运行 CockroachDB</title>
+    <link href="https://txiaozhe.github.io/2018/06/10/run-cockroachdb-in-kubernetes/"/>
+    <id>https://txiaozhe.github.io/2018/06/10/run-cockroachdb-in-kubernetes/</id>
+    <published>2018-06-10T02:59:32.000Z</published>
+    <updated>2019-12-27T01:26:00.852Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.cockroachlabs.com/blog/running-cockroachdb-on-kubernetes/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;作者：&lt;a href=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+      <category term="Translate" scheme="https://txiaozhe.github.io/categories/Tech/Translate/"/>
+    
+    
+      <category term="CockroachDB" scheme="https://txiaozhe.github.io/tags/CockroachDB/"/>
+    
+      <category term="Kubernetes" scheme="https://txiaozhe.github.io/tags/Kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CockroachDB 是如何让在线Schema Change成为可能的</title>
+    <link href="https://txiaozhe.github.io/2018/05/24/schema-change/"/>
+    <id>https://txiaozhe.github.io/2018/05/24/schema-change/</id>
+    <published>2018-05-24T01:15:32.000Z</published>
+    <updated>2019-12-27T01:26:00.852Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;我经常需要更改表结构，其中主要是为表添加列。当然这用alter命令很容易就能实现，但是，目前我的表已经达到40,000,000行之多且还在不断地增长，这使得执行alter命令往往需要个把小时。因为我用的是亚马逊的RDS服务，所以我不能用主从的策略来
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+      <category term="Translate" scheme="https://txiaozhe.github.io/categories/Tech/Translate/"/>
+    
+    
+      <category term="CockroachDB" scheme="https://txiaozhe.github.io/tags/CockroachDB/"/>
+    
+      <category term="Schema" scheme="https://txiaozhe.github.io/tags/Schema/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记一次 GitHub 的惊险历程</title>
+    <link href="https://txiaozhe.github.io/2017/07/27/github-adjective/"/>
+    <id>https://txiaozhe.github.io/2017/07/27/github-adjective/</id>
+    <published>2017-07-27T12:32:05.000Z</published>
+    <updated>2019-12-27T01:26:00.847Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;今天得空重新部署了一下GitHub博客，换了新的主题和布局，感觉一切都焕然一新。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;​    我原本是有一个GitHub博客的，第一次部署花了很长时间，各种奇怪的错误，各种坑，但最后也部署成功了，而且因为做过
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+    
+      <category term="GitHub" scheme="https://txiaozhe.github.io/tags/GitHub/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用鉴权方式和JWT简介</title>
+    <link href="https://txiaozhe.github.io/2017/07/24/auth/"/>
+    <id>https://txiaozhe.github.io/2017/07/24/auth/</id>
+    <published>2017-07-24T07:33:20.000Z</published>
+    <updated>2019-12-27T01:26:00.845Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;常用的认证&quot;&gt;常用的认证&lt;a class=&quot;post-anchor&quot; href=&quot;#常用的认证&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4 id=&quot;HTTP-Basic-Auth&quot;&gt;HTTP Basic Auth&lt;a class=&quot;post-anchor&quot; href=&quot;#HTTP
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://txiaozhe.github.io/categories/Tech/"/>
+    
+    
+      <category term="OAuth" scheme="https://txiaozhe.github.io/tags/OAuth/"/>
+    
+      <category term="JWT" scheme="https://txiaozhe.github.io/tags/JWT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大学中的五件事</title>
+    <link href="https://txiaozhe.github.io/2014/05/17/five-things-for-college/"/>
+    <id>https://txiaozhe.github.io/2014/05/17/five-things-for-college/</id>
+    <published>2014-05-17T14:36:25.000Z</published>
+    <updated>2019-12-29T04:36:37.465Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;不知道是为什么，最近有很多人来和我抱怨说生活无趣，无所事事，未来渺茫，诸如此类。或许是在这个年龄段的人都会有的心理吧，想想自己也曾经有的心里的变动，便能理解一些。在开导之余，我也在思考其中的意味，简单地总结了几件事来说说。&lt;/p&gt;
+&lt;p&gt;第一件事：关于生活&lt;/p&gt;
+&lt;p&gt;简
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/categories/Life/"/>
+    
+    
+      <category term="Life" scheme="https://txiaozhe.github.io/tags/Life/"/>
+    
+  </entry>
+  
+</feed>
