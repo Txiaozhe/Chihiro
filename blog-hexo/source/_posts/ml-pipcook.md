@@ -46,7 +46,9 @@ Pipcook，一个旨在降低机器学习在前端开发领域使用成本的开�
 
 当然，实际上机器学习算法的复杂度要远远高于上述所说，推荐阅读 Tensorflow 中文社区的几篇文章：
 
-http://www.tensorfly.cn/special/deeplearning/chap1.html，这几篇文章描述了机器学习的大概思路与实现机制，还算是通俗易懂，只要你在大学学过高数读起来应该就没什么障碍。
+http://www.tensorfly.cn/special/deeplearning/chap1.html
+
+这几篇文章描述了机器学习的大概思路与实现机制，还算是通俗易懂，只要你在大学学过高数读起来应该就没什么障碍。
 
 机器学习，看上去还是高大上的，那作为开发者，我们可以用机器学习来做什么呢？
 
